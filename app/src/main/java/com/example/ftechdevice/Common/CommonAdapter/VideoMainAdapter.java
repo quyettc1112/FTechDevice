@@ -38,7 +38,7 @@ public class VideoMainAdapter extends RecyclerView.Adapter<VideoMainAdapter.Cour
         private final double rating;
         private final int reviews;
 
-        public Course(int image, String title, double originalPrice, double discountedPrice, double rating, int reviews) {
+        public Course( String title, int image, double rating,  int reviews, double originalPrice, double discountedPrice ) {
             this.image = image;
             this.title = title;
             this.originalPrice = originalPrice;

@@ -17,7 +17,7 @@ public class ToyModel {
     private final SellerInfoModel sellerInfo;
     private final String gender;
 
-    public ToyModel(int id, String toyName, double toyPrice, int toyImage, double toyRating, Boolean isLike, String toyDescription, int typePoppular, List<Integer> listImage, CategoryModel categoryModel, SellerInfoModel sellerInfo, String gender) {
+    public ToyModel(int id, String toyName, int toyImage,String toyDescription,double toyRating,  Boolean isLike,  double toyPrice, int typePoppular, CategoryModel categoryModel, SellerInfoModel sellerInfo, List<Integer> listImage, String gender) {
         this.id = id;
         this.toyName = toyName;
         this.toyPrice = toyPrice;
