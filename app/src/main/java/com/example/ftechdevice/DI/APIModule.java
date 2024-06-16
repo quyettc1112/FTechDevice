@@ -1,5 +1,6 @@
 package com.example.ftechdevice.DI;
 
+import com.example.ftechdevice.API_Service.UserAPI_Service;
 import com.example.ftechdevice.API_Service.YoutubeAPI_Service;
 import com.example.ftechdevice.AppConfig.BaseAPI.BaseAPI;
 
@@ -103,7 +104,6 @@ public class APIModule {
                 .build()
                 .create(YoutubeAPI_Service.class);
     }
-/*
     @Provides
     @Singleton
     public static UserAPI_Service provideUserAPI(@Named("user") String baseUrl, Gson gson, OkHttpClient client) {
@@ -113,5 +113,5 @@ public class APIModule {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
                 .create(UserAPI_Service.class);
-    }*/
+    }
 }
