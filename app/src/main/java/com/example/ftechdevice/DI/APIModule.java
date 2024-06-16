@@ -1,5 +1,6 @@
 package com.example.ftechdevice.DI;
 
+import com.example.ftechdevice.API_Service.YoutubeAPI_Service;
 import com.example.ftechdevice.AppConfig.BaseAPI.BaseAPI;
 
 import javax.inject.Singleton;
@@ -92,7 +93,7 @@ public class APIModule {
         return builder.build();
     }
 
-  /*  @Provides
+    @Provides
     @Singleton
     public static YoutubeAPI_Service provideYoutubeAPI(@Named("youtube") String baseUrl, Gson gson, OkHttpClient client) {
         return new Retrofit.Builder()
@@ -102,7 +103,7 @@ public class APIModule {
                 .build()
                 .create(YoutubeAPI_Service.class);
     }
-
+/*
     @Provides
     @Singleton
     public static UserAPI_Service provideUserAPI(@Named("user") String baseUrl, Gson gson, OkHttpClient client) {
