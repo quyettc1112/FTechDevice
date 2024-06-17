@@ -26,6 +26,7 @@ public class Constants {
 
     public static final String DEFAULT_PRIMARY_COLOR = "#FF4949";
     public static final String DEFAULT_PRIMARY_COLOR_ACTIVE = "#C9C9C9";
+    public static final String IS_BACK_FROM_MAP = "IS_BACK_FROM_MAPs";
     public static List<VideoMainAdapter.Course> getListCourse() {
         return Arrays.asList(
                 new VideoMainAdapter.Course(
