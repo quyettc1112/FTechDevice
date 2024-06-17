@@ -44,6 +44,7 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         cateOptionAdapter = new CategoryOptionAdapter(Constants.getListString(), this);
         toyListAdapter = new ToyListAdapter(Constants.getListToys());
 
+
         toyListAdapter.setOnItemCartClickListener(cartModel -> {
             Toast.makeText(requireContext(), cartModel.getToyName(), Toast.LENGTH_SHORT).show();
         });
