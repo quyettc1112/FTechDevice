@@ -49,4 +49,5 @@
     <string name="tab_text_2">Tab 2</string>
 
     <string name="API_YOUTUBE_KEY">AIzaSyCfH9LJPxphcne7DED5y7YzUvEM7TZ43UI</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
