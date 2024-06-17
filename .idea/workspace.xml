@@ -96,22 +96,21 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="403e22a6-4de3-4046-b803-524983521fe2" name="Changes" comment="Setup Maps Platform">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/MapActivity/MapsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/checksums/sha1-checksums.bin" afterDir="false" />
+    <list default="true" id="403e22a6-4de3-4046-b803-524983521fe2" name="Changes" comment="Update Maps Location">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/MapActivity/MapsViewModels.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/background_text_button_iconclick.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_local_hospital_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_local_pharmacy_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/baseline_medication_24.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/example/ftechdevice/BuildConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/example/ftechdevice/BuildConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/ProfileFragment/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/ProfileFragment/ProfileFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/AppConfig/BaseConfig/BaseViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/AppConfig/BaseConfig/BaseViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Common/Constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Common/Constants/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/MapActivity/MapsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/MapActivity/MapsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_maps.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_maps.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +120,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Admin\.android\avd\Pixel_7_Pro_API_33.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=SOW8N7OBWSRGIN4T)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -201,7 +200,7 @@
     "git-widget-placeholder": "Maps__QuyetTC",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Admin/AndroidStudioProjects/FTechDevice",
+    "last_opened_file_path": "C:/Users/Admin/AndroidStudioProjects/FTechDevice/app/src/main/res/drawable",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   },
@@ -224,11 +223,11 @@
       <recent name="com.example.ftechdevice.UI.Activity.SplashActivity" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\AndroidStudioProjects\FTechDevice\app\src\main\res\drawable" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\FTechDevice\app\src\main\res" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\FTechDevice\app" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\FTechDevice\app\src\main\res\menu" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\FTechDevice\app\src\main\res\font" />
-      <recent name="C:\Users\Admin\AndroidStudioProjects\FTechDevice\app\src\main\res\values" />
     </key>
     <key name="android.template.-1159067279">
       <recent name="com.example.ftechdevice.UI.Activity.MapActivity" />
@@ -396,46 +395,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718185351079</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Update Init Project">
-      <option name="closed" value="true" />
-      <created>1718269780120</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1718269780120</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Update Init Project">
-      <option name="closed" value="true" />
-      <created>1718269866104</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1718269866104</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Update Init Project">
-      <option name="closed" value="true" />
-      <created>1718271914757</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1718271914757</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Update Setup Project">
-      <option name="closed" value="true" />
-      <created>1718345224985</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1718345224985</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Update Setup Project">
-      <option name="closed" value="true" />
-      <created>1718345254445</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1718345254445</updated>
     </task>
     <task id="LOCAL-00008" summary="Update Setup Project">
       <option name="closed" value="true" />
@@ -789,7 +748,47 @@
       <option name="project" value="LOCAL" />
       <updated>1718609797703</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Setup Maps Platform">
+      <option name="closed" value="true" />
+      <created>1718609939995</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1718609939995</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Setup Maps Platform">
+      <option name="closed" value="true" />
+      <created>1718609958632</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1718609958632</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Update Maps Location">
+      <option name="closed" value="true" />
+      <created>1718609979066</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1718609979066</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Update Maps Location">
+      <option name="closed" value="true" />
+      <created>1718609990348</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1718609990348</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Update Maps Location">
+      <option name="closed" value="true" />
+      <created>1718609995823</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1718609995823</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -833,6 +832,7 @@
     <MESSAGE value="Update product UI" />
     <MESSAGE value="Update Product Detail" />
     <MESSAGE value="Setup Maps Platform" />
-    <option name="LAST_COMMIT_MESSAGE" value="Setup Maps Platform" />
+    <MESSAGE value="Update Maps Location" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Maps Location" />
   </component>
 </project>
