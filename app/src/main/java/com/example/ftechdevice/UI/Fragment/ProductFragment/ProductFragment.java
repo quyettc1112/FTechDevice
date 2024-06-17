@@ -19,6 +19,7 @@ import com.example.ftechdevice.Common.CommonAdapter.ToyListAdapterBase;
 import com.example.ftechdevice.Common.Constants.Constants;
 import com.example.ftechdevice.Model.CartModel;
 import com.example.ftechdevice.R;
+import com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailActivity;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
 import com.example.ftechdevice.databinding.FragmentProductBinding;
 
@@ -96,13 +97,13 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         binding.rvToys.setLayoutManager(new GridLayoutManager(requireContext(), 2));
         binding.rvToys.setAdapter(toyListAdapter);
 
-       /* // Item Click Product Detail
-        toyListAdapter.setItemOnclickListener(toy -> {
+        // Item Click Product Detail
+        toyListAdapter.setItemOnClickListener(toy -> {
             Toast.makeText(getContext(), "Clicked: " + toy.getToyName(), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(requireContext(), ProductDetailActivity.class);
             intent.putExtra("product_id", toy.getId());
             requireContext().startActivity(intent);
-        });*/
+        });
 
         // Add To Cart Click
         toyListAdapter.setOnItemCartClickListener(toy -> sharedViewModel.addItem(CartModel.create(toy, 1)));
