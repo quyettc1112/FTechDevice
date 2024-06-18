@@ -28,4 +28,9 @@ public class UserAPI_Repository {
     public Call<MessageRespone> callRegister(RegisterRequestDTO registerRequestDTO) {
         return userapiService.callRegisterUser(registerRequestDTO);
     }
+
+
+
+
+
 }
