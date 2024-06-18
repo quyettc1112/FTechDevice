@@ -107,7 +107,6 @@ public class LoginActivityScreen2 extends BaseActivity {
             }
         });
     }
-
     private void callUserCretidential(UserCretidentialDTO userCretidentialDTO) {
         userapiRepository.getUserCretidential(userCretidentialDTO)
                 .enqueue(new Callback<JWTObject>() {
@@ -122,7 +121,6 @@ public class LoginActivityScreen2 extends BaseActivity {
                             handleErrorResponse(response);
                         }
                     }
-
                     @Override
                     public void onFailure(Call<JWTObject> call, Throwable t) {
                         Log.d("CheckResponseValue", t.getMessage());

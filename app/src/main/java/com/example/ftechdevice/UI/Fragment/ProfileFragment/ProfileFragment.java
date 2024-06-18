@@ -26,6 +26,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivity;
+import com.example.ftechdevice.UI.Activity.MapActivity.MapsActivity;
 import com.example.ftechdevice.databinding.FragmentProfileBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -49,6 +50,13 @@ public class ProfileFragment extends Fragment {
 
         binding.logout.setOnClickListener(v -> showLogoutDialog());
 
+        intentToFaceBook();
+        intentToMaps();
+
+        return binding.getRoot();
+    }
+
+    private void intentToFaceBook() {
         binding.laIntentToFacebook.setOnClickListener(v -> {
             String facebookUrl = "https://www.facebook.com/AuroraToys68";
             Intent facebookIntent = new Intent(Intent.ACTION_VIEW);
@@ -66,8 +74,6 @@ public class ProfileFragment extends Fragment {
             }
             startActivity(facebookIntent);
         });
-
-        return binding.getRoot();
     }
 
     private void showLogoutDialog() {
@@ -107,4 +113,17 @@ public class ProfileFragment extends Fragment {
         float density = requireContext().getResources().getDisplayMetrics().density;
         return (int) (dp * density);
     }
+
+    private void intentToMaps() {
+        binding.layoutMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(requireContext(), MapsActivity.class));
+            }
+        });
+
+
+    }
+
+
 }
