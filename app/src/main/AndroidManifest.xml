@@ -43,6 +43,9 @@
             android:exported="true"
             android:label="@string/title_activity_maps" />
         <activity
+            android:name=".UI.Activity.PaymentActivity.PaymentActivity"
+            android:exported="false" />
+        <activity
             android:name=".UI.Activity.ProductDetailActivity.ProductDetailActivity"
             android:exported="false" />
         <activity

@@ -27,6 +27,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.ftechdevice.UI.Activity.PaymentActivity.PaymentActivity;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
 import com.example.ftechdevice.databinding.FragmentCartBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -101,7 +102,7 @@ public class CartFragment extends Fragment {
             TextView tong_tien = view.findViewById(R.id.tv_tong_tien_thanh_toan);
             tong_tien.setText(formatPrice(cartAdapter.getTotalItemsPrice() + 20000.0) + " VND");
 
-          /*  view.findViewById(R.id.btn_payment).setOnClickListener(v1 -> startActivity(new Intent(requireContext(), PaymentActivity.class)));*/
+            view.findViewById(R.id.btn_payment).setOnClickListener(v1 -> startActivity(new Intent(requireContext(), PaymentActivity.class)));
 
             dialog.setContentView(view);
             dialog.show();
