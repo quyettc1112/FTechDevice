@@ -5,9 +5,12 @@ import androidx.fragment.app.FragmentActivity;
 import android.net.Uri;
 import android.os.Bundle;
 
+
 import com.example.ftechdevice.AppConfig.CustomView.CustomDialog.ConfirmDialog;
 import com.example.ftechdevice.AppConfig.CustomView.CustomToolBar.CustomToolbar;
 import com.example.ftechdevice.Common.Constants.Constants;
+import com.example.ftechdevice.Common.DirectionHelper.FetchURL;
+import com.example.ftechdevice.Common.DirectionHelper.TaskLoadedCallback;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.google.android.gms.common.api.Status;
@@ -16,6 +19,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.ftechdevice.databinding.ActivityMapsBinding;
 import android.Manifest;
@@ -28,6 +32,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,31 +48,25 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
-import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback , TaskLoadedCallback {
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
     private FusedLocationProviderClient fusedLocationClient;
     private AutocompleteSupportFragment autocompleteSupportFragment;
     private MapsViewModels mapsViewModels;
+    private LatLng currentLatLng;
+    private LatLng destination = new LatLng(10.8802, 106.8055);
+    private Polyline currentPolyline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +74,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mapsViewModels = new ViewModelProvider(this).get(MapsViewModels.class);
 
-        Places.initialize(getApplicationContext(), "AIzaSyA-Mz1r06CJkEJQKLENv3AlaGC9BXUZ1Os");
+        Places.initialize(getApplicationContext(), "AIzaSyCpmrOW6NygOmu6Sz2_k2LIH_n963Q8nKc");
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        showDirection();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -86,12 +87,30 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         binding.customToolbar.setOnStartIconClickListener(new CustomToolbar.OnStartIconClickListener() {
             @Override
             public void onStartIconClick() {
-                Intent intent = new Intent(MapsActivity.this, MainActivity.class);
-                intent.putExtra(Constants.IS_BACK_FROM_MAP, true);
-                startActivity(intent);
+                finish();
             }
         });
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+    }
+
+    private void showDirection() {
+        findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new FetchURL(MapsActivity.this).execute(getUrl(currentLatLng,destination, "driving"), "driving");
+
+                LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                builder.include(currentLatLng);
+                builder.include(destination);
+                LatLngBounds bounds = builder.build();
+
+                // Set the padding around the bounds (in pixels)
+                int padding = 200; // Adjust as needed
+
+                // Move the camera to fit the bounds
+                mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding));
+            }
+        });
     }
 
     @Override
@@ -100,11 +119,37 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         if (isLocationPermissionGranted()) {
             showCurrentLocation();
+
+
             findPlace();
+
+
+
+
         } else {
             requestLocationPermission();
         }
     }
+
+    private String getUrl(LatLng origin, LatLng dest, String directionMode) {
+        // Origin of route
+        String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
+        // Destination of route
+        String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
+        // Mode
+        String mode = "mode=" + directionMode;
+        // Building the parameters to the web service
+        String parameters = str_origin + "&" + str_dest + "&" + mode;
+        // Output format
+        String output = "json";
+        // Building the url to the web service
+        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key=AIzaSyCpmrOW6NygOmu6Sz2_k2LIH_n963Q8nKc";
+        return url;
+    }
+
+
+
+
 
     private void findPlace() {
         autocompleteSupportFragment = (AutocompleteSupportFragment) getSupportFragmentManager()
@@ -185,11 +230,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.setMyLocationEnabled(true);
         fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
             if (location != null) {
-                LatLng currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+                currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
                 mMap.addMarker(new MarkerOptions().position(currentLatLng).title("Current Location"));
+                mMap.addMarker(new MarkerOptions().position(destination).title("Shop Location"));
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, DEFAULT_ZOOM));
             }
         });
+    }
+
+    @Override
+    public void onTaskDone(Object... values) {
+        if (currentPolyline != null)
+            currentPolyline.remove();
+        currentPolyline = mMap.addPolyline((PolylineOptions) values[0]);
     }
 
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
