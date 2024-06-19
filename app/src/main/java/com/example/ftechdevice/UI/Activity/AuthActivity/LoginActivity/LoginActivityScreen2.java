@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -18,11 +20,19 @@ import com.example.ftechdevice.AppConfig.BaseConfig.BaseActivity;
 import com.example.ftechdevice.AppConfig.CustomView.CustomDialog.ErrorDialog;
 import com.example.ftechdevice.AppConfig.CustomView.CustomToolBar.CustomToolbar;
 import com.example.ftechdevice.Model.ModelRequestDTO.JWTObject;
+import com.example.ftechdevice.Model.ModelRequestDTO.LoginRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.ShareViewModel.UserShareViewModel;
 import com.example.ftechdevice.databinding.ActivityLoginScreen2Binding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 
 import javax.inject.Inject;
 
@@ -38,12 +48,15 @@ public class LoginActivityScreen2 extends BaseActivity {
 
     private UserShareViewModel userShareViewModel;
 
+    FirebaseAuth mAuth;
+    private boolean isEmailVerificationInProgress = false;
     @Inject
     UserAPI_Repository userapiRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
         binding = ActivityLoginScreen2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -69,9 +82,9 @@ public class LoginActivityScreen2 extends BaseActivity {
             String email = binding.edtEmail.getText().toString();
             String password = binding.edtPassword.getText().toString();
             if (checkValidNumber(email, password)) {
-                userShareViewModel.updateUserCretidential(new UserCretidentialDTO(email, password));
-                if (userShareViewModel.getUserCredentials().getValue() != null) {
-                    callUserCretidential(userShareViewModel.getUserCretidentail());
+                userShareViewModel.updateLoginCretidential(new LoginRequestDTO(email, password));
+                if (userShareViewModel.getloginCredentials().getValue() != null) {
+                    doLogin(userShareViewModel.getloginCretidentail());
                 }
             }
         });
@@ -128,6 +141,27 @@ public class LoginActivityScreen2 extends BaseActivity {
                 });
     }
 
+    ///// Nhan
+    private void loginUser(LoginRequestDTO loginRequestDTO) {
+        userapiRepository.loginUser(loginRequestDTO)
+                .enqueue(new Callback<JWTObject>() {
+                    @Override
+                    public void onResponse(Call<JWTObject> call, Response<JWTObject> response) {
+
+                        JWTObject jwtObject = response.body();
+                        userShareViewModel.updateJWTToken(jwtObject);
+                        startActivity(new Intent(LoginActivityScreen2.this, MainActivity.class));
+                        finish();
+                    }
+
+                    @Override
+                    public void onFailure(Call<JWTObject> call, Throwable t) {
+
+                    }
+                });
+    }
+
+
     private void handleErrorResponse(Response<JWTObject> response) {
         if (response.code() == 404) {
             ErrorDialog errorDialog = new ErrorDialog(
@@ -145,5 +179,79 @@ public class LoginActivityScreen2 extends BaseActivity {
             errorDialog.show();
         }
         Log.d("CheckResponseValue", String.valueOf(response.code()));
+    }
+
+    private void isEmailVerified() {
+        if(mAuth.getCurrentUser()!=null){
+            boolean isEmailVerified =mAuth.getCurrentUser().isEmailVerified();
+            if(isEmailVerified){
+                Toast.makeText(this,"Email is verifi", Toast.LENGTH_SHORT).show();
+            }else{
+
+                Toast.makeText(this,"please verify your email address first", Toast.LENGTH_SHORT).show();
+                sendVerificationEmail();
+            }
+        }
+    }
+    private void doLogin(LoginRequestDTO loginRequestDTO) {
+        if (isEmailVerificationInProgress) {
+            Toast.makeText(this, "Đang gửi email xác minh, vui lòng chờ", Toast.LENGTH_SHORT).show();
+            return; // Thoát khỏi phương thức
+        }
+        mAuth.signInWithEmailAndPassword(loginRequestDTO.getEmail(), loginRequestDTO.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Log.d("CheckResponseValue", "signInWithEmail:success");
+                    if (mAuth.getCurrentUser().isEmailVerified()) {
+                        loginUser(loginRequestDTO);  // Proceed with the backend login
+                    } else {
+                        Toast.makeText(LoginActivityScreen2.this, "Vui lòng xác minh email trước khi đăng nhập", Toast.LENGTH_SHORT).show();
+                        sendVerificationEmail();
+                        mAuth.signOut(); // Sign out the user since their email is not verified
+                    }
+                } else {
+                    handleLoginFailure(task.getException());
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                handleLoginFailure(e);
+            }
+        });
+    }
+
+    private void handleLoginFailure(Exception e) {
+        if (e instanceof FirebaseAuthInvalidCredentialsException) { // Means password is wrong
+            binding.btnLogin.setEnabled(true);
+            binding.edtPassword.setError("Invalid Password");
+            binding.edtPassword.requestFocus();
+        } else if (e instanceof FirebaseAuthInvalidUserException) { // Means email is not registered with us
+            binding.btnLogin.setEnabled(true);
+            binding.edtPassword.setError("Email Not Registered");
+            binding.edtPassword.requestFocus();
+        } else {
+            Toast.makeText(LoginActivityScreen2.this, "Oops! Something went wrong", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void sendVerificationEmail() {
+        if(mAuth.getCurrentUser()!=null){
+            isEmailVerificationInProgress = true; // Đặt trạng thái gửi email xác minh
+            mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()) {
+                        isEmailVerificationInProgress = false;
+                        Toast.makeText(LoginActivityScreen2.this, "Email has been sent to email address", Toast.LENGTH_SHORT).show();
+                    } else{
+
+                        Toast.makeText(getApplicationContext(), "Failed to send verification email", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+        }
     }
 }
