@@ -22,6 +22,7 @@ import com.example.ftechdevice.AppConfig.CustomView.CustomToolBar.CustomToolbar;
 import com.example.ftechdevice.Model.ModelRequestDTO.JWTObject;
 import com.example.ftechdevice.Model.ModelRequestDTO.LoginRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
+import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.ShareViewModel.UserShareViewModel;
@@ -144,19 +145,27 @@ public class LoginActivityScreen2 extends BaseActivity {
     ///// Nhan
     private void loginUser(LoginRequestDTO loginRequestDTO) {
         userapiRepository.loginUser(loginRequestDTO)
-                .enqueue(new Callback<JWTObject>() {
+                .enqueue(new Callback<LoginResponse>() {
                     @Override
-                    public void onResponse(Call<JWTObject> call, Response<JWTObject> response) {
+                    public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
 
-                        JWTObject jwtObject = response.body();
-                        userShareViewModel.updateJWTToken(jwtObject);
-                        startActivity(new Intent(LoginActivityScreen2.this, MainActivity.class));
-                        finish();
+
+                        if (response.isSuccessful()) {
+                            Log.d("Checklaue", response.body().getAccessToken().toString());
+                            userShareViewModel.updateLoginCretidential(loginRequestDTO);
+
+                            startActivity(new Intent(LoginActivityScreen2.this, MainActivity.class));
+                            finish();
+
+                        } else  Log.d("Checklaue", response.code() +"" + response.message() + response.errorBody());
+
+
+
                     }
 
                     @Override
-                    public void onFailure(Call<JWTObject> call, Throwable t) {
-
+                    public void onFailure(Call<LoginResponse> call, Throwable t) {
+                        Log.d("Checklaue",t.toString());
                     }
                 });
     }

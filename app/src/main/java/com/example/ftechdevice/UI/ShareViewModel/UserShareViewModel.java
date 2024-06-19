@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.ftechdevice.Model.ModelRequestDTO.JWTObject;
 import com.example.ftechdevice.Model.ModelRequestDTO.LoginRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
+import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 
 public class UserShareViewModel extends ViewModel {
     private final MutableLiveData<UserCretidentialDTO> _userCredentials = new MutableLiveData<>();
@@ -24,6 +25,7 @@ public class UserShareViewModel extends ViewModel {
     public LiveData<JWTObject> getJwtToken() {
         return _jwtToken;
     }
+
 
     // User Credentials
     public void updateUserCretidential(UserCretidentialDTO userCretidentialDTO) {
