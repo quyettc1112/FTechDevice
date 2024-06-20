@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "473128975904",
+    "project_id": "ftechdevice",
+    "storage_bucket": "ftechdevice.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473128975904:android:6712198420f4cd65a5c645",
+        "android_client_info": {
+          "package_name": "com.example.ftechdevice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBmnVygcvuiQgFiaEz0zf45FrzAt9iT6Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

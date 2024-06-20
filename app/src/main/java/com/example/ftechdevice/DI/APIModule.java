@@ -52,6 +52,13 @@ public class APIModule {
 
     @Provides
     @Singleton
+    @Named("base")
+    public static String provideBaseUrl() {
+        return BaseAPI.BASE_API_PRM;
+    }
+
+    @Provides
+    @Singleton
     public static int provideConnectionTimeout() {
         return (int) BaseAPI.NETWORK_TIMEOUT;
     }
@@ -104,7 +111,7 @@ public class APIModule {
     }
     @Provides
     @Singleton
-    public static UserAPI_Service provideUserAPI(@Named("user") String baseUrl, Gson gson, OkHttpClient client) {
+    public static UserAPI_Service provideUserAPI(@Named("base") String baseUrl, Gson gson, OkHttpClient client) {
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(client)
