@@ -11,10 +11,10 @@ import com.example.ftechdevice.API_Repository.YoutubeAPI_Repository;
 import com.example.ftechdevice.API_Service.UserAPI_Service;
 import com.example.ftechdevice.API_Service.YoutubeAPI_Service;
 import com.example.ftechdevice.DI.APIModule;
+import com.example.ftechdevice.DI.APIModule_ProvideBaseUrlFactory;
 import com.example.ftechdevice.DI.APIModule_ProvideGsonFactory;
 import com.example.ftechdevice.DI.APIModule_ProvideOkHttpClientFactory;
 import com.example.ftechdevice.DI.APIModule_ProvideUserAPIFactory;
-import com.example.ftechdevice.DI.APIModule_ProvideUserBaseUrlFactory;
 import com.example.ftechdevice.DI.APIModule_ProvideYoutubeAPIFactory;
 import com.example.ftechdevice.DI.APIModule_ProvideYoutubeBaseUrlFactory;
 import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivity;
@@ -652,7 +652,7 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
   private static final class SingletonCImpl extends FTechDevice_HiltComponents.SingletonC {
     private final SingletonCImpl singletonCImpl = this;
 
-    private Provider<String> provideUserBaseUrlProvider;
+    private Provider<String> provideBaseUrlProvider;
 
     private Provider<Gson> provideGsonProvider;
 
@@ -672,7 +672,7 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
 
     @SuppressWarnings("unchecked")
     private void initialize() {
-      this.provideUserBaseUrlProvider = DoubleCheck.provider(new SwitchingProvider<String>(singletonCImpl, 1));
+      this.provideBaseUrlProvider = DoubleCheck.provider(new SwitchingProvider<String>(singletonCImpl, 1));
       this.provideGsonProvider = DoubleCheck.provider(new SwitchingProvider<Gson>(singletonCImpl, 2));
       this.provideOkHttpClientProvider = DoubleCheck.provider(new SwitchingProvider<OkHttpClient>(singletonCImpl, 3));
       this.provideUserAPIProvider = DoubleCheck.provider(new SwitchingProvider<UserAPI_Service>(singletonCImpl, 0));
@@ -714,10 +714,10 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
       public T get() {
         switch (id) {
           case 0: // com.example.ftechdevice.API_Service.UserAPI_Service 
-          return (T) APIModule_ProvideUserAPIFactory.provideUserAPI(singletonCImpl.provideUserBaseUrlProvider.get(), singletonCImpl.provideGsonProvider.get(), singletonCImpl.provideOkHttpClientProvider.get());
+          return (T) APIModule_ProvideUserAPIFactory.provideUserAPI(singletonCImpl.provideBaseUrlProvider.get(), singletonCImpl.provideGsonProvider.get(), singletonCImpl.provideOkHttpClientProvider.get());
 
-          case 1: // @javax.inject.Named("user") java.lang.String 
-          return (T) APIModule_ProvideUserBaseUrlFactory.provideUserBaseUrl();
+          case 1: // @javax.inject.Named("base") java.lang.String 
+          return (T) APIModule_ProvideBaseUrlFactory.provideBaseUrl();
 
           case 2: // com.google.gson.Gson 
           return (T) APIModule_ProvideGsonFactory.provideGson();

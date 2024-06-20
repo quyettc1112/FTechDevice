@@ -458,3 +458,4 @@ styleable CustomToolbar android:title textStart startIcon endIcon showStartIcon 
 styleable NiceBottomBar menu backgroundColor indicatorColor indicatorWidth indicatorEnabled textColor itemFontFamily textColorActive textSize iconSize iconMargin activeItem indicatorInterpolator badgeColor indicatorGravity
 xml backup_rules
 xml data_extraction_rules
+xml network_security_config
