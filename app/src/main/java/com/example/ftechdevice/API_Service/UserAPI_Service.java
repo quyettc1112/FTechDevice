@@ -1,5 +1,6 @@
 package com.example.ftechdevice.API_Service;
 
+
 import com.example.ftechdevice.Model.ModelRequestDTO.JWTObject;
 import com.example.ftechdevice.Model.ModelRequestDTO.LoginRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.RegisterRequestDTO;
@@ -22,6 +23,7 @@ public interface UserAPI_Service {
 
     @POST("/api/auth/login")
     Call<LoginResponse> loginUser(@Body LoginRequestDTO loginRequestDTO);
+
 
 
 
