@@ -56,7 +56,7 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
     private ProductListAdapter productListAdapter;
     @Inject
     ProductAPI_Repository productAPIRepository;
-    private List<ProductModel> productList;
+    private List<ProductModel> productList = new ArrayList<ProductModel>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,8 +64,8 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         videoAdapter = new VideoMainAdapter(Constants.getListCourse());
         cateOptionAdapter = new CategoryOptionAdapter(Constants.getListString(), this);
         toyListAdapter = new ToyListAdapter(Constants.getListToys());
-        productListAdapter = new ProductListAdapter(new ArrayList<>());
-        callProductAPI();
+        productListAdapter = new ProductListAdapter(productList);
+
 
         toyListAdapter.setOnItemCartClickListener(cartModel -> {
             Toast.makeText(requireContext(), cartModel.getToyName(), Toast.LENGTH_SHORT).show();
@@ -76,11 +76,11 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
+        callProductAPI();
         setUpVideoMainRecycleView();
         setIndicator();
         setCurrentIndicator(0);
-        setRecycleCateOption();
-        setRecycleProductList();
+        setRecycleCateOption();;
         intentToVideoActivity();
         return binding.getRoot();
     }
@@ -178,7 +178,9 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
                     List<ProductModel> products = response.body().getContent();
                     Log.d("Check value", "Products size: " + (products != null ? products.size() : 0));
                     if (products != null) {
-                        productListAdapter.setProductList(products);
+                        productList = products;
+                        productListAdapter = new ProductListAdapter(productList);
+                        setRecycleProductList();
                     }
                 } else {
                     Log.d("Check value", "Response code: " + response.code());

@@ -22,6 +22,16 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     private OnItemClickListener onItemClickListener;
     private OnItemCartClickListener onItemCartClickListener;
 
+
+    public ProductListAdapter(List<ProductModel> products, OnItemClickListener onItemClickListener, OnItemCartClickListener onItemCartClickListener) {
+        this.products = products;
+        this.onItemClickListener = onItemClickListener;
+        this.onItemCartClickListener = onItemCartClickListener;
+    }
+
+    public ProductListAdapter() {
+    }
+
     public ProductListAdapter(List<ProductModel> products) {
         this.products = products;
     }
