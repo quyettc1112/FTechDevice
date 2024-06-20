@@ -1,16 +1,16 @@
 -- Merging decision tree log ---
 meta-data#com.google.android.geo.API_KEY
-INJECTED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:36:9-38:47
+INJECTED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:37:9-39:47
 	android:value
 		INJECTED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:38:13-44
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:39:13-44
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:37:13-58
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:38:13-58
 manifest
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:2:1-90:12
-INJECTED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:2:1-90:12
-INJECTED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:2:1-90:12
-INJECTED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:2:1-90:12
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:2:1-91:12
+INJECTED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:2:1-91:12
+INJECTED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:2:1-91:12
+INJECTED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:2:1-91:12
 MERGED from [androidx.databinding:databinding-adapters:8.4.2] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\0f5ebfa61da4397ed08090ccef617f6a\transformed\databinding-adapters-8.4.2\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-ktx:8.4.2] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\e90010b302650e968e14953c039e0aee\transformed\jetified-databinding-ktx-8.4.2\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.databinding:databinding-runtime:8.4.2] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\bd480cd75b75025a8e7cdd231032e71a\transformed\databinding-runtime-8.4.2\AndroidManifest.xml:2:1-7:12
@@ -32,9 +32,9 @@ MERGED from [com.google.firebase:firebase-auth:23.0.0] C:\Users\Admin\Downloads\
 MERGED from [androidx.credentials:credentials:1.2.0-rc01] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\833201ea9bd2cc61b99dac156fb6fcad\transformed\jetified-credentials-1.2.0-rc01\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\2985d3fa628524c75605e1eac498fc80\transformed\jetified-credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:17:1-44:12
 MERGED from [com.google.android.gms:play-services-auth:21.2.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\a2c313bc150a25ec8049e3a3095c6fc9\transformed\jetified-play-services-auth-21.2.0\AndroidManifest.xml:17:1-40:12
+MERGED from [com.github.bumptech.glide:glide:4.16.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\fb72ecc3e01a36f08f706fb643f4baeb\transformed\jetified-glide-4.16.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.dagger:hilt-android:2.48.1] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\2958e2f23d1ef304e9a57112472735db\transformed\jetified-hilt-android-2.48.1\AndroidManifest.xml:16:1-19:12
 MERGED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\2565ded603d5a6c90ccb204cc18d9af8\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:17:1-44:12
-MERGED from [com.github.bumptech.glide:glide:4.16.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\fb72ecc3e01a36f08f706fb643f4baeb\transformed\jetified-glide-4.16.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\e1121b5ab5d9bae615d0192b809967e2\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-drive:17.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\ee8a991ffbcfa58e5567005fe523857f\transformed\jetified-play-services-drive-17.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-location:21.2.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\e8b245ddd352c22fa23887851d156544\transformed\jetified-play-services-location-21.2.0\AndroidManifest.xml:2:1-9:12
@@ -117,12 +117,12 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Admin\Downloads\De
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\dc3ee1598fabfcc4d8daa9e98602a4f0\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\347c37be13986b78c6ce526f7a197796\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-components:18.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\493ef2032fa0d78067759da5e5c57a61\transformed\jetified-firebase-components-18.0.0\AndroidManifest.xml:15:1-20:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\f2695ff8902b424cc6bfdff209f7f3bb\transformed\jetified-gifdecoder-4.16.0\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\12db4b3f5a887683281d6e8293c32a54\transformed\exifinterface-1.3.6\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.2.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\217fc5993c09c0f8b9bdfe493dc1bee3\transformed\jetified-transport-backend-cct-3.2.0\AndroidManifest.xml:15:1-35:12
 MERGED from [com.google.android.datatransport:transport-runtime:3.2.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\6e1dab1d589991edcc9ec0496d133601\transformed\jetified-transport-runtime-3.2.0\AndroidManifest.xml:15:1-39:12
 MERGED from [com.google.android.datatransport:transport-api:3.1.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\ad0bb1ae5f34f14b3541b772d9b848b8\transformed\jetified-transport-api-3.1.0\AndroidManifest.xml:15:1-20:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\37b3e350da385bd1993f92091fb6b424\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\12db4b3f5a887683281d6e8293c32a54\transformed\exifinterface-1.3.6\AndroidManifest.xml:17:1-24:12
-MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\f2695ff8902b424cc6bfdff209f7f3bb\transformed\jetified-gifdecoder-4.16.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\f524689369584703724fbeafbdc431f0\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\def439486773cb554a3000a3acbfe829\transformed\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\181f28c92c66bfd10bf11d1670b7230e\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -174,8 +174,8 @@ MERGED from [com.google.android.libraries.places:places:3.4.0] C:\Users\Admin\Do
 	android:name
 		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:7:22-78
 application
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:9:5-88:19
-INJECTED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:9:5-88:19
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:9:5-89:19
+INJECTED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:9:5-89:19
 MERGED from [com.squareup.picasso:picasso:2.8] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\9bebc0c48c3df2304981bd969ffc4ca0\transformed\jetified-picasso-2.8\AndroidManifest.xml:7:5-12:19
 MERGED from [com.squareup.picasso:picasso:2.8] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\9bebc0c48c3df2304981bd969ffc4ca0\transformed\jetified-picasso-2.8\AndroidManifest.xml:7:5-12:19
 MERGED from [com.google.android.material:material:1.10.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\dc01f40bf03d057aa697bb1114c6f661\transformed\material-1.10.0\AndroidManifest.xml:22:5-20
@@ -269,103 +269,103 @@ MERGED from [de.hdodenhof:circleimageview:3.1.0] C:\Users\Admin\Downloads\DemoZP
 	android:name
 		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:11:9-58
 meta-data#com.google.android.gms.version
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:40:9-41:69
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:41:9-42:69
 MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\0d273e2591a5e7b0ff69bcab09316a00\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:21:9-23:69
 MERGED from [com.google.android.gms:play-services-basement:18.3.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\0d273e2591a5e7b0ff69bcab09316a00\transformed\jetified-play-services-basement-18.3.0\AndroidManifest.xml:21:9-23:69
 	android:value
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:41:13-66
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:42:13-66
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:40:20-65
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:41:20-65
 activity#com.example.ftechdevice.UI.Activity.MapActivity.MapsActivity
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:42:9-45:59
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:43:9-46:59
 	android:label
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:45:13-56
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:46:13-56
 	android:exported
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:44:13-36
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:45:13-36
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:43:13-65
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:44:13-65
 activity#com.example.ftechdevice.UI.Activity.PaymentActivity.PaymentActivity
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:46:9-48:40
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:47:9-49:40
 	android:exported
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:48:13-37
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:49:13-37
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:47:13-72
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:48:13-72
 activity#com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailActivity
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:49:9-51:40
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:50:9-52:40
 	android:exported
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:51:13-37
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:52:13-37
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:50:13-84
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:51:13-84
 activity#com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity_Screen3
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:52:9-54:40
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:53:9-55:40
 	android:exported
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:54:13-37
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:55:13-37
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:53:13-95
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:54:13-95
 activity#com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity_Screen2
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:55:9-57:40
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:56:9-58:40
 	android:exported
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:57:13-37
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:58:13-37
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:56:13-95
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:57:13-95
 activity#com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:58:9-60:40
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:59:9-61:40
 	android:exported
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:60:13-37
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:61:13-37
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:59:13-87
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:60:13-87
 activity#com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivityScreen2
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:61:9-63:39
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:62:9-64:39
 	android:exported
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:63:13-36
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:64:13-36
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:62:13-88
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:63:13-88
 activity#com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivity
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:64:9-66:39
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:65:9-67:39
 	android:exported
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:66:13-36
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:67:13-36
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:65:13-81
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:66:13-81
 activity#com.example.ftechdevice.UI.Activity.StartActivity.StartActivity
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:67:9-75:20
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:68:9-76:20
 	android:exported
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:69:13-36
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:70:13-36
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:68:13-68
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:69:13-68
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:70:13-74:29
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:71:13-75:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:71:17-69
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:72:17-69
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:71:25-66
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:72:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:73:17-77
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:74:17-77
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:73:27-74
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:74:27-74
 activity#com.example.ftechdevice.UI.Activity.SplashActivity.SplashActivity
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:76:9-78:39
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:77:9-79:39
 	android:exported
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:78:13-36
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:79:13-36
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:77:13-70
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:78:13-70
 activity#com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity_Screen2
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:79:9-81:39
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:80:9-82:39
 	android:exported
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:81:13-36
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:82:13-36
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:80:13-76
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:81:13-76
 activity#com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:82:9-84:39
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:83:9-85:39
 	android:exported
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:84:13-36
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:85:13-36
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:83:13-68
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:84:13-68
 activity#com.example.ftechdevice.UI.Activity.MainActivity.MainActivity
-ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:85:9-87:39
+ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:86:9-88:39
 	android:exported
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:87:13-36
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:88:13-36
 	android:name
-		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:86:13-66
+		ADDED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:87:13-66
 uses-sdk
 INJECTED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml
@@ -412,12 +412,12 @@ MERGED from [androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\
 MERGED from [androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\2985d3fa628524c75605e1eac498fc80\transformed\jetified-credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:21:5-44
 MERGED from [com.google.android.gms:play-services-auth:21.2.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\a2c313bc150a25ec8049e3a3095c6fc9\transformed\jetified-play-services-auth-21.2.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth:21.2.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\a2c313bc150a25ec8049e3a3095c6fc9\transformed\jetified-play-services-auth-21.2.0\AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:glide:4.16.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\fb72ecc3e01a36f08f706fb643f4baeb\transformed\jetified-glide-4.16.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:glide:4.16.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\fb72ecc3e01a36f08f706fb643f4baeb\transformed\jetified-glide-4.16.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.dagger:hilt-android:2.48.1] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\2958e2f23d1ef304e9a57112472735db\transformed\jetified-hilt-android-2.48.1\AndroidManifest.xml:18:3-42
 MERGED from [com.google.dagger:hilt-android:2.48.1] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\2958e2f23d1ef304e9a57112472735db\transformed\jetified-hilt-android-2.48.1\AndroidManifest.xml:18:3-42
 MERGED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\2565ded603d5a6c90ccb204cc18d9af8\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:18.2.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\2565ded603d5a6c90ccb204cc18d9af8\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:20:5-44
-MERGED from [com.github.bumptech.glide:glide:4.16.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\fb72ecc3e01a36f08f706fb643f4baeb\transformed\jetified-glide-4.16.0\AndroidManifest.xml:5:5-7:41
-MERGED from [com.github.bumptech.glide:glide:4.16.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\fb72ecc3e01a36f08f706fb643f4baeb\transformed\jetified-glide-4.16.0\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\e1121b5ab5d9bae615d0192b809967e2\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\e1121b5ab5d9bae615d0192b809967e2\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.gms:play-services-drive:17.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\ee8a991ffbcfa58e5567005fe523857f\transformed\jetified-play-services-drive-17.0.0\AndroidManifest.xml:20:5-44
@@ -582,6 +582,10 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\347c37be13986b78c6ce526f7a197796\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-components:18.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\493ef2032fa0d78067759da5e5c57a61\transformed\jetified-firebase-components-18.0.0\AndroidManifest.xml:18:5-44
 MERGED from [com.google.firebase:firebase-components:18.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\493ef2032fa0d78067759da5e5c57a61\transformed\jetified-firebase-components-18.0.0\AndroidManifest.xml:18:5-44
+MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\f2695ff8902b424cc6bfdff209f7f3bb\transformed\jetified-gifdecoder-4.16.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\f2695ff8902b424cc6bfdff209f7f3bb\transformed\jetified-gifdecoder-4.16.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\12db4b3f5a887683281d6e8293c32a54\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\12db4b3f5a887683281d6e8293c32a54\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.2.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\217fc5993c09c0f8b9bdfe493dc1bee3\transformed\jetified-transport-backend-cct-3.2.0\AndroidManifest.xml:18:5-44
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.2.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\217fc5993c09c0f8b9bdfe493dc1bee3\transformed\jetified-transport-backend-cct-3.2.0\AndroidManifest.xml:18:5-44
 MERGED from [com.google.android.datatransport:transport-runtime:3.2.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\6e1dab1d589991edcc9ec0496d133601\transformed\jetified-transport-runtime-3.2.0\AndroidManifest.xml:18:5-44
@@ -590,10 +594,6 @@ MERGED from [com.google.android.datatransport:transport-api:3.1.0] C:\Users\Admi
 MERGED from [com.google.android.datatransport:transport-api:3.1.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\ad0bb1ae5f34f14b3541b772d9b848b8\transformed\jetified-transport-api-3.1.0\AndroidManifest.xml:18:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\37b3e350da385bd1993f92091fb6b424\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\37b3e350da385bd1993f92091fb6b424\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\12db4b3f5a887683281d6e8293c32a54\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.exifinterface:exifinterface:1.3.6] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\12db4b3f5a887683281d6e8293c32a54\transformed\exifinterface-1.3.6\AndroidManifest.xml:20:5-22:41
-MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\f2695ff8902b424cc6bfdff209f7f3bb\transformed\jetified-gifdecoder-4.16.0\AndroidManifest.xml:5:5-7:41
-MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\f2695ff8902b424cc6bfdff209f7f3bb\transformed\jetified-gifdecoder-4.16.0\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\f524689369584703724fbeafbdc431f0\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\f524689369584703724fbeafbdc431f0\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\def439486773cb554a3000a3acbfe829\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
