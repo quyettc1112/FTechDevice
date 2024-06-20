@@ -217,6 +217,7 @@ font app_font_thin
 font app_font_thin_italic
 id accelerate
 id accelerateDecelerate
+id anime
 id anticipate
 id anticipateOvershoot
 id autoComplete_fragment
@@ -230,6 +231,8 @@ id btn_logout_cancle
 id btn_next
 id btn_payment
 id btn_register
+id btn_register_screen2
+id btn_register_screen3
 id btn_saveFillter
 id cardView
 id cardView2
@@ -245,11 +248,19 @@ id customToolbar
 id customToolbar2
 id customToolbar3
 id customToolbar_login2
+id customToolbar_screen2
+id customToolbar_screen3
 id decelerate
 id drugstores
 id edt_email
 id edt_password
+id edt_register_dob
 id edt_register_email
+id edt_register_gender
+id edt_register_name
+id edt_register_password
+id edt_register_password_confirm
+id edt_register_phone
 id edt_search
 id horizontal_layout
 id im_dissmissDialog

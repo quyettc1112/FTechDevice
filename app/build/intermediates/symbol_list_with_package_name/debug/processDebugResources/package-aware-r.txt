@@ -4133,6 +4133,7 @@ id always
 id androidx_window_activity_scope
 id animateToEnd
 id animateToStart
+id anime
 id antiClockwise
 id anticipate
 id anticipateOvershoot
@@ -4170,6 +4171,8 @@ id btn_logout_cancle
 id btn_next
 id btn_payment
 id btn_register
+id btn_register_screen2
+id btn_register_screen3
 id btn_saveFillter
 id buttonPanel
 id cache_measures
@@ -4226,6 +4229,8 @@ id customToolbar
 id customToolbar2
 id customToolbar3
 id customToolbar_login2
+id customToolbar_screen2
+id customToolbar_screen3
 id cut
 id dark
 id dataBinding
@@ -4269,7 +4274,13 @@ id edit_query
 id edit_text_id
 id edt_email
 id edt_password
+id edt_register_dob
 id edt_register_email
+id edt_register_gender
+id edt_register_name
+id edt_register_password
+id edt_register_password_confirm
+id edt_register_phone
 id edt_search
 id elastic
 id embed

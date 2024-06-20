@@ -21,6 +21,9 @@ import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActiv
 import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivityScreen2;
 import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivityScreen2_MembersInjector;
 import com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity;
+import com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity_Screen2;
+import com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity_Screen3;
+import com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity_Screen3_MembersInjector;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailActivity;
 import com.example.ftechdevice.UI.Activity.SplashActivity.SplashActivity;
@@ -419,6 +422,15 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
     }
 
     @Override
+    public void injectRegisterActivity_Screen2(RegisterActivity_Screen2 arg0) {
+    }
+
+    @Override
+    public void injectRegisterActivity_Screen3(RegisterActivity_Screen3 arg0) {
+      injectRegisterActivity_Screen32(arg0);
+    }
+
+    @Override
     public void injectMainActivity(MainActivity arg0) {
     }
 
@@ -467,6 +479,13 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
     @CanIgnoreReturnValue
     private LoginActivityScreen2 injectLoginActivityScreen22(LoginActivityScreen2 instance) {
       LoginActivityScreen2_MembersInjector.injectUserapiRepository(instance, userAPI_RepositoryProvider.get());
+      return instance;
+    }
+
+    @CanIgnoreReturnValue
+    private RegisterActivity_Screen3 injectRegisterActivity_Screen32(
+        RegisterActivity_Screen3 instance) {
+      RegisterActivity_Screen3_MembersInjector.injectUserapiRepository(instance, userAPI_RepositoryProvider.get());
       return instance;
     }
 

@@ -4,6 +4,8 @@ import com.example.ftechdevice.DI.APIModule;
 import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivityScreen2_GeneratedInjector;
 import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivity_GeneratedInjector;
 import com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity_GeneratedInjector;
+import com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity_Screen2_GeneratedInjector;
+import com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity_Screen3_GeneratedInjector;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity_GeneratedInjector;
 import com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailActivity_GeneratedInjector;
 import com.example.ftechdevice.UI.Activity.SplashActivity.SplashActivity_GeneratedInjector;
@@ -192,6 +194,8 @@ public final class FTechDevice_HiltComponents {
   public abstract static class ActivityC implements LoginActivityScreen2_GeneratedInjector,
       LoginActivity_GeneratedInjector,
       RegisterActivity_GeneratedInjector,
+      RegisterActivity_Screen2_GeneratedInjector,
+      RegisterActivity_Screen3_GeneratedInjector,
       MainActivity_GeneratedInjector,
       ProductDetailActivity_GeneratedInjector,
       SplashActivity_GeneratedInjector,
