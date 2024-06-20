@@ -61,10 +61,10 @@
             android:exported="false" />
         <activity
             android:name=".UI.Activity.AuthActivity.LoginActivity.LoginActivityScreen2"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".UI.Activity.AuthActivity.LoginActivity.LoginActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".UI.Activity.StartActivity.StartActivity"
             android:exported="true">
