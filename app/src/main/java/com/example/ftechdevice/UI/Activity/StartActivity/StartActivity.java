@@ -37,22 +37,22 @@ public class StartActivity extends BaseActivity {
     private final IntroSliderAdapter introSliderAdapter = new IntroSliderAdapter(
             Arrays.asList(
                     new IntroSliderAdapter.IntroSlide(
-                            "Aurora Toy-Store",
-                            "Bắt đầu hành trình khám phá thế giới đồ chơi dành cho trẻ cùng Aurora Toy-Store",
-                            R.drawable.ic_material_start_1,
-                            R.drawable.decor_splash
+                            "FTech Device-Store",
+                            "Bắt đầu hành trình khám phá thế giới công nghệ cùng FTech Device-Store",
+                            R.drawable.banner,
+                            R.drawable.logoo
                     ),
                     new IntroSliderAdapter.IntroSlide(
                             "Kiến Thức Phong Phú",
-                            "Khám phá thế giới đồ chơi đặc biệt dành cho trẻ tự kỷ và tìm hiểu sâu hơn về tự kỷ cùng Aurora Toy-Store",
-                            R.drawable.ic_material_start_2,
-                            R.drawable.decor_splash2
+                            "Khám phá các thiết bị công nghệ đặc biệt và nâng cao hiểu biết của bạn cùng FTech Device-Store",
+                            R.drawable.banner2,
+                            R.drawable.logo_2
                     ),
                     new IntroSliderAdapter.IntroSlide(
                             "Trải Nghiệm Mọi Lúc, Mọi Nơi",
-                            "Lan toả câu chuyện cộng đồng về sự phát triển tiềm năng của trẻ cùng Aurora Toy-Store",
-                            R.drawable.ic_material_start_3,
-                            R.drawable.image_decor_rm_bg
+                            "Khám phá và mua sắm các thiết bị công nghệ hàng đầu cùng FTech Device-Store",
+                            R.drawable.banner3,
+                            R.drawable.logo_3
                     )
             ), this
     );

@@ -11,6 +11,7 @@ import com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailAc
 import com.example.ftechdevice.UI.Activity.SplashActivity.SplashActivity_GeneratedInjector;
 import com.example.ftechdevice.UI.Activity.StartActivity.StartActivity_GeneratedInjector;
 import com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity_GeneratedInjector;
+import com.example.ftechdevice.UI.Fragment.HomeFragment.HomeFragment_GeneratedInjector;
 import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductViewModel_HiltModules;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel_HiltModules;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel_HiltModules;
@@ -242,7 +243,8 @@ public final class FTechDevice_HiltComponents {
       modules = ViewWithFragmentCBuilderModule.class
   )
   @FragmentScoped
-  public abstract static class FragmentC implements FragmentComponent,
+  public abstract static class FragmentC implements HomeFragment_GeneratedInjector,
+      FragmentComponent,
       DefaultViewModelFactories.FragmentEntryPoint,
       ViewComponentManager.ViewWithFragmentComponentBuilderEntryPoint,
       GeneratedComponent {

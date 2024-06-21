@@ -56,7 +56,7 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
     private ProductListAdapter productListAdapter;
     @Inject
     ProductAPI_Repository productAPIRepository;
-    private List<ProductModel> productList;
+    private List<ProductModel> productList = new ArrayList<ProductModel>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,9 +64,7 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         videoAdapter = new VideoMainAdapter(Constants.getListCourse());
         cateOptionAdapter = new CategoryOptionAdapter(Constants.getListString(), this);
         toyListAdapter = new ToyListAdapter(Constants.getListToys());
-        productListAdapter = new ProductListAdapter(new ArrayList<>());
-        callProductAPI();
-
+        productListAdapter = new ProductListAdapter(productList);
         toyListAdapter.setOnItemCartClickListener(cartModel -> {
             Toast.makeText(requireContext(), cartModel.getToyName(), Toast.LENGTH_SHORT).show();
         });
@@ -76,11 +74,11 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
+        callProductAPI();
         setUpVideoMainRecycleView();
         setIndicator();
         setCurrentIndicator(0);
-        setRecycleCateOption();
-        setRecycleProductList();
+        setRecycleCateOption();;
         intentToVideoActivity();
         return binding.getRoot();
     }
@@ -170,7 +168,7 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
     }
 
     private void callProductAPI(){
-        productAPIRepository.getProductList("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJ1c2VySWQiOjEsIlJvbGVOYW1lIjoiQURNSU4iLCJpYXQiOjE3MTg4MTQyNjUsImV4cCI6MTcxODkwMDY2NX0.RSZfNylizNft4eXkXVUc1Zci5FFIUCak9wUuFq3E0zI",
+        productAPIRepository.getProductList("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJva2xhIiwiZW1haWwiOiJxdXlldHRjc2UxNjA4NjJAZnB0LmVkdS52biIsInVzZXJJZCI6NSwiUm9sZU5hbWUiOiJDVVNUT01FUiIsImlhdCI6MTcxODk4OTY0MiwiZXhwIjoxNzE5MDc2MDQyfQ.ZTszz00rJ-l3J5a5yurXxmWTp0wsy3sxnV0-PVaZV5w",
                 0, 12, "", 0).enqueue(new Callback<ProductReponse>() {
             @Override
             public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
@@ -178,7 +176,9 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
                     List<ProductModel> products = response.body().getContent();
                     Log.d("Check value", "Products size: " + (products != null ? products.size() : 0));
                     if (products != null) {
-                        productListAdapter.setProductList(products);
+                        productList = products;
+                        productListAdapter = new ProductListAdapter(productList);
+                        setRecycleProductList();
                     }
                 } else {
                     Log.d("Check value", "Response code: " + response.code());

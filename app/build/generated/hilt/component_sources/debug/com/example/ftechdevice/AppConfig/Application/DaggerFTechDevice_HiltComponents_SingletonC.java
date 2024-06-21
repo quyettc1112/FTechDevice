@@ -6,14 +6,17 @@ import android.view.View;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
+import com.example.ftechdevice.API_Repository.ProductAPI_Repository;
 import com.example.ftechdevice.API_Repository.UserAPI_Repository;
 import com.example.ftechdevice.API_Repository.YoutubeAPI_Repository;
+import com.example.ftechdevice.API_Service.ProductAPI_Service;
 import com.example.ftechdevice.API_Service.UserAPI_Service;
 import com.example.ftechdevice.API_Service.YoutubeAPI_Service;
 import com.example.ftechdevice.DI.APIModule;
 import com.example.ftechdevice.DI.APIModule_ProvideBaseUrlFactory;
 import com.example.ftechdevice.DI.APIModule_ProvideGsonFactory;
 import com.example.ftechdevice.DI.APIModule_ProvideOkHttpClientFactory;
+import com.example.ftechdevice.DI.APIModule_ProvideProductAPIFactory;
 import com.example.ftechdevice.DI.APIModule_ProvideUserAPIFactory;
 import com.example.ftechdevice.DI.APIModule_ProvideYoutubeAPIFactory;
 import com.example.ftechdevice.DI.APIModule_ProvideYoutubeBaseUrlFactory;
@@ -30,6 +33,8 @@ import com.example.ftechdevice.UI.Activity.SplashActivity.SplashActivity;
 import com.example.ftechdevice.UI.Activity.StartActivity.StartActivity;
 import com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity;
 import com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity_MembersInjector;
+import com.example.ftechdevice.UI.Fragment.HomeFragment.HomeFragment;
+import com.example.ftechdevice.UI.Fragment.HomeFragment.HomeFragment_MembersInjector;
 import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductViewModel;
 import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductViewModel_HiltModules_KeyModule_ProvideFactory;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
@@ -353,6 +358,11 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
     }
 
     @Override
+    public void injectHomeFragment(HomeFragment arg0) {
+      injectHomeFragment2(arg0);
+    }
+
+    @Override
     public DefaultViewModelFactories.InternalFactoryFactory getHiltInternalFactoryFactory() {
       return activityCImpl.getHiltInternalFactoryFactory();
     }
@@ -360,6 +370,12 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
     @Override
     public ViewWithFragmentComponentBuilder viewWithFragmentComponentBuilder() {
       return new ViewWithFragmentCBuilder(singletonCImpl, activityRetainedCImpl, activityCImpl, fragmentCImpl);
+    }
+
+    @CanIgnoreReturnValue
+    private HomeFragment injectHomeFragment2(HomeFragment instance) {
+      HomeFragment_MembersInjector.injectProductAPIRepository(instance, activityCImpl.productAPI_RepositoryProvider.get());
+      return instance;
     }
   }
 
@@ -393,6 +409,8 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
 
     private Provider<YoutubeAPI_Repository> youtubeAPI_RepositoryProvider;
 
+    private Provider<ProductAPI_Repository> productAPI_RepositoryProvider;
+
     private ActivityCImpl(SingletonCImpl singletonCImpl,
         ActivityRetainedCImpl activityRetainedCImpl, Activity activityParam) {
       this.singletonCImpl = singletonCImpl;
@@ -406,6 +424,7 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
     private void initialize(final Activity activityParam) {
       this.userAPI_RepositoryProvider = DoubleCheck.provider(new SwitchingProvider<UserAPI_Repository>(singletonCImpl, activityRetainedCImpl, activityCImpl, 0));
       this.youtubeAPI_RepositoryProvider = DoubleCheck.provider(new SwitchingProvider<YoutubeAPI_Repository>(singletonCImpl, activityRetainedCImpl, activityCImpl, 1));
+      this.productAPI_RepositoryProvider = DoubleCheck.provider(new SwitchingProvider<ProductAPI_Repository>(singletonCImpl, activityRetainedCImpl, activityCImpl, 2));
     }
 
     @Override
@@ -521,6 +540,9 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
 
           case 1: // com.example.ftechdevice.API_Repository.YoutubeAPI_Repository 
           return (T) new YoutubeAPI_Repository(singletonCImpl.provideYoutubeAPIProvider.get());
+
+          case 2: // com.example.ftechdevice.API_Repository.ProductAPI_Repository 
+          return (T) new ProductAPI_Repository(singletonCImpl.provideProductAPIProvider.get());
 
           default: throw new AssertionError(id);
         }
@@ -683,6 +705,8 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
 
     private Provider<YoutubeAPI_Service> provideYoutubeAPIProvider;
 
+    private Provider<ProductAPI_Service> provideProductAPIProvider;
+
     private SingletonCImpl() {
 
       initialize();
@@ -697,10 +721,11 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
       this.provideUserAPIProvider = DoubleCheck.provider(new SwitchingProvider<UserAPI_Service>(singletonCImpl, 0));
       this.provideYoutubeBaseUrlProvider = DoubleCheck.provider(new SwitchingProvider<String>(singletonCImpl, 5));
       this.provideYoutubeAPIProvider = DoubleCheck.provider(new SwitchingProvider<YoutubeAPI_Service>(singletonCImpl, 4));
+      this.provideProductAPIProvider = DoubleCheck.provider(new SwitchingProvider<ProductAPI_Service>(singletonCImpl, 6));
     }
 
     @Override
-    public void injectFTechDevice(FTechDevice arg0) {
+    public void injectFTechDevice(FTechDevice fTechDevice) {
     }
 
     @Override
@@ -749,6 +774,9 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
 
           case 5: // @javax.inject.Named("youtube") java.lang.String 
           return (T) APIModule_ProvideYoutubeBaseUrlFactory.provideYoutubeBaseUrl();
+
+          case 6: // com.example.ftechdevice.API_Service.ProductAPI_Service 
+          return (T) APIModule_ProvideProductAPIFactory.provideProductAPI(singletonCImpl.provideBaseUrlProvider.get(), singletonCImpl.provideGsonProvider.get(), singletonCImpl.provideOkHttpClientProvider.get());
 
           default: throw new AssertionError(id);
         }

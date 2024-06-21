@@ -3727,6 +3727,13 @@ drawable background_toy_cart
 drawable background_toy_fillter
 drawable background_toy_list
 drawable backgroung_icon_category
+drawable banner
+drawable banner2
+drawable banner3
+drawable banner_dienthoai
+drawable banner_logo
+drawable banner_manhinh
+drawable banner_xakho
 drawable baseline_access_time_24
 drawable baseline_add_shopping_cart_24
 drawable baseline_chevron_right_24
@@ -3947,7 +3954,14 @@ drawable indicator_active
 drawable indicator_inactive
 drawable line
 drawable logo
+drawable logo_2
+drawable logo_3
+drawable logo_filter
+drawable logo_filter1
+drawable logo_filter2
+drawable logo_filter3
 drawable logo_main
+drawable logoo
 drawable m3_appbar_background
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -4037,6 +4051,7 @@ drawable ripple_no_color
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable top1
 font app_font_black
 font app_font_black_italic
 font app_font_bold

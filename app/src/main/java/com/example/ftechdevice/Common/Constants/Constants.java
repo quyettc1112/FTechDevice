@@ -30,32 +30,32 @@ public class Constants {
     public static List<VideoMainAdapter.Course> getListCourse() {
         return Arrays.asList(
                 new VideoMainAdapter.Course(
-                        "Độ tuổi dễ bị tổn thương sâu sắc về tình cảm",
-                        R.drawable.ic_material_video,
+                        "Linh kiện giá rẻ nhưng vô cùng chất lượng",
+                        R.drawable.banner_logo,
                         4.5,
                         4242,
                         400000.0,
                         350000.0
                 ),
                 new VideoMainAdapter.Course(
-                        "Độ tuổi dễ bị tổn thương sâu sắc về tình cảm",
-                        R.drawable.ic_material_video,
+                        "Mừng đại lễ, khuyến mãi lớn lên đến 55%",
+                        R.drawable.banner_xakho,
                         4.5,
                         4242,
                         400000.0,
                         350000.0
                 ),
                 new VideoMainAdapter.Course(
-                        "Độ tuổi dễ bị tổn thương sâu sắc về tình cảm",
-                        R.drawable.ic_material_video,
+                        "Màn hình nét căng đét nhưng giá cực chill",
+                        R.drawable.banner_manhinh,
                         4.5,
                         4242,
                         400000.0,
                         350000.0
                 ),
                 new VideoMainAdapter.Course(
-                        "Độ tuổi dễ bị tổn thương sâu sắc về tình cảm",
-                        R.drawable.ic_material_video,
+                        "Tuần lễ điện thoại, mua ngay!!!",
+                        R.drawable.banner_dienthoai,
                         4.5,
                         4242,
                         400000.0,
