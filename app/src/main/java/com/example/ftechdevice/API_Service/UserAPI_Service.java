@@ -7,6 +7,7 @@ import com.example.ftechdevice.Model.ModelRequestDTO.RegisterRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
 import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 import com.example.ftechdevice.Model.ModelRespone.MessageRespone;
+import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
 import com.example.ftechdevice.Model.ModelRespone.TokenReponse;
 
 import retrofit2.Call;
@@ -24,7 +25,6 @@ public interface UserAPI_Service {
     @POST("/api/auth/login")
     Call<LoginResponse> loginUser(@Body LoginRequestDTO loginRequestDTO);
 
-
-
-
+    @POST("/api/auth/register")
+    Call<RegisterResponseDTO> registerUser(@Body RegisterRequestDTO registerRequestDTO);
 }

@@ -3,6 +3,7 @@ package com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,8 +22,20 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ftechdevice.API_Repository.UserAPI_Repository;
 import com.example.ftechdevice.AppConfig.BaseConfig.BaseActivity;
+import com.example.ftechdevice.Model.ModelRequestDTO.LoginRequestDTO;
+import com.example.ftechdevice.Model.ModelRequestDTO.RegisterRequestDTO;
+import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
+import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
+import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivityScreen2;
+import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
 import com.example.ftechdevice.databinding.ActivityRegisterScreen3Binding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -42,14 +55,14 @@ public class RegisterActivity_Screen3 extends BaseActivity {
 
     private ActivityRegisterScreen3Binding binding;
     private RegisterViewModel registerViewModel;
-
+    FirebaseAuth mAuth;
     @Inject
     UserAPI_Repository userapiRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mAuth = FirebaseAuth.getInstance();
         binding = ActivityRegisterScreen3Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -72,16 +85,18 @@ public class RegisterActivity_Screen3 extends BaseActivity {
 
                 registerViewModel.updateEmail(email);
                 registerViewModel.updatePassword(password);
+                registerViewModel.updateRoleId(1);
                 registerViewModel.updatePhone(binding.edtRegisterPhone.getText().toString());
-                registerViewModel.updateName(binding.edtRegisterName.getText().toString());
-                if (binding.edtRegisterGender.getText().toString().equals("Nam")) {
-                    registerViewModel.updateGender(true);
-                } else {
-                    registerViewModel.updateGender(false);
-                }
+                registerViewModel.updateUsername(binding.edtRegisterName.getText().toString());
+//                if (binding.edtRegisterGender.getText().toString().equals("Nam")) {
+//                    registerViewModel.updateGender(true);
+//                } else {
+//                    registerViewModel.updateGender(false);
+//                }
 
-                //callRegister();
-                Log.d("CheckValueRegisterDTO", registerViewModel.getRegisterDTO().toString());
+                doRegister(email, password);
+
+
             }
         });
 
@@ -166,6 +181,80 @@ public class RegisterActivity_Screen3 extends BaseActivity {
         }
     }
 
+    private void doRegister(String email, String password) {
+        binding.btnRegisterScreen3.setEnabled(false);
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        sendVerificationEmail();
+                        registerUser(registerViewModel.getRegisterDTO());
+                        Intent intent = new Intent(this, LoginActivityScreen2.class);
+                        startActivity(intent);
+                    } else {
+                        binding.btnRegisterScreen3.setEnabled(true);
+                        Toast.makeText(RegisterActivity_Screen3.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    binding.btnRegisterScreen3.setEnabled(true);
+                    if (e instanceof FirebaseAuthUserCollisionException) {
+                        Toast.makeText(RegisterActivity_Screen3.this, "Email đã tồn tại", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(RegisterActivity_Screen3.this, "Lỗi xảy ra, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnSuccessListener(authResult -> {
+                    // Check if email is verified
+                    if (mAuth.getCurrentUser() != null && mAuth.getCurrentUser().isEmailVerified()) {
+                        registerUser(registerViewModel.getRegisterDTO());
+                    } else {
+                        // If email is not verified, show a message
+                        Toast.makeText(RegisterActivity_Screen3.this, "Vui lòng xác minh email trước khi đăng nhập", Toast.LENGTH_SHORT).show();
+                        mAuth.signOut(); // Sign out the user as email is not verified
+                    }
+                });
+    }
+
+    private void sendVerificationEmail() {
+        if (mAuth.getCurrentUser() != null) {
+            mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        binding.btnRegisterScreen3.setEnabled(true);
+                        registerUser(registerViewModel.getRegisterDTO());
+                        Toast.makeText(RegisterActivity_Screen3.this, "Email xác minh đã được gửi", Toast.LENGTH_SHORT).show();
+                    } else {
+                        binding.btnRegisterScreen3.setEnabled(true);
+                        Toast.makeText(getApplicationContext(), "Gửi email xác minh thất bại", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
+    private void registerUser(RegisterRequestDTO registerRequestDTO) {
+        userapiRepository.registerUser(registerRequestDTO)
+                .enqueue(new Callback<RegisterResponseDTO>() {
+                    @Override
+                    public void onResponse(Call<RegisterResponseDTO> call, Response<RegisterResponseDTO> response) {
+                        Log.d("test", response.code() + "" + response.message() + response.errorBody());
+                        if (response.isSuccessful()) {
+                            startActivity(new Intent(RegisterActivity_Screen3.this, MainActivity.class));
+                            finish();
+                        } else {
+                            Log.d("Checklaue", response.code() + "" + response.message() + response.errorBody());
+                            Toast.makeText(RegisterActivity_Screen3.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<RegisterResponseDTO> call, Throwable t) {
+                        Log.d("Checklaue", t.toString());
+                        Toast.makeText(RegisterActivity_Screen3.this, "Lỗi kết nối, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
     /*private void callRegister() {
         userapiRepository.callRegister(registerViewModel.getRegisterDTO()).enqueue(new Callback<MessageRespone>() {
             @Override

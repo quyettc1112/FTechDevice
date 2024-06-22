@@ -18,39 +18,55 @@ public class RegisterViewModel extends ViewModel {
     }
 
     private final MutableLiveData<String> _email = new MutableLiveData<>();
+    private final MutableLiveData<String> _username = new MutableLiveData<>();
     private final MutableLiveData<String> _password = new MutableLiveData<>();
+    private final MutableLiveData<String> _fullName = new MutableLiveData<>();
     private final MutableLiveData<String> _phone = new MutableLiveData<>();
-    private final MutableLiveData<String> _name = new MutableLiveData<>();
-    private final MutableLiveData<Boolean> _gender = new MutableLiveData<>();
+    private final MutableLiveData<String> _address = new MutableLiveData<>();
+    private final MutableLiveData<Integer> _roleId = new MutableLiveData<>();
 
     public LiveData<String> getEmail() {
         return _email;
+    }
+
+    public LiveData<String> getUsername() {
+        return _username;
     }
 
     public LiveData<String> getPassword() {
         return _password;
     }
 
+    public LiveData<String> getFullName() {
+        return _fullName;
+    }
+
     public LiveData<String> getPhone() {
         return _phone;
     }
 
-    public LiveData<String> getName() {
-        return _name;
+    public LiveData<String> getAddress() {
+        return _address;
     }
 
-    public LiveData<Boolean> getGender() {
-        return _gender;
+    public LiveData<Integer> getRoleId() {
+        return _roleId;
     }
-
-
 
     public void updateEmail(String newEmail) {
         _email.setValue(newEmail);
     }
 
+    public void updateUsername(String newUsername) {
+        _username.setValue(newUsername);
+    }
+
     public void updatePassword(String newPassword) {
         _password.setValue(newPassword);
+    }
+
+    public void updateFullName(String newFullName) {
+        _fullName.setValue(newFullName);
     }
 
     public void updatePhone(String newPhone) {
@@ -58,6 +74,14 @@ public class RegisterViewModel extends ViewModel {
         if (formattedPhone != null) {
             _phone.setValue(formattedPhone);
         }
+    }
+
+    public void updateAddress(String newAddress) {
+        _address.setValue(newAddress);
+    }
+
+    public void updateRoleId(int newRoleId) {
+        _roleId.setValue(newRoleId);
     }
 
     private String formatPhoneNumber(String phone) {
@@ -68,29 +92,25 @@ public class RegisterViewModel extends ViewModel {
         }
     }
 
-    public void updateName(String newName) {
-        _name.setValue(newName);
-    }
-
-    public void updateGender(Boolean newGender) {
-        _gender.setValue(newGender);
-    }
-
     public RegisterRequestDTO getRegisterDTO() {
         return new RegisterRequestDTO(
                 _email.getValue(),
+                _username.getValue(),
                 _password.getValue(),
-                _name.getValue(),
+                _fullName.getValue(),
                 _phone.getValue(),
-                _gender.getValue()
+                _address.getValue(),
+                _roleId.getValue()
         );
     }
 
     public void clearAllFields() {
         _email.setValue("");
+        _username.setValue("");
         _password.setValue("");
+        _fullName.setValue("");
         _phone.setValue("");
-        _name.setValue("");
-        _gender.setValue(false);
+        _address.setValue("");
+        _roleId.setValue(null);
     }
 }
