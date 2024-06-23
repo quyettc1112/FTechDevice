@@ -3727,8 +3727,8 @@ int drawable background_toy_fillter 0x7f080097
 int drawable background_toy_list 0x7f080098
 int drawable backgroung_icon_category 0x7f080099
 int drawable banner 0x7f08009a
+int drawable banner1 0x7f0801df
 int drawable banner2 0x7f0801d3
-int drawable banner3 0x7f0801d4
 int drawable banner_dienthoai 0x7f0801db
 int drawable banner_logo 0x7f0801dc
 int drawable banner_manhinh 0x7f0801dd
@@ -3953,8 +3953,8 @@ int drawable indicator_active 0x7f080173
 int drawable indicator_inactive 0x7f080174
 int drawable line 0x7f080175
 int drawable logo 0x7f080176
-int drawable logo_2 0x7f0801d5
-int drawable logo_3 0x7f0801d6
+int drawable logo____1 0x7f0801e0
+int drawable logo____2 0x7f0801e1
 int drawable logo_filter 0x7f0801d7
 int drawable logo_filter1 0x7f0801d8
 int drawable logo_filter2 0x7f0801d9
@@ -4652,7 +4652,6 @@ int id rightToLeft 0x7f0a0248
 int id right_icon 0x7f0a0249
 int id right_side 0x7f0a024a
 int id rl_cart 0x7f0a024b
-int id rl_image_relevent 0x7f0a024c
 int id rounded 0x7f0a024d
 int id row 0x7f0a024e
 int id row_index_key 0x7f0a024f

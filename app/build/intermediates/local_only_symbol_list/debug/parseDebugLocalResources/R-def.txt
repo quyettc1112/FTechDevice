@@ -115,8 +115,8 @@ drawable background_toy_fillter
 drawable background_toy_list
 drawable backgroung_icon_category
 drawable banner
+drawable banner1
 drawable banner2
-drawable banner3
 drawable banner_dienthoai
 drawable banner_logo
 drawable banner_manhinh
@@ -204,8 +204,8 @@ drawable indicator_active
 drawable indicator_inactive
 drawable line
 drawable logo
-drawable logo_2
-drawable logo_3
+drawable logo____1
+drawable logo____2
 drawable logo_filter
 drawable logo_filter1
 drawable logo_filter2
@@ -342,7 +342,6 @@ id niceBottomNav
 id overshoot
 id record
 id rl_cart
-id rl_image_relevent
 id rv_toys
 id rv_video
 id rv_videos

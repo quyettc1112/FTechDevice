@@ -4,20 +4,16 @@
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\next.png"
     },
     {
-        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_iamge_mo_hinh_con_vat.jpg.flat",
-        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_iamge_mo_hinh_con_vat.jpg"
-    },
-    {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_background_home_banner_contain.xml.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\background_home_banner_contain.xml"
     },
     {
-        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\font_app_font_bold_italic.ttf.flat",
-        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\font\\app_font_bold_italic.ttf"
+        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_iamge_mo_hinh_con_vat.jpg.flat",
+        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_iamge_mo_hinh_con_vat.jpg"
     },
     {
-        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_top1.jpg.flat",
-        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\top1.jpg"
+        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\font_app_font_bold_italic.ttf.flat",
+        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\font\\app_font_bold_italic.ttf"
     },
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_puzzle_2.png.flat",
@@ -80,12 +76,12 @@
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\font\\app_font_black.ttf"
     },
     {
-        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_img.png.flat",
-        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\img.png"
-    },
-    {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_line.png.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\line.png"
+    },
+    {
+        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_img.png.flat",
+        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\img.png"
     },
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_image_03.jpg.flat",
@@ -180,20 +176,24 @@
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\background_home_option.xml"
     },
     {
+        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\anim_rotate_button.xml.flat",
+        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\anim\\rotate_button.xml"
+    },
+    {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_baseline_access_time_24.xml.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\baseline_access_time_24.xml"
     },
     {
-        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\anim_rotate_button.xml.flat",
-        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\anim\\rotate_button.xml"
+        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_material_play.png.flat",
+        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_material_play.png"
     },
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_password_30px.png.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_password_30px.png"
     },
     {
-        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_material_play.png.flat",
-        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_material_play.png"
+        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_banner_manhinh.png.flat",
+        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\banner_manhinh.png"
     },
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_background_toy_list.xml.flat",
@@ -206,6 +206,10 @@
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_launcher_background.xml.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_logo____1.png.flat",
+        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\logo____1.png"
     },
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_material_minus.png.flat",
@@ -256,6 +260,10 @@
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
+        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_logo____2.png.flat",
+        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\logo____2.png"
+    },
+    {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_logo.png.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\logo.png"
     },
@@ -296,6 +304,10 @@
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\baseline_profile_list.xml"
     },
     {
+        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_banner1.png.flat",
+        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\banner1.png"
+    },
+    {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_xe_go.png.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_xe_go.png"
     },
@@ -310,10 +322,6 @@
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_robot.png.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_robot.png"
-    },
-    {
-        "merged": "com.example.ftechdevice.app-debug-79:/drawable_banner_manhinh.png.flat",
-        "source": "com.example.ftechdevice.app-main-81:/drawable/banner_manhinh.png"
     },
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_user_default.png.flat",
@@ -440,10 +448,6 @@
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\baseline_local_hospital_24.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-debug-79:/drawable_banner_dienthoai.png.flat",
-        "source": "com.example.ftechdevice.app-main-81:/drawable/banner_dienthoai.png"
-    },
-    {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\layout_fragment_home.xml.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\fragment_home.xml"
     },
@@ -506,10 +510,6 @@
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_background_custome_input_error.xml.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\background_custome_input_error.xml"
-    },
-    {
-        "merged": "com.example.ftechdevice.app-debug-79:/drawable_banner_xakho.png.flat",
-        "source": "com.example.ftechdevice.app-main-81:/drawable/banner_xakho.png"
     },
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\raw_anim_user_info.json.flat",
@@ -604,10 +604,6 @@
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\more_vert_24px.xml"
     },
     {
-        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_banner3.png.flat",
-        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\banner3.png"
-    },
-    {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_start.png.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_start.png"
     },
@@ -660,10 +656,6 @@
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\custom_tool_bar.xml"
     },
     {
-        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_logo_3.png.flat",
-        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\logo_3.png"
-    },
-    {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\layout_activity_payment.xml.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_payment.xml"
     },
@@ -672,16 +664,16 @@
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\baseline_chevron_right_24.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-debug-79:/drawable_banner_logo.png.flat",
-        "source": "com.example.ftechdevice.app-main-81:/drawable/banner_logo.png"
-    },
-    {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_background_layout_textinput.xml.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\background_layout_textinput.xml"
     },
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\layout_activity_login_screen2.xml.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_login_screen2.xml"
+    },
+    {
+        "merged": "com.example.ftechdevice.app-debug-79:/layout_activity_produc_detail.xml.flat",
+        "source": "com.example.ftechdevice.app-main-81:/layout/activity_produc_detail.xml"
     },
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_image_1_3.jpg.flat",
@@ -706,10 +698,6 @@
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\layout_activity_register_screen2.xml.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_register_screen2.xml"
-    },
-    {
-        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_logo_2.png.flat",
-        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\logo_2.png"
     },
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_heart_inactive.png.flat",
@@ -742,6 +730,10 @@
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\layout_slide_item_video_container.xml.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\slide_item_video_container.xml"
+    },
+    {
+        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_banner_logo.png.flat",
+        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\banner_logo.png"
     },
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_lock.png.flat",
@@ -792,6 +784,10 @@
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_start.xml"
     },
     {
+        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_banner_xakho.png.flat",
+        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\banner_xakho.png"
+    },
+    {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\layout_dialog_error.xml.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\dialog_error.xml"
     },
@@ -810,6 +806,10 @@
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_banner_dienthoai.png.flat",
+        "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\banner_dienthoai.png"
     },
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_background_bottom_nav.xml.flat",

@@ -1,65 +1,96 @@
 package com.example.ftechdevice.UI.Activity.ProductDetailActivity;
 
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Toast;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.appcompat.app.AppCompatActivity;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import dagger.hilt.android.AndroidEntryPoint;
 
-import com.example.ftechdevice.AppConfig.BaseConfig.BaseActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
+import com.example.ftechdevice.API_Repository.ProductAPI_Repository;
 import com.example.ftechdevice.AppConfig.CustomView.CustomToolBar.CustomToolbar;
-import com.example.ftechdevice.Common.CommonAdapter.ImageReleventAdapter;
-import com.example.ftechdevice.Common.Constants.Constants;
-import com.example.ftechdevice.Model.ImageReleventModel;
-import com.example.ftechdevice.Model.ToyModel;
-import com.example.ftechdevice.R;
+import com.example.ftechdevice.Model.ModelRespone.ProductReponse;
+import com.example.ftechdevice.Model.ProductModel;
 import com.example.ftechdevice.databinding.ActivityProducDetailBinding;
 
+import java.text.DecimalFormat;
+
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 @AndroidEntryPoint
-public class ProductDetailActivity extends BaseActivity {
+public class ProductDetailActivity extends AppCompatActivity {
 
     private ActivityProducDetailBinding binding;
-    private ToyModel toyModel;
-
-    private ImageReleventAdapter imageReleventAdapter;
-    private ArrayList<ImageReleventModel> listItemRelevent = new ArrayList<>();
+    private ProductModel productModel;
+    @Inject
+    ProductAPI_Repository productAPIRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityProducDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        setUpImageRelevent();
+        getProductModelByIDFromAPI();
         backToPreviousActivity();
-        bindDataProductDetail();
     }
 
-    private void setUpImageRelevent() {
-        imageReleventAdapter = new ImageReleventAdapter();
-        getToyModelByIDFromConstants();
+    private void getProductModelByIDFromAPI() {
+        int id = getIntent().getIntExtra("product_id", 0);
+        Log.d("ID", String.valueOf(id));
+        productAPIRepository.getProductById("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJ1c2VySWQiOjEsIlJvbGVOYW1lIjoiQURNSU4iLCJpYXQiOjE3MTkxNTExNTQsImV4cCI6MTcxOTIzNzU1NH0.Jo1tfdoawII6H2hKn239xXJE8SY_iplSQE6JGm2UX-0"
+                , id).enqueue(new Callback<ProductReponse>() {
+            @Override
+            public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    ProductReponse productResponse = response.body();
+                    Log.d("ProductDetailActivity", "Full Product Response: " + productResponse.toString());
+                    productModel = mapProductToProductModel(productResponse);
+                    bindDataProductDetaill();
+                } else {
+                    Toast.makeText(ProductDetailActivity.this, "Failed to load product data", Toast.LENGTH_LONG).show();
+                    Log.d("ProductDetailActivity", response.message());
+                    Log.d("ProductDetailActivity", String.valueOf(id));
+                    Log.d("ProductDetailActivity", String.valueOf(response.code()));
+                    Log.d("ProductDetailActivity", String.valueOf(response.errorBody()));
 
-        if (toyModel != null) {
-            listItemRelevent.add(new ImageReleventModel(0, toyModel.getListImage().get(0)));
-            listItemRelevent.add(new ImageReleventModel(1, toyModel.getListImage().get(1)));
-            listItemRelevent.add(new ImageReleventModel(2, toyModel.getListImage().get(2)));
-            imageReleventAdapter.submitList(listItemRelevent);
-            binding.rlImageRelevent.setAdapter(imageReleventAdapter);
-            imageReleventAdapter.setOnItemImageClickListener(imageReleventModel -> binding.imToyImage.setImageResource(imageReleventModel.getImage()));
+                }
+            }
+            @Override
+            public void onFailure(Call<ProductReponse> call, Throwable t) {
+                Log.e("ProductDetailActivity", "API call failed: " + t.getMessage());
+                Toast.makeText(ProductDetailActivity.this, "API call failed: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
+    }
+
+    private void bindDataProductDetaill() {
+        if (productModel == null) {
+            Log.e("ProductDetailActivity", "bindDataProductDetaill: productModel is null");
+            return;
         }
-    }
 
+        binding.tvProductPrice.setText(formatPrice(productModel.getPrice()) + " VND");
+
+        if (productModel.getProductCategory() != null) {
+            binding.tvProductCategory.setText(productModel.getProductCategory().getName());
+        } else {
+            binding.tvProductCategory.setText("No category");
+            Log.w("ProductDetailActivity", "Product category is null");
+        }
+
+        binding.tvProductName.setText(productModel.getName());
+        binding.tvProductDescription.setText(productModel.getDescription());
+
+        Glide.with(binding.imToyImage.getContext())
+                .load(productModel.getImageUrl())
+                .into(binding.imToyImage);
+    }
     private void backToPreviousActivity() {
         binding.customToolbar2.setOnStartIconClickListener(new CustomToolbar.OnStartIconClickListener() {
             @Override
@@ -68,19 +99,27 @@ public class ProductDetailActivity extends BaseActivity {
             }
         });
     }
+    private ProductModel mapProductToProductModel(ProductReponse productResponse) {
+        ProductModel pModel = new ProductModel();
 
-    private void getToyModelByIDFromConstants() {
-        int id = getIntent().getIntExtra("product_id", 0);
-        toyModel = Constants.getListToys().get(id);
+        if (productResponse != null) {
+            pModel.setName(productResponse.getName());
+            pModel.setPrice(productResponse.getPrice());
+            pModel.setDescription(productResponse.getDescription());
+            pModel.setImageUrl(productResponse.getImageUrl());
+
+            if (productResponse.getProductCategory() != null) {
+                pModel.setProductCategory(productResponse.getProductCategory());
+            } else {
+                Log.w("ProductDetailActivity", "Product category is null for product: " + productResponse.getName());
+            }
+        } else {
+            Log.e("ProductDetailActivity", "ProductResponse is null");
+        }
+
+        return pModel;
     }
 
-    private void bindDataProductDetail() {
-        binding.tvProductPrice.setText(formatPrice(toyModel.getToyPrice()) + " VND");
-        binding.tvProductCategory.setText(toyModel.getCategoryModel().getName());
-        binding.tvProductName.setText(toyModel.getToyName());
-        binding.tvProductDescription.setText(toyModel.getToyDescription());
-        binding.imToyImage.setImageResource(toyModel.getToyImage());
-    }
 
     private String formatPrice(double price) {
         DecimalFormat formatter = new DecimalFormat("#,###");

@@ -100,8 +100,8 @@
         "source": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_video.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/fragment_home.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/fragment_home.xml"
+        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_produc_detail.xml",
+        "source": "com.example.ftechdevice.app-main-81:/layout/activity_produc_detail.xml"
     },
     {
         "merged": "C:\\Users\\ngodi\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_register_screen2.xml",

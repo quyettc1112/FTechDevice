@@ -43,16 +43,16 @@ public class StartActivity extends BaseActivity {
                             R.drawable.logoo
                     ),
                     new IntroSliderAdapter.IntroSlide(
-                            "Kiến Thức Phong Phú",
-                            "Khám phá các thiết bị công nghệ đặc biệt và nâng cao hiểu biết của bạn cùng FTech Device-Store",
-                            R.drawable.banner2,
-                            R.drawable.logo_2
+                            "Giá Tốt Hàng Chất Lượng ",
+                            "Khám phá các thiết bị công nghệ với giá ưu đãi và chất lượng hàng đầu cùng FTech Device-Store",
+                            R.drawable.banner1,
+                            R.drawable.logo____1
                     ),
                     new IntroSliderAdapter.IntroSlide(
                             "Trải Nghiệm Mọi Lúc, Mọi Nơi",
                             "Khám phá và mua sắm các thiết bị công nghệ hàng đầu cùng FTech Device-Store",
-                            R.drawable.banner3,
-                            R.drawable.logo_3
+                            R.drawable.banner2,
+                            R.drawable.logo____2
                     )
             ), this
     );
