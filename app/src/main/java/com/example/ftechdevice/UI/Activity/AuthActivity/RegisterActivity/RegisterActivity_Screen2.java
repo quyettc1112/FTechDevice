@@ -80,7 +80,9 @@ public class RegisterActivity_Screen2 extends BaseActivity {
     }
 
     private void checkPasswordsMatch(String password, String confirmPassword) {
-        String passwordPattern = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#\\$%^&+=!])(?=\\S+$).{8,}$";
+//        String passwordPattern = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#\\$%^&+=!])(?=\\S+$).{8,}$";
+        //String passwordPattern = "^(?=.*[A-Z])(?=.*\\d).{8,}$";
+        String passwordPattern = "^\\d{3,}$";
         boolean matches = password.matches(passwordPattern);
 
         if (!matches) {
