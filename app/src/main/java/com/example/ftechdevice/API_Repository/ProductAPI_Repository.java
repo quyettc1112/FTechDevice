@@ -19,4 +19,8 @@ public class ProductAPI_Repository {
     public Call<ProductReponse> getProductList(String authorization, int pageNo, int pageSize, String productName, int categoryId) {
         return productapiService.getAllProduct(authorization, pageNo, pageSize, productName, categoryId);
     }
+
+    public  Call<ProductReponse> getProductById(String authorization, int id ){
+        return productapiService.getProductById(authorization,id);
+    }
 }

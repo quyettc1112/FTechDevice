@@ -16,13 +16,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <ImageView
             android:id="@+id/intro_image"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="427dp"
+            android:layout_height="333dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_material_start_1">
-        </ImageView>
+            android:src="@drawable/banner"></ImageView>
 
     </LinearLayout>
 
@@ -67,10 +67,10 @@
 
     <ImageView
         android:id="@+id/intro_decor_splash"
+        android:layout_width="117dp"
+        android:layout_height="105dp"
         android:layout_marginTop="20dp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/logo_main"
+        android:src="@drawable/logoo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">

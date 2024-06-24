@@ -160,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
-                    android:text="Dành cho trẻ"
+                    android:text="Dành cho bạn"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -199,7 +199,7 @@
                             android:padding="8dp"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:src="@drawable/ic_teddy"
+                            android:src="@drawable/logo_filter"
                             android:background="@drawable/backgroung_icon_category"
                             />
 
@@ -207,7 +207,7 @@
                             android:layout_marginTop="8dp"
                             android:textStyle="bold"
                             android:gravity="center"
-                            android:text="Trẻ Em"
+                            android:text="Laptop"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -225,7 +225,7 @@
                             android:padding="8dp"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:src="@drawable/ic_puzzle_2"
+                            android:src="@drawable/logo_filter1"
                             android:background="@drawable/backgroung_icon_category"
                             />
 
@@ -233,7 +233,7 @@
                             android:layout_marginTop="8dp"
                             android:textStyle="bold"
                             android:gravity="center"
-                            android:text="Giải Đố"
+                            android:text="Điện thoại"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -251,7 +251,7 @@
                             android:padding="8dp"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:src="@drawable/ic_robot"
+                            android:src="@drawable/logo_filter2"
                             android:background="@drawable/backgroung_icon_category"
                             />
 
@@ -259,7 +259,7 @@
                             android:layout_marginTop="8dp"
                             android:textStyle="bold"
                             android:gravity="center"
-                            android:text="Robot"
+                            android:text="Bàn phím"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -276,14 +276,14 @@
                             android:padding="8dp"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:src="@drawable/ic_vehical"
+                            android:src="@drawable/logo_filter3"
                             android:background="@drawable/backgroung_icon_category"
                             />
                         <TextView
                             android:layout_marginTop="8dp"
                             android:textStyle="bold"
                             android:gravity="center"
-                            android:text="Phương Tiện"
+                            android:text="Màn hình"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 

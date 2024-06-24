@@ -13,11 +13,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ftechdevice.API_Repository.ProductAPI_Repository;
 import com.example.ftechdevice.Common.CommonAdapter.CategoryOptionAdapter;
 import com.example.ftechdevice.Common.CommonAdapter.CategoryOptionInteraction;
+import com.example.ftechdevice.Common.CommonAdapter.ProductListAdapter;
+import com.example.ftechdevice.Common.CommonAdapter.ProductListAdapterBase;
 import com.example.ftechdevice.Common.CommonAdapter.ToyListAdapterBase;
 import com.example.ftechdevice.Common.Constants.Constants;
 import com.example.ftechdevice.Model.CartModel;
+import com.example.ftechdevice.Model.ModelRespone.ProductReponse;
+import com.example.ftechdevice.Model.ProductModel;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailActivity;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
@@ -44,8 +49,17 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+@AndroidEntryPoint
 public class ProductFragment extends Fragment implements CategoryOptionInteraction , CategoryOptionAdapter.CategoryOptionInteraction{
 
 
@@ -54,6 +68,11 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
     private ToyListAdapterBase toyListAdapter;
     private ProductViewModel productListViewModel;
     private ShareViewModel sharedViewModel;
+    private ProductListAdapterBase pproductListAdapter;
+    private ProductListAdapter productListAdapter;
+    private List<ProductModel> productList = new ArrayList<>();
+    @Inject
+    ProductAPI_Repository productAPIRepository;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,19 +80,22 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         categoryAdapter = new CategoryOptionAdapter(Constants.getListString(), this);
 
         productListViewModel = new ViewModelProvider(this).get(ProductViewModel.class);
-        productListViewModel.setToyList(Constants.getListToys());
-
-        toyListAdapter = new ToyListAdapterBase();
-        toyListAdapter.submitList(productListViewModel.getCurrentToyList().getValue());
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
+
+        pproductListAdapter = new ProductListAdapterBase();
+
+        productListAdapter = new ProductListAdapter(productList);
+
+        productListViewModel.setProductList(productList);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentProductBinding.inflate(inflater, container, false);
         setCateRecycleView();
-        setToyListAdapter();
+        setProductListAdapter();
+        callProductAPI();
         observeViewModel();
         searchItem();
         clickPopularProduct();
@@ -93,22 +115,42 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         }
     }
 
-    private void setToyListAdapter() {
+    private void setProductListAdapter() {
         binding.rvToys.setLayoutManager(new GridLayoutManager(requireContext(), 2));
-        binding.rvToys.setAdapter(toyListAdapter);
+        binding.rvToys.setAdapter(pproductListAdapter);
 
         // Item Click Product Detail
-        toyListAdapter.setItemOnClickListener(toy -> {
-            Toast.makeText(getContext(), "Clicked: " + toy.getToyName(), Toast.LENGTH_SHORT).show();
+        pproductListAdapter.setItemOnClickListener(p -> {
             Intent intent = new Intent(requireContext(), ProductDetailActivity.class);
-            intent.putExtra("product_id", toy.getId());
+            intent.putExtra("product_id", p.getId());
             requireContext().startActivity(intent);
         });
-
         // Add To Cart Click
-        toyListAdapter.setOnItemCartClickListener(toy -> sharedViewModel.addItem(CartModel.create(toy, 1)));
+       // pproductListAdapter.setOnItemCartClickListener(p -> sharedViewModel.addItem(CartModel.create(p, 1)));
     }
+    private void callProductAPI() {
+        productAPIRepository.getProductList("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJ1c2VySWQiOjEsIlJvbGVOYW1lIjoiQURNSU4iLCJpYXQiOjE3MTkxNTExNTQsImV4cCI6MTcxOTIzNzU1NH0.Jo1tfdoawII6H2hKn239xXJE8SY_iplSQE6JGm2UX-0",
+                0, 12, "", 0).enqueue(new Callback<ProductReponse>() {
+            @Override
+            public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<ProductModel> products = response.body().getContent();
+                    if (products != null) {
+                        productListViewModel.setProductList(products);
+                        pproductListAdapter.submitList(products);
+                        Log.d("Check value", "Products size: " + products.size());
+                    }
+                } else {
+                    Log.d("ProductFragment", "Response code: " + response.code());
+                }
+            }
 
+            @Override
+            public void onFailure(Call<ProductReponse> call, Throwable t) {
+                Log.d("ProductFragment", t.getMessage());
+            }
+        });
+    }
     private void searchItem() {
         binding.edtSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -128,9 +170,16 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         });
     }
 
+
     private void observeViewModel() {
-        productListViewModel.getCurrentToyList().observe(getViewLifecycleOwner(), toyList -> toyListAdapter.submitList(toyList));
+        productListViewModel.getCurrentProductList().observe(getViewLifecycleOwner(), products -> {
+            if (products != null) {
+                pproductListAdapter.submitList(products);
+                Log.d("ProductListAdapter", "Number of items: " + products.size());
+            }
+        });
     }
+
 
     private void clickPopularProduct() {
         categoryAdapter.setOnItemClickListenerID(position -> {

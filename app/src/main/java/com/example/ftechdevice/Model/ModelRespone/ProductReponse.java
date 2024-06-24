@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class ProductReponse {
+
     @SerializedName("id")
     private int id;
 
@@ -26,17 +27,14 @@ public class ProductReponse {
 
     @SerializedName("isActive")
     private Boolean isActive;
+
     @SerializedName("content")
     private List<ProductModel> content;
 
-    public List<ProductModel> getContent() {
-        return content;
-    }
+    @SerializedName("productCategory")
+    private ProductModel.ProductCategory productCategory;
 
-    public void setContent(List<ProductModel> content) {
-        this.content = content;
-    }
-
+    // Getters and setters
     public int getId() {
         return id;
     }
@@ -93,18 +91,23 @@ public class ProductReponse {
         isActive = active;
     }
 
-    public int getProductCategory() {
+    public List<ProductModel> getContent() {
+        return content;
+    }
+
+    public void setContent(List<ProductModel> content) {
+        this.content = content;
+    }
+
+    public ProductModel.ProductCategory getProductCategory() {
         return productCategory;
     }
 
-    public void setProductCategory(int productCategory) {
+    public void setProductCategory(ProductModel.ProductCategory productCategory) {
         this.productCategory = productCategory;
     }
 
-    @SerializedName("productCategory")
-    private int productCategory;
-
-    public ProductReponse(int id, String name, String description, int price, int quantity, String imageUrl, Boolean isActive, int productCategory) {
+    public ProductReponse(int id, String name, String description, int price, int quantity, String imageUrl, Boolean isActive, ProductModel.ProductCategory productCategory) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -113,5 +116,18 @@ public class ProductReponse {
         this.imageUrl = imageUrl;
         this.isActive = isActive;
         this.productCategory = productCategory;
+    }
+    @Override
+    public String toString() {
+        return "ProductReponse{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", isActive=" + isActive +
+                ", productCategory=" + (productCategory != null ? productCategory.toString() : "null") +
+                '}';
     }
 }

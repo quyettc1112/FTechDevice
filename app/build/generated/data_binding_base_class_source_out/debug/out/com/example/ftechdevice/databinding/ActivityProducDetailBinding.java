@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.ftechdevice.AppConfig.CustomView.CustomToolBar.CustomToolbar;
@@ -47,9 +46,6 @@ public final class ActivityProducDetailBinding implements ViewBinding {
 
   @NonNull
   public final ConstraintLayout main;
-
-  @NonNull
-  public final RecyclerView rlImageRelevent;
 
   @NonNull
   public final TextView textView10;
@@ -89,9 +85,8 @@ public final class ActivityProducDetailBinding implements ViewBinding {
       @NonNull CustomToolbar customToolbar2, @NonNull ImageView imToyImage,
       @NonNull ImageView imageView3, @NonNull ImageView imageView4,
       @NonNull LinearLayout linearLayout20, @NonNull ConstraintLayout main,
-      @NonNull RecyclerView rlImageRelevent, @NonNull TextView textView10,
-      @NonNull TextView textView11, @NonNull TextView textView13, @NonNull TextView textView15,
-      @NonNull TextView textView16, @NonNull TextView textView9,
+      @NonNull TextView textView10, @NonNull TextView textView11, @NonNull TextView textView13,
+      @NonNull TextView textView15, @NonNull TextView textView16, @NonNull TextView textView9,
       @NonNull TextView tvProductCategory, @NonNull TextView tvProductDescription,
       @NonNull TextView tvProductName, @NonNull TextView tvProductPrice,
       @NonNull TextView tvStarRating) {
@@ -104,7 +99,6 @@ public final class ActivityProducDetailBinding implements ViewBinding {
     this.imageView4 = imageView4;
     this.linearLayout20 = linearLayout20;
     this.main = main;
-    this.rlImageRelevent = rlImageRelevent;
     this.textView10 = textView10;
     this.textView11 = textView11;
     this.textView13 = textView13;
@@ -189,12 +183,6 @@ public final class ActivityProducDetailBinding implements ViewBinding {
 
       ConstraintLayout main = (ConstraintLayout) rootView;
 
-      id = R.id.rl_image_relevent;
-      RecyclerView rlImageRelevent = ViewBindings.findChildViewById(rootView, id);
-      if (rlImageRelevent == null) {
-        break missingId;
-      }
-
       id = R.id.textView10;
       TextView textView10 = ViewBindings.findChildViewById(rootView, id);
       if (textView10 == null) {
@@ -263,9 +251,8 @@ public final class ActivityProducDetailBinding implements ViewBinding {
 
       return new ActivityProducDetailBinding((ConstraintLayout) rootView, cardView,
           constraintLayout5, customToolbar2, imToyImage, imageView3, imageView4, linearLayout20,
-          main, rlImageRelevent, textView10, textView11, textView13, textView15, textView16,
-          textView9, tvProductCategory, tvProductDescription, tvProductName, tvProductPrice,
-          tvStarRating);
+          main, textView10, textView11, textView13, textView15, textView16, textView9,
+          tvProductCategory, tvProductDescription, tvProductName, tvProductPrice, tvStarRating);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
