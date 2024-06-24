@@ -7,6 +7,7 @@ import com.example.ftechdevice.Model.ModelRequestDTO.RegisterRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
 import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 import com.example.ftechdevice.Model.ModelRespone.MessageRespone;
+import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
 
 import javax.inject.Inject;
 
@@ -34,6 +35,12 @@ public class UserAPI_Repository {
     public Call<LoginResponse> loginUser(LoginRequestDTO loginRequestDTO) {
         return userapiService.loginUser(loginRequestDTO);
     }
+
+    public Call<RegisterResponseDTO> registerUser(RegisterRequestDTO registerRequestDTO) {
+        return userapiService.registerUser(registerRequestDTO);
+    }
+
+
 
 
 

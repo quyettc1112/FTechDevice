@@ -65,8 +65,10 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         cateOptionAdapter = new CategoryOptionAdapter(Constants.getListString(), this);
         toyListAdapter = new ToyListAdapter(Constants.getListToys());
         productListAdapter = new ProductListAdapter(productList);
-        productListAdapter.setOnItemCartClickListener(cartModel -> {
-            Toast.makeText(requireContext(), cartModel.getName(), Toast.LENGTH_SHORT).show();
+
+
+        toyListAdapter.setOnItemCartClickListener(cartModel -> {
+            Toast.makeText(requireContext(), cartModel.getToyName(), Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -168,12 +170,13 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
     }
 
     private void callProductAPI(){
-        productAPIRepository.getProductList("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJ1c2VySWQiOjEsIlJvbGVOYW1lIjoiQURNSU4iLCJpYXQiOjE3MTkxNTExNTQsImV4cCI6MTcxOTIzNzU1NH0.Jo1tfdoawII6H2hKn239xXJE8SY_iplSQE6JGm2UX-0",
+        productAPIRepository.getProductList("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJ1c2VySWQiOjEsIlJvbGVOYW1lIjoiQURNSU4iLCJpYXQiOjE3MTg4MTQyNjUsImV4cCI6MTcxODkwMDY2NX0.RSZfNylizNft4eXkXVUc1Zci5FFIUCak9wUuFq3E0zI",
                 0, 12, "", 0).enqueue(new Callback<ProductReponse>() {
             @Override
             public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     List<ProductModel> products = response.body().getContent();
+                    Log.d("Check value", "Products size: " + (products != null ? products.size() : 0));
                     if (products != null) {
                         productList = products;
                         productListAdapter = new ProductListAdapter(productList);

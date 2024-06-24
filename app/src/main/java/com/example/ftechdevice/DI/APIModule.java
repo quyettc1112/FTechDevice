@@ -119,6 +119,19 @@ public class APIModule {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
                 .create(UserAPI_Service.class);
+
+    }
+
+    @Provides
+    @Singleton
+    public static ProductAPI_Service provideProductAPI(@Named("base") String baseUrl, Gson gson, OkHttpClient client) {
+        return new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build()
+                .create(ProductAPI_Service.class);
+
     }
     @Provides
     @Singleton

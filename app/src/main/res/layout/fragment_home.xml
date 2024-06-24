@@ -364,7 +364,7 @@
                     android:id="@+id/rv_toys"
                     android:layout_width="match_parent"
                     android:layout_height="270dp"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
                     tools:layout_editor_absoluteX="0dp"
                     tools:listitem="@layout/recycle_item_toy_list">

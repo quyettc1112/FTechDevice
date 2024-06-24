@@ -22,7 +22,15 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     private OnItemClickListener onItemClickListener;
     private OnItemCartClickListener onItemCartClickListener;
 
-    private List<ProductModel> productList;
+
+    public ProductListAdapter(List<ProductModel> products, OnItemClickListener onItemClickListener, OnItemCartClickListener onItemCartClickListener) {
+        this.products = products;
+        this.onItemClickListener = onItemClickListener;
+        this.onItemCartClickListener = onItemCartClickListener;
+    }
+
+    public ProductListAdapter() {
+    }
 
     public ProductListAdapter(List<ProductModel> products) {
         this.products = products;
@@ -32,7 +40,6 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         this.products = products;
     }
 
-
     public interface OnItemClickListener {
         void onItemClick(ProductModel product);
     }
@@ -41,20 +48,12 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         void onItemCartClick(ProductModel product);
     }
 
-    public void updateList(List<ProductModel> newList) {
-        this.productList = newList;
-        notifyDataSetChanged();
-    }
-    public void setOnItemCartClickListener(ProductListAdapter.OnItemCartClickListener listener) {
-        this.onItemCartClickListener = listener;
-    }
     @NonNull
     @Override
     public ProductListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycle_item_toy_list, parent, false);
         return new ProductListViewHolder(view);
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull ProductListViewHolder holder, int position) {
