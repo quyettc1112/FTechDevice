@@ -40,6 +40,7 @@ import com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity;
 import com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity_MembersInjector;
 import com.example.ftechdevice.UI.Fragment.HomeFragment.HomeFragment;
 import com.example.ftechdevice.UI.Fragment.HomeFragment.HomeFragment_MembersInjector;
+import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductFragment;
 import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductViewModel;
 import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductViewModel_HiltModules_KeyModule_ProvideFactory;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
@@ -365,6 +366,10 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
     @Override
     public void injectHomeFragment(HomeFragment arg0) {
       injectHomeFragment2(arg0);
+    }
+
+    @Override
+    public void injectProductFragment(ProductFragment arg0) {
     }
 
     @Override

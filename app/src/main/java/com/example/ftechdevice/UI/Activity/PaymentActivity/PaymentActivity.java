@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
@@ -15,13 +16,19 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.ftechdevice.API_Repository.VNPay_Repository;
 import com.example.ftechdevice.Model.ModelRespone.UrlResponseDTO;
+import com.example.ftechdevice.Model.PaymentResponse;
 import com.example.ftechdevice.R;
 
 import org.apache.commons.logging.LogFactory;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
+import okhttp3.Request;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -65,7 +72,6 @@ public class PaymentActivity extends AppCompatActivity {
     }
     private void loadUrlIntoWebView(String url) {
 
-        WebView webView = findViewById(R.id.webView);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setAllowFileAccessFromFileURLs(true);
@@ -109,6 +115,7 @@ public class PaymentActivity extends AppCompatActivity {
                         public Map<String, String> getRequestHeaders() {
                             return headers;
                         }
+
                     };
                 }
                 return super.shouldInterceptRequest(view, request);
@@ -118,6 +125,7 @@ public class PaymentActivity extends AppCompatActivity {
         webView.loadUrl(url);
 
     }
+
 
     private void handleOrderResponse() {
         Toast.makeText(PaymentActivity.this, "Thanh toán thành công", Toast.LENGTH_SHORT).show();

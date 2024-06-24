@@ -4,58 +4,58 @@
             "outputFile": "com.example.ftechdevice.app-mergeDebugResources-77:/values-it/values-it.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\X\\.gradle\\caches\\transforms-4\\9610751347aab0277f7d545bc0f7df9f\\transformed\\navigation-ui-2.4.2\\res\\values-it\\values-it.xml",
+                    "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\caches\\transforms-4\\26ec4646e60a6fbc9a02b2bb48a70912\\transformed\\biometric-1.2.0-alpha05\\res\\values-it\\values-it.xml",
                     "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,164",
-                        "endColumns": "108,122",
-                        "endOffsets": "159,282"
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,227,352,463,558,715,825,940,1053,1188,1334,1490,1620,1778,1880,2047,2167,2304,2455,2580,2712,2812,2947,3033,3154,3250,3381",
+                        "endColumns": "171,124,110,94,156,109,114,112,134,145,155,129,157,101,166,119,136,150,124,131,99,134,85,120,95,130,101",
+                        "endOffsets": "222,347,458,553,710,820,935,1048,1183,1329,1485,1615,1773,1875,2042,2162,2299,2450,2575,2707,2807,2942,3028,3149,3245,3376,3478"
                     },
                     "to": {
-                        "startLines": "212,213",
-                        "startColumns": "4,4",
-                        "startOffsets": "18741,18850",
-                        "endColumns": "108,122",
-                        "endOffsets": "18845,18968"
+                        "startLines": "52,53,87,90,137,138,142,143,144,145,146,147,148,149,150,151,152,153,154,225,229,230,231,232,233,234,235",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "3846,4018,7870,8150,11792,11949,12370,12485,12598,12733,12879,13035,13165,13323,13425,13592,13712,13849,14000,19853,20337,20437,20572,20658,20779,20875,21006",
+                        "endColumns": "171,124,110,94,156,109,114,112,134,145,155,129,157,101,166,119,136,150,124,131,99,134,85,120,95,130,101",
+                        "endOffsets": "4013,4138,7976,8240,11944,12054,12480,12593,12728,12874,13030,13160,13318,13420,13587,13707,13844,13995,14120,19980,20432,20567,20653,20774,20870,21001,21103"
                     }
                 },
                 {
-                    "source": "C:\\Users\\X\\.gradle\\caches\\transforms-4\\7d73bb612d06defdda6d240ae57b8928\\transformed\\credentials-1.2.0-rc01\\res\\values-it\\values-it.xml",
+                    "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\caches\\transforms-4\\c218a9f3b6d543f78fe28a7c9dff969e\\transformed\\preference-1.2.1\\res\\values-it\\values-it.xml",
                     "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,167",
-                        "endColumns": "111,113",
-                        "endOffsets": "162,276"
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "105,174,261,341,476,645,725",
+                        "endColumns": "68,86,79,134,168,79,75",
+                        "endOffsets": "169,256,336,471,640,720,796"
                     },
                     "to": {
-                        "startLines": "50,51",
-                        "startColumns": "4,4",
-                        "startOffsets": "3620,3732",
-                        "endColumns": "111,113",
-                        "endOffsets": "3727,3841"
+                        "startLines": "88,135,214,224,228,236,237",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "7981,11610,18973,19718,20168,21108,21188",
+                        "endColumns": "68,86,79,134,168,79,75",
+                        "endOffsets": "8045,11692,19048,19848,20332,21183,21259"
                     }
                 },
                 {
-                    "source": "C:\\Users\\X\\.gradle\\caches\\transforms-4\\c078a3f53e21be8d26183e7c6ef5e41d\\transformed\\core-1.13.1\\res\\values-it\\values-it.xml",
+                    "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\caches\\transforms-4\\46a79508ee76698bfe13c25973b78725\\transformed\\appcompat-1.6.1\\res\\values-it\\values-it.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,153,255,354,456,565,672,802",
-                        "endColumns": "97,101,98,101,108,106,129,100",
-                        "endOffsets": "148,250,349,451,560,667,797,898"
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,210,313,422,506,611,730,808,883,975,1069,1162,1256,1357,1451,1548,1643,1735,1827,1908,2014,2121,2219,2323,2429,2536,2699,2799",
+                        "endColumns": "104,102,108,83,104,118,77,74,91,93,92,93,100,93,96,94,91,91,80,105,106,97,103,105,106,162,99,81",
+                        "endOffsets": "205,308,417,501,606,725,803,878,970,1064,1157,1251,1352,1446,1543,1638,1730,1822,1903,2009,2116,2214,2318,2424,2531,2694,2794,2876"
                     },
                     "to": {
-                        "startLines": "59,60,61,62,63,64,65,227",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "4579,4677,4779,4878,4980,5089,5196,20067",
-                        "endColumns": "97,101,98,101,108,106,129,100",
-                        "endOffsets": "4672,4774,4873,4975,5084,5191,5321,20163"
+                        "startLines": "23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,226",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "926,1031,1134,1243,1327,1432,1551,1629,1704,1796,1890,1983,2077,2178,2272,2369,2464,2556,2648,2729,2835,2942,3040,3144,3250,3357,3520,19985",
+                        "endColumns": "104,102,108,83,104,118,77,74,91,93,92,93,100,93,96,94,91,91,80,105,106,97,103,105,106,162,99,81",
+                        "endOffsets": "1026,1129,1238,1322,1427,1546,1624,1699,1791,1885,1978,2072,2173,2267,2364,2459,2551,2643,2724,2830,2937,3035,3139,3245,3352,3515,3615,20062"
                     }
                 },
                 {
-                    "source": "C:\\Users\\X\\.gradle\\caches\\transforms-4\\7f26c7fe7363bb761bdcc14ef386b3bb\\transformed\\media3-ui-1.3.1\\res\\values-it\\values-it.xml",
+                    "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\caches\\transforms-4\\aeef52f20cb2dd43ebd3b3ce3b3bfcd8\\transformed\\jetified-media3-ui-1.3.1\\res\\values-it\\values-it.xml",
                     "from": {
                         "startLines": "2,11,15,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -74,24 +74,92 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\X\\.gradle\\caches\\transforms-4\\46a79508ee76698bfe13c25973b78725\\transformed\\appcompat-1.6.1\\res\\values-it\\values-it.xml",
+                    "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\caches\\transforms-4\\fec62c607b7ed1929187e4a1d22ceeed\\transformed\\browser-1.4.0\\res\\values-it\\values-it.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,210,313,422,506,611,730,808,883,975,1069,1162,1256,1357,1451,1548,1643,1735,1827,1908,2014,2121,2219,2323,2429,2536,2699,2799",
-                        "endColumns": "104,102,108,83,104,118,77,74,91,93,92,93,100,93,96,94,91,91,80,105,106,97,103,105,106,162,99,81",
-                        "endOffsets": "205,308,417,501,606,725,803,878,970,1064,1157,1251,1352,1446,1543,1638,1730,1822,1903,2009,2116,2214,2318,2424,2531,2694,2794,2876"
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,155,253,363",
+                        "endColumns": "99,97,109,102",
+                        "endOffsets": "150,248,358,461"
                     },
                     "to": {
-                        "startLines": "23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,226",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "926,1031,1134,1243,1327,1432,1551,1629,1704,1796,1890,1983,2077,2178,2272,2369,2464,2556,2648,2729,2835,2942,3040,3144,3250,3357,3520,19985",
-                        "endColumns": "104,102,108,83,104,118,77,74,91,93,92,93,100,93,96,94,91,91,80,105,106,97,103,105,106,162,99,81",
-                        "endOffsets": "1026,1129,1238,1322,1427,1546,1624,1699,1791,1885,1978,2072,2173,2267,2364,2459,2551,2643,2724,2830,2937,3035,3139,3245,3352,3515,3615,20062"
+                        "startLines": "89,139,140,141",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "8050,12059,12157,12267",
+                        "endColumns": "99,97,109,102",
+                        "endOffsets": "8145,12152,12262,12365"
                     }
                 },
                 {
-                    "source": "C:\\Users\\X\\.gradle\\caches\\transforms-4\\dc01f40bf03d057aa697bb1114c6f661\\transformed\\material-1.10.0\\res\\values-it\\values-it.xml",
+                    "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\caches\\transforms-4\\c77e289781202e94d3c1babf3f794a40\\transformed\\jetified-places-3.4.0\\res\\values-it\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11",
+                        "startColumns": "0,0,0,0,0,0,0,0",
+                        "startOffsets": "184,258,324,415,486,532,599,688",
+                        "endColumns": "73,65,90,70,45,66,88,48",
+                        "endOffsets": "257,323,414,485,531,598,687,736"
+                    },
+                    "to": {
+                        "startLines": "216,217,218,219,220,221,222,223",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "19133,19211,19281,19376,19451,19501,19572,19665",
+                        "endColumns": "77,69,94,74,49,70,92,52",
+                        "endOffsets": "19206,19276,19371,19446,19496,19567,19660,19713"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\caches\\transforms-4\\c078a3f53e21be8d26183e7c6ef5e41d\\transformed\\core-1.13.1\\res\\values-it\\values-it.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,153,255,354,456,565,672,802",
+                        "endColumns": "97,101,98,101,108,106,129,100",
+                        "endOffsets": "148,250,349,451,560,667,797,898"
+                    },
+                    "to": {
+                        "startLines": "59,60,61,62,63,64,65,227",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "4579,4677,4779,4878,4980,5089,5196,20067",
+                        "endColumns": "97,101,98,101,108,106,129,100",
+                        "endOffsets": "4672,4774,4873,4975,5084,5191,5321,20163"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\caches\\transforms-4\\88e0fe3f87c5ccdff0e53aaead9cd0b8\\transformed\\jetified-play-services-base-18.3.0\\res\\values-it\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "193,294,441,562,666,820,944,1060,1160,1313,1416,1566,1689,1841,2018,2081,2138",
+                        "endColumns": "100,146,120,103,153,123,115,99,152,102,149,122,151,176,62,56,72",
+                        "endOffsets": "293,440,561,665,819,943,1059,1159,1312,1415,1565,1688,1840,2017,2080,2137,2210"
+                    },
+                    "to": {
+                        "startLines": "69,70,71,72,73,74,75,76,78,79,80,81,82,83,84,85,86",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "5648,5753,5904,6029,6137,6295,6423,6543,6783,6940,7047,7201,7328,7484,7665,7732,7793",
+                        "endColumns": "104,150,124,107,157,127,119,103,156,106,153,126,155,180,66,60,76",
+                        "endOffsets": "5748,5899,6024,6132,6290,6418,6538,6642,6935,7042,7196,7323,7479,7660,7727,7788,7865"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\caches\\transforms-4\\0d273e2591a5e7b0ff69bcab09316a00\\transformed\\jetified-play-services-basement-18.3.0\\res\\values-it\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "131",
+                        "endOffsets": "326"
+                    },
+                    "to": {
+                        "startLines": "77",
+                        "startColumns": "4",
+                        "startOffsets": "6647",
+                        "endColumns": "135",
+                        "endOffsets": "6778"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\caches\\transforms-4\\dc01f40bf03d057aa697bb1114c6f661\\transformed\\material-1.10.0\\res\\values-it\\values-it.xml",
                     "from": {
                         "startLines": "2,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -110,105 +178,37 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\X\\.gradle\\caches\\transforms-4\\c218a9f3b6d543f78fe28a7c9dff969e\\transformed\\preference-1.2.1\\res\\values-it\\values-it.xml",
+                    "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\caches\\transforms-4\\833201ea9bd2cc61b99dac156fb6fcad\\transformed\\jetified-credentials-1.2.0-rc01\\res\\values-it\\values-it.xml",
                     "from": {
-                        "startLines": "2,3,4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "105,174,261,341,476,645,725",
-                        "endColumns": "68,86,79,134,168,79,75",
-                        "endOffsets": "169,256,336,471,640,720,796"
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,167",
+                        "endColumns": "111,113",
+                        "endOffsets": "162,276"
                     },
                     "to": {
-                        "startLines": "88,135,214,224,228,236,237",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "7981,11610,18973,19718,20168,21108,21188",
-                        "endColumns": "68,86,79,134,168,79,75",
-                        "endOffsets": "8045,11692,19048,19848,20332,21183,21259"
+                        "startLines": "50,51",
+                        "startColumns": "4,4",
+                        "startOffsets": "3620,3732",
+                        "endColumns": "111,113",
+                        "endOffsets": "3727,3841"
                     }
                 },
                 {
-                    "source": "C:\\Users\\X\\.gradle\\caches\\transforms-4\\2c503684a44421ba9e879598fb4ad3c8\\transformed\\places-3.4.0\\res\\values-it\\values.xml",
+                    "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\caches\\transforms-4\\9610751347aab0277f7d545bc0f7df9f\\transformed\\navigation-ui-2.4.2\\res\\values-it\\values-it.xml",
                     "from": {
-                        "startLines": "4,5,6,7,8,9,10,11",
-                        "startColumns": "0,0,0,0,0,0,0,0",
-                        "startOffsets": "184,258,324,415,486,532,599,688",
-                        "endColumns": "73,65,90,70,45,66,88,48",
-                        "endOffsets": "257,323,414,485,531,598,687,736"
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,164",
+                        "endColumns": "108,122",
+                        "endOffsets": "159,282"
                     },
                     "to": {
-                        "startLines": "216,217,218,219,220,221,222,223",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "19133,19211,19281,19376,19451,19501,19572,19665",
-                        "endColumns": "77,69,94,74,49,70,92,52",
-                        "endOffsets": "19206,19276,19371,19446,19496,19567,19660,19713"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\X\\.gradle\\caches\\transforms-4\\8af0cacccbb73a9fe024d01aae1051e3\\transformed\\play-services-basement-18.3.0\\res\\values-it\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "131",
-                        "endOffsets": "326"
-                    },
-                    "to": {
-                        "startLines": "77",
-                        "startColumns": "4",
-                        "startOffsets": "6647",
-                        "endColumns": "135",
-                        "endOffsets": "6778"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\X\\.gradle\\caches\\transforms-4\\a0faf63aa6c5b746ee9130f9ec3849ec\\transformed\\play-services-base-18.3.0\\res\\values-it\\values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
-                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
-                        "startOffsets": "193,294,441,562,666,820,944,1060,1160,1313,1416,1566,1689,1841,2018,2081,2138",
-                        "endColumns": "100,146,120,103,153,123,115,99,152,102,149,122,151,176,62,56,72",
-                        "endOffsets": "293,440,561,665,819,943,1059,1159,1312,1415,1565,1688,1840,2017,2080,2137,2210"
-                    },
-                    "to": {
-                        "startLines": "69,70,71,72,73,74,75,76,78,79,80,81,82,83,84,85,86",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "5648,5753,5904,6029,6137,6295,6423,6543,6783,6940,7047,7201,7328,7484,7665,7732,7793",
-                        "endColumns": "104,150,124,107,157,127,119,103,156,106,153,126,155,180,66,60,76",
-                        "endOffsets": "5748,5899,6024,6132,6290,6418,6538,6642,6935,7042,7196,7323,7479,7660,7727,7788,7865"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\X\\.gradle\\caches\\transforms-4\\fec62c607b7ed1929187e4a1d22ceeed\\transformed\\browser-1.4.0\\res\\values-it\\values-it.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,155,253,363",
-                        "endColumns": "99,97,109,102",
-                        "endOffsets": "150,248,358,461"
-                    },
-                    "to": {
-                        "startLines": "89,139,140,141",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "8050,12059,12157,12267",
-                        "endColumns": "99,97,109,102",
-                        "endOffsets": "8145,12152,12262,12365"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\X\\.gradle\\caches\\transforms-4\\26ec4646e60a6fbc9a02b2bb48a70912\\transformed\\biometric-1.2.0-alpha05\\res\\values-it\\values-it.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,227,352,463,558,715,825,940,1053,1188,1334,1490,1620,1778,1880,2047,2167,2304,2455,2580,2712,2812,2947,3033,3154,3250,3381",
-                        "endColumns": "171,124,110,94,156,109,114,112,134,145,155,129,157,101,166,119,136,150,124,131,99,134,85,120,95,130,101",
-                        "endOffsets": "222,347,458,553,710,820,935,1048,1183,1329,1485,1615,1773,1875,2042,2162,2299,2450,2575,2707,2807,2942,3028,3149,3245,3376,3478"
-                    },
-                    "to": {
-                        "startLines": "52,53,87,90,137,138,142,143,144,145,146,147,148,149,150,151,152,153,154,225,229,230,231,232,233,234,235",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "3846,4018,7870,8150,11792,11949,12370,12485,12598,12733,12879,13035,13165,13323,13425,13592,13712,13849,14000,19853,20337,20437,20572,20658,20779,20875,21006",
-                        "endColumns": "171,124,110,94,156,109,114,112,134,145,155,129,157,101,166,119,136,150,124,131,99,134,85,120,95,130,101",
-                        "endOffsets": "4013,4138,7976,8240,11944,12054,12480,12593,12728,12874,13030,13160,13318,13420,13587,13707,13844,13995,14120,19980,20432,20567,20653,20774,20870,21001,21103"
+                        "startLines": "212,213",
+                        "startColumns": "4,4",
+                        "startOffsets": "18741,18850",
+                        "endColumns": "108,122",
+                        "endOffsets": "18845,18968"
                     }
                 }
             ]

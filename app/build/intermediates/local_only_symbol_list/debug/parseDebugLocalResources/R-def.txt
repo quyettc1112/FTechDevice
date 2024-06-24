@@ -334,7 +334,6 @@ id rv_videos
 id scrollView2
 id search
 id test
-id testString
 id text
 id textView
 id textView10

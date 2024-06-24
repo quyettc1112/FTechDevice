@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -24,16 +23,12 @@ public final class ActivityPaymentBinding implements ViewBinding {
   public final ConstraintLayout main;
 
   @NonNull
-  public final TextView testString;
-
-  @NonNull
   public final WebView webView;
 
   private ActivityPaymentBinding(@NonNull ConstraintLayout rootView, @NonNull ConstraintLayout main,
-      @NonNull TextView testString, @NonNull WebView webView) {
+      @NonNull WebView webView) {
     this.rootView = rootView;
     this.main = main;
-    this.testString = testString;
     this.webView = webView;
   }
 
@@ -66,19 +61,13 @@ public final class ActivityPaymentBinding implements ViewBinding {
     missingId: {
       ConstraintLayout main = (ConstraintLayout) rootView;
 
-      id = R.id.testString;
-      TextView testString = ViewBindings.findChildViewById(rootView, id);
-      if (testString == null) {
-        break missingId;
-      }
-
       id = R.id.webView;
       WebView webView = ViewBindings.findChildViewById(rootView, id);
       if (webView == null) {
         break missingId;
       }
 
-      return new ActivityPaymentBinding((ConstraintLayout) rootView, main, testString, webView);
+      return new ActivityPaymentBinding((ConstraintLayout) rootView, main, webView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
