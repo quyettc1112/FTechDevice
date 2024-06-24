@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 public class TokenManager {
 
+    // tạo hàm để lấy avf lưu token của người dùng
     public static final String FIRST_START_APP = "FIRST_START_APP";
     public static final String FIRST_START_APP_VALUE = "FIRST_START_APP";
 
