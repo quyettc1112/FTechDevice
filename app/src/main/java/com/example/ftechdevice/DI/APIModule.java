@@ -1,5 +1,7 @@
 package com.example.ftechdevice.DI;
 
+import androidx.annotation.NonNull;
+
 import com.example.ftechdevice.API_Service.ProductAPI_Service;
 import com.example.ftechdevice.API_Service.UserAPI_Service;
 import com.example.ftechdevice.API_Service.YoutubeAPI_Service;
@@ -7,7 +9,6 @@ import com.example.ftechdevice.AppConfig.BaseAPI.BaseAPI;
 
 import javax.inject.Singleton;
 
-import dagger.hilt.EntryPoint;
 import dagger.hilt.InstallIn;
 import dagger.hilt.components.SingletonComponent;
 import com.google.firebase.BuildConfig;
@@ -16,9 +17,6 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 
-import dagger.hilt.InstallIn;
-import dagger.hilt.android.qualifiers.ApplicationContext;
-import dagger.hilt.components.SingletonComponent;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -30,7 +28,6 @@ import dagger.Module;
 import dagger.Provides;
 import retrofit2.converter.gson.GsonConverterFactory;
 import javax.inject.Named;
-import javax.inject.Singleton;
 
 @Module
 @InstallIn(SingletonComponent.class)
@@ -122,17 +119,7 @@ public class APIModule {
 
     }
 
-    @Provides
-    @Singleton
-    public static ProductAPI_Service provideProductAPI(@Named("base") String baseUrl, Gson gson, OkHttpClient client) {
-        return new Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build()
-                .create(ProductAPI_Service.class);
-
-    }
+    @NonNull
     @Provides
     @Singleton
     public static ProductAPI_Service provideProductAPI(@Named("base") String baseUrl, Gson gson, OkHttpClient client) {
