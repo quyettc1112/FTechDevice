@@ -83,16 +83,27 @@ public class PaymentActivity extends AppCompatActivity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                String url = request.getUrl().toString();
-                view.loadUrl(url);
-                return true;
+
+                if (url.contains("http://ftech-env.eba-3ng3tyiq.ap-northeast-1.elasticbeanstalk.com/vnpay/vnpay-payment")) {
+                    view.loadUrl("about:blank");
+                    handlePaymentResult(url);
+
+                    return true;
+                } else {
+                    String url = request.getUrl().toString();
+                   // view.loadUrl(url);
+                    return super.shouldOverrideUrlLoading(view, url);
+                }
+
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+
                 // Kiểm tra URL để xử lý kết quả thanh toán nếu cần
-                if (url.contains("")) {
+                if (url.contains("http://ftech-env.eba-3ng3tyiq.ap-northeast-1.elasticbeanstalk.com/vnpay/vnpay-payment")) {
+                    view.loadUrl("about:blank");
                     handlePaymentResult(url);
                 }
             }
