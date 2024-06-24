@@ -2,6 +2,7 @@ package com.example.ftechdevice.DI;
 
 import com.example.ftechdevice.API_Service.ProductAPI_Service;
 import com.example.ftechdevice.API_Service.UserAPI_Service;
+import com.example.ftechdevice.API_Service.VNPay_Service;
 import com.example.ftechdevice.API_Service.YoutubeAPI_Service;
 import com.example.ftechdevice.AppConfig.BaseAPI.BaseAPI;
 
@@ -119,6 +120,17 @@ public class APIModule {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
                 .create(UserAPI_Service.class);
+
+    }
+    @Provides
+    @Singleton
+    public static VNPay_Service provideVNPayService(@Named("base") String baseUrl, Gson gson, OkHttpClient client) {
+        return new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build()
+                .create(VNPay_Service.class);
 
     }
 

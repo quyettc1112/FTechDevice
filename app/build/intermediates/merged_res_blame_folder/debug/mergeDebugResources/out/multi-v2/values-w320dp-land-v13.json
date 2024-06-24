@@ -4,7 +4,7 @@
             "outputFile": "com.example.ftechdevice.app-mergeDebugResources-77:/values-w320dp-land-v13/values-w320dp-land-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\caches\\transforms-4\\dc01f40bf03d057aa697bb1114c6f661\\transformed\\material-1.10.0\\res\\values-w320dp-land-v13\\values-w320dp-land-v13.xml",
+                    "source": "C:\\Users\\X\\.gradle\\caches\\transforms-4\\dc01f40bf03d057aa697bb1114c6f661\\transformed\\material-1.10.0\\res\\values-w320dp-land-v13\\values-w320dp-land-v13.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

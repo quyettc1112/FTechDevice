@@ -334,6 +334,7 @@ id rv_videos
 id scrollView2
 id search
 id test
+id testString
 id text
 id textView
 id textView10
@@ -383,6 +384,7 @@ id tv_video_header
 id userName
 id user_manager
 id vp2Main
+id webView
 layout activity_login
 layout activity_login_screen2
 layout activity_main

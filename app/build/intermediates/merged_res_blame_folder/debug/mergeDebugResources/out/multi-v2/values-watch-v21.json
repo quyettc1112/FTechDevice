@@ -4,7 +4,7 @@
             "outputFile": "com.example.ftechdevice.app-mergeDebugResources-77:/values-watch-v21/values-watch-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\caches\\transforms-4\\46a79508ee76698bfe13c25973b78725\\transformed\\appcompat-1.6.1\\res\\values-watch-v21\\values-watch-v21.xml",
+                    "source": "C:\\Users\\X\\.gradle\\caches\\transforms-4\\46a79508ee76698bfe13c25973b78725\\transformed\\appcompat-1.6.1\\res\\values-watch-v21\\values-watch-v21.xml",
                     "from": {
                         "startLines": "2,6,10",
                         "startColumns": "4,4,4",
