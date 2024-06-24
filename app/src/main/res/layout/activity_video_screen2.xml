@@ -7,4 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".UI.Activity.VideoActivity.VideoActivity_Screen2">
 
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
