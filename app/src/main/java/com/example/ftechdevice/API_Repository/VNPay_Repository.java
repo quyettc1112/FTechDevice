@@ -22,4 +22,8 @@ public class VNPay_Repository {
     public Call<UrlResponseDTO> submitOrder(int amount, String orderInfo) {
         return vnPayService.submitOrder(amount, orderInfo);
     }
+
+    public Call<VNPayResponse> getPaymentResult(String url){
+        return vnPayService.getPaymentResult(url);
+    }
 }
