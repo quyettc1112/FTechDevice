@@ -12,7 +12,6 @@ public interface ProductAPI_Service {
 
     @GET("/api/product")
     Call<ProductReponse> getAllProduct(
-            @Header("Authorization") String authorization,
             @Query("pageNo") int pageNo,
             @Query("pageSize") int pageSize,
             @Query("productName") String productName,
@@ -21,7 +20,6 @@ public interface ProductAPI_Service {
 
     @GET("/api/product/{id}")
     Call<ProductReponse> getProductById(
-            @Header("Authorization") String authorization,
             @Path("id") int id
     );
 }

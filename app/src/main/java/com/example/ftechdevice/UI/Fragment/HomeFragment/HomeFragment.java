@@ -170,8 +170,7 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
     }
 
     private void callProductAPI(){
-        productAPIRepository.getProductList("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJ1c2VySWQiOjEsIlJvbGVOYW1lIjoiQURNSU4iLCJpYXQiOjE3MTg4MTQyNjUsImV4cCI6MTcxODkwMDY2NX0.RSZfNylizNft4eXkXVUc1Zci5FFIUCak9wUuFq3E0zI",
-                0, 12, "", 0).enqueue(new Callback<ProductReponse>() {
+        productAPIRepository.getProductList(0, 12, "", 0).enqueue(new Callback<ProductReponse>() {
             @Override
             public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
