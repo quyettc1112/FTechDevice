@@ -158,9 +158,6 @@ public class LoginActivityScreen2 extends BaseActivity {
                             finish();
 
                         } else  Log.d("Checklaue", response.code() +"" + response.message() + response.errorBody());
-
-
-
                     }
 
                     @Override
@@ -203,32 +200,38 @@ public class LoginActivityScreen2 extends BaseActivity {
         }
     }
     private void doLogin(LoginRequestDTO loginRequestDTO) {
-        if (isEmailVerificationInProgress) {
-            Toast.makeText(this, "Đang gửi email xác minh, vui lòng chờ", Toast.LENGTH_SHORT).show();
-            return; // Thoát khỏi phương thức
-        }
-        mAuth.signInWithEmailAndPassword(loginRequestDTO.getEmail(), loginRequestDTO.getPassword()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Log.d("CheckResponseValue", "signInWithEmail:success");
-                    if (mAuth.getCurrentUser().isEmailVerified()) {
-                        loginUser(loginRequestDTO);  // Proceed with the backend login
-                    } else {
-                        Toast.makeText(LoginActivityScreen2.this, "Vui lòng xác minh email trước khi đăng nhập", Toast.LENGTH_SHORT).show();
-                        sendVerificationEmail();
-                        mAuth.signOut(); // Sign out the user since their email is not verified
+        // Reset the flag each time login is attempted
+        isEmailVerificationInProgress = false;
+
+        mAuth.signInWithEmailAndPassword(loginRequestDTO.getEmail(), loginRequestDTO.getPassword())
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Log.d("CheckResponseValue", "signInWithEmail:success");
+                            // Reload the user to get the latest email verification status
+                            mAuth.getCurrentUser().reload().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> reloadTask) {
+                                    if (mAuth.getCurrentUser().isEmailVerified()) {
+                                        loginUser(loginRequestDTO);  // Proceed with the backend login
+                                    } else {
+                                        Toast.makeText(LoginActivityScreen2.this, "Vui lòng xác minh email trước khi đăng nhập", Toast.LENGTH_SHORT).show();
+                                        sendVerificationEmail();
+                                        mAuth.signOut(); // Sign out the user since their email is not verified
+                                    }
+                                }
+                            });
+                        } else {
+                            handleLoginFailure(task.getException());
+                        }
                     }
-                } else {
-                    handleLoginFailure(task.getException());
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                handleLoginFailure(e);
-            }
-        });
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        handleLoginFailure(e);
+                    }
+                });
     }
 
     private void handleLoginFailure(Exception e) {
@@ -246,21 +249,19 @@ public class LoginActivityScreen2 extends BaseActivity {
     }
 
     private void sendVerificationEmail() {
-        if(mAuth.getCurrentUser()!=null){
-            isEmailVerificationInProgress = true; // Đặt trạng thái gửi email xác minh
+        if(mAuth.getCurrentUser() != null){
+            isEmailVerificationInProgress = true;
             mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
+                    isEmailVerificationInProgress = false;  // Reset the flag here
                     if(task.isSuccessful()) {
-                        isEmailVerificationInProgress = false;
-                        Toast.makeText(LoginActivityScreen2.this, "Email has been sent to email address", Toast.LENGTH_SHORT).show();
-                    } else{
-
-                        Toast.makeText(getApplicationContext(), "Failed to send verification email", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivityScreen2.this, "Email xác minh đã được gửi đến địa chỉ email của bạn", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Không thể gửi email xác minh", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
-
         }
     }
 }

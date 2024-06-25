@@ -13,7 +13,7 @@ import com.example.ftechdevice.databinding.RecycleItemToyListBinding;
 
 import java.text.DecimalFormat;
 
-public class ToyListAdapterBase extends BaseAdapter<ToyModel, ToyListAdapterBase.ToyBaseItemViewHolder> {
+public class ToyListAdapterBase extends BaseAdapter<ToyModel, ToyListAdapterBase.ToyBaseItemViewHolder>  {
 
     private OnItemCartClickListener onItemCartClickListener;
 

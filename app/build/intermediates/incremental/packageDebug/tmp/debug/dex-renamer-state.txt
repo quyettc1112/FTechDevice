@@ -1,4 +1,4 @@
-#Mon Jun 24 17:41:34 ICT 2024
+#Mon Jun 24 15:24:31 ICT 2024
 base.0=C\:\\Users\\Admin\\StudioProjects\\FTechDevice\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\Admin\\StudioProjects\\FTechDevice\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.10=C\:\\Users\\Admin\\StudioProjects\\FTechDevice\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\3\\classes.dex

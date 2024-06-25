@@ -2,7 +2,6 @@ package com.example.ftechdevice.API_Repository;
 
 import com.example.ftechdevice.API_Service.ProductAPI_Service;
 import com.example.ftechdevice.Model.ModelRespone.ProductReponse;
-import com.example.ftechdevice.Model.ModelRespone.VNPayResponse;
 
 import javax.inject.Inject;
 
@@ -21,4 +20,7 @@ public class ProductAPI_Repository {
         return productapiService.getAllProduct(authorization, pageNo, pageSize, productName, categoryId);
     }
 
+    public  Call<ProductReponse> getProductById(String authorization, int id ){
+        return productapiService.getProductById(authorization,id);
+    }
 }

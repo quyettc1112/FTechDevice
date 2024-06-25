@@ -7,24 +7,32 @@ public class RegisterRequestDTO {
     @SerializedName("email")
     private String email;
 
+    @SerializedName("username")
+    private String username;
+
     @SerializedName("password")
     private String password;
 
-    @SerializedName("name")
-    private String name;
+    @SerializedName("fullName")
+    private String fullName;
 
-    @SerializedName("phoneNumber")
-    private String phoneNumber;
+    @SerializedName("phone")
+    private String phone;
 
-    @SerializedName("gender")
-    private boolean gender;
+    @SerializedName("address")
+    private String address;
 
-    public RegisterRequestDTO(String email, String password, String name, String phoneNumber, boolean gender) {
+    @SerializedName("roleId")
+    private int roleId;
+
+    public RegisterRequestDTO(String email, String username, String password, String fullName, String phone, String address, int roleId) {
         this.email = email;
+        this.username = username;
         this.password = password;
-        this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.gender = gender;
+        this.fullName = fullName;
+        this.phone = phone;
+        this.address = address;
+        this.roleId = roleId;
     }
 
     public String getEmail() {
@@ -35,6 +43,14 @@ public class RegisterRequestDTO {
         this.email = email;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -43,27 +59,35 @@ public class RegisterRequestDTO {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public boolean isGender() {
-        return gender;
+    public String getAddress() {
+        return address;
     }
 
-    public void setGender(boolean gender) {
-        this.gender = gender;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 }

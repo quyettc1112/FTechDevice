@@ -2,8 +2,8 @@ package com.example.ftechdevice.UI.Activity.ProductDetailActivity;
 
 import android.content.Context;
 import androidx.activity.contextaware.OnContextAvailableListener;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import com.example.ftechdevice.AppConfig.BaseConfig.BaseActivity;
 import dagger.hilt.android.internal.lifecycle.DefaultViewModelFactories;
 import dagger.hilt.android.internal.managers.ActivityComponentManager;
 import dagger.hilt.internal.GeneratedComponentManagerHolder;
@@ -16,7 +16,7 @@ import javax.annotation.processing.Generated;
  * A generated base class to be extended by the @dagger.hilt.android.AndroidEntryPoint annotated class. If using the Gradle plugin, this is swapped as the base class via bytecode transformation.
  */
 @Generated("dagger.hilt.android.processor.internal.androidentrypoint.ActivityGenerator")
-abstract class Hilt_ProductDetailActivity extends BaseActivity implements GeneratedComponentManagerHolder {
+abstract class Hilt_ProductDetailActivity extends AppCompatActivity implements GeneratedComponentManagerHolder {
   private volatile ActivityComponentManager componentManager;
 
   private final Object componentManagerLock = new Object();
@@ -25,6 +25,11 @@ abstract class Hilt_ProductDetailActivity extends BaseActivity implements Genera
 
   Hilt_ProductDetailActivity() {
     super();
+    _initHiltInternal();
+  }
+
+  Hilt_ProductDetailActivity(int contentLayoutId) {
+    super(contentLayoutId);
     _initHiltInternal();
   }
 
