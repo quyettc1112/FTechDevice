@@ -17,18 +17,18 @@
 13    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 13-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:7:5-81
 13-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:7:22-78
-14    <uses-permission android:name="android.permission.USE_BIOMETRIC" /> <!-- suppress DeprecatedClassUsageInspection -->
-14-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\26ec4646e60a6fbc9a02b2bb48a70912\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:22:5-72
-14-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\26ec4646e60a6fbc9a02b2bb48a70912\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:22:22-69
-15    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-15-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\26ec4646e60a6fbc9a02b2bb48a70912\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:25:5-74
-15-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\26ec4646e60a6fbc9a02b2bb48a70912\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:25:22-71
-16    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-16-->[com.google.android.libraries.places:places:3.4.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\c77e289781202e94d3c1babf3f794a40\transformed\jetified-places-3.4.0\AndroidManifest.xml:11:5-76
-16-->[com.google.android.libraries.places:places:3.4.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\c77e289781202e94d3c1babf3f794a40\transformed\jetified-places-3.4.0\AndroidManifest.xml:11:22-73
-17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-17-->[com.google.firebase:firebase-auth:23.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\bf45147c91c48bbb650b647527bb9952\transformed\jetified-firebase-auth-23.0.0\AndroidManifest.xml:26:5-79
-17-->[com.google.firebase:firebase-auth:23.0.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\bf45147c91c48bbb650b647527bb9952\transformed\jetified-firebase-auth-23.0.0\AndroidManifest.xml:26:22-76
+14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+14-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:8:5-79
+14-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:8:22-76
+15    <uses-permission android:name="android.permission.USE_BIOMETRIC" /> <!-- suppress DeprecatedClassUsageInspection -->
+15-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\26ec4646e60a6fbc9a02b2bb48a70912\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:22:5-72
+15-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\26ec4646e60a6fbc9a02b2bb48a70912\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:22:22-69
+16    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+16-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\26ec4646e60a6fbc9a02b2bb48a70912\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:25:5-74
+16-->[androidx.biometric:biometric:1.2.0-alpha05] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\26ec4646e60a6fbc9a02b2bb48a70912\transformed\biometric-1.2.0-alpha05\AndroidManifest.xml:25:22-71
+17    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+17-->[com.google.android.libraries.places:places:3.4.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\c77e289781202e94d3c1babf3f794a40\transformed\jetified-places-3.4.0\AndroidManifest.xml:11:5-76
+17-->[com.google.android.libraries.places:places:3.4.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\c77e289781202e94d3c1babf3f794a40\transformed\jetified-places-3.4.0\AndroidManifest.xml:11:22-73
 18
 19    <uses-feature
 19-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\2565ded603d5a6c90ccb204cc18d9af8\transformed\jetified-play-services-maps-18.2.0\AndroidManifest.xml:26:5-28:35
@@ -62,32 +62,32 @@
 35-->[androidx.core:core:1.13.1] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\c078a3f53e21be8d26183e7c6ef5e41d\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
 36
 37    <application
-37-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:9:5-89:19
+37-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:10:5-90:19
 38        android:name="com.example.ftechdevice.AppConfig.Application.FTechDevice"
-38-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:11:9-58
+38-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:12:9-58
 39        android:allowBackup="true"
-39-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:12:9-35
+39-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:13:9-35
 40        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 40-->[androidx.core:core:1.13.1] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\c078a3f53e21be8d26183e7c6ef5e41d\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
 41        android:dataExtractionRules="@xml/data_extraction_rules"
-41-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:13:9-65
+41-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:14:9-65
 42        android:debuggable="true"
 43        android:extractNativeLibs="false"
 44        android:fullBackupContent="@xml/backup_rules"
-44-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:14:9-54
+44-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:15:9-54
 45        android:icon="@mipmap/ic_launcher"
-45-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:15:9-43
+45-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:16:9-43
 46        android:label="@string/app_name"
-46-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:16:9-41
+46-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:17:9-41
 47        android:networkSecurityConfig="@xml/network_security_config"
-47-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:10:9-69
+47-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:11:9-69
 48        android:roundIcon="@mipmap/ic_launcher_round"
-48-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:17:9-54
+48-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:18:9-54
 49        android:supportsRtl="true"
-49-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:18:9-35
+49-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:19:9-35
 50        android:testOnly="true"
 51        android:theme="@style/Theme.FTechDevice" >
-51-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:19:9-49
+51-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:20:9-49
 52
 53        <!--
 54             TODO: Before you run your application, you need a Google Maps API key.
@@ -102,107 +102,107 @@
 63        -->
 64        <meta-data
 65            android:name="com.google.android.geo.API_KEY"
-65-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:38:13-58
+65-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:39:13-58
 66            android:value="AIzaSyCNCe9gyPaDIhNfQ8RWiD_VTsqMTJucARY" />
-66-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:39:13-44
+66-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:40:13-44
 67        <meta-data
-67-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:41:9-42:69
+67-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:42:9-43:69
 68            android:name="com.google.android.gms.version"
-68-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:41:20-65
+68-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:42:20-65
 69            android:value="@integer/google_play_services_version" />
-69-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:42:13-66
+69-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:43:13-66
 70
 71        <activity
-71-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:43:9-46:59
+71-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:44:9-47:59
 72            android:name="com.example.ftechdevice.UI.Activity.MapActivity.MapsActivity"
-72-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:44:13-65
+72-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:45:13-65
 73            android:exported="true"
-73-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:45:13-36
+73-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:46:13-36
 74            android:label="@string/title_activity_maps" />
-74-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:46:13-56
+74-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:47:13-56
 75        <activity
-75-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:47:9-49:40
+75-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:48:9-50:39
 76            android:name="com.example.ftechdevice.UI.Activity.PaymentActivity.PaymentActivity"
-76-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:48:13-72
-77            android:exported="false" />
-77-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:49:13-37
+76-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:49:13-72
+77            android:exported="true" />
+77-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:50:13-36
 78        <activity
-78-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:50:9-52:40
+78-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:51:9-53:40
 79            android:name="com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailActivity"
-79-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:51:13-84
+79-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:52:13-84
 80            android:exported="false" />
-80-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:52:13-37
+80-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:53:13-37
 81        <activity
-81-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:53:9-55:40
+81-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:54:9-56:40
 82            android:name="com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity_Screen3"
-82-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:54:13-95
+82-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:55:13-95
 83            android:exported="false" />
-83-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:55:13-37
+83-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:56:13-37
 84        <activity
-84-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:56:9-58:40
+84-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:57:9-59:40
 85            android:name="com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity_Screen2"
-85-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:57:13-95
+85-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:58:13-95
 86            android:exported="false" />
-86-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:58:13-37
+86-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:59:13-37
 87        <activity
-87-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:59:9-61:40
+87-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:60:9-62:40
 88            android:name="com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity"
-88-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:60:13-87
+88-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:61:13-87
 89            android:exported="false" />
-89-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:61:13-37
+89-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:62:13-37
 90        <activity
-90-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:62:9-64:39
+90-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:63:9-65:39
 91            android:name="com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivityScreen2"
-91-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:63:13-88
+91-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:64:13-88
 92            android:exported="true" />
-92-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:64:13-36
+92-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:65:13-36
 93        <activity
-93-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:65:9-67:39
+93-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:66:9-68:39
 94            android:name="com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivity"
-94-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:66:13-81
+94-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:67:13-81
 95            android:exported="true" />
-95-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:67:13-36
+95-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:68:13-36
 96        <activity
-96-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:68:9-76:20
+96-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:69:9-77:20
 97            android:name="com.example.ftechdevice.UI.Activity.StartActivity.StartActivity"
-97-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:69:13-68
+97-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:70:13-68
 98            android:exported="true" >
-98-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:70:13-36
+98-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:71:13-36
 99            <intent-filter>
-99-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:71:13-75:29
+99-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:72:13-76:29
 100                <action android:name="android.intent.action.MAIN" />
-100-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:72:17-69
-100-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:72:25-66
+100-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:73:17-69
+100-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:73:25-66
 101
 102                <category android:name="android.intent.category.LAUNCHER" />
-102-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:74:17-77
-102-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:74:27-74
+102-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:75:17-77
+102-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:75:27-74
 103            </intent-filter>
 104        </activity>
 105        <activity
-105-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:77:9-79:39
+105-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:78:9-80:39
 106            android:name="com.example.ftechdevice.UI.Activity.SplashActivity.SplashActivity"
-106-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:78:13-70
+106-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:79:13-70
 107            android:exported="true" />
-107-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:79:13-36
+107-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:80:13-36
 108        <activity
-108-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:80:9-82:39
+108-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:81:9-83:39
 109            android:name="com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity_Screen2"
-109-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:81:13-76
+109-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:82:13-76
 110            android:exported="true" />
-110-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:82:13-36
+110-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:83:13-36
 111        <activity
-111-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:83:9-85:39
+111-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:84:9-86:39
 112            android:name="com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity"
-112-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:84:13-68
+112-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:85:13-68
 113            android:exported="true" />
-113-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:85:13-36
+113-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:86:13-36
 114        <activity
-114-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:86:9-88:39
+114-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:87:9-89:39
 115            android:name="com.example.ftechdevice.UI.Activity.MainActivity.MainActivity"
-115-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:87:13-66
+115-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:88:13-66
 116            android:exported="true" />
-116-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:88:13-36
+116-->C:\Users\Admin\StudioProjects\FTechDevice\app\src\main\AndroidManifest.xml:89:13-36
 117
 118        <provider
 118-->[com.squareup.picasso:picasso:2.8] C:\Users\Admin\Downloads\DemoZPDK_Android\DemoZPDK_Android\DemoZPDK-Android\caches\transforms-4\9bebc0c48c3df2304981bd969ffc4ca0\transformed\jetified-picasso-2.8\AndroidManifest.xml:8:9-11:40

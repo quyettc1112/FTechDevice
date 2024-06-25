@@ -172,9 +172,11 @@ dependencies {
 
     // Lottie
     implementation ("com.airbnb.android:lottie:6.4.0")
+    implementation 'com.squareup.okhttp3:okhttp:4.9.2'
 
-   /* // PlayerView
-    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")*/
+
+    /* // PlayerView
+     implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")*/
 
 
 }
