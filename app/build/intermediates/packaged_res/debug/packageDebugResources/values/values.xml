@@ -28,6 +28,7 @@
     <color name="inactive_text_color">#8D8D8D</color>
     <color name="item_userhom_bg">#2dc653</color>
     <color name="lavender">#8692f7</color>
+    <color name="light_8">#14000000</color>
     <color name="light_blue_400">#FF29B6F6</color>
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_text_color">#FFFFFFFF</color>
@@ -49,12 +50,18 @@
     <color name="textCountry">#ffd60a</color>
     <color name="text_black_blue">#393557</color>
     <color name="text_color">#333333</color>
+    <color name="theme_color">#2176FF</color>
+    <color name="theme_color_8">#142176FF</color>
+    <color name="theme_color_80">#CC2176FF</color>
     <color name="white">#FFFFFFFF</color>
     <color name="zxing_transparent">#00000000</color>
     <string name="API_YOUTUBE_KEY">AIzaSyCfH9LJPxphcne7DED5y7YzUvEM7TZ43UI</string>
     <string name="app_name">FTechDevice</string>
+    <string name="database_url">https://ftechdevice-default-rtdb.asia-southeast1.firebasedatabase.app/</string>
     <string name="default_notify_title">Message</string>
+    <string name="default_web_client_id" translatable="false">473128975904-rvkcut3g3co8sqo2mioomsjsd81dffc0.apps.googleusercontent.com</string>
     <string name="ellipsis">…</string>
+    <string name="firebase_database_url" translatable="false">https://ftechdevice-default-rtdb.asia-southeast1.firebasedatabase.app</string>
     <string name="first_fragment_label">First Fragment</string>
     <string name="gcm_defaultSenderId" translatable="false">473128975904</string>
     <string name="google_api_key" translatable="false">AIzaSyCBmnVygcvuiQgFiaEz0zf45FrzAt9iT6Q</string>

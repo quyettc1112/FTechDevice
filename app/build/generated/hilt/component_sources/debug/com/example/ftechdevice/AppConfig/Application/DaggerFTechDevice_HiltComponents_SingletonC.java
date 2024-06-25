@@ -8,9 +8,11 @@ import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 import com.example.ftechdevice.API_Repository.ProductAPI_Repository;
 import com.example.ftechdevice.API_Repository.UserAPI_Repository;
+import com.example.ftechdevice.API_Repository.VNPay_Repository;
 import com.example.ftechdevice.API_Repository.YoutubeAPI_Repository;
 import com.example.ftechdevice.API_Service.ProductAPI_Service;
 import com.example.ftechdevice.API_Service.UserAPI_Service;
+import com.example.ftechdevice.API_Service.VNPay_Service;
 import com.example.ftechdevice.API_Service.YoutubeAPI_Service;
 import com.example.ftechdevice.DI.APIModule;
 import com.example.ftechdevice.DI.APIModule_ProvideBaseUrlFactory;
@@ -18,6 +20,7 @@ import com.example.ftechdevice.DI.APIModule_ProvideGsonFactory;
 import com.example.ftechdevice.DI.APIModule_ProvideOkHttpClientFactory;
 import com.example.ftechdevice.DI.APIModule_ProvideProductAPIFactory;
 import com.example.ftechdevice.DI.APIModule_ProvideUserAPIFactory;
+import com.example.ftechdevice.DI.APIModule_ProvideVNPayServiceFactory;
 import com.example.ftechdevice.DI.APIModule_ProvideYoutubeAPIFactory;
 import com.example.ftechdevice.DI.APIModule_ProvideYoutubeBaseUrlFactory;
 import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivity;
@@ -28,6 +31,8 @@ import com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.Registe
 import com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity_Screen3;
 import com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity_Screen3_MembersInjector;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
+import com.example.ftechdevice.UI.Activity.PaymentActivity.PaymentActivity;
+import com.example.ftechdevice.UI.Activity.PaymentActivity.PaymentActivity_MembersInjector;
 import com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailActivity;
 import com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailActivity_MembersInjector;
 import com.example.ftechdevice.UI.Activity.SplashActivity.SplashActivity;
@@ -421,6 +426,8 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
 
     private Provider<UserAPI_Repository> userAPI_RepositoryProvider;
 
+    private Provider<VNPay_Repository> vNPay_RepositoryProvider;
+
     private Provider<ProductAPI_Repository> productAPI_RepositoryProvider;
 
     private Provider<YoutubeAPI_Repository> youtubeAPI_RepositoryProvider;
@@ -437,8 +444,9 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
     @SuppressWarnings("unchecked")
     private void initialize(final Activity activityParam) {
       this.userAPI_RepositoryProvider = DoubleCheck.provider(new SwitchingProvider<UserAPI_Repository>(singletonCImpl, activityRetainedCImpl, activityCImpl, 0));
-      this.productAPI_RepositoryProvider = DoubleCheck.provider(new SwitchingProvider<ProductAPI_Repository>(singletonCImpl, activityRetainedCImpl, activityCImpl, 1));
-      this.youtubeAPI_RepositoryProvider = DoubleCheck.provider(new SwitchingProvider<YoutubeAPI_Repository>(singletonCImpl, activityRetainedCImpl, activityCImpl, 2));
+      this.vNPay_RepositoryProvider = DoubleCheck.provider(new SwitchingProvider<VNPay_Repository>(singletonCImpl, activityRetainedCImpl, activityCImpl, 1));
+      this.productAPI_RepositoryProvider = DoubleCheck.provider(new SwitchingProvider<ProductAPI_Repository>(singletonCImpl, activityRetainedCImpl, activityCImpl, 2));
+      this.youtubeAPI_RepositoryProvider = DoubleCheck.provider(new SwitchingProvider<YoutubeAPI_Repository>(singletonCImpl, activityRetainedCImpl, activityCImpl, 3));
     }
 
     @Override
@@ -465,6 +473,11 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
 
     @Override
     public void injectMainActivity(MainActivity arg0) {
+    }
+
+    @Override
+    public void injectPaymentActivity(PaymentActivity arg0) {
+      injectPaymentActivity2(arg0);
     }
 
     @Override
@@ -524,6 +537,12 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
     }
 
     @CanIgnoreReturnValue
+    private PaymentActivity injectPaymentActivity2(PaymentActivity instance) {
+      PaymentActivity_MembersInjector.injectVnPayRepository(instance, vNPay_RepositoryProvider.get());
+      return instance;
+    }
+
+    @CanIgnoreReturnValue
     private ProductDetailActivity injectProductDetailActivity2(ProductDetailActivity instance) {
       ProductDetailActivity_MembersInjector.injectProductAPIRepository(instance, productAPI_RepositoryProvider.get());
       return instance;
@@ -559,10 +578,13 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
           case 0: // com.example.ftechdevice.API_Repository.UserAPI_Repository 
           return (T) new UserAPI_Repository(singletonCImpl.provideUserAPIProvider.get());
 
-          case 1: // com.example.ftechdevice.API_Repository.ProductAPI_Repository 
+          case 1: // com.example.ftechdevice.API_Repository.VNPay_Repository 
+          return (T) new VNPay_Repository(singletonCImpl.provideVNPayServiceProvider.get());
+
+          case 2: // com.example.ftechdevice.API_Repository.ProductAPI_Repository 
           return (T) new ProductAPI_Repository(singletonCImpl.provideProductAPIProvider.get());
 
-          case 2: // com.example.ftechdevice.API_Repository.YoutubeAPI_Repository 
+          case 3: // com.example.ftechdevice.API_Repository.YoutubeAPI_Repository 
           return (T) new YoutubeAPI_Repository(singletonCImpl.provideYoutubeAPIProvider.get());
 
           default: throw new AssertionError(id);
@@ -722,6 +744,8 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
 
     private Provider<UserAPI_Service> provideUserAPIProvider;
 
+    private Provider<VNPay_Service> provideVNPayServiceProvider;
+
     private Provider<ProductAPI_Service> provideProductAPIProvider;
 
     private Provider<String> provideYoutubeBaseUrlProvider;
@@ -740,13 +764,14 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
       this.provideGsonProvider = DoubleCheck.provider(new SwitchingProvider<Gson>(singletonCImpl, 2));
       this.provideOkHttpClientProvider = DoubleCheck.provider(new SwitchingProvider<OkHttpClient>(singletonCImpl, 3));
       this.provideUserAPIProvider = DoubleCheck.provider(new SwitchingProvider<UserAPI_Service>(singletonCImpl, 0));
-      this.provideProductAPIProvider = DoubleCheck.provider(new SwitchingProvider<ProductAPI_Service>(singletonCImpl, 4));
-      this.provideYoutubeBaseUrlProvider = DoubleCheck.provider(new SwitchingProvider<String>(singletonCImpl, 6));
-      this.provideYoutubeAPIProvider = DoubleCheck.provider(new SwitchingProvider<YoutubeAPI_Service>(singletonCImpl, 5));
+      this.provideVNPayServiceProvider = DoubleCheck.provider(new SwitchingProvider<VNPay_Service>(singletonCImpl, 4));
+      this.provideProductAPIProvider = DoubleCheck.provider(new SwitchingProvider<ProductAPI_Service>(singletonCImpl, 5));
+      this.provideYoutubeBaseUrlProvider = DoubleCheck.provider(new SwitchingProvider<String>(singletonCImpl, 7));
+      this.provideYoutubeAPIProvider = DoubleCheck.provider(new SwitchingProvider<YoutubeAPI_Service>(singletonCImpl, 6));
     }
 
     @Override
-    public void injectFTechDevice(FTechDevice arg0) {
+    public void injectFTechDevice(FTechDevice fTechDevice) {
     }
 
     @Override
@@ -790,13 +815,16 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
           case 3: // okhttp3.OkHttpClient 
           return (T) APIModule_ProvideOkHttpClientFactory.provideOkHttpClient();
 
-          case 4: // com.example.ftechdevice.API_Service.ProductAPI_Service 
+          case 4: // com.example.ftechdevice.API_Service.VNPay_Service 
+          return (T) APIModule_ProvideVNPayServiceFactory.provideVNPayService(singletonCImpl.provideBaseUrlProvider.get(), singletonCImpl.provideGsonProvider.get(), singletonCImpl.provideOkHttpClientProvider.get());
+
+          case 5: // com.example.ftechdevice.API_Service.ProductAPI_Service 
           return (T) APIModule_ProvideProductAPIFactory.provideProductAPI(singletonCImpl.provideBaseUrlProvider.get(), singletonCImpl.provideGsonProvider.get(), singletonCImpl.provideOkHttpClientProvider.get());
 
-          case 5: // com.example.ftechdevice.API_Service.YoutubeAPI_Service 
+          case 6: // com.example.ftechdevice.API_Service.YoutubeAPI_Service 
           return (T) APIModule_ProvideYoutubeAPIFactory.provideYoutubeAPI(singletonCImpl.provideYoutubeBaseUrlProvider.get(), singletonCImpl.provideGsonProvider.get(), singletonCImpl.provideOkHttpClientProvider.get());
 
-          case 6: // @javax.inject.Named("youtube") java.lang.String 
+          case 7: // @javax.inject.Named("youtube") java.lang.String 
           return (T) APIModule_ProvideYoutubeBaseUrlFactory.provideYoutubeBaseUrl();
 
           default: throw new AssertionError(id);

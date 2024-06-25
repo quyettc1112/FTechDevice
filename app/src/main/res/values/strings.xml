@@ -50,4 +50,6 @@
 
     <string name="API_YOUTUBE_KEY">AIzaSyCfH9LJPxphcne7DED5y7YzUvEM7TZ43UI</string>
     <string name="title_activity_maps">MapsActivity</string>
+
+    <string name="database_url">https://ftechdevice-default-rtdb.asia-southeast1.firebasedatabase.app/</string>
 </resources>

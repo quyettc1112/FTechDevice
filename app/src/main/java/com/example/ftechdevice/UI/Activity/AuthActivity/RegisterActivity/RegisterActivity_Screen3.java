@@ -22,22 +22,18 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.ftechdevice.API_Repository.UserAPI_Repository;
 import com.example.ftechdevice.AppConfig.BaseConfig.BaseActivity;
-import com.example.ftechdevice.Model.ModelRequestDTO.LoginRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.RegisterRequestDTO;
-import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
 import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivityScreen2;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
+import com.example.ftechdevice.Until.MemoryData;
+import com.example.ftechdevice.Until.MyProgressDialog;
 import com.example.ftechdevice.databinding.ActivityRegisterScreen3Binding;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.util.Calendar;
 
@@ -49,6 +45,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import com.example.ftechdevice.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 @AndroidEntryPoint
 public class RegisterActivity_Screen3 extends BaseActivity {
@@ -58,6 +59,9 @@ public class RegisterActivity_Screen3 extends BaseActivity {
     FirebaseAuth mAuth;
     @Inject
     UserAPI_Repository userapiRepository;
+
+    private DatabaseReference databaseReference; // Reference to the Firebase database
+    private MyProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +79,11 @@ public class RegisterActivity_Screen3 extends BaseActivity {
         });
 
         inputValue();
+
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl(getString(R.string.database_url));
+        progressDialog = new MyProgressDialog(this);
+        progressDialog.setCancelable(false);
+
     }
 
     private void inputValue() {
@@ -182,14 +191,17 @@ public class RegisterActivity_Screen3 extends BaseActivity {
     }
 
     private void doRegister(String email, String password) {
+        progressDialog.show();
         binding.btnRegisterScreen3.setEnabled(false);
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        progressDialog.dismiss();
                         sendVerificationEmail();
                         registerUser(registerViewModel.getRegisterDTO());
-                        Intent intent = new Intent(this, LoginActivityScreen2.class);
-                        startActivity(intent);
+                        registerOnFireBase(registerViewModel.getRegisterDTO());
+                        //Intent intent = new Intent(this, LoginActivityScreen2.class);
+                        //startActivity(intent);
                     } else {
                         binding.btnRegisterScreen3.setEnabled(true);
                         Toast.makeText(RegisterActivity_Screen3.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
@@ -214,6 +226,43 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                     }
                 });
     }
+
+    private void registerOnFireBase(RegisterRequestDTO registerRequestDTO) {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                progressDialog.dismiss(); // Hide the progress dialog
+
+                if (snapshot.child("users").hasChild(registerRequestDTO.getPhone())) {
+                    // Display a message if mobile number already exists
+                    Toast.makeText(RegisterActivity_Screen3.this, "Mobile already exists", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    // If mobile number doesn't exist, proceed with registration
+                    Toast.makeText(RegisterActivity_Screen3.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+
+                    // Save user details in the database
+                    databaseReference.child("users").child(registerRequestDTO.getPhone()).child("email").setValue(registerRequestDTO.getEmail());
+                    databaseReference.child("users").child(registerRequestDTO.getPhone()).child("name").setValue(registerRequestDTO.getUsername());
+                    databaseReference.child("users").child(registerRequestDTO.getPhone()).child("password").setValue(registerRequestDTO.getPassword());
+                    databaseReference.child("users").child(registerRequestDTO.getPhone()).child("roleid").setValue(registerRequestDTO.getRoleId());
+
+                    // Save user's mobile number for future login
+                    MemoryData.saveMobile(registerRequestDTO.getPhone(), RegisterActivity_Screen3.this);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                progressDialog.dismiss();
+
+                // Display a message for database error
+                Toast.makeText(RegisterActivity_Screen3.this, "Database error", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
 
     private void sendVerificationEmail() {
         if (mAuth.getCurrentUser() != null) {

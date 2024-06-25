@@ -49,7 +49,12 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.FTechDevice" >
-
+        <activity
+            android:name="com.example.ftechdevice.UI.Activity.ChatModule.MessageActivity.MessageActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.ftechdevice.UI.Activity.ChatModule.ChatActivity.ChatActivity"
+            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -176,6 +181,12 @@
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.database.FirebaseDatabaseKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
             <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"

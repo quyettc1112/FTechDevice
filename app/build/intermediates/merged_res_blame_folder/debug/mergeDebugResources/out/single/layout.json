@@ -8,6 +8,10 @@
         "source": "com.example.ftechdevice.app-main-81:/layout/activity_start.xml"
     },
     {
+        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/my_progress_dialog_layout.xml",
+        "source": "com.example.ftechdevice.app-main-81:/layout/my_progress_dialog_layout.xml"
+    },
+    {
         "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/dialog_confirm.xml",
         "source": "com.example.ftechdevice.app-main-81:/layout/dialog_confirm.xml"
     },
@@ -40,6 +44,10 @@
         "source": "com.example.ftechdevice.app-main-81:/layout/slide_item_video_container.xml"
     },
     {
+        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/messages_adapter_layout.xml",
+        "source": "com.example.ftechdevice.app-main-81:/layout/messages_adapter_layout.xml"
+    },
+    {
         "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/slide_item_container.xml",
         "source": "com.example.ftechdevice.app-main-81:/layout/slide_item_container.xml"
     },
@@ -70,6 +78,10 @@
     {
         "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_register_screen3.xml",
         "source": "com.example.ftechdevice.app-main-81:/layout/activity_register_screen3.xml"
+    },
+    {
+        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_message.xml",
+        "source": "com.example.ftechdevice.app-main-81:/layout/activity_message.xml"
     },
     {
         "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_register.xml",
@@ -126,5 +138,13 @@
     {
         "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/fragment_product.xml",
         "source": "com.example.ftechdevice.app-main-81:/layout/fragment_product.xml"
+    },
+    {
+        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_chat.xml",
+        "source": "com.example.ftechdevice.app-main-81:/layout/activity_chat.xml"
+    },
+    {
+        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/chat_adapter_layout.xml",
+        "source": "com.example.ftechdevice.app-main-81:/layout/chat_adapter_layout.xml"
     }
 ]

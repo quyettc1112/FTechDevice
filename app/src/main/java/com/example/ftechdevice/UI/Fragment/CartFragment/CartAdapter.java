@@ -117,7 +117,6 @@ public class CartAdapter extends BaseAdapter<CartModel, CartAdapter.CartAdapterV
             public boolean areItemsTheSame(CartModel oldItem, CartModel newItem) {
                 return oldItem.getId() == newItem.getId();
             }
-
             @Override
             public boolean areContentsTheSame(CartModel oldItem, CartModel newItem) {
                 return oldItem.getId() == newItem.getId();

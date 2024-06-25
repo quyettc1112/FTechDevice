@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "473128975904",
+    "firebase_url": "https://ftechdevice-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "ftechdevice",
     "storage_bucket": "ftechdevice.appspot.com"
   },
@@ -12,7 +13,28 @@
           "package_name": "com.example.ftechdevice"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "473128975904-l7tglvqn0ti02emaqa5aj776jsicqc57.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ftechdevice",
+            "certificate_hash": "04111e5c61df44848c858273172a7f10e81769e0"
+          }
+        },
+        {
+          "client_id": "473128975904-vq0q9u92n7l7e53uui3sd9hra14vg5r3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ftechdevice",
+            "certificate_hash": "2a475fec0c24de416d3d6619262d82ed49508de1"
+          }
+        },
+        {
+          "client_id": "473128975904-rvkcut3g3co8sqo2mioomsjsd81dffc0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCBmnVygcvuiQgFiaEz0zf45FrzAt9iT6Q"
@@ -20,7 +42,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "473128975904-rvkcut3g3co8sqo2mioomsjsd81dffc0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
