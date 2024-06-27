@@ -1335,3 +1335,12 @@ local.properties
 app/build/tmp/
 app/build/intermediates/
 app/build/kotlin/
+
+# Ignore Kotlin build output
+
+
+# Ignore Gradle caches and output
+.gradle/
+.gradle/buildOutputCleanup/
+.gradle/8.7/executionHistory/
+.gradle/8.7/fileHashes/
