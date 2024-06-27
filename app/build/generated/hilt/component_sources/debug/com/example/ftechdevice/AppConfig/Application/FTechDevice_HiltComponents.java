@@ -13,6 +13,7 @@ import com.example.ftechdevice.UI.Activity.StartActivity.StartActivity_Generated
 import com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity_GeneratedInjector;
 import com.example.ftechdevice.UI.Fragment.HomeFragment.HomeFragment_GeneratedInjector;
 import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductViewModel_HiltModules;
+import com.example.ftechdevice.UI.Fragment.ProfileFragment.ProfileFragment_GeneratedInjector;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel_HiltModules;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel_HiltModules;
 import dagger.Binds;
@@ -244,6 +245,7 @@ public final class FTechDevice_HiltComponents {
   )
   @FragmentScoped
   public abstract static class FragmentC implements HomeFragment_GeneratedInjector,
+      ProfileFragment_GeneratedInjector,
       FragmentComponent,
       DefaultViewModelFactories.FragmentEntryPoint,
       ViewComponentManager.ViewWithFragmentComponentBuilderEntryPoint,

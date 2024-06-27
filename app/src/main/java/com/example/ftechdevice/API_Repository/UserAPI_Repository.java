@@ -8,6 +8,7 @@ import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
 import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 import com.example.ftechdevice.Model.ModelRespone.MessageRespone;
 import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
+import com.example.ftechdevice.Model.ModelRespone.UserResponseDTO;
 
 import javax.inject.Inject;
 
@@ -40,8 +41,9 @@ public class UserAPI_Repository {
         return userapiService.registerUser(registerRequestDTO);
     }
 
-
-
+    public Call<UserResponseDTO> getUserByEmail(String token,String email) {
+        return userapiService.getUserByEmail(token,email);
+    }
 
 
 }
