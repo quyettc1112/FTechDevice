@@ -1316,3 +1316,8 @@
 .externalNativeBuild
 .cxx
 local.properties
+.gradle/buildOutputCleanup.lock
+.gradle/8.7/executionHistory/executionHistory.bin
+.gradle/8.7/executionHistory/executionHistory.lock
+.gradle/8.7/fileHashes/fileHashes.bin
+.gradle/8.7/fileHashes/fileHashes.lock
