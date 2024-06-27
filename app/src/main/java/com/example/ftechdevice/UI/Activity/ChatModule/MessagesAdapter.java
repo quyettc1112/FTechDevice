@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ftechdevice.Model.MessagesList;
 import com.example.ftechdevice.R;
+import com.example.ftechdevice.UI.Activity.ChatModule.MessageActivity.MessageActivity;
 import com.google.ai.client.generativeai.Chat;
 
 import java.util.List;
@@ -64,7 +65,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
                 notifyItemChanged(holder.getAdapterPosition());
 
                 // create intent to open Chat activity
-                Intent intent = new Intent(context, Chat.class);
+                Intent intent = new Intent(context, MessageActivity.class);
 
                 // append data along with the intent
                 intent.putExtra("mobile", list2.getMobile());
