@@ -1,0 +1,34 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Ignore build output directories
+/app/build/
+/.gradle/
+/build/
+
+# Ignore specific file patterns
+*.apk
+*.bin
+*.lock
+*.class
+*.dex
+*.tab
+*.tab.values.at
+*.state.txt
+
+# Ignore specific directories
+app/build/tmp/
+app/build/intermediates/
+app/build/kotlin/
+# Ignore Kotlin build output
+
+
+# Ignore Gradle caches and output
+.gradle/
+.gradle/buildOutputCleanup/
+.gradle/8.7/executionHistory/
+.gradle/8.7/fileHashes/
+
+# Ignore specific Gradle lock files
+.gradle/buildOutputCleanup.lock
+.gradle/8.7/executionHistory/executionHistory.lock
