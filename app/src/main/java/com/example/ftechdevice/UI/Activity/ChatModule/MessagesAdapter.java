@@ -67,6 +67,8 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
                 // create intent to open Chat activity
                 Intent intent = new Intent(context, MessageActivity.class);
 
+
+                // Test
                 // append data along with the intent
                 intent.putExtra("mobile", list2.getMobile());
                 intent.putExtra("full_name", list2.getFullName());
