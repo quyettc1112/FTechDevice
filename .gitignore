@@ -1344,3 +1344,7 @@ app/build/kotlin/
 .gradle/buildOutputCleanup/
 .gradle/8.7/executionHistory/
 .gradle/8.7/fileHashes/
+
+# Ignore specific Gradle lock files
+.gradle/buildOutputCleanup.lock
+.gradle/8.7/executionHistory/executionHistory.lock
