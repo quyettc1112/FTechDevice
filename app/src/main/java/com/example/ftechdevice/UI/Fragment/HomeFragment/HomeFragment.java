@@ -32,6 +32,7 @@ import com.example.ftechdevice.Model.ModelRespone.ProductReponse;
 import com.example.ftechdevice.Model.ProductModel;
 import com.example.ftechdevice.Model.ToyModel;
 import com.example.ftechdevice.R;
+import com.example.ftechdevice.UI.Activity.ChatModule.ChatActivity.ChatActivity;
 import com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity;
 import com.example.ftechdevice.Until.BottomMarginItemDecoration;
 import com.example.ftechdevice.Until.NonScrollableGridLayoutManager;
@@ -70,6 +71,9 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         toyListAdapter.setOnItemCartClickListener(cartModel -> {
             Toast.makeText(requireContext(), cartModel.getToyName(), Toast.LENGTH_SHORT).show();
         });
+
+
+
     }
 
     @Nullable
@@ -82,6 +86,7 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         setCurrentIndicator(0);
         setRecycleCateOption();;
         intentToVideoActivity();
+        intentToChatActivity();
         return binding.getRoot();
     }
 
@@ -189,6 +194,16 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
             @Override
             public void onFailure(Call<ProductReponse> call, Throwable t) {
                 Log.d("Check value", t.getMessage());
+            }
+        });
+    }
+
+
+    private void intentToChatActivity() {
+        binding.imNotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(requireActivity(), ChatActivity.class));
             }
         });
     }

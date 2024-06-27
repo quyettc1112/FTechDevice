@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -33,6 +34,9 @@ public final class FragmentHomeBinding implements ViewBinding {
 
   @NonNull
   public final LinearLayout horizontalLayout;
+
+  @NonNull
+  public final ImageView imNotify;
 
   @NonNull
   public final LinearLayout indicatorContainer;
@@ -70,9 +74,10 @@ public final class FragmentHomeBinding implements ViewBinding {
   private FragmentHomeBinding(@NonNull ConstraintLayout rootView,
       @NonNull ConstraintLayout constraintLayout, @NonNull ConstraintLayout constraintLayout3,
       @NonNull EditText edtSearch, @NonNull LinearLayout horizontalLayout,
-      @NonNull LinearLayout indicatorContainer, @NonNull RecyclerView myRecyclerView,
-      @NonNull RecyclerView rvToys, @NonNull RecyclerView rvVideo, @NonNull TextView textView,
-      @NonNull TextView textView3, @NonNull TextView textView4, @NonNull TextView textView5,
+      @NonNull ImageView imNotify, @NonNull LinearLayout indicatorContainer,
+      @NonNull RecyclerView myRecyclerView, @NonNull RecyclerView rvToys,
+      @NonNull RecyclerView rvVideo, @NonNull TextView textView, @NonNull TextView textView3,
+      @NonNull TextView textView4, @NonNull TextView textView5,
       @NonNull TextView textViewTimeFlashSale, @NonNull TextView tvSeeAllCategory,
       @NonNull TextView tvSeeAllVideo) {
     this.rootView = rootView;
@@ -80,6 +85,7 @@ public final class FragmentHomeBinding implements ViewBinding {
     this.constraintLayout3 = constraintLayout3;
     this.edtSearch = edtSearch;
     this.horizontalLayout = horizontalLayout;
+    this.imNotify = imNotify;
     this.indicatorContainer = indicatorContainer;
     this.myRecyclerView = myRecyclerView;
     this.rvToys = rvToys;
@@ -141,6 +147,12 @@ public final class FragmentHomeBinding implements ViewBinding {
       id = R.id.horizontal_layout;
       LinearLayout horizontalLayout = ViewBindings.findChildViewById(rootView, id);
       if (horizontalLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.im_notify;
+      ImageView imNotify = ViewBindings.findChildViewById(rootView, id);
+      if (imNotify == null) {
         break missingId;
       }
 
@@ -211,9 +223,9 @@ public final class FragmentHomeBinding implements ViewBinding {
       }
 
       return new FragmentHomeBinding((ConstraintLayout) rootView, constraintLayout,
-          constraintLayout3, edtSearch, horizontalLayout, indicatorContainer, myRecyclerView,
-          rvToys, rvVideo, textView, textView3, textView4, textView5, textViewTimeFlashSale,
-          tvSeeAllCategory, tvSeeAllVideo);
+          constraintLayout3, edtSearch, horizontalLayout, imNotify, indicatorContainer,
+          myRecyclerView, rvToys, rvVideo, textView, textView3, textView4, textView5,
+          textViewTimeFlashSale, tvSeeAllCategory, tvSeeAllVideo);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

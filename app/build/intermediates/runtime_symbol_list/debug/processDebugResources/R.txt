@@ -4054,6 +4054,7 @@ int drawable quantum_ic_search_grey600_24 0x7f0801da
 int drawable ripple_effect 0x7f0801db
 int drawable ripple_effect_white 0x7f0801dc
 int drawable ripple_no_color 0x7f0801dd
+int drawable round_back_light_10 0x7f0801e6
 int drawable round_back_theme_1000 0x7f0801de
 int drawable search_icon 0x7f0801df
 int drawable send_icon 0x7f0801e0
@@ -4423,6 +4424,7 @@ int id im_dissmissDialog 0x7f0a0158
 int id im_fillter 0x7f0a0159
 int id im_item_cart_image 0x7f0a015a
 int id im_minus_quantity 0x7f0a015b
+int id im_notify 0x7f0a032a
 int id im_plus_quantity 0x7f0a015c
 int id im_toy_image 0x7f0a015d
 int id im_video 0x7f0a015e
@@ -4532,6 +4534,7 @@ int id matrix 0x7f0a01c5
 int id media_actions 0x7f0a01c6
 int id media_controller_compat_view_tag 0x7f0a01c7
 int id message 0x7f0a01c8
+int id messagesRecyclerView 0x7f0a032b
 int id middle 0x7f0a01c9
 int id mini 0x7f0a01ca
 int id month_grid 0x7f0a01cb
@@ -4859,6 +4862,7 @@ int id unseenMessages 0x7f0a030c
 int id up 0x7f0a030d
 int id useLogo 0x7f0a030e
 int id userName 0x7f0a030f
+int id userProfilePic 0x7f0a032c
 int id user_manager 0x7f0a0310
 int id vertical_only 0x7f0a0311
 int id video_decoder_gl_surface_view 0x7f0a0312

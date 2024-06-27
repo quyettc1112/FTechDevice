@@ -4055,6 +4055,7 @@ drawable quantum_ic_search_grey600_24
 drawable ripple_effect
 drawable ripple_effect_white
 drawable ripple_no_color
+drawable round_back_light_10
 drawable round_back_theme_1000
 drawable search_icon
 drawable send_icon
@@ -4424,6 +4425,7 @@ id im_dissmissDialog
 id im_fillter
 id im_item_cart_image
 id im_minus_quantity
+id im_notify
 id im_plus_quantity
 id im_toy_image
 id im_video
@@ -4533,6 +4535,7 @@ id matrix
 id media_actions
 id media_controller_compat_view_tag
 id message
+id messagesRecyclerView
 id middle
 id mini
 id month_grid
@@ -4860,6 +4863,7 @@ id unseenMessages
 id up
 id useLogo
 id userName
+id userProfilePic
 id user_manager
 id vertical_only
 id video_decoder_gl_surface_view

@@ -97,15 +97,7 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                 registerViewModel.updateRoleId(1);
                 registerViewModel.updatePhone(binding.edtRegisterPhone.getText().toString());
                 registerViewModel.updateUsername(binding.edtRegisterName.getText().toString());
-//                if (binding.edtRegisterGender.getText().toString().equals("Nam")) {
-//                    registerViewModel.updateGender(true);
-//                } else {
-//                    registerViewModel.updateGender(false);
-//                }
-
                 doRegister(email, password);
-
-
             }
         });
 
@@ -255,14 +247,11 @@ public class RegisterActivity_Screen3 extends BaseActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 progressDialog.dismiss();
-
                 // Display a message for database error
                 Toast.makeText(RegisterActivity_Screen3.this, "Database error", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
-
 
     private void sendVerificationEmail() {
         if (mAuth.getCurrentUser() != null) {

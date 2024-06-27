@@ -224,6 +224,7 @@ drawable opo_msg_back
 drawable ripple_effect
 drawable ripple_effect_white
 drawable ripple_no_color
+drawable round_back_light_10
 drawable round_back_theme_1000
 drawable search_icon
 drawable send_icon
@@ -293,6 +294,7 @@ id im_dissmissDialog
 id im_fillter
 id im_item_cart_image
 id im_minus_quantity
+id im_notify
 id im_plus_quantity
 id im_toy_image
 id im_video
@@ -349,6 +351,7 @@ id logout
 id lt_empty_cart
 id main
 id map
+id messagesRecyclerView
 id myLayout
 id myMessage
 id myMsgTime
@@ -417,6 +420,7 @@ id tv_video_description
 id tv_video_header
 id unseenMessages
 id userName
+id userProfilePic
 id user_manager
 id vp2Main
 id webView

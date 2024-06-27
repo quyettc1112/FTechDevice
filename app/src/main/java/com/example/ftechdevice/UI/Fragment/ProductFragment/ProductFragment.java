@@ -144,7 +144,6 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
                     Log.d("ProductFragment", "Response code: " + response.code());
                 }
             }
-
             @Override
             public void onFailure(Call<ProductReponse> call, Throwable t) {
                 Log.d("ProductFragment", t.getMessage());

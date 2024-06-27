@@ -60,16 +60,16 @@
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\font\\app_font_black_italic.ttf"
     },
     {
-        "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_lock.png.flat",
-        "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_lock.png"
+        "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_backgroung_icon_category.xml.flat",
+        "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\backgroung_icon_category.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\raw_server_cert.pem.flat",
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\raw\\server_cert.pem"
     },
     {
-        "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_backgroung_icon_category.xml.flat",
-        "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\backgroung_icon_category.xml"
+        "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_lock.png.flat",
+        "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_lock.png"
     },
     {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_material_check.png.flat",
@@ -208,16 +208,12 @@
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_toy_cart.png"
     },
     {
-        "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\mipmap-xxhdpi\\ic_launcher.webp"
-    },
-    {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_back_btn.xml.flat",
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\back_btn.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-debug-79:/drawable_send_icon.png.flat",
-        "source": "com.example.ftechdevice.app-main-81:/drawable/send_icon.png"
+        "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_phone.png.flat",
@@ -400,6 +396,10 @@
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_gender.png"
     },
     {
+        "merged": "com.example.ftechdevice.app-debug-79:/layout_activity_chat.xml.flat",
+        "source": "com.example.ftechdevice.app-main-81:/layout/activity_chat.xml"
+    },
+    {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_banner_logo.png.flat",
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\banner_logo.png"
     },
@@ -424,6 +424,10 @@
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_material_shoppe.jpg"
     },
     {
+        "merged": "com.example.ftechdevice.app-debug-79:/layout_fragment_home.xml.flat",
+        "source": "com.example.ftechdevice.app-main-81:/layout/fragment_home.xml"
+    },
+    {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_background_bottom_nav.xml.flat",
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\background_bottom_nav.xml"
     },
@@ -434,10 +438,6 @@
     {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_logo.png.flat",
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\logo.png"
-    },
-    {
-        "merged": "com.example.ftechdevice.app-debug-79:/drawable_user_icon.png.flat",
-        "source": "com.example.ftechdevice.app-main-81:/drawable/user_icon.png"
     },
     {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\xml_backup_rules.xml.flat",
@@ -474,6 +474,10 @@
     {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_image_toy_01.jpg.flat",
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_image_toy_01.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_send_icon.png.flat",
+        "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\send_icon.png"
     },
     {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_background_button_normal.xml.flat",
@@ -628,6 +632,10 @@
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\baseline_local_hospital_24.xml"
     },
     {
+        "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_user_icon.png.flat",
+        "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\user_icon.png"
+    },
+    {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\layout_activity_login_screen2.xml.flat",
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_login_screen2.xml"
     },
@@ -724,16 +732,20 @@
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_google.png"
     },
     {
-        "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_search_icon.xml.flat",
-        "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\search_icon.xml"
-    },
-    {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_indicator_inactive.xml.flat",
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\indicator_inactive.xml"
     },
     {
+        "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_search_icon.xml.flat",
+        "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\search_icon.xml"
+    },
+    {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\anim_slide_out_left.xml.flat",
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\anim\\slide_out_left.xml"
+    },
+    {
+        "merged": "com.example.ftechdevice.app-debug-79:/drawable_round_back_light_10.xml.flat",
+        "source": "com.example.ftechdevice.app-main-81:/drawable/round_back_light_10.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_decor_splash.png.flat",
@@ -750,6 +762,10 @@
     {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\mipmap-mdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_round_back_theme_1000.xml.flat",
+        "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\round_back_theme_1000.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\layout_activity_start.xml.flat",
@@ -788,10 +804,6 @@
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\font\\app_font_regular.ttf"
     },
     {
-        "merged": "com.example.ftechdevice.app-debug-79:/drawable_round_back_theme_1000.xml.flat",
-        "source": "com.example.ftechdevice.app-main-81:/drawable/round_back_theme_1000.xml"
-    },
-    {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\raw_anim_cart_empty.json.flat",
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\raw\\anim_cart_empty.json"
     },
@@ -816,12 +828,12 @@
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\background_toy_cart.xml"
     },
     {
-        "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_my_msg_back.xml.flat",
-        "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\my_msg_back.xml"
-    },
-    {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\layout_activity_maps.xml.flat",
         "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_maps.xml"
+    },
+    {
+        "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_my_msg_back.xml.flat",
+        "source": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\my_msg_back.xml"
     },
     {
         "merged": "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_image_1_3.jpg.flat",
