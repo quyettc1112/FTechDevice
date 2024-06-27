@@ -1,5 +1,7 @@
 package com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -186,13 +188,12 @@ public class RegisterActivity_Screen3 extends BaseActivity {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        sendVerificationEmail();
-                        registerUser(registerViewModel.getRegisterDTO());
                         Intent intent = new Intent(this, LoginActivityScreen2.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
+                        sendVerificationEmail();
                     } else {
                         binding.btnRegisterScreen3.setEnabled(true);
-                        Toast.makeText(RegisterActivity_Screen3.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(e -> {
@@ -206,6 +207,7 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                 .addOnSuccessListener(authResult -> {
                     // Check if email is verified
                     if (mAuth.getCurrentUser() != null && mAuth.getCurrentUser().isEmailVerified()) {
+                        Log.d(TAG,registerViewModel.getRegisterDTO().getEmail());
                         registerUser(registerViewModel.getRegisterDTO());
                     } else {
                         // If email is not verified, show a message
@@ -244,7 +246,7 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                             finish();
                         } else {
                             Log.d("Checklaue", response.code() + "" + response.message() + response.errorBody());
-                            Toast.makeText(RegisterActivity_Screen3.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+
                         }
                     }
 

@@ -19,6 +19,7 @@ import com.example.ftechdevice.API_Repository.UserAPI_Repository;
 import com.example.ftechdevice.AppConfig.BaseConfig.BaseActivity;
 import com.example.ftechdevice.AppConfig.CustomView.CustomDialog.ErrorDialog;
 import com.example.ftechdevice.AppConfig.CustomView.CustomToolBar.CustomToolbar;
+import com.example.ftechdevice.Common.TokenManger.TokenManager;
 import com.example.ftechdevice.Model.ModelRequestDTO.JWTObject;
 import com.example.ftechdevice.Model.ModelRequestDTO.LoginRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
@@ -63,7 +64,10 @@ public class LoginActivityScreen2 extends BaseActivity {
 
 
         userShareViewModel = new ViewModelProvider(this).get(UserShareViewModel.class);
-
+        if(TokenManager.getAccessToken(LoginActivityScreen2.this) !=null){
+            Log.d("LL",TokenManager.getAccessToken(LoginActivityScreen2.this));
+            startActivity(new Intent(LoginActivityScreen2.this, MainActivity.class));
+        }
         backToLogin();
         getTextInputLogin();
         observeViewModel();
@@ -144,6 +148,7 @@ public class LoginActivityScreen2 extends BaseActivity {
 
     ///// Nhan
     private void loginUser(LoginRequestDTO loginRequestDTO) {
+
         userapiRepository.loginUser(loginRequestDTO)
                 .enqueue(new Callback<LoginResponse>() {
                     @Override
@@ -151,8 +156,9 @@ public class LoginActivityScreen2 extends BaseActivity {
 
 
                         if (response.isSuccessful()) {
-                            Log.d("Checklaue", response.body().getAccessToken().toString());
+                            Log.d("CheckBBBB", response.body().getAccessToken().toString());
                             userShareViewModel.updateLoginCretidential(loginRequestDTO);
+                            TokenManager.saveAccessToken(LoginActivityScreen2.this,response.body().getAccessToken());
 
                             startActivity(new Intent(LoginActivityScreen2.this, MainActivity.class));
                             finish();

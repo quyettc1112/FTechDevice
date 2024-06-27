@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
+import com.example.ftechdevice.API_Service.UserAPI_Service;
+import com.example.ftechdevice.Common.TokenManger.TokenManager;
+import com.example.ftechdevice.JWT.JWTDecoder;
+import com.example.ftechdevice.Model.ModelRespone.UserResponseDTO;
 import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivity;
 import com.example.ftechdevice.UI.Activity.MapActivity.MapsActivity;
 import com.example.ftechdevice.databinding.FragmentProfileBinding;
@@ -32,14 +37,39 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import com.example.ftechdevice.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+@AndroidEntryPoint
 public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
+    String email = null;
 
+    @Inject
+    UserAPI_Service userApiService;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        String accessToken = TokenManager.getAccessToken(requireContext());
+        if(accessToken != null) {
+            try {
+                JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
+                email = decodedPayload.getString("email");
+                getUserByEmail(accessToken,email);
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+            Log.d("JWT", email);
+        }else{
+            Toast.makeText(requireContext(), "Token is null", Toast.LENGTH_SHORT).show();
+        }
         // TODO: Use the ViewModel
     }
 
@@ -54,6 +84,37 @@ public class ProfileFragment extends Fragment {
         intentToMaps();
 
         return binding.getRoot();
+    }
+
+    private void getUserByEmail(String token, String email) {
+        userApiService.getUserByEmail("Bearer " + token, email)
+                .enqueue(new Callback<UserResponseDTO>() {
+                    @Override
+                    public void onResponse(@NonNull Call<UserResponseDTO> call, @NonNull Response<UserResponseDTO> response) {
+                        if (response.isSuccessful()) {
+                            UserResponseDTO userResponse = response.body();
+                            if (userResponse != null && binding != null) {
+                                if(userResponse.getFullName() != null) {
+                                    binding.userName.setText(userResponse.getFullName());
+                                }else{
+                                    binding.userName.setText("No Name");
+                                }
+                            } else {
+
+                                Log.d("check null","empty");
+                            }
+                        } else {
+
+                            Log.d("check fall","Failed to get user data");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<UserResponseDTO> call, @NonNull Throwable t) {
+
+                        Log.d("check fall",t.getMessage());
+                    }
+                });
     }
 
     private void intentToFaceBook() {
@@ -94,6 +155,7 @@ public class ProfileFragment extends Fragment {
         AppCompatButton buttonNo = view.findViewById(R.id.btn_logout_cancle);
 
         buttonYes.setOnClickListener(v -> {
+            TokenManager.clearAccessToken(requireContext());
             Intent intent = new Intent(requireActivity(), LoginActivity.class);
             requireActivity().startActivity(intent);
             dialog.dismiss();
