@@ -186,6 +186,9 @@ public class LoginActivityScreen2 extends BaseActivity {
         Log.d("CheckResponseValue", String.valueOf(response.code()));
     }
 
+
+    //// testvsdfaf
+
     private void isEmailVerified() {
         if(mAuth.getCurrentUser()!=null){
             boolean isEmailVerified =mAuth.getCurrentUser().isEmailVerified();
