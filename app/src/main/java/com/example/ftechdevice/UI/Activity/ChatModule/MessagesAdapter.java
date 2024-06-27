@@ -69,6 +69,10 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
 
 
                 // Test
+
+
+
+
                 // append data along with the intent
                 intent.putExtra("mobile", list2.getMobile());
                 intent.putExtra("full_name", list2.getFullName());
