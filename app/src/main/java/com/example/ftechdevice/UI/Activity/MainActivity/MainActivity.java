@@ -28,7 +28,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class MainActivity extends BaseActivity {
 
     private ShareViewModel sharedViewModel;
-    private ActivityMainBinding binding;
+    public ActivityMainBinding binding;
     private FragmentAdapter fragmentAdapter;
 
     @Override
