@@ -96,6 +96,7 @@ public class ProfileFragment extends Fragment {
                             if (userResponse != null && binding != null) {
                                 if(userResponse.getFullName() != null) {
                                     binding.userName.setText(userResponse.getFullName());
+
                                 }else{
                                     binding.userName.setText("No Name");
                                 }

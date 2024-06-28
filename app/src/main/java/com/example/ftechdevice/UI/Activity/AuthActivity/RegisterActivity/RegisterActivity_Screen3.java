@@ -90,6 +90,7 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                 registerViewModel.updateRoleId(1);
                 registerViewModel.updatePhone(binding.edtRegisterPhone.getText().toString());
                 registerViewModel.updateUsername(binding.edtRegisterName.getText().toString());
+
 //                if (binding.edtRegisterGender.getText().toString().equals("Nam")) {
 //                    registerViewModel.updateGender(true);
 //                } else {
@@ -188,12 +189,10 @@ public class RegisterActivity_Screen3 extends BaseActivity {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Intent intent = new Intent(this, LoginActivityScreen2.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
                         sendVerificationEmail();
                     } else {
                         binding.btnRegisterScreen3.setEnabled(true);
+                        Toast.makeText(RegisterActivity_Screen3.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(e -> {
@@ -203,33 +202,21 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                     } else {
                         Toast.makeText(RegisterActivity_Screen3.this, "Lỗi xảy ra, vui lòng thử lại", Toast.LENGTH_SHORT).show();
                     }
-                })
-                .addOnSuccessListener(authResult -> {
-                    // Check if email is verified
-                    if (mAuth.getCurrentUser() != null && mAuth.getCurrentUser().isEmailVerified()) {
-                        Log.d(TAG,registerViewModel.getRegisterDTO().getEmail());
-                        registerUser(registerViewModel.getRegisterDTO());
-                    } else {
-                        // If email is not verified, show a message
-                        Toast.makeText(RegisterActivity_Screen3.this, "Vui lòng xác minh email trước khi đăng nhập", Toast.LENGTH_SHORT).show();
-                        mAuth.signOut(); // Sign out the user as email is not verified
-                    }
                 });
     }
 
     private void sendVerificationEmail() {
         if (mAuth.getCurrentUser() != null) {
-            mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()) {
-                        binding.btnRegisterScreen3.setEnabled(true);
-                        registerUser(registerViewModel.getRegisterDTO());
-                        Toast.makeText(RegisterActivity_Screen3.this, "Email xác minh đã được gửi", Toast.LENGTH_SHORT).show();
-                    } else {
-                        binding.btnRegisterScreen3.setEnabled(true);
-                        Toast.makeText(getApplicationContext(), "Gửi email xác minh thất bại", Toast.LENGTH_SHORT).show();
-                    }
+            mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    registerUser(registerViewModel.getRegisterDTO());
+                    Toast.makeText(RegisterActivity_Screen3.this, "Email xác minh đã được gửi", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(this, LoginActivityScreen2.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                } else {
+                    binding.btnRegisterScreen3.setEnabled(true);
+                    Toast.makeText(getApplicationContext(), "Gửi email xác minh thất bại", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -240,20 +227,16 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                 .enqueue(new Callback<RegisterResponseDTO>() {
                     @Override
                     public void onResponse(Call<RegisterResponseDTO> call, Response<RegisterResponseDTO> response) {
-                        Log.d("test", response.code() + "" + response.message() + response.errorBody());
                         if (response.isSuccessful()) {
-                            startActivity(new Intent(RegisterActivity_Screen3.this, MainActivity.class));
-                            finish();
+                            Log.d("RegisterUser", "Đăng ký thành công với server");
                         } else {
-                            Log.d("Checklaue", response.code() + "" + response.message() + response.errorBody());
-
+                            Log.d("RegisterUser", "Đăng ký thất bại với server: " + response.code() + " " + response.message());
                         }
                     }
 
                     @Override
                     public void onFailure(Call<RegisterResponseDTO> call, Throwable t) {
-                        Log.d("Checklaue", t.toString());
-                        Toast.makeText(RegisterActivity_Screen3.this, "Lỗi kết nối, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                        Log.d("RegisterUser", "Lỗi kết nối: " + t.getMessage());
                     }
                 });
     }

@@ -33,6 +33,9 @@ public class UserResponseDTO {
     @SerializedName("isActive")
     private boolean isActive;
 
+    @SerializedName("avatar")
+    private String avatar;
+
     @SerializedName("enabled")
     private boolean enabled;
 
@@ -120,6 +123,14 @@ public class UserResponseDTO {
 
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public boolean isEnabled() {
