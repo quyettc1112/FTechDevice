@@ -32,6 +32,7 @@ import com.example.ftechdevice.Model.ModelRespone.ProductReponse;
 import com.example.ftechdevice.Model.ProductModel;
 import com.example.ftechdevice.Model.ToyModel;
 import com.example.ftechdevice.R;
+import com.example.ftechdevice.UI.Activity.ChatModule.ChatActivity.ChatActivity;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
@@ -90,6 +91,7 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         ActivityMainBinding mainBinding = activity.binding;
 
         setupCategoryClickListeners(mainBinding);
+        intentToChat();
 
         return binding.getRoot();
     }
@@ -220,5 +222,16 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         sharedViewModel.setCategoryId(categoryId);
         mainBinding.vp2Main.setCurrentItem(1, true);
     }
+    private void intentToChat() {
+        binding.imNotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(requireContext(), ChatActivity.class));
+            }
+        });
+
+    }
+
+
 
 }
