@@ -32,3 +32,4 @@ app/build/kotlin/
 # Ignore specific Gradle lock files
 .gradle/buildOutputCleanup.lock
 .gradle/8.7/executionHistory/executionHistory.lock
+.app
