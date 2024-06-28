@@ -32,10 +32,12 @@ import com.example.ftechdevice.Model.ModelRespone.ProductReponse;
 import com.example.ftechdevice.Model.ProductModel;
 import com.example.ftechdevice.Model.ToyModel;
 import com.example.ftechdevice.R;
-import com.example.ftechdevice.UI.Activity.ChatModule.ChatActivity.ChatActivity;
+import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity;
+import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
 import com.example.ftechdevice.Until.BottomMarginItemDecoration;
 import com.example.ftechdevice.Until.NonScrollableGridLayoutManager;
+import com.example.ftechdevice.databinding.ActivityMainBinding;
 import com.example.ftechdevice.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
@@ -71,9 +73,6 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         toyListAdapter.setOnItemCartClickListener(cartModel -> {
             Toast.makeText(requireContext(), cartModel.getToyName(), Toast.LENGTH_SHORT).show();
         });
-
-
-
     }
 
     @Nullable
@@ -86,7 +85,12 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         setCurrentIndicator(0);
         setRecycleCateOption();;
         intentToVideoActivity();
-        intentToChatActivity();
+
+        MainActivity activity = (MainActivity) getActivity();
+        ActivityMainBinding mainBinding = activity.binding;
+
+        setupCategoryClickListeners(mainBinding);
+
         return binding.getRoot();
     }
 
@@ -108,6 +112,13 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         ViewGroup.LayoutParams layoutParams = binding.rvToys.getLayoutParams();
         layoutParams.height = newHeight;
         binding.rvToys.setLayoutParams(layoutParams);
+
+        productListAdapter.setOnItemClickListener(new ProductListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(ProductModel product) {
+                Toast.makeText(requireContext(), product.getName().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void setUpVideoMainRecycleView() {
@@ -175,8 +186,7 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
     }
 
     private void callProductAPI(){
-        productAPIRepository.getProductList("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJ1c2VySWQiOjEsIlJvbGVOYW1lIjoiQURNSU4iLCJpYXQiOjE3MTg4MTQyNjUsImV4cCI6MTcxODkwMDY2NX0.RSZfNylizNft4eXkXVUc1Zci5FFIUCak9wUuFq3E0zI",
-                0, 12, "", 0).enqueue(new Callback<ProductReponse>() {
+        productAPIRepository.getProductList(0, 12, "", 0).enqueue(new Callback<ProductReponse>() {
             @Override
             public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -198,14 +208,17 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         });
     }
 
+    private void setupCategoryClickListeners(ActivityMainBinding mainBinding) {
+        binding.llLaptop.setOnClickListener(v -> handleCategoryClick(mainBinding, 1));
+        binding.llDienthoai.setOnClickListener(v -> handleCategoryClick(mainBinding, 2));
+        binding.llBanphim.setOnClickListener(v -> handleCategoryClick(mainBinding, 3));
+        binding.llManhinh.setOnClickListener(v -> handleCategoryClick(mainBinding, 4));
+    }
 
-    private void intentToChatActivity() {
-        binding.imNotify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(requireActivity(), ChatActivity.class));
-            }
-        });
+    private void handleCategoryClick(ActivityMainBinding mainBinding, int categoryId) {
+        ShareViewModel sharedViewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
+        sharedViewModel.setCategoryId(categoryId);
+        mainBinding.vp2Main.setCurrentItem(1, true);
     }
 
 }

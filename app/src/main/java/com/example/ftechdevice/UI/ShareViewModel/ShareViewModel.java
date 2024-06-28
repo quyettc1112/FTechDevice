@@ -16,6 +16,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 @HiltViewModel
 public class ShareViewModel extends ViewModel {
 
+    private final MutableLiveData<Integer> categoryId = new MutableLiveData<>();
     private final MutableLiveData<List<CartModel>> _cartItems = new MutableLiveData<>(new ArrayList<>());
     public LiveData<List<CartModel>> getCartItems() {
         return _cartItems;
@@ -24,6 +25,12 @@ public class ShareViewModel extends ViewModel {
     @Inject
     public ShareViewModel() {
     }
+
+    public void setCategoryId(int id) {
+        categoryId.setValue(id);
+    }
+
+
 
     public void addItem(CartModel cartModel) {
         List<CartModel> currentList = _cartItems.getValue();
