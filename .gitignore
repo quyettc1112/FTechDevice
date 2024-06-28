@@ -1347,3 +1347,72 @@ app/build/kotlin/
 # Ignore specific Gradle lock files
 .gradle/buildOutputCleanup.lock
 .gradle/8.7/executionHistory/executionHistory.lock
+
+# Default ignored files
+/shelf/
+/workspace.xml
+# Ignore build output directories
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log files
+*.log
+
+# Android Studio files
+.idea/
+*.iml
+*.hprof
+
+# IntelliJ
+*.iws
+*.ipr
+*.iws
+
+# Keystore files
+*.jks
+
+# External native build folder generated in Android Studio 2.2+
+.externalNativeBuild
+
+# NDK
+.obj
+*.so
+
+# Kotlin build folder
+*.kotlin_module
+
+# Gradle cache files
+.gradle/
+build/
+
+# Compiled files
+*.dex
+*.apk
+*.ap_
+*.o
+*.so
+*.obj
+*.lock
+
+# Generated files
+app/build/
+app/build/intermediates/
+
+# Uncomment the following lines if you have specific files to ignore
+app/build/intermediates/classes/debug/transformDebugClassesWithAsm/jars/
+app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/
+app/build/intermediates/apk/debug/
+app/build/kotlin/kaptGenerateStubsDebugKotlin/local-state/
+app/buildOutputCleanup.lock/
+app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Fragment/CartFragment/
+app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/
+app/build/intermediates/dex/debug/mergeProjectDexDebug/
+app/build/tmp/kapt3/incApCache/debug/
+app/build/intermediates/incremental/debug/mergeDebugResources/
+app/build/intermediates/incremental/debug/packageDebugResources/
+app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/AppConfig/CustomView/CustomToolBar/
+app/build/intermediates/classes/debug/transformDebugClassesWithAsm/dirs/com/example/ftechdevice/AppConfig/Application/
