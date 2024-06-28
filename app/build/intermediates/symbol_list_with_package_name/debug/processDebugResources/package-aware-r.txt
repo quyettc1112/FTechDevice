@@ -4482,7 +4482,11 @@ id linearLayout8
 id linearLayout9
 id listMode
 id list_item
+id llBanphim
+id llDienthoai
 id llEndIcon
+id llLaptop
+id llManhinh
 id llStartIcon
 id lo_content
 id locale
