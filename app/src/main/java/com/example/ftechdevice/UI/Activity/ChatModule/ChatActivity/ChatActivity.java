@@ -37,6 +37,13 @@ public class ChatActivity extends AppCompatActivity {
     private MessagesAdapter messagesAdapter;
 
 
+
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
