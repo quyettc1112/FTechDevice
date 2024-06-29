@@ -1,4 +1,4 @@
-package com.example.ftechdevice.UI.Activity.ChatModule;
+package com.example.ftechdevice.UI.Activity.ChatModule.Adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,35 +13,34 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ftechdevice.Model.MessagesList;
+import com.example.ftechdevice.Model.ChatModuleModel.ChatList;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.ChatModule.MessageActivity.MessageActivity;
-import com.google.ai.client.generativeai.Chat;
 
 import java.util.List;
 
-public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyViewHolder> {
+public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
 
-    private List<MessagesList> messagesLists;
+    private List<ChatList> chatLists;
     private final Context context;
 
-    public MessagesAdapter(List<MessagesList> messagesLists, Context context) {
-        this.messagesLists = messagesLists;
+    public ChatAdapter(List<ChatList> chatLists, Context context) {
+        this.chatLists = chatLists;
         this.context = context;
     }
 
     @SuppressLint("InflateParams")
     @NonNull
     @Override
-    public MessagesAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ChatAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.messages_adapter_layout, null));
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull MessagesAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ChatAdapter.MyViewHolder holder, int position) {
 
-        MessagesList list2 = messagesLists.get(position);
+        ChatList list2 = chatLists.get(position);
 
         holder.name.setText(list2.getFullName());
         holder.lastMessage.setText(list2.getLastMessage());
@@ -83,12 +82,12 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.MyView
 
     @Override
     public int getItemCount() {
-        return messagesLists.size();
+        return chatLists.size();
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void updateMessages(List<MessagesList> userMessagesList) {
-        messagesLists = userMessagesList;
+    public void updateMessages(List<ChatList> userChatList) {
+        chatLists = userChatList;
         notifyDataSetChanged();
     }
 

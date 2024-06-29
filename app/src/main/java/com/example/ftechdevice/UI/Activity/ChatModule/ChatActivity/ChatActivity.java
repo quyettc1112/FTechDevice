@@ -5,15 +5,12 @@ import android.os.Bundle;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ftechdevice.Model.MessagesList;
+import com.example.ftechdevice.Model.ChatModuleModel.ChatList;
 import com.example.ftechdevice.R;
-import com.example.ftechdevice.UI.Activity.ChatModule.MessagesAdapter;
+import com.example.ftechdevice.UI.Activity.ChatModule.Adapter.ChatAdapter;
 import com.example.ftechdevice.Until.MemoryData;
 import com.example.ftechdevice.Until.MyProgressDialog;
 import com.google.firebase.database.DataSnapshot;
@@ -31,13 +28,10 @@ public class ChatActivity extends AppCompatActivity {
 
 
     // List to store user's messages
-    private final List<MessagesList> userMessagesList = new ArrayList<>();
+    private final List<ChatList> userChatList = new ArrayList<>();
 
     // User messages adapter
-    private MessagesAdapter messagesAdapter;
-
-
-
+    private ChatAdapter chatAdapter;
 
 
     @Override
@@ -49,15 +43,15 @@ public class ChatActivity extends AppCompatActivity {
         final RecyclerView messagesRecyclerView = findViewById(R.id.messagesRecyclerView);
 
         //final String mobileNumber = MemoryData.getMobile(this);
-        final String mobileNumber = "+840356970686";
+        final String mobileNumber = "+84356970686";
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl(getString(R.string.database_url));
 
         // Configure RecyclerView
         messagesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Set adapter to RecyclerView
-        messagesAdapter = new MessagesAdapter(userMessagesList, ChatActivity.this);
-        messagesRecyclerView.setAdapter(messagesAdapter);
+        chatAdapter = new ChatAdapter(userChatList, ChatActivity.this);
+        messagesRecyclerView.setAdapter(chatAdapter);
 
         // Show progress dialog while fetching chats from the database
         final MyProgressDialog progressDialog = new MyProgressDialog(this);
@@ -69,7 +63,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 // Clear old messages from the list
-                userMessagesList.clear();
+                userChatList.clear();
                 // Loop through available users in the database
                 for (DataSnapshot userData : snapshot.child("users").getChildren()) {
                     // Get user's mobile number from firebase database
@@ -103,7 +97,6 @@ public class ChatActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 if (progressDialog.isShowing()) {
@@ -196,15 +189,15 @@ public class ChatActivity extends AppCompatActivity {
     // Load data into the message list
     private void loadData(String chatKey, String fullName, String mobile, String lastMessage, int unseenMessagesCount) {
         if (!mobileAlreadyExists(mobile)) {
-            MessagesList messagesList = new MessagesList(chatKey, fullName, mobile, lastMessage, unseenMessagesCount);
-            userMessagesList.add(messagesList);
-            messagesAdapter.updateMessages(userMessagesList);
+            ChatList chatList = new ChatList(chatKey, fullName, mobile, lastMessage, unseenMessagesCount);
+            userChatList.add(chatList);
+            chatAdapter.updateMessages(userChatList);
         }
     }
 
     // Check if mobile number already exists in the list
     private boolean mobileAlreadyExists(String mobile) {
-        for (MessagesList message : userMessagesList) {
+        for (ChatList message : userChatList) {
             if (message.getMobile().equals(mobile)) {
                 return true;
             }

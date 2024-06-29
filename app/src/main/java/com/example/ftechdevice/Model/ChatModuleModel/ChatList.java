@@ -1,11 +1,11 @@
-package com.example.ftechdevice.Model;
+package com.example.ftechdevice.Model.ChatModuleModel;
 
-public class MessagesList {
+public class ChatList {
 
     private final String chatKey, fullName, mobile, lastMessage;
     private int unseenMessages;
 
-    public MessagesList(String chatKey, String fullName, String mobile, String lastMessage, int unseenMessages) {
+    public ChatList(String chatKey, String fullName, String mobile, String lastMessage, int unseenMessages) {
         this.chatKey = chatKey;
         this.fullName = fullName;
         this.mobile = mobile;
