@@ -4173,6 +4173,7 @@ id autoCompleteToEnd
 id autoCompleteToStart
 id autoComplete_fragment
 id automatic
+id backBtn
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -4180,6 +4181,7 @@ id beginning
 id bestChoice
 id blocking
 id bottom
+id bottomBar
 id bounce
 id bounceBoth
 id bounceEnd
@@ -4217,6 +4219,7 @@ id center_vertical
 id chain
 id chain2
 id chains
+id chattingRecyclerView
 id checkbox
 id checked
 id chronometer
@@ -4539,6 +4542,7 @@ id matrix
 id media_actions
 id media_controller_compat_view_tag
 id message
+id messageEditTxt
 id messagesRecyclerView
 id middle
 id mini
@@ -4717,6 +4721,7 @@ id seekbar_value
 id select_dialog_listview
 id selected
 id selection_type
+id sendBtn
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -4823,6 +4828,7 @@ id toggle
 id toolBarShadow
 id toolblarCustome
 id top
+id topBar
 id topPanel
 id touch_outside
 id transitionToEnd

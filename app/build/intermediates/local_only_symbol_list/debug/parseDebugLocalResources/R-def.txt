@@ -248,7 +248,9 @@ id anime
 id anticipate
 id anticipateOvershoot
 id autoComplete_fragment
+id backBtn
 id bottom
+id bottomBar
 id btnNegative
 id btnOK
 id btnPositive
@@ -263,6 +265,7 @@ id btn_register_screen3
 id btn_saveFillter
 id cardView
 id cardView2
+id chattingRecyclerView
 id cim_heart
 id clToolBar
 id constraintLayout
@@ -355,6 +358,7 @@ id logout
 id lt_empty_cart
 id main
 id map
+id messageEditTxt
 id messagesRecyclerView
 id myLayout
 id myMessage
@@ -375,6 +379,7 @@ id rv_video
 id rv_videos
 id scrollView2
 id search
+id sendBtn
 id test
 id text
 id textView
@@ -395,6 +400,7 @@ id text_container
 id toolBarShadow
 id toolblarCustome
 id top
+id topBar
 id tvContent
 id tvContentError
 id tvStartText

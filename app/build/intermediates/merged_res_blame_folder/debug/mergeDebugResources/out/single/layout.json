@@ -1,150 +1,154 @@
 [
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_login.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/activity_login.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\slide_item_container.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\slide_item_container.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_start.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/activity_start.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\dialog_error.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\dialog_error.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/my_progress_dialog_layout.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/my_progress_dialog_layout.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_start.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_start.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/dialog_confirm.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/dialog_confirm.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\recycle_item_toy_list.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\recycle_item_toy_list.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_video_screen2.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/activity_video_screen2.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\fragment_profile.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\fragment_profile.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/item_toy_cart.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/item_toy_cart.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_video.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_video.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/dialog_error.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/dialog_error.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_login.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_login.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/fragment_cart.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/fragment_cart.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_splash.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_splash.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/dialog_bottom_sheet_logout_ui.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/dialog_bottom_sheet_logout_ui.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\item_recycler_view.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\item_recycler_view.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/dialog_notify.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/dialog_notify.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\custom_tool_bar.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\custom_tool_bar.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/slide_item_video_container.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/slide_item_video_container.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_message.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_message.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/messages_adapter_layout.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/messages_adapter_layout.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_register_screen3.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_register_screen3.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/slide_item_container.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/slide_item_container.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\recycle_item_videos.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\recycle_item_videos.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_payment.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/activity_payment.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/custom_tool_bar.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/custom_tool_bar.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\chat_adapter_layout.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\chat_adapter_layout.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/recycle_item_toy_list.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/recycle_item_toy_list.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_chat.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_chat.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_maps.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/activity_maps.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\fragment_cart.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\fragment_cart.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/dialog_proceed_to_payment.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/dialog_proceed_to_payment.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\recycle_item_course.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\recycle_item_course.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/recycle_item_course.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/recycle_item_course.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_register.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_register.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_register_screen3.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/activity_register_screen3.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\my_progress_dialog_layout.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\my_progress_dialog_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_video_screen2.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_video_screen2.xml"
     },
     {
         "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_message.xml",
         "source": "com.example.ftechdevice.app-main-81:/layout/activity_message.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_register.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/activity_register.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_payment.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_payment.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/dialog_fillter_toys.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/dialog_fillter_toys.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\dialog_bottom_sheet_logout_ui.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\dialog_bottom_sheet_logout_ui.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/fragment_home.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/fragment_home.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\item_toy_cart.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\item_toy_cart.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_splash.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/activity_splash.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_maps.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_maps.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/item_image_relvevent.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/item_image_relvevent.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\dialog_fillter_toys.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\dialog_fillter_toys.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_main.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/activity_main.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\item_image_relvevent.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\item_image_relvevent.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_register_screen2.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/activity_register_screen2.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\fragment_home.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\fragment_home.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_video.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/activity_video.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\dialog_proceed_to_payment.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\dialog_proceed_to_payment.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/fragment_profile.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/fragment_profile.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_login_screen2.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_login_screen2.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_produc_detail.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/activity_produc_detail.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\fragment_product.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\fragment_product.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_login_screen2.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/activity_login_screen2.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\slide_item_video_container.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\slide_item_video_container.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/recycle_item_videos.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/recycle_item_videos.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\dialog_notify.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\dialog_notify.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/item_recycler_view.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/item_recycler_view.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_register_screen2.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_register_screen2.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/fragment_product.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/fragment_product.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_produc_detail.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_produc_detail.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/activity_chat.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/activity_chat.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\dialog_confirm.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\dialog_confirm.xml"
     },
     {
-        "merged": "com.example.ftechdevice.app-mergeDebugResources-78:/layout/chat_adapter_layout.xml",
-        "source": "com.example.ftechdevice.app-main-81:/layout/chat_adapter_layout.xml"
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\messages_adapter_layout.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\messages_adapter_layout.xml"
     }
 ]
