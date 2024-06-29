@@ -1,5 +1,9 @@
 package com.example.ftechdevice.JWT;
 
+import static com.example.ftechdevice.Common.TokenManger.TokenManager.getAccessToken;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Base64;
 import android.util.Log;
 
@@ -30,6 +34,15 @@ public class JWTDecoder {
             e.printStackTrace();
         }
         return null;
+    }
+
+
+
+    public static void removeAccessToken(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("access_token");
+        editor.apply();
     }
 
     public static void main(String[] args) {

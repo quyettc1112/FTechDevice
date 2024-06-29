@@ -2,6 +2,9 @@ package com.example.ftechdevice.Common.TokenManger;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Base64;
+
+import org.json.JSONObject;
 
 public class TokenManager {
 
@@ -37,10 +40,42 @@ public class TokenManager {
     }
 
     // Hàm để xóa accessToken (đăng xuất)
+    //
     public static void clearAccessToken(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove(ACCESS_TOKEN_KEY);
         editor.apply();
+    }
+
+    public static boolean isTokenValid(Context context) {
+        String token = getAccessToken(context);
+        if (token == null) {
+            return false;
+        }
+
+        try {
+            String[] parts = token.split("\\.");
+            if (parts.length != 3) {
+                return false;
+            }
+
+            String payload = new String(Base64.decode(parts[1], Base64.URL_SAFE));
+            JSONObject jsonPayload = new JSONObject(payload);
+
+            long exp = jsonPayload.getLong("exp");
+            long currentTime = System.currentTimeMillis() / 1000;
+
+            if (currentTime > exp) {
+                // Token đã hết hạn, xóa nó
+                clearAccessToken(context);
+                return false;
+            }
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

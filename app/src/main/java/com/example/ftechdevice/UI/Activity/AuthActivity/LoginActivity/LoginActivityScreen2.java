@@ -5,13 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -26,7 +20,6 @@ import com.example.ftechdevice.Model.ModelRequestDTO.RegisterRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
 import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
-import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
 import com.example.ftechdevice.UI.ShareViewModel.UserShareViewModel;
@@ -38,10 +31,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
-import com.google.firebase.auth.FirebaseUser;
-
 import javax.inject.Inject;
-
 import dagger.hilt.android.AndroidEntryPoint;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,13 +40,15 @@ import retrofit2.Response;
 @AndroidEntryPoint
 public class LoginActivityScreen2 extends BaseActivity {
 
+    private static final String TAG = "LoginActivityScreen2";
+    private static final int MIN_PASSWORD_LENGTH = 6;
+
     private ActivityLoginScreen2Binding binding;
-
     private UserShareViewModel userShareViewModel;
-
     private RegisterViewModel registerViewModel;
-    FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     private boolean isEmailVerificationInProgress = false;
+
     @Inject
     UserAPI_Repository userapiRepository;
 
@@ -67,27 +59,50 @@ public class LoginActivityScreen2 extends BaseActivity {
         binding = ActivityLoginScreen2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
-        userShareViewModel = new ViewModelProvider(this).get(UserShareViewModel.class);
-        Intent myIntent = getIntent();
-        Bundle myBundle = myIntent.getBundleExtra("Res");
-        registerViewModel.updateEmail(myBundle.getString("GetEmail"));
-        registerViewModel.updatePassword(myBundle.getString("GetPassword"));
-        registerViewModel.updatePhone(myBundle.getString("GetPhone"));
-        registerViewModel.updateRoleId(1);
-
-        RegisterRequestDTO registerRequestDTO = registerViewModel.getRegisterDTO();
-        Log.d("AA",registerRequestDTO.getEmail().toString());
-        if(TokenManager.getAccessToken(LoginActivityScreen2.this) !=null){
-            Log.d("LL",TokenManager.getAccessToken(LoginActivityScreen2.this));
-            startActivity(new Intent(LoginActivityScreen2.this, MainActivity.class));
-        }
-        backToLogin();
-        getTextInputLogin();
+        initViewModels();
+        handleIntentData();
+        checkExistingToken();
+        setupUI();
         observeViewModel();
     }
 
-    private void backToLogin() {
+    private void initViewModels() {
+        registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
+        userShareViewModel = new ViewModelProvider(this).get(UserShareViewModel.class);
+    }
+
+    private void handleIntentData() {
+        Intent myIntent = getIntent();
+        Bundle myBundle = myIntent.getBundleExtra("Res");
+        if (myBundle != null) {
+            updateRegisterViewModel(myBundle);
+        }
+    }
+
+    private void updateRegisterViewModel(Bundle bundle) {
+        registerViewModel.updateEmail(bundle.getString("GetEmail"));
+        registerViewModel.updateUsername(bundle.getString("GetUsername"));
+        registerViewModel.updatePassword(bundle.getString("GetPassword"));
+        registerViewModel.updateRoleId(1);
+        registerViewModel.updatePhone(bundle.getString("GetPhone"));
+        RegisterRequestDTO registerRequestDTO = registerViewModel.getRegisterDTO();
+        Log.d(TAG, "Email from RegisterDTO: " + registerRequestDTO.getEmail());
+    }
+
+    private void checkExistingToken() {
+        if (TokenManager.isTokenValid(this)) {
+            Log.d(TAG, "Valid token found: " + TokenManager.getAccessToken(this));
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }
+    }
+
+    private void setupUI() {
+        setupToolbar();
+        setupLoginButton();
+    }
+
+    private void setupToolbar() {
         binding.customToolbarLogin2.setOnStartIconClickListener(new CustomToolbar.OnStartIconClickListener() {
             @Override
             public void onStartIconClick() {
@@ -96,36 +111,27 @@ public class LoginActivityScreen2 extends BaseActivity {
         });
     }
 
-    private void getTextInputLogin() {
+    private void setupLoginButton() {
         binding.btnLogin.setOnClickListener(v -> {
             String email = binding.edtEmail.getText().toString();
             String password = binding.edtPassword.getText().toString();
-            if (checkValidNumber(email, password)) {
+            if (validateInput(email, password)) {
                 userShareViewModel.updateLoginCretidential(new LoginRequestDTO(email, password));
-
-                if (userShareViewModel.getloginCredentials().getValue() != null) {
-                    doLogin(userShareViewModel.getloginCretidentail());
-                }
+                doLogin(userShareViewModel.getloginCretidentail());
             }
         });
     }
 
-    private boolean checkValidNumber(String email, String password) {
+    private boolean validateInput(String email, String password) {
         boolean isValid = true;
 
-        if (email.isEmpty()) {
-            binding.edtEmail.setError("Email không được để trống");
-            isValid = false;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.edtEmail.setError("Email không hợp lệ");
             isValid = false;
         }
 
-        if (password.isEmpty()) {
-            binding.edtPassword.setError("Mật khẩu không được để trống");
-            isValid = false;
-        } else if (password.length() < 6) {
-            binding.edtPassword.setError("Mật khẩu phải có ít nhất 6 ký tự");
+        if (password.isEmpty() || password.length() < MIN_PASSWORD_LENGTH) {
+            binding.edtPassword.setError("Mật khẩu phải có ít nhất " + MIN_PASSWORD_LENGTH + " ký tự");
             isValid = false;
         }
 
@@ -136,172 +142,105 @@ public class LoginActivityScreen2 extends BaseActivity {
         userShareViewModel.getUserCredentials().observe(this, new Observer<UserCretidentialDTO>() {
             @Override
             public void onChanged(UserCretidentialDTO userCretidential) {
-                // Do something with the updated user credentials
+                // Handle user credential changes if needed
             }
         });
     }
-    private void callUserCretidential(UserCretidentialDTO userCretidentialDTO) {
-        userapiRepository.getUserCretidential(userCretidentialDTO)
-                .enqueue(new Callback<JWTObject>() {
-                    @Override
-                    public void onResponse(Call<JWTObject> call, Response<JWTObject> response) {
-                        if (response.isSuccessful() && response.body() != null) {
-                            JWTObject jwtObject = response.body();
-                            userShareViewModel.updateJWTToken(jwtObject);
-                            startActivity(new Intent(LoginActivityScreen2.this, MainActivity.class));
-                            finish();
-                        } else {
-                            handleErrorResponse(response);
-                        }
+
+    private void doLogin(LoginRequestDTO loginRequestDTO) {
+
+        mAuth.signInWithEmailAndPassword(loginRequestDTO.getEmail(), loginRequestDTO.getPassword())
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        handleSuccessfulFirebaseLogin(loginRequestDTO);
+                    } else {
+                        handleLoginFailure(task.getException());
                     }
-                    @Override
-                    public void onFailure(Call<JWTObject> call, Throwable t) {
-                        Log.d("CheckResponseValue", t.getMessage());
-                    }
+
                 });
     }
 
-    ///// Nhan
-    private void loginUser(LoginRequestDTO loginRequestDTO) {
+    private void handleSuccessfulFirebaseLogin(LoginRequestDTO loginRequestDTO) {
+        mAuth.getCurrentUser().reload().addOnCompleteListener(reloadTask -> {
+            if (mAuth.getCurrentUser().isEmailVerified()) {
+                loginUser(loginRequestDTO);
+                RegisterRequestDTO registerDTO = registerViewModel.getRegisterDTO();
+                if (registerDTO != null && registerDTO.getEmail() != null) {
+                    registerUser(registerDTO);
+                } else {
+                    Log.d(TAG, "RegisterDTO or email is null");
+                }
+            } else {
+                Toast.makeText(this, "Vui lòng xác minh email trước khi đăng nhập", Toast.LENGTH_SHORT).show();
+                sendVerificationEmail();
+                mAuth.signOut();
+            }
+        });
+    }
 
+    private void handleLoginFailure(Exception e) {
+        if (e instanceof FirebaseAuthInvalidCredentialsException) {
+            FirebaseAuthInvalidCredentialsException firebaseAuthException = (FirebaseAuthInvalidCredentialsException) e;
+            String errorCode = firebaseAuthException.getErrorCode();
+            switch (errorCode) {
+                case "ERROR_INVALID_EMAIL":
+                    binding.edtEmail.setError("Email không hợp lệ");
+                    binding.edtEmail.requestFocus();
+                    break;
+                case "ERROR_WRONG_PASSWORD":
+                    binding.edtPassword.setError("Mật khẩu không đúng");
+                    binding.edtPassword.requestFocus();
+                    break;
+                default:
+                    Toast.makeText(LoginActivityScreen2.this,
+                            "Thông tin đăng nhập không hợp lệ: " + firebaseAuthException.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void loginUser(LoginRequestDTO loginRequestDTO) {
         userapiRepository.loginUser(loginRequestDTO)
                 .enqueue(new Callback<LoginResponse>() {
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-
-
-                        if (response.isSuccessful()) {
-                            Log.d("CheckBBBB", response.body().getAccessToken().toString());
-                            userShareViewModel.updateLoginCretidential(loginRequestDTO);
-                            TokenManager.saveAccessToken(LoginActivityScreen2.this,response.body().getAccessToken());
-
-                            startActivity(new Intent(LoginActivityScreen2.this, MainActivity.class));
-                            finish();
-
-                        } else  Log.d("Checklaue", response.code() +"" + response.message() + response.errorBody());
+                        if (response.isSuccessful() && response.body() != null) {
+                            handleSuccessfulLogin(response.body());
+                        } else {
+                            handleFailedLogin(response);
+                        }
                     }
 
                     @Override
                     public void onFailure(Call<LoginResponse> call, Throwable t) {
-                        Log.d("Checklaue",t.toString());
+                        Log.e(TAG, "Login failed: " + t.getMessage());
+                        Toast.makeText(LoginActivityScreen2.this, "Lỗi kết nối", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-
-    private void handleErrorResponse(Response<JWTObject> response) {
-        if (response.code() == 404) {
-            ErrorDialog errorDialog = new ErrorDialog(
-                    this,
-                    "Không tìm thấy tài khoản của bạn",
-                    "Quay Lại"
-            );
-            errorDialog.show();
-        } else if (response.code() == 400) {
-            ErrorDialog errorDialog = new ErrorDialog(
-                    this,
-                    "Sai Mật Khẩu",
-                    "Quay Lại"
-            );
-            errorDialog.show();
-        }
-        Log.d("CheckResponseValue", String.valueOf(response.code()));
+    private void handleSuccessfulLogin(LoginResponse loginResponse) {
+        Log.d(TAG, "Login successful. Access Token: " + loginResponse.getAccessToken());
+        TokenManager.saveAccessToken(this, loginResponse.getAccessToken());
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
-    private void isEmailVerified() {
-        if(mAuth.getCurrentUser()!=null){
-            boolean isEmailVerified =mAuth.getCurrentUser().isEmailVerified();
-            if(isEmailVerified){
-                Toast.makeText(this,"Email is verifi", Toast.LENGTH_SHORT).show();
-            }else{
-
-                Toast.makeText(this,"please verify your email address first", Toast.LENGTH_SHORT).show();
-                sendVerificationEmail();
-            }
-        }
-    }
-    private void doLogin(LoginRequestDTO loginRequestDTO) {
-        // Reset the flag each time login is attempted
-        isEmailVerificationInProgress = false;
-
-        mAuth.signInWithEmailAndPassword(loginRequestDTO.getEmail(), loginRequestDTO.getPassword())
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Log.d("CheckResponseValue", "signInWithEmail:success");
-                            // Reload the user to get the latest email verification status
-                            mAuth.getCurrentUser().reload().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> reloadTask) {
-                                    if (mAuth.getCurrentUser().isEmailVerified()) {
-                                        loginUser(loginRequestDTO);  // Proceed with the backend login
-
-                                        if (registerViewModel.getRegisterDTO() != null) {
-                                            registerUser(registerViewModel.getRegisterDTO());
-                                        }else{
-                                            Log.d("LL",registerViewModel.getRegisterDTO().getEmail());
-                                        }
-                                    } else {
-                                        Toast.makeText(LoginActivityScreen2.this, "Vui lòng xác minh email trước khi đăng nhập", Toast.LENGTH_SHORT).show();
-                                        sendVerificationEmail();
-                                        mAuth.signOut(); // Sign out the user since their email is not verified
-                                    }
-                                }
-                            });
-                        } else {
-                            handleLoginFailure(task.getException());
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        handleLoginFailure(e);
-                    }
-                });
-    }
-
-    private void handleLoginFailure(Exception e) {
-        if (e instanceof FirebaseAuthInvalidCredentialsException) { // Means password is wrong
-            binding.btnLogin.setEnabled(true);
-            binding.edtPassword.setError("Invalid Password");
-            binding.edtPassword.requestFocus();
-        } else if (e instanceof FirebaseAuthInvalidUserException) { // Means email is not registered with us
-            binding.btnLogin.setEnabled(true);
-            binding.edtPassword.setError("Email Not Registered");
-            binding.edtPassword.requestFocus();
-        } else {
-            Toast.makeText(LoginActivityScreen2.this, "Oops! Something went wrong", Toast.LENGTH_SHORT).show();
-        }
+    private void handleFailedLogin(Response<LoginResponse> response) {
+        Log.d(TAG, "Login failed. Code: " + response.code() + ", Message: " + response.message());
+       // Toast.makeText(this, "Đăng nhập thất bại: " + response.message(), Toast.LENGTH_SHORT).show();
     }
 
     private void sendVerificationEmail() {
-        if(mAuth.getCurrentUser() != null){
+        if (mAuth.getCurrentUser() != null && !isEmailVerificationInProgress) {
             isEmailVerificationInProgress = true;
-            mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    isEmailVerificationInProgress = false;  // Reset the flag here
-                    if(task.isSuccessful()) {
-                        Toast.makeText(LoginActivityScreen2.this, "Email xác minh đã được gửi đến địa chỉ email của bạn", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Không thể gửi email xác minh", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }
-    }
-
-    // Thêm hàm này vào LoginActivityScreen2
-    private void checkEmailVerificationAndRegister() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            user.reload().addOnCompleteListener(task -> {
-                if (user.isEmailVerified()) {
-                    // Email đã được xác minh, tiến hành đăng ký với server
-                    registerUser(registerViewModel.getRegisterDTO());
+            mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task -> {
+                isEmailVerificationInProgress = false;
+                if (task.isSuccessful()) {
+                    Toast.makeText(this, "Email xác minh đã được gửi", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Vui lòng xác minh email trước khi đăng nhập", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "Không thể gửi email xác minh", task.getException());
+                   // Toast.makeText(this, "Không thể gửi email xác minh", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -311,24 +250,29 @@ public class LoginActivityScreen2 extends BaseActivity {
         userapiRepository.registerUser(registerRequestDTO)
                 .enqueue(new Callback<RegisterResponseDTO>() {
                     @Override
-                    public void onResponse(Call<RegisterResponseDTO> call, Response<RegisterResponseDTO> response) {
+                    public void onResponse(@NonNull Call<RegisterResponseDTO> call, @NonNull Response<RegisterResponseDTO> response) {
                         if (response.isSuccessful()) {
-                            Log.d("RegisterUser", "Đăng ký thành công với server");
-                            Toast.makeText(LoginActivityScreen2.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                            // Tiếp tục với quá trình đăng nhập
+                            Log.d(TAG, "Đăng ký thành công với server");
+                            Toast.makeText(LoginActivityScreen2.this, "Đăng ký thành công, Hãy ấn lần nữa để đăng nhập", Toast.LENGTH_SHORT).show();
                         } else {
-                            //Log.d("RegisterUser", "Đăng ký thất bại với server: " + response.code() + " " + response.message());
-                            Toast.makeText(LoginActivityScreen2.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+                            Log.d(TAG, "Đăng ký thất bại. Code: " + response.code() + ", Message: " + response.message());
+                        // Toast.makeText(LoginActivityScreen2.this, "Đăng ký thất bại: " + response.message(), Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<RegisterResponseDTO> call, Throwable t) {
-                        Log.d("RegisterUser", "Lỗi kết nối: " + t.getMessage());
-                        Toast.makeText(LoginActivityScreen2.this, "Lỗi kết nối", Toast.LENGTH_SHORT).show();
+                    public void onFailure(@NonNull Call<RegisterResponseDTO> call, Throwable t) {
+                        Log.e(TAG, "Lỗi kết nối: " + t.getMessage());
+                        Toast.makeText(LoginActivityScreen2.this, "Lỗi kết nối khi đăng ký", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
 
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Cancel any ongoing asynchronous operations if necessary
     }
 }

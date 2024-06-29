@@ -23,9 +23,26 @@ public class RegisterRequestDTO {
     private String address;
 
     @SerializedName("roleId")
-    private int roleId;
+    private Integer roleId;
 
-    public RegisterRequestDTO(String email, String username, String password, String fullName, String phone, String address, int roleId) {
+    @SerializedName("avatar")
+    private String avatar;
+
+    // Constructor mặc định
+    public RegisterRequestDTO() {
+        // Khởi tạo các trường với giá trị mặc định
+        this.email = "";
+        this.username = "";
+        this.password = "";
+        this.fullName = "";
+        this.phone = "";
+        this.address = "";
+        this.roleId = 0;
+        this.avatar = "";
+    }
+
+    // Constructor đầy đủ
+    public RegisterRequestDTO(String email, String username, String password, String fullName, String phone, String address, Integer roleId, String avatar) {
         this.email = email;
         this.username = username;
         this.password = password;
@@ -33,7 +50,10 @@ public class RegisterRequestDTO {
         this.phone = phone;
         this.address = address;
         this.roleId = roleId;
+        this.avatar = avatar;
     }
+
+    // Getters và setters
 
     public String getEmail() {
         return email;
@@ -83,11 +103,19 @@ public class RegisterRequestDTO {
         this.address = address;
     }
 
-    public int getRoleId() {
+    public Integer getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(Integer roleId) {
         this.roleId = roleId;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

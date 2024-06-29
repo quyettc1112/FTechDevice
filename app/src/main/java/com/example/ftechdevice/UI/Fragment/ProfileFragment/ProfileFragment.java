@@ -94,11 +94,11 @@ public class ProfileFragment extends Fragment {
                         if (response.isSuccessful()) {
                             UserResponseDTO userResponse = response.body();
                             if (userResponse != null && binding != null) {
-                                if(userResponse.getFullName() != null) {
-                                    binding.userName.setText(userResponse.getFullName());
+                                if(userResponse.getUsername() != null) {
+                                    binding.userName.setText(userResponse.getUsername());
 
                                 }else{
-                                    binding.userName.setText("No Name");
+                                    binding.userName.setText("No Names");
                                 }
                             } else {
 

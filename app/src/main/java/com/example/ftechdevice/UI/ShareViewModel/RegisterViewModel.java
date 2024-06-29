@@ -24,6 +24,7 @@ public class RegisterViewModel extends ViewModel {
     private final MutableLiveData<String> _phone = new MutableLiveData<>();
     private final MutableLiveData<String> _address = new MutableLiveData<>();
     private final MutableLiveData<Integer> _roleId = new MutableLiveData<>();
+    private final MutableLiveData<String> _avatar = new MutableLiveData<>();
 
     public LiveData<String> getEmail() {
         return _email;
@@ -51,6 +52,10 @@ public class RegisterViewModel extends ViewModel {
 
     public LiveData<Integer> getRoleId() {
         return _roleId;
+    }
+
+    public LiveData<String> getAvatar() {
+        return _avatar;
     }
 
     public void updateEmail(String newEmail) {
@@ -84,6 +89,10 @@ public class RegisterViewModel extends ViewModel {
         _roleId.setValue(newRoleId);
     }
 
+    public void updateAvatar(String newAvatar) {
+        _avatar.setValue(newAvatar);
+    }
+
     private String formatPhoneNumber(String phone) {
         if (phone.length() == 10 && phone.startsWith("0")) {
             return "+84" + phone.substring(1);
@@ -100,7 +109,8 @@ public class RegisterViewModel extends ViewModel {
                 _fullName.getValue(),
                 _phone.getValue(),
                 _address.getValue(),
-                _roleId.getValue()
+                _roleId.getValue(),
+                _avatar.getValue()
         );
     }
 
@@ -112,5 +122,6 @@ public class RegisterViewModel extends ViewModel {
         _phone.setValue("");
         _address.setValue("");
         _roleId.setValue(null);
+        _avatar.setValue("");
     }
 }

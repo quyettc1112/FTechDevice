@@ -200,7 +200,7 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                 .addOnFailureListener(e -> {
                     binding.btnRegisterScreen3.setEnabled(true);
                     if (e instanceof FirebaseAuthUserCollisionException) {
-                        Log.d(TAG, "Email đã tồn tại");
+                        Toast.makeText(this, "Email đã tồn tại", Toast.LENGTH_SHORT).show();
                     } else {
                         Log.d(TAG, "Lỗi xảy ra, vui lòng thử lại");
                     }
@@ -211,27 +211,31 @@ public class RegisterActivity_Screen3 extends BaseActivity {
         if (mAuth.getCurrentUser() != null) {
             mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    Log.d(TAG, "Email xác minh đã được gửi. Vui lòng xác minh email trước khi đăng nhập.");
+
+                    Toast.makeText(this, "Email xác minh đã được gửi. Vui lòng xác minh email trước khi đăng nhập.", Toast.LENGTH_SHORT).show();
 
                     // Đăng xuất người dùng hiện tại
                     mAuth.signOut();
 
                     // Chuyển người dùng đến màn hình đăng nhập
+                    // lưu local dữ liệu người khi đăng kí người dùng
+                    // k
                     Intent intent = new Intent(this, LoginActivityScreen2.class);
                     Bundle myBundle =new Bundle();
                     myBundle.putString("GetEmail",registerViewModel.getRegisterDTO().getEmail());
                     myBundle.putString("GetPassword",registerViewModel.getRegisterDTO().getPassword());
-                    myBundle.putString("GetPhone",registerViewModel.getRegisterDTO().getPhone());
+                    myBundle.putString("GetPhone",binding.edtRegisterPhone.getText().toString());
                     myBundle.putString("GetUsername",registerViewModel.getRegisterDTO().getUsername());
                     myBundle.putInt("GetRole",registerViewModel.getRegisterDTO().getRoleId());
                     intent.putExtra("Res",myBundle);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
-
+                    finish();
                     checkEmailVerificationAndRegister();
                 } else {
                     binding.btnRegisterScreen3.setEnabled(true);
-                    Log.d(TAG, "Gửi email xác minh thất bại");
+
+                    Toast.makeText(this, "Gửi email xác minh thất bại.", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -266,10 +270,10 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                         if (response.isSuccessful()) {
                             Log.d("RegisterUser", "Đăng ký thành công với server");
                             Toast.makeText(RegisterActivity_Screen3.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                            // Tiếp tục với quá trình đăng nhập hoặc hành động khác
+
                         } else {
                             Log.d("RegisterUser", "Đăng ký thất bại với server: " + response.code() + " " + response.message());
-                            Toast.makeText(RegisterActivity_Screen3.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(RegisterActivity_Screen3.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
                         }
                     }
 
