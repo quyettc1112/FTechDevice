@@ -107,75 +107,102 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="403e22a6-4de3-4046-b803-524983521fe2" name="Changes" comment="Update Setup">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/data_binding_base_class_source_out/debug/out/com/example/ftechdevice/databinding/FragmentHomeBinding.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/data_binding_base_class_source_out/debug/out/com/example/ftechdevice/databinding/FragmentHomeBinding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/hilt/component_sources/debug/com/example/ftechdevice/AppConfig/Application/DaggerFTechDevice_HiltComponents_SingletonC.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/hilt/component_sources/debug/com/example/ftechdevice/AppConfig/Application/DaggerFTechDevice_HiltComponents_SingletonC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/apk/debug/app-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/transformDebugClassesWithAsm/dirs/com/example/ftechdevice/AppConfig/Application/DaggerFTechDevice_HiltComponents_SingletonC$SingletonCImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/transformDebugClassesWithAsm/dirs/com/example/ftechdevice/AppConfig/Application/DaggerFTechDevice_HiltComponents_SingletonC$SingletonCImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/transformDebugClassesWithAsm/jars/0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/transformDebugClassesWithAsm/jars/0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/processDebugResources/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/processDebugResources/R.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/desugar_graph/debug/dexBuilderDebug/out/currentProject/dirs_bucket_0/graph.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/desugar_graph/debug/dexBuilderDebug/out/currentProject/dirs_bucket_0/graph.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/10/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/10/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/12/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/12/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/13/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/13/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/15/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/15/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/2/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/2/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/3/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/3/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/5/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/7/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/7/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/8/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/8/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/9/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex_archive_input_jar_hashes/debug/dexBuilderDebug/out" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex_archive_input_jar_hashes/debug/dexBuilderDebug/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/hilt/component_classes/debug/com/example/ftechdevice/AppConfig/Application/DaggerFTechDevice_HiltComponents_SingletonC$SingletonCImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/hilt/component_classes/debug/com/example/ftechdevice/AppConfig/Application/DaggerFTechDevice_HiltComponents_SingletonC$SingletonCImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/mergeDebugResources/out/single/layout.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/mergeDebugResources/out/single/layout.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/mergeDebugResources/out/single/mergeDebugResources.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/mergeDebugResources/out/single/mergeDebugResources.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/AppConfig/Application/DaggerFTechDevice_HiltComponents_SingletonC$SingletonCImpl.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/AppConfig/Application/DaggerFTechDevice_HiltComponents_SingletonC$SingletonCImpl.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/AppConfig/CustomView/CustomBottomNav/NiceBottomBar.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/AppConfig/CustomView/CustomBottomNav/NiceBottomBar.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/AppConfig/CustomView/CustomToolBar/CustomToolbar.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/AppConfig/CustomView/CustomToolBar/CustomToolbar.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/CategoryOptionAdapter$CateOptionViewHolder.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/CategoryOptionAdapter$CateOptionViewHolder.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/ImageReleventAdapter$ItemReleventViewHolder.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/ImageReleventAdapter$ItemReleventViewHolder.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/MessageAdapter.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/MessageAdapter.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/ProductListAdapter$ProductListViewHolder.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/ProductListAdapter$ProductListViewHolder.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/ToyListAdapter$ToyListViewHolder.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/ToyListAdapter$ToyListViewHolder.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/ToyListAdapterBase$ToyBaseItemViewHolder.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/ToyListAdapterBase$ToyBaseItemViewHolder.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/VideoMainAdapter.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/VideoMainAdapter.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/AuthActivity/LoginActivity/LoginActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/AuthActivity/LoginActivity/LoginActivity.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/AuthActivity/LoginActivity/LoginActivityScreen2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/AuthActivity/LoginActivity/LoginActivityScreen2.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/RegisterActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/RegisterActivity.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/MapActivity/MapsActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/MapActivity/MapsActivity.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/SplashActivity/SplashActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/SplashActivity/SplashActivity.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/StartActivity/StartActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/StartActivity/StartActivity.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/VideoActivity/VideoActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/VideoActivity/VideoActivity.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/VideoActivity/VideoActivity_Screen2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/VideoActivity/VideoActivity_Screen2.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/VideoActivity/VideoAdapter.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Activity/VideoActivity/VideoAdapter.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Fragment/CartFragment/CartFragment.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Fragment/CartFragment/CartFragment.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Fragment/HomeFragment/HomeFragment.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Fragment/HomeFragment/HomeFragment.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductFragment.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductFragment.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductViewModel.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductViewModel.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/runtime_symbol_list/debug/processDebugResources/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/runtime_symbol_list/debug/processDebugResources/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/stable_resource_ids_file/debug/processDebugResources/stableIds.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/stable_resource_ids_file/debug/processDebugResources/stableIds.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/symbol_list_with_package_name/debug/processDebugResources/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/symbol_list_with_package_name/debug/processDebugResources/package-aware-r.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/kotlin/kaptGenerateStubsDebugKotlin/cacheable/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/kotlin/kaptGenerateStubsDebugKotlin/cacheable/last-build.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/kotlin/kaptGenerateStubsDebugKotlin/local-state/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/kotlin/kaptGenerateStubsDebugKotlin/local-state/build-history.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/tmp/hiltJavaCompileDebug/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/hiltJavaCompileDebug/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/tmp/kapt3/incApCache/debug/classpath-structure.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/kapt3/incApCache/debug/classpath-structure.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/tmp/kapt3/incApCache/debug/java-cache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/kapt3/incApCache/debug/java-cache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/hilt/component_sources/debug/com/example/ftechdevice/AppConfig/Application/Hilt_FTechDevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/hilt/component_sources/debug/com/example/ftechdevice/AppConfig/Application/Hilt_FTechDevice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/res/processDebugGoogleServices/values/values.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/res/processDebugGoogleServices/values/values.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/example/ftechdevice/BuildConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/example/ftechdevice/BuildConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/androidx/databinding/DataBinderMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/androidx/databinding/DataBinderMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/androidx/databinding/DataBindingComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/androidx/databinding/DataBindingComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/androidx/databinding/library/baseAdapters/BR.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/androidx/databinding/library/baseAdapters/BR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/API_Repository/ProductAPI_Repository_Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/API_Repository/ProductAPI_Repository_Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/API_Repository/UserAPI_Repository_Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/API_Repository/UserAPI_Repository_Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/API_Repository/VNPay_Repository_Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/API_Repository/VNPay_Repository_Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/API_Repository/YoutubeAPI_Repository_Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/API_Repository/YoutubeAPI_Repository_Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/AppConfig/Application/FTechDevice_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/AppConfig/Application/FTechDevice_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/BR.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/BR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideBaseUrlFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideBaseUrlFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideConnectionTimeoutFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideConnectionTimeoutFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideGsonFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideGsonFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideOkHttpClientFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideOkHttpClientFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideProductAPIFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideProductAPIFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideUserAPIFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideUserAPIFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideUserBaseUrlFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideUserBaseUrlFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideVNPayServiceFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideVNPayServiceFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideYoutubeAPIFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideYoutubeAPIFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideYoutubeBaseUrlFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DI/APIModule_ProvideYoutubeBaseUrlFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DataBinderMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/DataBinderMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/LoginActivity/Hilt_LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/LoginActivity/Hilt_LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/LoginActivity/Hilt_LoginActivityScreen2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/LoginActivity/Hilt_LoginActivityScreen2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/LoginActivity/LoginActivityScreen2_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/LoginActivity/LoginActivityScreen2_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/LoginActivity/LoginActivityScreen2_MembersInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/LoginActivity/LoginActivityScreen2_MembersInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/LoginActivity/LoginActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/LoginActivity/LoginActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/Hilt_RegisterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/Hilt_RegisterActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/Hilt_RegisterActivity_Screen2.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/Hilt_RegisterActivity_Screen2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/Hilt_RegisterActivity_Screen3.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/Hilt_RegisterActivity_Screen3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/RegisterActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/RegisterActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/RegisterActivity_Screen2_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/RegisterActivity_Screen2_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/RegisterActivity_Screen3_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/RegisterActivity_Screen3_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/RegisterActivity_Screen3_MembersInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/RegisterActivity_Screen3_MembersInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/MainActivity/Hilt_MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/MainActivity/Hilt_MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/MainActivity/MainActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/MainActivity/MainActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/PaymentActivity/Hilt_PaymentActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/PaymentActivity/Hilt_PaymentActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/PaymentActivity/PaymentActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/PaymentActivity/PaymentActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/PaymentActivity/PaymentActivity_MembersInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/PaymentActivity/PaymentActivity_MembersInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/ProductDetailActivity/Hilt_ProductDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/ProductDetailActivity/Hilt_ProductDetailActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/ProductDetailActivity/ProductDetailActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/ProductDetailActivity/ProductDetailActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/ProductDetailActivity/ProductDetailActivity_MembersInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/ProductDetailActivity/ProductDetailActivity_MembersInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/SplashActivity/Hilt_SplashActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/SplashActivity/Hilt_SplashActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/SplashActivity/SplashActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/SplashActivity/SplashActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/StartActivity/Hilt_StartActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/StartActivity/Hilt_StartActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/StartActivity/StartActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/StartActivity/StartActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/VideoActivity/Hilt_VideoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/VideoActivity/Hilt_VideoActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/VideoActivity/VideoActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/VideoActivity/VideoActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/VideoActivity/VideoActivity_MembersInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Activity/VideoActivity/VideoActivity_MembersInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/HomeFragment/Hilt_HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/HomeFragment/Hilt_HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/HomeFragment/HomeFragment_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/HomeFragment/HomeFragment_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/HomeFragment/HomeFragment_MembersInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/HomeFragment/HomeFragment_MembersInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/ProductFragment/Hilt_ProductFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/ProductFragment/Hilt_ProductFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductFragment_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductFragment_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductFragment_MembersInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductFragment_MembersInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductViewModel_Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductViewModel_Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductViewModel_HiltModules.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductViewModel_HiltModules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductViewModel_HiltModules_KeyModule_ProvideFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductViewModel_HiltModules_KeyModule_ProvideFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/ShareViewModel/RegisterViewModel_Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/ShareViewModel/RegisterViewModel_Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/ShareViewModel/RegisterViewModel_HiltModules.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/ShareViewModel/RegisterViewModel_HiltModules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/ShareViewModel/RegisterViewModel_HiltModules_KeyModule_ProvideFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/ShareViewModel/RegisterViewModel_HiltModules_KeyModule_ProvideFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/ShareViewModel/ShareViewModel_Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/ShareViewModel/ShareViewModel_Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/ShareViewModel/ShareViewModel_HiltModules.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/ShareViewModel/ShareViewModel_HiltModules.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/ShareViewModel/ShareViewModel_HiltModules_KeyModule_ProvideFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/com/example/ftechdevice/UI/ShareViewModel/ShareViewModel_HiltModules_KeyModule_ProvideFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/dagger/hilt/internal/aggregatedroot/codegen/_com_example_ftechdevice_AppConfig_Application_FTechDevice.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/dagger/hilt/internal/aggregatedroot/codegen/_com_example_ftechdevice_AppConfig_Application_FTechDevice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_AppConfig_Application_FTechDevice_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_AppConfig_Application_FTechDevice_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_DI_APIModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_DI_APIModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_AuthActivity_LoginActivity_LoginActivityScreen2_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_AuthActivity_LoginActivity_LoginActivityScreen2_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_AuthActivity_LoginActivity_LoginActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_AuthActivity_LoginActivity_LoginActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_AuthActivity_RegisterActivity_RegisterActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_AuthActivity_RegisterActivity_RegisterActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_AuthActivity_RegisterActivity_RegisterActivity_Screen2_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_AuthActivity_RegisterActivity_RegisterActivity_Screen2_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_AuthActivity_RegisterActivity_RegisterActivity_Screen3_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_AuthActivity_RegisterActivity_RegisterActivity_Screen3_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_MainActivity_MainActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_MainActivity_MainActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_PaymentActivity_PaymentActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_PaymentActivity_PaymentActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_ProductDetailActivity_ProductDetailActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_ProductDetailActivity_ProductDetailActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_SplashActivity_SplashActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_SplashActivity_SplashActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_StartActivity_StartActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_StartActivity_StartActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_VideoActivity_VideoActivity_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Activity_VideoActivity_VideoActivity_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Fragment_HomeFragment_HomeFragment_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Fragment_HomeFragment_HomeFragment_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Fragment_ProductFragment_ProductFragment_GeneratedInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Fragment_ProductFragment_ProductFragment_GeneratedInjector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Fragment_ProductFragment_ProductViewModel_HiltModules_BindsModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Fragment_ProductFragment_ProductViewModel_HiltModules_BindsModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Fragment_ProductFragment_ProductViewModel_HiltModules_KeyModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_Fragment_ProductFragment_ProductViewModel_HiltModules_KeyModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_ShareViewModel_RegisterViewModel_HiltModules_BindsModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_ShareViewModel_RegisterViewModel_HiltModules_BindsModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_ShareViewModel_RegisterViewModel_HiltModules_KeyModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_ShareViewModel_RegisterViewModel_HiltModules_KeyModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_ShareViewModel_ShareViewModel_HiltModules_BindsModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_ShareViewModel_ShareViewModel_HiltModules_BindsModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_ShareViewModel_ShareViewModel_HiltModules_KeyModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/hilt_aggregated_deps/_com_example_ftechdevice_UI_ShareViewModel_ShareViewModel_HiltModules_KeyModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Common/Constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Common/Constants/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/HomeFragment/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/HomeFragment/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/ShareViewModel/ShareViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/ShareViewModel/ShareViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +212,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=99211FFBA007RD)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\ngodi\.android\avd\Copy_of_Pixel_8_Pro_API_34.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -210,13 +237,20 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="FTechDevice" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="FTechDevice" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="FTechDevice" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="android" type="c8890929:TasksNode$1" />
+                <item name="other" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -262,37 +296,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Android App.LoginActivity.executor&quot;: &quot;Run&quot;,
-    &quot;Android App.LoginActivityScreen2.executor&quot;: &quot;Run&quot;,
-    &quot;Android App.MainActivity.executor&quot;: &quot;Run&quot;,
-    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.FTechDevice [signingReport].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/StudioProjects/FTechDevice&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Android App.LoginActivity.executor": "Run",
+    "Android App.LoginActivityScreen2.executor": "Run",
+    "Android App.MainActivity.executor": "Run",
+    "Android App.app.executor": "Run",
+    "Gradle.FTechDevice [signingReport].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "git-widget-placeholder": "long__v4",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/PRM392/FTechDevice",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "AndroidSdkUpdater"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;kotlin-gradle-user-dirs&quot;: [
-      &quot;C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android&quot;,
-      &quot;C:\\Users\\Admin\\.gradle&quot;
+  "keyToStringList": {
+    "kotlin-gradle-user-dirs": [
+      "C:\\Users\\Admin\\Downloads\\DemoZPDK_Android\\DemoZPDK_Android\\DemoZPDK-Android",
+      "C:\\Users\\Admin\\.gradle"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.ftechdevice.UI.Activity.VideoActivity" />
@@ -346,6 +380,7 @@
       <option name="MODE" value="specific_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
@@ -412,6 +447,7 @@
       <option name="MODE" value="specific_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
@@ -478,6 +514,7 @@
       <option name="MODE" value="specific_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
@@ -544,6 +581,7 @@
       <option name="MODE" value="specific_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
@@ -610,6 +648,7 @@
       <option name="MODE" value="specific_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
@@ -676,6 +715,7 @@
       <option name="MODE" value="default_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="INSPECTION_WITHOUT_ACTIVITY_RESTART" value="false" />
       <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
       <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
       <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
