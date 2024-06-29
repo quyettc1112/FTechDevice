@@ -66,3 +66,13 @@ app/build/intermediates/incremental/debug/mergeDebugResources/
 app/build/intermediates/incremental/debug/packageDebugResources/
 app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/AppConfig/CustomView/CustomToolBar/
 app/build/intermediates/classes/debug/transformDebugClassesWithAsm/dirs/com/example/ftechdevice/AppConfig/Application/
+
+app/
+.git/
+gradle/
+build.gradle
+.gitignore
+gradle.properties
+gradlew
+gradlew.bat
+settings.gradle
