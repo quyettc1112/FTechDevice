@@ -24,12 +24,12 @@
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\raw\\server_cert.pem"
     },
     {
-        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_logo_filter.png.flat",
-        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\logo_filter.png"
-    },
-    {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\layout_activity_video_screen2.xml.flat",
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_video_screen2.xml"
+    },
+    {
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_logo_filter.png.flat",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\logo_filter.png"
     },
     {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_material_thumbnail_2.jpg.flat",
@@ -72,24 +72,24 @@
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\gift.png"
     },
     {
-        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_facebook.png.flat",
-        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_facebook.png"
-    },
-    {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_background_button_log_in_out.xml.flat",
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\background_button_log_in_out.xml"
+    },
+    {
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_facebook.png.flat",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_facebook.png"
     },
     {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_baseline_headset_mic_24.xml.flat",
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\baseline_headset_mic_24.xml"
     },
     {
-        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_gender.png.flat",
-        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_gender.png"
-    },
-    {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_banner_manhinh.png.flat",
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\banner_manhinh.png"
+    },
+    {
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_gender.png.flat",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_gender.png"
     },
     {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_image_03.jpg.flat",
@@ -120,12 +120,12 @@
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\fragment_product.xml"
     },
     {
-        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_image_dong_ho.png.flat",
-        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_image_dong_ho.png"
-    },
-    {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_background_toy_fillter.xml.flat",
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\background_toy_fillter.xml"
+    },
+    {
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_ic_image_dong_ho.png.flat",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\ic_image_dong_ho.png"
     },
     {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_baseline_navigate_next_24.xml.flat",
@@ -144,12 +144,12 @@
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\anim\\zoom_in.xml"
     },
     {
-        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_baseline_local_hospital_24.xml.flat",
-        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\baseline_local_hospital_24.xml"
-    },
-    {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_opo_msg_back.xml.flat",
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\opo_msg_back.xml"
+    },
+    {
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_baseline_local_hospital_24.xml.flat",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\baseline_local_hospital_24.xml"
     },
     {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\layout_dialog_notify.xml.flat",
@@ -180,12 +180,12 @@
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\baseline_medication_24.xml"
     },
     {
-        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\mipmap-anydpi_ic_launcher.xml.flat",
-        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\mipmap-anydpi\\ic_launcher.xml"
-    },
-    {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\mipmap-anydpi\\ic_launcher.xml"
     },
     {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_baseline_add_shopping_cart_24.xml.flat",
@@ -304,12 +304,12 @@
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\dialog_fillter_toys.xml"
     },
     {
-        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\anim_slide_in_left.xml.flat",
-        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\anim\\slide_in_left.xml"
-    },
-    {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_logo_filter2.png.flat",
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\drawable\\logo_filter2.png"
+    },
+    {
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\anim_slide_in_left.xml.flat",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\anim\\slide_in_left.xml"
     },
     {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-debug-79:\\drawable_background_home_search.xml.flat",

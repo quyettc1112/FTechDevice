@@ -16,12 +16,12 @@
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\recycle_item_toy_list.xml"
     },
     {
-        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\fragment_profile.xml",
-        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\fragment_profile.xml"
-    },
-    {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_video.xml",
         "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\activity_video.xml"
+    },
+    {
+        "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\fragment_profile.xml",
+        "source": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-main-81:\\layout\\fragment_profile.xml"
     },
     {
         "merged": "C:\\Users\\wwwtr\\.gradle\\daemon\\8.7\\com.example.ftechdevice.app-mergeDebugResources-78:\\layout\\activity_login.xml",
