@@ -22,10 +22,13 @@ import com.example.ftechdevice.AppConfig.CustomView.CustomToolBar.CustomToolbar;
 import com.example.ftechdevice.Common.TokenManger.TokenManager;
 import com.example.ftechdevice.Model.ModelRequestDTO.JWTObject;
 import com.example.ftechdevice.Model.ModelRequestDTO.LoginRequestDTO;
+import com.example.ftechdevice.Model.ModelRequestDTO.RegisterRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
 import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
+import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
+import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
 import com.example.ftechdevice.UI.ShareViewModel.UserShareViewModel;
 import com.example.ftechdevice.databinding.ActivityLoginScreen2Binding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,6 +38,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseUser;
 
 import javax.inject.Inject;
 
@@ -50,6 +54,7 @@ public class LoginActivityScreen2 extends BaseActivity {
 
     private UserShareViewModel userShareViewModel;
 
+    private RegisterViewModel registerViewModel;
     FirebaseAuth mAuth;
     private boolean isEmailVerificationInProgress = false;
     @Inject
@@ -62,8 +67,17 @@ public class LoginActivityScreen2 extends BaseActivity {
         binding = ActivityLoginScreen2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
+        registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
         userShareViewModel = new ViewModelProvider(this).get(UserShareViewModel.class);
+        Intent myIntent = getIntent();
+        Bundle myBundle = myIntent.getBundleExtra("Res");
+        registerViewModel.updateEmail(myBundle.getString("GetEmail"));
+        registerViewModel.updatePassword(myBundle.getString("GetPassword"));
+        registerViewModel.updatePhone(myBundle.getString("GetPhone"));
+        registerViewModel.updateRoleId(1);
+
+        RegisterRequestDTO registerRequestDTO = registerViewModel.getRegisterDTO();
+        Log.d("AA",registerRequestDTO.getEmail().toString());
         if(TokenManager.getAccessToken(LoginActivityScreen2.this) !=null){
             Log.d("LL",TokenManager.getAccessToken(LoginActivityScreen2.this));
             startActivity(new Intent(LoginActivityScreen2.this, MainActivity.class));
@@ -88,6 +102,7 @@ public class LoginActivityScreen2 extends BaseActivity {
             String password = binding.edtPassword.getText().toString();
             if (checkValidNumber(email, password)) {
                 userShareViewModel.updateLoginCretidential(new LoginRequestDTO(email, password));
+
                 if (userShareViewModel.getloginCredentials().getValue() != null) {
                     doLogin(userShareViewModel.getloginCretidentail());
                 }
@@ -221,6 +236,12 @@ public class LoginActivityScreen2 extends BaseActivity {
                                 public void onComplete(@NonNull Task<Void> reloadTask) {
                                     if (mAuth.getCurrentUser().isEmailVerified()) {
                                         loginUser(loginRequestDTO);  // Proceed with the backend login
+
+                                        if (registerViewModel.getRegisterDTO() != null) {
+                                            registerUser(registerViewModel.getRegisterDTO());
+                                        }else{
+                                            Log.d("LL",registerViewModel.getRegisterDTO().getEmail());
+                                        }
                                     } else {
                                         Toast.makeText(LoginActivityScreen2.this, "Vui lòng xác minh email trước khi đăng nhập", Toast.LENGTH_SHORT).show();
                                         sendVerificationEmail();
@@ -269,5 +290,45 @@ public class LoginActivityScreen2 extends BaseActivity {
                 }
             });
         }
+    }
+
+    // Thêm hàm này vào LoginActivityScreen2
+    private void checkEmailVerificationAndRegister() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            user.reload().addOnCompleteListener(task -> {
+                if (user.isEmailVerified()) {
+                    // Email đã được xác minh, tiến hành đăng ký với server
+                    registerUser(registerViewModel.getRegisterDTO());
+                } else {
+                    Toast.makeText(this, "Vui lòng xác minh email trước khi đăng nhập", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+
+    private void registerUser(RegisterRequestDTO registerRequestDTO) {
+        userapiRepository.registerUser(registerRequestDTO)
+                .enqueue(new Callback<RegisterResponseDTO>() {
+                    @Override
+                    public void onResponse(Call<RegisterResponseDTO> call, Response<RegisterResponseDTO> response) {
+                        if (response.isSuccessful()) {
+                            Log.d("RegisterUser", "Đăng ký thành công với server");
+                            Toast.makeText(LoginActivityScreen2.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+                            // Tiếp tục với quá trình đăng nhập
+                        } else {
+                            //Log.d("RegisterUser", "Đăng ký thất bại với server: " + response.code() + " " + response.message());
+                            Toast.makeText(LoginActivityScreen2.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<RegisterResponseDTO> call, Throwable t) {
+                        Log.d("RegisterUser", "Lỗi kết nối: " + t.getMessage());
+                        Toast.makeText(LoginActivityScreen2.this, "Lỗi kết nối", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
     }
 }
