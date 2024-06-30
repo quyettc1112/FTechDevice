@@ -268,12 +268,12 @@ public class Constants {
 
     public static List<VideoModel> getListVideos() {
         return Arrays.asList(
-                new VideoModel("czbB8AQsBzU"),
-                new VideoModel("UFAKw0wgcjA"),
-                new VideoModel("kv26Mw4l8jg"),
-                new VideoModel("hn_teOwL_iA"),
-                new VideoModel("3-gjAL20WGE"),
-                new VideoModel("9mL-TS0gcmA")
+                new VideoModel("6AM_hZHwKDE"),
+                new VideoModel("2vBFrzIt0jA"),
+                new VideoModel("AeItEV4ogvs"),
+                new VideoModel("ZhEDfk6ZhlQ"),
+                new VideoModel("L7o8ceiRL2A"),
+                new VideoModel("FDO5jgMhLuQ")
         );
     }
 
