@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -23,6 +24,8 @@ import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductFragment;
 import com.example.ftechdevice.UI.Fragment.ProfileFragment.ProfileFragment;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
 import com.example.ftechdevice.databinding.ActivityMainBinding;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
 
 import java.util.ArrayList;
 
@@ -69,6 +72,7 @@ public class MainActivity extends BaseActivity {
         });
 
         floatButtonHandle();
+        getFCMToken();
     }
 
     private void setUpBottomNav() {
@@ -115,6 +119,18 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(MainActivity.this, ChatActivity.class));
             }
         });
+
+    }
+
+    private void getFCMToken() {
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                String token = task.getResult();
+                Log.d("CheckToken", token);
+
+            }
+        });
+
 
     }
 }
