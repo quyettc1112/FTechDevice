@@ -45,6 +45,8 @@ import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductFragment;
 import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductFragment_MembersInjector;
 import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductViewModel;
 import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.example.ftechdevice.UI.Fragment.ProfileFragment.ProfileFragment;
+import com.example.ftechdevice.UI.Fragment.ProfileFragment.ProfileFragment_MembersInjector;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel_HiltModules_KeyModule_ProvideFactory;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
@@ -376,6 +378,11 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
     }
 
     @Override
+    public void injectProfileFragment(ProfileFragment arg0) {
+      injectProfileFragment2(arg0);
+    }
+
+    @Override
     public DefaultViewModelFactories.InternalFactoryFactory getHiltInternalFactoryFactory() {
       return activityCImpl.getHiltInternalFactoryFactory();
     }
@@ -394,6 +401,12 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
     @CanIgnoreReturnValue
     private ProductFragment injectProductFragment2(ProductFragment instance) {
       ProductFragment_MembersInjector.injectProductAPIRepository(instance, activityCImpl.productAPI_RepositoryProvider.get());
+      return instance;
+    }
+
+    @CanIgnoreReturnValue
+    private ProfileFragment injectProfileFragment2(ProfileFragment instance) {
+      ProfileFragment_MembersInjector.injectUserApiService(instance, singletonCImpl.provideUserAPIProvider.get());
       return instance;
     }
   }

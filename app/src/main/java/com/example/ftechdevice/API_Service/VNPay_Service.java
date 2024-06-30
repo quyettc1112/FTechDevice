@@ -14,6 +14,9 @@ public interface VNPay_Service {
     @POST("/vnpay/submitOrder")
     Call<UrlResponseDTO> submitOrder(@Query("amount") int amount, @Query("orderInfo") String orderInfo);
 
+
+
+
     @GET
     Call<VNPayResponse> getPaymentResult(@Url String url);
 }
