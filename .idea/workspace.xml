@@ -70,6 +70,11 @@
           <theme>@style/Theme.FTechDevice</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fab_custom.xml">
+        <config>
+          <theme>@style/Theme.FTechDevice</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_cart.xml">
         <config>
           <theme>@style/Theme.FTechDevice</theme>
@@ -107,11 +112,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="403e22a6-4de3-4046-b803-524983521fe2" name="Changes" comment="Update Setup">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/HomeFragment/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/HomeFragment/HomeFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/MainActivity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/MainActivity/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,6 +186,7 @@
         <option value="valueResourceFile" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -186,7 +199,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="longtem_v3" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -234,10 +247,10 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Chat__Update-QuyetTC",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/PRM392/FTechDevice",
+    "last_opened_file_path": "C:/Users/wwwtr/StudioProjects/FTechDevice/app/src/main/res/drawable",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "AndroidSdkUpdater"
   },
@@ -259,11 +272,11 @@
       <recent name="com.example.ftechdevice.UI.Activity.SplashActivity" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\wwwtr\StudioProjects\FTechDevice\app\src\main\res\drawable" />
       <recent name="D:\ki_8\FTechDevice\app" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\FTechDevice\app\src\main\res" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\FTechDevice\app" />
       <recent name="C:\Users\Admin\AndroidStudioProjects\FTechDevice\app\src\main\res\menu" />
-      <recent name="C:\Users\Admin\AndroidStudioProjects\FTechDevice\app\src\main\res\font" />
     </key>
     <key name="android.template.-1004151982">
       <recent name="com.example.ftechdevice.UI.Activity.PaymentActivity" />
@@ -284,7 +297,7 @@
       <recent name="com.example.ftechdevice.UI.Fragment.ProductFragment" />
     </key>
   </component>
-  <component name="RunManager" selected="Android App.app">
+  <component name="RunManager" selected="Android App.MainActivity">
     <configuration name="LoginActivity" type="AndroidRunConfigurationType" factoryName="Android App" temporary="true">
       <module name="FTechDevice.app.main" />
       <option name="DEPLOY" value="true" />
@@ -683,9 +696,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Android App.MainActivity" />
         <item itemvalue="Android App.RegisterActivity_Screen3" />
         <item itemvalue="Android App.RegisterActivity" />
-        <item itemvalue="Android App.MainActivity" />
         <item itemvalue="Android App.LoginActivityScreen2" />
         <item itemvalue="Android App.LoginActivity" />
       </list>
@@ -699,14 +712,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718185351079</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Update Setup Project">
-      <option name="closed" value="true" />
-      <created>1718345305881</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1718345305881</updated>
     </task>
     <task id="LOCAL-00012" summary="Update Setup Project">
       <option name="closed" value="true" />
@@ -1092,7 +1097,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719750809093</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Update Setup">
+      <option name="closed" value="true" />
+      <created>1719751140699</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1719751140699</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
