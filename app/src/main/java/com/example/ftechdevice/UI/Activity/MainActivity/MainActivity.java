@@ -2,7 +2,11 @@ package com.example.ftechdevice.UI.Activity.MainActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.fragment.app.Fragment;
@@ -13,12 +17,15 @@ import com.example.ftechdevice.AppConfig.BaseConfig.BaseActivity;
 import com.example.ftechdevice.AppConfig.CustomView.CustomBottomNav.NiceBottomBar;
 import com.example.ftechdevice.Common.CommonAdapter.FragmentAdapter;
 import com.example.ftechdevice.R;
+import com.example.ftechdevice.UI.Activity.ChatModule.ChatActivity.ChatActivity;
 import com.example.ftechdevice.UI.Fragment.CartFragment.CartFragment;
 import com.example.ftechdevice.UI.Fragment.HomeFragment.HomeFragment;
 import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductFragment;
 import com.example.ftechdevice.UI.Fragment.ProfileFragment.ProfileFragment;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
 import com.example.ftechdevice.databinding.ActivityMainBinding;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
 
 import java.util.ArrayList;
 
@@ -63,6 +70,9 @@ public class MainActivity extends BaseActivity {
                 super.onPageSelected(position);
             }
         });
+
+        floatButtonHandle();
+        getFCMToken();
     }
 
     private void setUpBottomNav() {
@@ -88,5 +98,39 @@ public class MainActivity extends BaseActivity {
                 })
                 .setNegativeButton("Không", null)
                 .show();
+    }
+
+
+    private void floatButtonHandle() {
+        binding.fabPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:0356970686"));
+                startActivity(intent);
+            }
+        });
+
+
+        binding.fabChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ChatActivity.class));
+            }
+        });
+
+    }
+
+    private void getFCMToken() {
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                String token = task.getResult();
+                Log.d("CheckToken", token);
+
+            }
+        });
+
+
     }
 }
