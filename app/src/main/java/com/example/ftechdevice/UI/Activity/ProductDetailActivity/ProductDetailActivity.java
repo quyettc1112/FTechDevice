@@ -42,8 +42,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     private void getProductModelByIDFromAPI() {
         int id = getIntent().getIntExtra("product_id", 0);
         Log.d("ID", String.valueOf(id));
-        productAPIRepository.getProductById("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJ1c2VySWQiOjEsIlJvbGVOYW1lIjoiQURNSU4iLCJpYXQiOjE3MTkxNTExNTQsImV4cCI6MTcxOTIzNzU1NH0.Jo1tfdoawII6H2hKn239xXJE8SY_iplSQE6JGm2UX-0"
-                , id).enqueue(new Callback<ProductReponse>() {
+        productAPIRepository.getProductById(id).enqueue(new Callback<ProductReponse>() {
             @Override
             public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
                 if (response.isSuccessful() && response.body() != null) {

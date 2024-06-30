@@ -129,8 +129,7 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
        // pproductListAdapter.setOnItemCartClickListener(p -> sharedViewModel.addItem(CartModel.create(p, 1)));
     }
     private void callProductAPI() {
-        productAPIRepository.getProductList("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJlbWFpbCI6ImFkbWluMUBnbWFpbC5jb20iLCJ1c2VySWQiOjEsIlJvbGVOYW1lIjoiQURNSU4iLCJpYXQiOjE3MTkxNTExNTQsImV4cCI6MTcxOTIzNzU1NH0.Jo1tfdoawII6H2hKn239xXJE8SY_iplSQE6JGm2UX-0",
-                0, 12, "", 0).enqueue(new Callback<ProductReponse>() {
+        productAPIRepository.getProductList(0, 12, "", 0).enqueue(new Callback<ProductReponse>() {
             @Override
             public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
                 if (response.isSuccessful() && response.body() != null) {

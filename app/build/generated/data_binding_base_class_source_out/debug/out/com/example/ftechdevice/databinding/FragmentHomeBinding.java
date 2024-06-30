@@ -38,6 +38,18 @@ public final class FragmentHomeBinding implements ViewBinding {
   public final LinearLayout indicatorContainer;
 
   @NonNull
+  public final LinearLayout llBanphim;
+
+  @NonNull
+  public final LinearLayout llDienthoai;
+
+  @NonNull
+  public final LinearLayout llLaptop;
+
+  @NonNull
+  public final LinearLayout llManhinh;
+
+  @NonNull
   public final RecyclerView myRecyclerView;
 
   @NonNull
@@ -70,7 +82,9 @@ public final class FragmentHomeBinding implements ViewBinding {
   private FragmentHomeBinding(@NonNull ConstraintLayout rootView,
       @NonNull ConstraintLayout constraintLayout, @NonNull ConstraintLayout constraintLayout3,
       @NonNull EditText edtSearch, @NonNull LinearLayout horizontalLayout,
-      @NonNull LinearLayout indicatorContainer, @NonNull RecyclerView myRecyclerView,
+      @NonNull LinearLayout indicatorContainer, @NonNull LinearLayout llBanphim,
+      @NonNull LinearLayout llDienthoai, @NonNull LinearLayout llLaptop,
+      @NonNull LinearLayout llManhinh, @NonNull RecyclerView myRecyclerView,
       @NonNull RecyclerView rvToys, @NonNull RecyclerView rvVideo, @NonNull TextView textView,
       @NonNull TextView textView3, @NonNull TextView textView4, @NonNull TextView textView5,
       @NonNull TextView textViewTimeFlashSale, @NonNull TextView tvSeeAllCategory,
@@ -81,6 +95,10 @@ public final class FragmentHomeBinding implements ViewBinding {
     this.edtSearch = edtSearch;
     this.horizontalLayout = horizontalLayout;
     this.indicatorContainer = indicatorContainer;
+    this.llBanphim = llBanphim;
+    this.llDienthoai = llDienthoai;
+    this.llLaptop = llLaptop;
+    this.llManhinh = llManhinh;
     this.myRecyclerView = myRecyclerView;
     this.rvToys = rvToys;
     this.rvVideo = rvVideo;
@@ -150,6 +168,30 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.llBanphim;
+      LinearLayout llBanphim = ViewBindings.findChildViewById(rootView, id);
+      if (llBanphim == null) {
+        break missingId;
+      }
+
+      id = R.id.llDienthoai;
+      LinearLayout llDienthoai = ViewBindings.findChildViewById(rootView, id);
+      if (llDienthoai == null) {
+        break missingId;
+      }
+
+      id = R.id.llLaptop;
+      LinearLayout llLaptop = ViewBindings.findChildViewById(rootView, id);
+      if (llLaptop == null) {
+        break missingId;
+      }
+
+      id = R.id.llManhinh;
+      LinearLayout llManhinh = ViewBindings.findChildViewById(rootView, id);
+      if (llManhinh == null) {
+        break missingId;
+      }
+
       id = R.id.my_recycler_view;
       RecyclerView myRecyclerView = ViewBindings.findChildViewById(rootView, id);
       if (myRecyclerView == null) {
@@ -211,9 +253,9 @@ public final class FragmentHomeBinding implements ViewBinding {
       }
 
       return new FragmentHomeBinding((ConstraintLayout) rootView, constraintLayout,
-          constraintLayout3, edtSearch, horizontalLayout, indicatorContainer, myRecyclerView,
-          rvToys, rvVideo, textView, textView3, textView4, textView5, textViewTimeFlashSale,
-          tvSeeAllCategory, tvSeeAllVideo);
+          constraintLayout3, edtSearch, horizontalLayout, indicatorContainer, llBanphim,
+          llDienthoai, llLaptop, llManhinh, myRecyclerView, rvToys, rvVideo, textView, textView3,
+          textView4, textView5, textViewTimeFlashSale, tvSeeAllCategory, tvSeeAllVideo);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

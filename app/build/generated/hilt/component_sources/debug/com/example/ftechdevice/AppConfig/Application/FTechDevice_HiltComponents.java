@@ -7,6 +7,7 @@ import com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.Registe
 import com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity_Screen2_GeneratedInjector;
 import com.example.ftechdevice.UI.Activity.AuthActivity.RegisterActivity.RegisterActivity_Screen3_GeneratedInjector;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity_GeneratedInjector;
+import com.example.ftechdevice.UI.Activity.PaymentActivity.PaymentActivity_GeneratedInjector;
 import com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailActivity_GeneratedInjector;
 import com.example.ftechdevice.UI.Activity.SplashActivity.SplashActivity_GeneratedInjector;
 import com.example.ftechdevice.UI.Activity.StartActivity.StartActivity_GeneratedInjector;
@@ -200,6 +201,7 @@ public final class FTechDevice_HiltComponents {
       RegisterActivity_Screen2_GeneratedInjector,
       RegisterActivity_Screen3_GeneratedInjector,
       MainActivity_GeneratedInjector,
+      PaymentActivity_GeneratedInjector,
       ProductDetailActivity_GeneratedInjector,
       SplashActivity_GeneratedInjector,
       StartActivity_GeneratedInjector,
