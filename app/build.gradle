@@ -181,6 +181,9 @@ dependencies {
     /* // PlayerView
      implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")*/
 
+    // Floating button
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
+
 
 }
 
