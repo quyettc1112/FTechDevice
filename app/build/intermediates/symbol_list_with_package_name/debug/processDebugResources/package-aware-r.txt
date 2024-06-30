@@ -1726,6 +1726,7 @@ color icon_color_normal
 color inactive_text_color
 color item_userhom_bg
 color lavender
+color light_8
 color light_blue_400
 color light_blue_600
 color light_text_color
@@ -2755,6 +2756,9 @@ color teal_700
 color textCountry
 color text_black_blue
 color text_color
+color theme_color
+color theme_color_8
+color theme_color_80
 color tooltip_background_dark
 color tooltip_background_light
 color white
@@ -3696,6 +3700,7 @@ drawable abc_vector_test
 drawable arrow_back_ios_new_24px
 drawable avd_hide_password
 drawable avd_show_password
+drawable back_btn
 drawable backgroun_home_material_notify
 drawable background_apply_fillter
 drawable background_back_notify
@@ -4022,6 +4027,7 @@ drawable mtrl_switch_thumb_unchecked_pressed
 drawable mtrl_switch_track
 drawable mtrl_switch_track_decoration
 drawable mtrl_tabs_default_indicator
+drawable my_msg_back
 drawable navigation_empty_icon
 drawable next
 drawable notification_action_background
@@ -4037,6 +4043,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable opo_msg_back
 drawable places_autocomplete_toolbar_shadow
 drawable places_powered_by_google_dark
 drawable places_powered_by_google_light
@@ -4048,10 +4055,15 @@ drawable quantum_ic_search_grey600_24
 drawable ripple_effect
 drawable ripple_effect_white
 drawable ripple_no_color
+drawable round_back_light_10
+drawable round_back_theme_1000
+drawable search_icon
+drawable send_icon
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable top1
+drawable user_icon
 font app_font_black
 font app_font_black_italic
 font app_font_bold
@@ -4161,6 +4173,7 @@ id autoCompleteToEnd
 id autoCompleteToStart
 id autoComplete_fragment
 id automatic
+id backBtn
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -4168,6 +4181,7 @@ id beginning
 id bestChoice
 id blocking
 id bottom
+id bottomBar
 id bounce
 id bounceBoth
 id bounceEnd
@@ -4205,6 +4219,7 @@ id center_vertical
 id chain
 id chain2
 id chains
+id chattingRecyclerView
 id checkbox
 id checked
 id chronometer
@@ -4413,6 +4428,7 @@ id im_dissmissDialog
 id im_fillter
 id im_item_cart_image
 id im_minus_quantity
+id im_notify
 id im_plus_quantity
 id im_toy_image
 id im_video
@@ -4447,6 +4463,7 @@ id jumpToStart
 id la_addToCarts
 id la_intent_to_facebook
 id labeled
+id lastMessage
 id layout
 id layoutSetting
 id layout_Gender
@@ -4525,6 +4542,8 @@ id matrix
 id media_actions
 id media_controller_compat_view_tag
 id message
+id messageEditTxt
+id messagesRecyclerView
 id middle
 id mini
 id month_grid
@@ -4558,7 +4577,11 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id myLayout
+id myMessage
+id myMsgTime
 id my_recycler_view
+id name
 id nav_controller_view_tag
 id nav_host_fragment_container
 id navigation_bar_item_active_indicator_view
@@ -4601,6 +4624,9 @@ id open_search_view_search_prefix
 id open_search_view_status_bar_spacer
 id open_search_view_toolbar
 id open_search_view_toolbar_container
+id oppoLayout
+id oppoMessage
+id oppoMsgTime
 id outline
 id outward
 id overshoot
@@ -4641,6 +4667,7 @@ id preferences_detail
 id preferences_header
 id preferences_sliding_pane_layout
 id pressed
+id profilePic
 id progress_circular
 id progress_horizontal
 id radio
@@ -4657,6 +4684,7 @@ id rightToLeft
 id right_icon
 id right_side
 id rl_cart
+id rootLayout
 id rounded
 id row
 id row_index_key
@@ -4693,6 +4721,7 @@ id seekbar_value
 id select_dialog_listview
 id selected
 id selection_type
+id sendBtn
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -4799,6 +4828,7 @@ id toggle
 id toolBarShadow
 id toolblarCustome
 id top
+id topBar
 id topPanel
 id touch_outside
 id transitionToEnd
@@ -4839,9 +4869,11 @@ id tv_video_header
 id unchecked
 id uniform
 id unlabeled
+id unseenMessages
 id up
 id useLogo
 id userName
+id userProfilePic
 id user_manager
 id vertical_only
 id video_decoder_gl_surface_view
@@ -4988,10 +5020,12 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_chat
 layout activity_login
 layout activity_login_screen2
 layout activity_main
 layout activity_maps
+layout activity_message
 layout activity_payment
 layout activity_produc_detail
 layout activity_register
@@ -5003,6 +5037,7 @@ layout activity_video
 layout activity_video_screen2
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
+layout chat_adapter_layout
 layout custom_dialog
 layout custom_tool_bar
 layout design_bottom_navigation_item
@@ -5067,6 +5102,7 @@ layout material_time_input
 layout material_timepicker
 layout material_timepicker_dialog
 layout material_timepicker_textinput_display
+layout messages_adapter_layout
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
@@ -5099,6 +5135,7 @@ layout mtrl_picker_text_input_date
 layout mtrl_picker_text_input_date_range
 layout mtrl_search_bar
 layout mtrl_search_view
+layout my_progress_dialog_layout
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action
@@ -5232,8 +5269,10 @@ string common_signin_button_text_long
 string confirm_device_credential_password
 string copy
 string copy_toast_msg
+string database_url
 string default_error_msg
 string default_notify_title
+string default_web_client_id
 string ellipsis
 string error_a11y_label
 string error_icon_content_description
@@ -5301,6 +5340,7 @@ string fingerprint_error_user_canceled
 string fingerprint_not_recognized
 string fingerprint_or_screen_lock_prompt_message
 string fingerprint_prompt_message
+string firebase_database_url
 string first_fragment_label
 string gcm_defaultSenderId
 string generic_error_no_device_credential

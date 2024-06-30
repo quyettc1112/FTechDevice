@@ -784,7 +784,7 @@ public final class DaggerFTechDevice_HiltComponents_SingletonC {
     }
 
     @Override
-    public void injectFTechDevice(FTechDevice fTechDevice) {
+    public void injectFTechDevice(FTechDevice arg0) {
     }
 
     @Override

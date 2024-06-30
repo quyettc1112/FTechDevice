@@ -26,6 +26,7 @@ import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.ShareViewModel.UserShareViewModel;
+import com.example.ftechdevice.Until.MemoryData;
 import com.example.ftechdevice.databinding.ActivityLoginScreen2Binding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -150,8 +151,6 @@ public class LoginActivityScreen2 extends BaseActivity {
                 .enqueue(new Callback<LoginResponse>() {
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-
-
                         if (response.isSuccessful()) {
                             Log.d("Checklaue", response.body().getAccessToken().toString());
                             userShareViewModel.updateLoginCretidential(loginRequestDTO);
@@ -188,6 +187,9 @@ public class LoginActivityScreen2 extends BaseActivity {
         }
         Log.d("CheckResponseValue", String.valueOf(response.code()));
     }
+
+
+    //// testvsdfaf
 
     private void isEmailVerified() {
         if(mAuth.getCurrentUser()!=null){
