@@ -9,10 +9,14 @@ import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 import com.example.ftechdevice.Model.ModelRespone.MessageRespone;
 import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
 import com.example.ftechdevice.Model.ModelRespone.TokenReponse;
+import com.example.ftechdevice.Model.ModelRespone.UserResponseDTO;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface UserAPI_Service {
 
@@ -27,4 +31,7 @@ public interface UserAPI_Service {
 
     @POST("/api/auth/register")
     Call<RegisterResponseDTO> registerUser(@Body RegisterRequestDTO registerRequestDTO);
+
+    @GET("/api/auth/user")
+    Call<UserResponseDTO> getUserByEmail(@Header("Authorization") String token , @Query("email") String email);
 }

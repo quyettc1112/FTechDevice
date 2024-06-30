@@ -100,6 +100,12 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         searchItem();
         clickPopularProduct();
         showFillterDialog();
+        sharedViewModel.getCategoryId().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer categoryId) {
+                callProductAPI(categoryId);
+            }
+        });
         return binding.getRoot();
     }
 
@@ -125,8 +131,27 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
             intent.putExtra("product_id", p.getId());
             requireContext().startActivity(intent);
         });
-        // Add To Cart Click
-       // pproductListAdapter.setOnItemCartClickListener(p -> sharedViewModel.addItem(CartModel.create(p, 1)));
+    }
+    private void callProductAPI(int categoryId) {
+        productAPIRepository.getProductList(0, 12, "", categoryId).enqueue(new Callback<ProductReponse>() {
+            @Override
+            public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<ProductModel> products = response.body().getContent();
+                    if (products != null) {
+                        productListViewModel.setProductList(products);
+                        pproductListAdapter.submitList(products);
+                        Log.d("Check value", "Products size: " + products.size());
+                    }
+                } else {
+                    Log.d("ProductFragment", "Response code: " + response.code());
+                }
+            }
+            @Override
+            public void onFailure(Call<ProductReponse> call, Throwable t) {
+                Log.d("ProductFragment", t.getMessage());
+            }
+        });
     }
     private void callProductAPI() {
         productAPIRepository.getProductList(0, 12, "", 0).enqueue(new Callback<ProductReponse>() {

@@ -79,7 +79,9 @@ public class ShareViewModel extends ViewModel {
 
         _cartItems.setValue(currentList);
     }
-
+    public LiveData<Integer> getCategoryId() {
+        return categoryId;
+    }
     public void updateCartItems(List<CartModel> newCartItems) {
         _cartItems.setValue(newCartItems);
     }

@@ -32,8 +32,8 @@ import com.example.ftechdevice.Model.ModelRespone.ProductReponse;
 import com.example.ftechdevice.Model.ProductModel;
 import com.example.ftechdevice.Model.ToyModel;
 import com.example.ftechdevice.R;
-import com.example.ftechdevice.UI.Activity.ChatModule.ChatActivity.ChatActivity;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
+import com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailActivity;
 import com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
 import com.example.ftechdevice.Until.BottomMarginItemDecoration;
@@ -69,8 +69,6 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         cateOptionAdapter = new CategoryOptionAdapter(Constants.getListString(), this);
         toyListAdapter = new ToyListAdapter(Constants.getListToys());
         productListAdapter = new ProductListAdapter(productList);
-
-
         toyListAdapter.setOnItemCartClickListener(cartModel -> {
             Toast.makeText(requireContext(), cartModel.getToyName(), Toast.LENGTH_SHORT).show();
         });
@@ -89,11 +87,21 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
 
         MainActivity activity = (MainActivity) getActivity();
         ActivityMainBinding mainBinding = activity.binding;
-
         setupCategoryClickListeners(mainBinding);
-        intentToChat();
 
         return binding.getRoot();
+    }
+    private void setupCategoryClickListeners(ActivityMainBinding mainBinding) {
+        binding.llLaptop.setOnClickListener(v -> handleCategoryClick(mainBinding, 1));
+        binding.llDienthoai.setOnClickListener(v -> handleCategoryClick(mainBinding, 2));
+        binding.llBanphim.setOnClickListener(v -> handleCategoryClick(mainBinding, 3));
+        binding.llManhinh.setOnClickListener(v -> handleCategoryClick(mainBinding, 4));
+    }
+
+    private void handleCategoryClick(ActivityMainBinding mainBinding, int categoryId) {
+        ShareViewModel sharedViewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
+        sharedViewModel.setCategoryId(categoryId);
+        mainBinding.vp2Main.setCurrentItem(1, true);
     }
 
     private void setRecycleCateOption() {
@@ -118,7 +126,9 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         productListAdapter.setOnItemClickListener(new ProductListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(ProductModel product) {
-                Toast.makeText(requireContext(), product.getName().toString(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(requireContext(), ProductDetailActivity.class);
+                intent.putExtra("product_id", product.getId());
+                requireContext().startActivity(intent);
             }
         });
     }
@@ -209,29 +219,6 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
             }
         });
     }
-
-    private void setupCategoryClickListeners(ActivityMainBinding mainBinding) {
-        binding.llLaptop.setOnClickListener(v -> handleCategoryClick(mainBinding, 1));
-        binding.llDienthoai.setOnClickListener(v -> handleCategoryClick(mainBinding, 2));
-        binding.llBanphim.setOnClickListener(v -> handleCategoryClick(mainBinding, 3));
-        binding.llManhinh.setOnClickListener(v -> handleCategoryClick(mainBinding, 4));
-    }
-
-    private void handleCategoryClick(ActivityMainBinding mainBinding, int categoryId) {
-        ShareViewModel sharedViewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
-        sharedViewModel.setCategoryId(categoryId);
-        mainBinding.vp2Main.setCurrentItem(1, true);
-    }
-    private void intentToChat() {
-        binding.imNotify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(requireContext(), ChatActivity.class));
-            }
-        });
-
-    }
-
 
 
 }
