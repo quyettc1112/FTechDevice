@@ -47,6 +47,9 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     public interface OnItemCartClickListener {
         void onItemCartClick(ProductModel product);
     }
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
+    }
 
     @NonNull
     @Override
@@ -90,6 +93,12 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             laAddToCarts.setOnClickListener(v -> {
                 if (onItemCartClickListener != null) {
                     onItemCartClickListener.onItemCartClick(p);
+                }
+            });
+
+            itemView.setOnClickListener(v -> {
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(p);
                 }
             });
         }
