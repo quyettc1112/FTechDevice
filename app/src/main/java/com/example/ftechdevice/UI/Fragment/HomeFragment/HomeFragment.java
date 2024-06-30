@@ -32,6 +32,7 @@ import com.example.ftechdevice.Model.ModelRespone.ProductReponse;
 import com.example.ftechdevice.Model.ProductModel;
 import com.example.ftechdevice.Model.ToyModel;
 import com.example.ftechdevice.R;
+import com.example.ftechdevice.UI.Activity.ChatModule.ChatActivity.ChatActivity;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailActivity;
 import com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity;
@@ -84,10 +85,13 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         setCurrentIndicator(0);
         setRecycleCateOption();;
         intentToVideoActivity();
+        intentToChatActivity();
 
         MainActivity activity = (MainActivity) getActivity();
         ActivityMainBinding mainBinding = activity.binding;
         setupCategoryClickListeners(mainBinding);
+
+
 
         return binding.getRoot();
     }
@@ -218,6 +222,16 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
                 Log.d("Check value", t.getMessage());
             }
         });
+    }
+
+    private void intentToChatActivity() {
+        binding.imNotify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(requireContext(), ChatActivity.class));
+            }
+        });
+
     }
 
 

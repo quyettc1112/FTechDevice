@@ -54,7 +54,6 @@ public class PaymentActivity extends AppCompatActivity {
         webView = findViewById(R.id.webView);
 
         vnPayRepository.submitOrder(29000, "test payment").enqueue(new Callback<UrlResponseDTO>() {
-
             @Override
             public void onResponse(Call<UrlResponseDTO> call, Response<UrlResponseDTO> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -74,7 +73,6 @@ public class PaymentActivity extends AppCompatActivity {
         });
     }
     private void loadUrlIntoWebView(String url) {
-
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setAllowFileAccessFromFileURLs(true);

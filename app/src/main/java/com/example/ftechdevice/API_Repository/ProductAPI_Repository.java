@@ -23,4 +23,8 @@ public class ProductAPI_Repository {
     public  Call<ProductReponse> getProductById(int id ){
         return productapiService.getProductById(id);
     }
+
+    public Call<ProductReponse> getFilterProductList(int categoryId, int min, int max) {
+        return productapiService.getFilterProduct(categoryId,min,max);
+    }
 }

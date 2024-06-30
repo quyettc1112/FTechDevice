@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -28,89 +27,14 @@
     </ImageView>
 
     <LinearLayout
-        android:id="@+id/linearLayout12"
+        android:id="@+id/linearLayout13"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Giới Tính"
-            android:textSize="20dp"
-            android:textStyle="bold"/>
-
-        <LinearLayout
-            android:id="@+id/layout_Gender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/tv_g_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/background_text_category"
-                android:gravity="center"
-                android:minWidth="70dp"
-                android:paddingStart="13dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="13dp"
-                android:paddingBottom="10dp"
-                android:text="Tất Cả"
-                android:textColor="@color/black"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/tv_g_nam"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/background_text_category"
-                android:gravity="center"
-                android:minWidth="70dp"
-                android:paddingStart="13dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="13dp"
-                android:paddingBottom="10dp"
-                android:text="Nam"
-                android:textColor="@color/black"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/tv_g_nu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/background_text_category"
-                android:gravity="center"
-                android:minWidth="70dp"
-                android:paddingStart="13dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="13dp"
-                android:paddingBottom="10dp"
-                android:text="Nữ"
-                android:textColor="@color/black"
-                android:textSize="15dp" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout13"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout12">
 
         <TextView
             android:layout_width="wrap_content"
@@ -138,20 +62,20 @@
                 android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/llLaptopp"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:background="@drawable/backgroung_icon_category"
                     android:padding="8dp"
-                    android:src="@drawable/ic_teddy" />
+                    android:src="@drawable/logo_filter" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="Trẻ Em"
+                    android:text="Laptop"
                     android:textStyle="bold">
-
                 </TextView>
             </LinearLayout>
 
@@ -163,20 +87,20 @@
                 android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/llDienthoaii"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:background="@drawable/backgroung_icon_category"
                     android:padding="8dp"
-                    android:src="@drawable/ic_puzzle_2" />
+                    android:src="@drawable/logo_filter1" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="Giải Đố"
+                    android:text="Điện thoại"
                     android:textStyle="bold">
-
                 </TextView>
             </LinearLayout>
 
@@ -188,20 +112,20 @@
                 android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/llBanphimm"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:background="@drawable/backgroung_icon_category"
                     android:padding="8dp"
-                    android:src="@drawable/ic_robot" />
+                    android:src="@drawable/logo_filter2" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="Robot"
+                    android:text="Bàn phím"
                     android:textStyle="bold">
-
                 </TextView>
             </LinearLayout>
 
@@ -213,20 +137,20 @@
                 android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/llManhinhh"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:background="@drawable/backgroung_icon_category"
                     android:padding="8dp"
-                    android:src="@drawable/ic_vehical" />
+                    android:src="@drawable/logo_filter3" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="Phương Tiện"
+                    android:text="Màn hình"
                     android:textStyle="bold">
-
                 </TextView>
             </LinearLayout>
         </LinearLayout>
@@ -257,22 +181,7 @@
             android:weightSum="10">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:layout_weight="2.5"
-                android:background="@drawable/background_text_category"
-                android:gravity="center"
-                android:minWidth="70dp"
-                android:paddingStart="13dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="13dp"
-                android:paddingBottom="10dp"
-                android:text="&lt; 500K"
-                android:textColor="@color/black"
-                android:textSize="15dp" />
-
-            <TextView
+                android:id="@+id/tv_price1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
@@ -289,6 +198,7 @@
                 android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/tv_price2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
@@ -300,11 +210,12 @@
                 android:paddingTop="10dp"
                 android:paddingEnd="13dp"
                 android:paddingBottom="10dp"
-                android:text="&lt; 3tr"
+                android:text="&lt; 5Tr"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
 
             <TextView
+                android:id="@+id/tv_price3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
@@ -316,7 +227,24 @@
                 android:paddingTop="10dp"
                 android:paddingEnd="13dp"
                 android:paddingBottom="10dp"
-                android:text="&lt; 5tr"
+                android:text="&lt; 10tr"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tv_price4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_weight="2.5"
+                android:background="@drawable/background_text_category"
+                android:gravity="center"
+                android:minWidth="70dp"
+                android:paddingStart="13dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="13dp"
+                android:paddingBottom="10dp"
+                android:text="&lt; 50tr"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
 
@@ -336,19 +264,6 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout14"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/background_cancle_fillter"
-        android:text="Thoát"
-        android:textColor="@color/white"
-        android:layout_marginEnd="150dp"
-        android:textSize="23dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_saveFillter"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

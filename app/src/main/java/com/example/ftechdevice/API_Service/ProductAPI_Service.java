@@ -22,4 +22,12 @@ public interface ProductAPI_Service {
     Call<ProductReponse> getProductById(
             @Path("id") int id
     );
+
+    @GET("/api/product")
+    Call<ProductReponse> getFilterProduct(
+            @Query("categoryId") int categoryId,
+            @Query("minPrice") int minPrice,
+            @Query("maxPrice") int maxPrice
+
+    );
 }

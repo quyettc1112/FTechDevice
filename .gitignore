@@ -1347,3 +1347,167 @@ app/build/kotlin/
 # Ignore specific Gradle lock files
 .gradle/buildOutputCleanup.lock
 .gradle/8.7/executionHistory/executionHistory.lock
+
+# Default ignored files
+/shelf/
+/workspace.xml
+# Ignore build output directories
+# Gradle files
+.gradle/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log files
+*.log
+
+# Android Studio files
+.idea/
+*.iml
+*.hprof
+
+# IntelliJ
+*.iws
+*.ipr
+*.iws
+
+# Keystore files
+*.jks
+
+# External native build folder generated in Android Studio 2.2+
+.externalNativeBuild
+
+# NDK
+.obj
+*.so
+
+# Kotlin build folder
+*.kotlin_module
+
+# Gradle cache files
+.gradle/
+build/
+
+# Compiled files
+*.dex
+*.apk
+*.ap_
+*.o
+*.so
+*.obj
+*.lock
+
+# Generated files
+app/build/
+app/build/intermediates/
+
+# Uncomment the following lines if you have specific files to ignore
+app/build/intermediates/classes/debug/transformDebugClassesWithAsm/jars/
+app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/
+app/build/intermediates/apk/debug/
+app/build/kotlin/kaptGenerateStubsDebugKotlin/local-state/
+app/buildOutputCleanup.lock/
+app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/UI/Fragment/CartFragment/
+app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/Common/CommonAdapter/
+app/build/intermediates/dex/debug/mergeProjectDexDebug/
+app/build/tmp/kapt3/incApCache/debug/
+app/build/intermediates/incremental/debug/mergeDebugResources/
+app/build/intermediates/incremental/debug/packageDebugResources/
+app/build/intermediates/project_dex_archive/debug/dexBuilderDebug/out/com/example/ftechdevice/AppConfig/CustomView/CustomToolBar/
+app/build/intermediates/classes/debug/transformDebugClassesWithAsm/dirs/com/example/ftechdevice/AppConfig/Application/
+
+##############################
+## Java
+##############################
+.mtj.tmp/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+
+##############################
+## Maven
+##############################
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+pom.xml.bak
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+##############################
+## Gradle
+##############################
+bin/
+build/
+.gradle
+.gradletasknamecache
+gradle-app.setting
+!gradle-wrapper.jar
+
+##############################
+## IntelliJ
+##############################
+out/
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+
+##############################
+## Eclipse
+##############################
+.settings/
+bin/
+tmp/
+.metadata
+.classpath
+.project
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.factorypath
+
+##############################
+## NetBeans
+##############################
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+##############################
+## Visual Studio Code
+##############################
+.vscode/
+.code-workspace
+
+##############################
+## OS X
+##############################
+.DS_Store
+
+app/
+.git/
+gradle/
+build.gradle
+.gitignore
+gradle.properties
+gradlew
+gradlew.bat
+settings.gradle
