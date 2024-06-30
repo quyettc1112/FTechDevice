@@ -18,24 +18,18 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.view.ViewCompat;
 import androidx.lifecycle.ViewModelProvider;
-
 
 import com.example.ftechdevice.API_Repository.UserAPI_Repository;
 import com.example.ftechdevice.AppConfig.BaseConfig.BaseActivity;
-import com.example.ftechdevice.Model.ModelRequestDTO.LoginRequestDTO;
+import com.example.ftechdevice.Common.ManagerUser.ManagerUser;
 import com.example.ftechdevice.Model.ModelRequestDTO.RegisterRequestDTO;
-import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
+import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivityScreen2;
-import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
 import com.example.ftechdevice.databinding.ActivityRegisterScreen3Binding;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
@@ -50,8 +44,6 @@ import dagger.hilt.android.AndroidEntryPoint;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import com.example.ftechdevice.R;
 
 @AndroidEntryPoint
 public class RegisterActivity_Screen3 extends BaseActivity {
@@ -92,15 +84,7 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                 registerViewModel.updatePhone(binding.edtRegisterPhone.getText().toString());
                 registerViewModel.updateUsername(binding.edtRegisterName.getText().toString());
 
-//                if (binding.edtRegisterGender.getText().toString().equals("Nam")) {
-//                    registerViewModel.updateGender(true);
-//                } else {
-//                    registerViewModel.updateGender(false);
-//                }
-
                 doRegister(email, password);
-
-
             }
         });
 
@@ -190,7 +174,7 @@ public class RegisterActivity_Screen3 extends BaseActivity {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        Log.d(TAG, "Đăng ký thanh công");
+                        Log.d(TAG, "Đăng ký thành công");
                         sendVerificationEmail();
                     } else {
                         binding.btnRegisterScreen3.setEnabled(true);
@@ -217,24 +201,28 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                     // Đăng xuất người dùng hiện tại
                     mAuth.signOut();
 
+                    // Lưu thông tin người dùng trước khi đăng xuất
+                    RegisterRequestDTO registerDTO = registerViewModel.getRegisterDTO();
+                    if (registerDTO != null && registerDTO.getEmail() != null) {
+                        ManagerUser.saveUserInfo(
+                                this,  // Truyền context hiện tại
+                                registerDTO.getEmail(),
+                                registerDTO.getPassword(),
+                                binding.edtRegisterPhone.getText().toString(),
+                                registerDTO.getUsername(),
+                                registerDTO.getRoleId()
+                        );
+                    } else {
+                        Log.e(TAG, "RegisterDTO hoặc trường email bị null");
+                    }
+
                     // Chuyển người dùng đến màn hình đăng nhập
-                    // lưu local dữ liệu người khi đăng kí người dùng
-                    // k
                     Intent intent = new Intent(this, LoginActivityScreen2.class);
-                    Bundle myBundle =new Bundle();
-                    myBundle.putString("GetEmail",registerViewModel.getRegisterDTO().getEmail());
-                    myBundle.putString("GetPassword",registerViewModel.getRegisterDTO().getPassword());
-                    myBundle.putString("GetPhone",binding.edtRegisterPhone.getText().toString());
-                    myBundle.putString("GetUsername",registerViewModel.getRegisterDTO().getUsername());
-                    myBundle.putInt("GetRole",registerViewModel.getRegisterDTO().getRoleId());
-                    intent.putExtra("Res",myBundle);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
-                    checkEmailVerificationAndRegister();
                 } else {
                     binding.btnRegisterScreen3.setEnabled(true);
-
                     Toast.makeText(this, "Gửi email xác minh thất bại.", Toast.LENGTH_SHORT).show();
                 }
             });
@@ -247,10 +235,11 @@ public class RegisterActivity_Screen3 extends BaseActivity {
             user.reload().addOnCompleteListener(task -> {
                 if (user.isEmailVerified()) {
                     // Email đã được xác minh, tiến hành đăng ký với server
-                    if (registerViewModel != null) {
-                        registerUser(registerViewModel.getRegisterDTO());
+                    RegisterRequestDTO registerDTO = registerViewModel.getRegisterDTO();
+                    if (registerDTO != null) {
+                        registerUser(registerDTO);
                     } else {
-                        Log.d(TAG, "registerViewModel is null");
+                        Log.d(TAG, "RegisterDTO is null");
                     }
                 } else {
                     Toast.makeText(this, "Vui lòng xác minh email trước khi đăng nhập", Toast.LENGTH_SHORT).show();
@@ -258,9 +247,6 @@ public class RegisterActivity_Screen3 extends BaseActivity {
             });
         }
     }
-
-
-
 
     private void registerUser(RegisterRequestDTO registerRequestDTO) {
         userapiRepository.registerUser(registerRequestDTO)
@@ -270,10 +256,8 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                         if (response.isSuccessful()) {
                             Log.d("RegisterUser", "Đăng ký thành công với server");
                             Toast.makeText(RegisterActivity_Screen3.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-
                         } else {
                             Log.d("RegisterUser", "Đăng ký thất bại với server: " + response.code() + " " + response.message());
-                            //Toast.makeText(RegisterActivity_Screen3.this, "Đăng ký thất bại", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -284,49 +268,4 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                     }
                 });
     }
-
-    /*private void callRegister() {
-        userapiRepository.callRegister(registerViewModel.getRegisterDTO()).enqueue(new Callback<MessageRespone>() {
-            @Override
-            public void onResponse(Call<MessageRespone> call, Response<MessageRespone> response) {
-                if (response.isSuccessful()) {
-                    MessageRespone message = response.body();
-                    Log.d("checkRespone", message.getMessage());
-                    startActivity(new Intent(RegisterActivity_Screen3.this, MainActivity.class));
-                    finish();
-                } else {
-                    Log.d("checkRespone", String.valueOf(response.code()));
-                    String errorBody = null;
-                    try {
-                        errorBody = response.errorBody().string();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    if (errorBody != null) {
-                        try {
-                            Gson gson = new GsonBuilder()
-                                    .registerTypeAdapter(List.class, new MessageAdapter())
-                                    .create();
-                            ErrorResponse errorResponse = gson.fromJson(errorBody, ErrorResponse.class);
-                            Log.d("checkRespone", errorResponse.getMessage().toString());
-                            ErrorDialog errorDialog = new ErrorDialog(
-                                    RegisterActivity_Screen3.this,
-                                    "Message: " + String.join("\n", errorResponse.getMessage()) + "\n",
-                                    "Quay Lại"
-                            );
-                            errorDialog.show();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            Log.d("checkRespone", "Lỗi khi chuyển đổi errorBody");
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<MessageRespone> call, Throwable t) {
-                Log.d("checkRespone", t.getMessage());
-            }
-        });
-    }*/
 }

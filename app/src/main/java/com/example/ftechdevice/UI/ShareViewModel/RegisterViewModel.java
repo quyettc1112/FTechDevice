@@ -97,7 +97,7 @@ public class RegisterViewModel extends ViewModel {
         if (phone.length() == 10 && phone.startsWith("0")) {
             return "+84" + phone.substring(1);
         } else {
-            return null;
+            return " ";
         }
     }
 

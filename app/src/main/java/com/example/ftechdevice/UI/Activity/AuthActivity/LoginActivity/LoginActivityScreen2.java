@@ -1,5 +1,6 @@
 package com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import com.example.ftechdevice.API_Repository.UserAPI_Repository;
 import com.example.ftechdevice.AppConfig.BaseConfig.BaseActivity;
 import com.example.ftechdevice.AppConfig.CustomView.CustomDialog.ErrorDialog;
 import com.example.ftechdevice.AppConfig.CustomView.CustomToolBar.CustomToolbar;
+import com.example.ftechdevice.Common.ManagerUser.ManagerUser;
 import com.example.ftechdevice.Common.TokenManger.TokenManager;
 import com.example.ftechdevice.Model.ModelRequestDTO.JWTObject;
 import com.example.ftechdevice.Model.ModelRequestDTO.LoginRequestDTO;
@@ -48,7 +50,7 @@ public class LoginActivityScreen2 extends BaseActivity {
     private RegisterViewModel registerViewModel;
     private FirebaseAuth mAuth;
     private boolean isEmailVerificationInProgress = false;
-
+    private ManagerUser managerUser;
     @Inject
     UserAPI_Repository userapiRepository;
 
@@ -60,7 +62,7 @@ public class LoginActivityScreen2 extends BaseActivity {
         setContentView(binding.getRoot());
 
         initViewModels();
-        handleIntentData();
+        updateRegisterViewModel();
         checkExistingToken();
         setupUI();
         observeViewModel();
@@ -71,22 +73,48 @@ public class LoginActivityScreen2 extends BaseActivity {
         userShareViewModel = new ViewModelProvider(this).get(UserShareViewModel.class);
     }
 
-    private void handleIntentData() {
-        Intent myIntent = getIntent();
-        Bundle myBundle = myIntent.getBundleExtra("Res");
-        if (myBundle != null) {
-            updateRegisterViewModel(myBundle);
-        }
-    }
 
-    private void updateRegisterViewModel(Bundle bundle) {
-        registerViewModel.updateEmail(bundle.getString("GetEmail"));
-        registerViewModel.updateUsername(bundle.getString("GetUsername"));
-        registerViewModel.updatePassword(bundle.getString("GetPassword"));
+
+    private void updateRegisterViewModel() {
+        Context context = this;  // Get the current context
+
+        String email = ManagerUser.getEmail(context);
+        String username = ManagerUser.getUsername(context);
+        String password = ManagerUser.getPassword(context);
+        String phone = ManagerUser.getPhone(context);
+
+        if (email != null && !email.isEmpty()) {
+            registerViewModel.updateEmail(email);
+        } else {
+            Log.e(TAG, "Email is null or empty");
+        }
+
+        if (username != null && !username.isEmpty()) {
+            registerViewModel.updateUsername(username);
+        } else {
+            Log.e(TAG, "Username is null or empty");
+        }
+
+        if (password != null && !password.isEmpty()) {
+            registerViewModel.updatePassword(password);
+        } else {
+            Log.e(TAG, "Password is null or empty");
+        }
+
         registerViewModel.updateRoleId(1);
-        registerViewModel.updatePhone(bundle.getString("GetPhone"));
+
+        if (phone != null && !phone.isEmpty()) {
+            registerViewModel.updatePhone(phone);
+        } else {
+            Log.e(TAG, "Phone is null or empty");
+        }
+
         RegisterRequestDTO registerRequestDTO = registerViewModel.getRegisterDTO();
-        Log.d(TAG, "Email from RegisterDTO: " + registerRequestDTO.getEmail());
+        if (registerRequestDTO != null && registerRequestDTO.getEmail() != null) {
+            Log.d(TAG, "Email from RegisterDTO: " + registerRequestDTO.getEmail());
+        } else {
+            Log.e(TAG, "RegisterRequestDTO or email is null");
+        }
     }
 
     private void checkExistingToken() {
@@ -165,6 +193,7 @@ public class LoginActivityScreen2 extends BaseActivity {
             if (mAuth.getCurrentUser().isEmailVerified()) {
                 loginUser(loginRequestDTO);
                 RegisterRequestDTO registerDTO = registerViewModel.getRegisterDTO();
+
                 if (registerDTO != null && registerDTO.getEmail() != null) {
                     registerUser(registerDTO);
                 } else {
