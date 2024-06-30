@@ -1,4 +1,3 @@
-
 package com.example.ftechdevice.UI.Fragment.ProductFragment;
 
 import androidx.lifecycle.LiveData;
@@ -19,21 +18,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 @HiltViewModel
 public class ProductViewModel extends ViewModel {
     private final List<ToyModel> _fullToyList = new ArrayList<>();
-
     private final List<ProductModel> _fullProductList = new ArrayList<>();
 
     private final MutableLiveData<List<ToyModel>> _currentToyList = new MutableLiveData<>();
-    private MutableLiveData<List<ProductModel>> productList = new MutableLiveData<>();
-
-
     private final MutableLiveData<List<ProductModel>> _currentProductList = new MutableLiveData<>();
-    public LiveData<List<ToyModel>> getCurrentToyList() {
-        return _currentToyList;
-    }
-
-    public LiveData<List<ProductModel>> getCurrentProductList() {
-        return _currentProductList;
-    }
+    private final MutableLiveData<List<ProductModel>> _filteredProductList = new MutableLiveData<>();
 
     private final MutableLiveData<Integer> currentPopularLiveData = new MutableLiveData<>();
     private final MutableLiveData<String> currentSearchLiveData = new MutableLiveData<>();
@@ -42,6 +31,18 @@ public class ProductViewModel extends ViewModel {
     public ProductViewModel() {
         currentPopularLiveData.setValue(2);
         currentSearchLiveData.setValue("");
+    }
+
+    public LiveData<List<ToyModel>> getCurrentToyList() {
+        return _currentToyList;
+    }
+
+    public LiveData<List<ProductModel>> getCurrentProductList() {
+        return _currentProductList;
+    }
+
+    public LiveData<List<ProductModel>> getFilteredProductList() {
+        return _filteredProductList;
     }
 
     public void setToyList(List<ToyModel> toyList) {
@@ -54,6 +55,7 @@ public class ProductViewModel extends ViewModel {
         _fullProductList.clear();
         _fullProductList.addAll(pList);
         _currentProductList.setValue(_fullProductList);
+        filterProductList(currentSearchLiveData.getValue());
     }
 
     public void setCurrentPopular(int id) {
@@ -62,15 +64,8 @@ public class ProductViewModel extends ViewModel {
 
     public void setCurrentSearchValue(String query) {
         currentSearchLiveData.setValue(query);
+        filterProductList(query);
     }
-
-    public MutableLiveData<String> getCurrentSearchLiveData() {
-        return currentSearchLiveData;
-    }
-    public LiveData<List<ProductModel>> getProductList() {
-        return productList;
-    }
-
 
     public void filterToyList(String query) {
         List<ToyModel> filteredList = _fullToyList.stream()
@@ -85,11 +80,8 @@ public class ProductViewModel extends ViewModel {
 
     public void filterProductList(String query) {
         List<ProductModel> filteredList = _fullProductList.stream()
-                .filter(p -> {
-                    boolean matchesQuery = p.getName().toLowerCase().contains(query.toLowerCase());
-                                        return matchesQuery;
-                })
+                .filter(p -> p.getName().toLowerCase().contains(query.toLowerCase()))
                 .collect(Collectors.toList());
-        _currentProductList.setValue(filteredList);
+        _filteredProductList.setValue(filteredList);
     }
 }
