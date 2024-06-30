@@ -8,7 +8,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -60,7 +62,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 @AndroidEntryPoint
-public class ProductFragment extends Fragment implements CategoryOptionInteraction , CategoryOptionAdapter.CategoryOptionInteraction{
+public class ProductFragment extends Fragment implements CategoryOptionInteraction , CategoryOptionAdapter.CategoryOptionInteraction {
 
 
     private FragmentProductBinding binding;
@@ -98,7 +100,6 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         callProductAPI();
         observeViewModel();
         searchItem();
-        clickPopularProduct();
         showFillterDialog();
         sharedViewModel.getCategoryId().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
@@ -132,6 +133,7 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
             requireContext().startActivity(intent);
         });
     }
+
     private void callProductAPI(int categoryId) {
         productAPIRepository.getProductList(0, 12, "", categoryId).enqueue(new Callback<ProductReponse>() {
             @Override
@@ -147,12 +149,14 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
                     Log.d("ProductFragment", "Response code: " + response.code());
                 }
             }
+
             @Override
             public void onFailure(Call<ProductReponse> call, Throwable t) {
                 Log.d("ProductFragment", t.getMessage());
             }
         });
     }
+
     private void callProductAPI() {
         productAPIRepository.getProductList(0, 12, "", 0).enqueue(new Callback<ProductReponse>() {
             @Override
@@ -168,12 +172,15 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
                     Log.d("ProductFragment", "Response code: " + response.code());
                 }
             }
+
             @Override
+
             public void onFailure(Call<ProductReponse> call, Throwable t) {
                 Log.d("ProductFragment", t.getMessage());
             }
         });
     }
+
     private void searchItem() {
         binding.edtSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -195,19 +202,11 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
 
 
     private void observeViewModel() {
-        productListViewModel.getCurrentProductList().observe(getViewLifecycleOwner(), products -> {
+        productListViewModel.getFilteredProductList().observe(getViewLifecycleOwner(), products -> {
             if (products != null) {
                 pproductListAdapter.submitList(products);
                 Log.d("ProductListAdapter", "Number of items: " + products.size());
             }
-        });
-    }
-
-
-    private void clickPopularProduct() {
-        categoryAdapter.setOnItemClickListenerID(position -> {
-            productListViewModel.setCurrentPopular(position);
-            productListViewModel.filterToyList(productListViewModel.getCurrentSearchLiveData().getValue());
         });
     }
 
@@ -224,49 +223,143 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
             // Turn Off Dialog
             dialogView.findViewById(R.id.im_dissmissDialog).setOnClickListener(view -> dialog.dismiss());
 
-            // Initialize TextViews
-            TextView tv_g_all = dialogView.findViewById(R.id.tv_g_all);
-            TextView tv_g_nam = dialogView.findViewById(R.id.tv_g_nam);
-            TextView tv_g_nu = dialogView.findViewById(R.id.tv_g_nu);
+            // Initialize category options
+            de.hdodenhof.circleimageview.CircleImageView llLaptop = dialogView.findViewById(R.id.llLaptopp);
+            de.hdodenhof.circleimageview.CircleImageView llDienthoai = dialogView.findViewById(R.id.llDienthoaii);
+            de.hdodenhof.circleimageview.CircleImageView llBanphim = dialogView.findViewById(R.id.llBanphimm);
+            de.hdodenhof.circleimageview.CircleImageView llManhinh = dialogView.findViewById(R.id.llManhinhh);
 
-            // Set OnClickListener for each TextView
-            tv_g_all.setOnClickListener(onClickListener);
-            tv_g_nam.setOnClickListener(onClickListener);
-            tv_g_nu.setOnClickListener(onClickListener);
+            // Initialize price options
+            TextView tvPrice1 = dialogView.findViewById(R.id.tv_price1);
+            TextView tvPrice2 = dialogView.findViewById(R.id.tv_price2);
+            TextView tvPrice3 = dialogView.findViewById(R.id.tv_price3);
+            TextView tvPrice4 = dialogView.findViewById(R.id.tv_price4);
+
+            // Set OnClickListener for category options
+            llLaptop.setOnClickListener(onCategoryClickListener);
+            llDienthoai.setOnClickListener(onCategoryClickListener);
+            llBanphim.setOnClickListener(onCategoryClickListener);
+            llManhinh.setOnClickListener(onCategoryClickListener);
+
+            // Set OnClickListener for price options
+            tvPrice1.setOnClickListener(onPriceClickListener);
+            tvPrice2.setOnClickListener(onPriceClickListener);
+            tvPrice3.setOnClickListener(onPriceClickListener);
+            tvPrice4.setOnClickListener(onPriceClickListener);
+
+            // Save filter button
+            dialogView.findViewById(R.id.btn_saveFillter).setOnClickListener(v1 -> {
+                // Get selected category and price range
+                int selectedCategoryId = getSelectedCategoryId(dialogView);
+                int[] selectedPriceRange = getSelectedPriceRange(dialogView);
+
+                // Call API to filter products
+                callFilterProductAPI(selectedCategoryId, selectedPriceRange[0], selectedPriceRange[1]);
+                dialog.dismiss();
+            });
 
             dialog.show();
         });
     }
 
-    private final View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            ViewGroup dialogView = (ViewGroup) view.getParent();
-            TextView textViewTatCa = dialogView.findViewById(R.id.tv_g_all);
-            TextView textViewNam = dialogView.findViewById(R.id.tv_g_nam);
-            TextView textViewNu = dialogView.findViewById(R.id.tv_g_nu);
-
-            // Set all TextViews to inactive
-            setInactive(textViewTatCa);
-            setInactive(textViewNam);
-            setInactive(textViewNu);
-
-            setActive((TextView) view);
-        }
+    private final View.OnClickListener onCategoryClickListener = view -> {
+        // Handle category selection
+        resetCategorySelection(view.getRootView());
+        setActive(view);
     };
 
-    private void setActive(TextView textView) {
-        textView.setTextColor(Color.WHITE);
-        // Set background tint (requires API level 21+)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            textView.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(textView.getContext(), R.color.redPrimary)));
+    private final View.OnClickListener onPriceClickListener = view -> {
+        // Handle price selection
+        resetPriceSelection(view.getRootView());
+        setActive(view);
+    };
+
+    private void resetCategorySelection(View rootView) {
+        setInactive(rootView.findViewById(R.id.llLaptopp));
+        setInactive(rootView.findViewById(R.id.llDienthoaii));
+        setInactive(rootView.findViewById(R.id.llBanphimm));
+        setInactive(rootView.findViewById(R.id.llManhinhh));
+    }
+
+    private void resetPriceSelection(View rootView) {
+        setInactive(rootView.findViewById(R.id.tv_price1));
+        setInactive(rootView.findViewById(R.id.tv_price2));
+        setInactive(rootView.findViewById(R.id.tv_price3));
+        setInactive(rootView.findViewById(R.id.tv_price4));
+    }
+
+    private int getSelectedCategoryId(View rootView) {
+        if (isViewActive(rootView.findViewById(R.id.llLaptopp))) return 1;
+        if (isViewActive(rootView.findViewById(R.id.llDienthoaii))) return 2;
+        if (isViewActive(rootView.findViewById(R.id.llBanphimm))) return 3;
+        if (isViewActive(rootView.findViewById(R.id.llManhinhh))) return 4;
+        return 0; // Default to all categories
+    }
+
+    private int[] getSelectedPriceRange(View rootView) {
+        if (isViewActive(rootView.findViewById(R.id.tv_price1))) return new int[]{0, 1000000};
+        if (isViewActive(rootView.findViewById(R.id.tv_price2))) return new int[]{0, 5000000};
+        if (isViewActive(rootView.findViewById(R.id.tv_price3))) return new int[]{0, 10000000};
+        if (isViewActive(rootView.findViewById(R.id.tv_price4))) return new int[]{0, 50000000};
+        return new int[]{0, Integer.MAX_VALUE};
+    }
+
+    private boolean isViewActive(View view) {
+        if (view instanceof TextView) {
+            TextView textView = (TextView) view;
+            return textView.getCurrentTextColor() == Color.WHITE;
+        } else if (view instanceof de.hdodenhof.circleimageview.CircleImageView) {
+            return view.getBackgroundTintList() != null && view.getBackgroundTintList().getDefaultColor() == ContextCompat.getColor(view.getContext(), R.color.redPrimary);
+        }
+        return false;
+    }
+
+    private void callFilterProductAPI(int categoryId, int minPrice, int maxPrice) {
+        productAPIRepository.getFilterProductList(categoryId, minPrice, maxPrice).enqueue(new Callback<ProductReponse>() {
+            @Override
+            public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    List<ProductModel> products = response.body().getContent();
+                    if (products != null) {
+                        products.sort(Comparator.comparingInt(ProductModel::getPrice));
+                        productListViewModel.setProductList(products);
+                        pproductListAdapter.submitList(products);
+                        Log.d("FilterAPI", "Products size: " + products.size());
+                    }
+                } else {
+                    Log.d("FilterAPI", "Response code: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProductReponse> call, Throwable t) {
+                Log.d("FilterAPI", t.getMessage());
+            }
+        });
+    }
+
+    private void setActive(View view) {
+        if (view instanceof TextView) {
+            TextView textView = (TextView) view;
+            textView.setTextColor(Color.WHITE);
+            // Set background tint (requires API level 21+)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                textView.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(textView.getContext(), R.color.redPrimary)));
+            }
+        } else if (view instanceof de.hdodenhof.circleimageview.CircleImageView) {
+            view.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(view.getContext(), R.color.redPrimary)));
         }
     }
 
-    private void setInactive(TextView textView) {
-        textView.setTextColor(Color.BLACK);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            textView.setBackgroundTintList(null);
+    private void setInactive(View view) {
+        if (view instanceof TextView) {
+            TextView textView = (TextView) view;
+            textView.setTextColor(Color.BLACK);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                textView.setBackgroundTintList(null);
+            }
+        } else if (view instanceof de.hdodenhof.circleimageview.CircleImageView) {
+            view.setBackgroundTintList(null);
         }
     }
 
