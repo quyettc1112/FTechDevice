@@ -22,9 +22,12 @@ import com.example.ftechdevice.Model.ModelRequestDTO.RegisterRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
 import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
+import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
 import com.example.ftechdevice.UI.ShareViewModel.UserShareViewModel;
+import com.example.ftechdevice.Until.MemoryData;
+import com.example.ftechdevice.Until.MyProgressDialog;
 import com.example.ftechdevice.databinding.ActivityLoginScreen2Binding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -33,6 +36,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
 import retrofit2.Call;
@@ -54,11 +63,16 @@ public class LoginActivityScreen2 extends BaseActivity {
     @Inject
     UserAPI_Repository userapiRepository;
 
+    private DatabaseReference databaseReference;
+    private MyProgressDialog progressDialog;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         binding = ActivityLoginScreen2Binding.inflate(getLayoutInflater());
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl(getString(R.string.database_url));
         setContentView(binding.getRoot());
 
         initViewModels();
@@ -321,6 +335,47 @@ public class LoginActivityScreen2 extends BaseActivity {
     }
 
 
+    private void registerFireBaseDataRealTime (RegisterRequestDTO registerRequestDTO) {
+        // Show progress dialog
+        progressDialog.show();
+
+       /* // Check if the user's mobile number already exists in the database
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                progressDialog.dismiss(); // Hide the progress dialog
+
+                if (snapshot.child("users").hasChild(registerRequestDTO.getPhone())) {
+                    // Display a message if mobile number already exists
+                    Toast.makeText(LoginActivityScreen2.this, "Mobile already exists", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    // If mobile number doesn't exist, proceed with registration
+                    Toast.makeText(LoginActivityScreen2.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                    // Save user details in the database
+                    databaseReference.child("users").child(registerRequestDTO.getPhone()).child("email").setValue(registerRequestDTO.getEmail());
+                    databaseReference.child("users").child(registerRequestDTO.getPhone()).child("name").setValue(registerRequestDTO.getUsername());
+                    databaseReference.child("users").child(registerRequestDTO.getPhone()).child("password").setValue(registerRequestDTO.getPassword());
+                    // Save user's mobile number for future login
+                    MemoryData.saveMobile(registerRequestDTO.getPhone(), LoginActivityScreen2.this);
+
+                    // Open the MainActivity and finish the Register activity
+                    startActivity(new Intent(LoginActivityScreen2.this, MainActivity.class));
+                    finish();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                progressDialog.dismiss();
+
+                // Display a message for database error
+                Toast.makeText(LoginActivityScreen2.this, "Database error", Toast.LENGTH_SHORT).show();
+            }
+        });*/
+
+
+    }
 
     @Override
     protected void onDestroy() {

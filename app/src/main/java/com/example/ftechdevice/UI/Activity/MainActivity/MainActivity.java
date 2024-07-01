@@ -120,12 +120,18 @@ public class MainActivity extends BaseActivity {
 
 
         binding.fabChat.setOnClickListener(new View.OnClickListener() {
+            String phone;
             @Override
             public void onClick(View v) {
                 String accessToken = TokenManager.getAccessToken(MainActivity.this);
                 if(accessToken != null) {
                     try {
-                        startActivity(new Intent(MainActivity.this, ChatActivity.class));
+                      /*  JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
+                        phone = decodedPayload.getString("phone");
+                        Log.d("CheckPhone", phone);*/
+                          Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+                       // intent.putExtra("phone", phone);
+                        startActivity(intent);
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
