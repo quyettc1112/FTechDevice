@@ -54,8 +54,6 @@ public class RegisterActivity_Screen3 extends BaseActivity {
     @Inject
     UserAPI_Repository userapiRepository;
 
-    private boolean hasRegistered = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,23 +74,17 @@ public class RegisterActivity_Screen3 extends BaseActivity {
 
     private void inputValue() {
         binding.btnRegisterScreen3.setOnClickListener(v -> {
-            if (!hasRegistered) {
-                if (checkFieldsNotNullOrEmpty() && checkPhoneNumber(binding.edtRegisterPhone.getText().toString())) {
-                    String email = getIntent().getStringExtra("intent_email");
-                    String password = getIntent().getStringExtra("intent_password");
+            if (checkFieldsNotNullOrEmpty() && checkPhoneNumber(binding.edtRegisterPhone.getText().toString())) {
+                String email = getIntent().getStringExtra("intent_email");
+                String password = getIntent().getStringExtra("intent_password");
 
-                    registerViewModel.updateEmail(email);
-                    registerViewModel.updatePassword(password);
-                    registerViewModel.updateRoleId(1);
-                    registerViewModel.updatePhone(binding.edtRegisterPhone.getText().toString());
-                    registerViewModel.updateUsername(binding.edtRegisterName.getText().toString());
+                registerViewModel.updateEmail(email);
+                registerViewModel.updatePassword(password);
+                registerViewModel.updateRoleId(1);
+                registerViewModel.updatePhone(binding.edtRegisterPhone.getText().toString());
+                registerViewModel.updateUsername(binding.edtRegisterName.getText().toString());
 
-                    doRegister(email, password);
-                    hasRegistered = true;
-                    binding.btnRegisterScreen3.setEnabled(false);
-                }
-            } else {
-                Toast.makeText(this, "Bạn đã nhấn nút đăng ký. Vui lòng chuyển trang và thử lại.", Toast.LENGTH_SHORT).show();
+                doRegister(email, password);
             }
         });
 
@@ -131,12 +123,7 @@ public class RegisterActivity_Screen3 extends BaseActivity {
         }
         return true;
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        hasRegistered = false;
-        binding.btnRegisterScreen3.setEnabled(true);
-    }
+
     private void showDatePickerDialog() {
         // Get the current date
         Calendar calendar = Calendar.getInstance();
@@ -183,28 +170,24 @@ public class RegisterActivity_Screen3 extends BaseActivity {
     }
 
     private void doRegister(String email, String password) {
-        binding.btnRegisterScreen3.setEnabled(false);  // Vô hiệu hóa nút ngay khi bắt đầu đăng ký
+        binding.btnRegisterScreen3.setEnabled(false);
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Log.d(TAG, "Đăng ký thành công");
                         sendVerificationEmail();
                     } else {
-                        Log.d(TAG, "Đăng ký thất bại");
-                        Toast.makeText(this, "Đăng ký thất bại. Vui lòng thử lại.", Toast.LENGTH_SHORT).show();
-                        hasRegistered = false;  // Reset trạng thái để cho phép thử lại
-                        binding.btnRegisterScreen3.setEnabled(true);  // Kích hoạt lại nút
+                        binding.btnRegisterScreen3.setEnabled(true);
+                        //      Log.d(TAG, "Đăng ký thất bại");
                     }
                 })
                 .addOnFailureListener(e -> {
+                    binding.btnRegisterScreen3.setEnabled(true);
                     if (e instanceof FirebaseAuthUserCollisionException) {
                         Toast.makeText(this, "Email đã tồn tại", Toast.LENGTH_SHORT).show();
                     } else {
                         Log.d(TAG, "Lỗi xảy ra, vui lòng thử lại");
-                        Toast.makeText(this, "Lỗi xảy ra. Vui lòng thử lại.", Toast.LENGTH_SHORT).show();
                     }
-                    hasRegistered = false;  // Reset trạng thái để cho phép thử lại
-                    binding.btnRegisterScreen3.setEnabled(true);  // Kích hoạt lại nút
                 });
     }
 
@@ -233,57 +216,19 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                         Log.e(TAG, "RegisterDTO hoặc trường email bị null");
                     }
 
-                    // Chuyển người dùng đến màn hình đăng nhập
                     Intent intent = new Intent(this, LoginActivityScreen2.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
-
                 } else {
                     binding.btnRegisterScreen3.setEnabled(true);
-                    Toast.makeText(this, "Gửi email xác minh thất bại.", Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(this, "Gửi email xác minh thất bại.", Toast.LENGTH_SHORT).show();
                 }
             });
         }
     }
 
-    private void checkEmailVerificationAndRegister() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            user.reload().addOnCompleteListener(task -> {
-                if (user.isEmailVerified()) {
-                    // Email đã được xác minh, tiến hành đăng ký với server
-                    RegisterRequestDTO registerDTO = registerViewModel.getRegisterDTO();
-                    if (registerDTO != null) {
-                        registerUser(registerDTO);
-                    } else {
-                        Log.d(TAG, "RegisterDTO is null");
-                    }
-                } else {
-                    Toast.makeText(this, "Vui lòng xác minh email trước khi đăng nhập", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
-    }
 
-    private void registerUser(RegisterRequestDTO registerRequestDTO) {
-        userapiRepository.registerUser(registerRequestDTO)
-                .enqueue(new Callback<RegisterResponseDTO>() {
-                    @Override
-                    public void onResponse(Call<RegisterResponseDTO> call, Response<RegisterResponseDTO> response) {
-                        if (response.isSuccessful()) {
-                            Log.d("RegisterUser", "Đăng ký thành công với server");
-                            Toast.makeText(RegisterActivity_Screen3.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Log.d("RegisterUser", "Đăng ký thất bại với server: " + response.code() + " " + response.message());
-                        }
-                    }
 
-                    @Override
-                    public void onFailure(Call<RegisterResponseDTO> call, Throwable t) {
-                        Log.d("RegisterUser", "Lỗi kết nối: " + t.getMessage());
-                        Toast.makeText(RegisterActivity_Screen3.this, "Lỗi kết nối", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
+
 }
