@@ -44,7 +44,7 @@ public class ChatActivity extends AppCompatActivity {
 
         //final String mobileNumber = MemoryData.getMobile(this);
 
-        final String mobileNumber = "+84356970685";
+        final String mobileNumber = "+84356970684";
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl(getString(R.string.database_url));
 
         // Configure RecyclerView

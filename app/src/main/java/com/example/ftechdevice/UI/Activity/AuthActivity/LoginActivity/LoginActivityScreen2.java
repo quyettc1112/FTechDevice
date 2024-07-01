@@ -41,6 +41,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
@@ -65,6 +66,7 @@ public class LoginActivityScreen2 extends BaseActivity {
 
     private DatabaseReference databaseReference;
     private MyProgressDialog progressDialog;
+    private String FCMToken;
 
 
     @Override
@@ -74,7 +76,9 @@ public class LoginActivityScreen2 extends BaseActivity {
         binding = ActivityLoginScreen2Binding.inflate(getLayoutInflater());
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl(getString(R.string.database_url));
         setContentView(binding.getRoot());
+        progressDialog = new MyProgressDialog(this);
 
+        getFCMToken();
         initViewModels();
         updateRegisterViewModel();
         checkExistingToken();
@@ -319,6 +323,8 @@ public class LoginActivityScreen2 extends BaseActivity {
                             ManagerUser.clearUserInfo(LoginActivityScreen2.this);
 
                             // Gọi callback sau khi đăng ký thành công
+                            registerFireBaseDataRealTime(registerRequestDTO);
+
                             onSuccessCallback.run();
                         } else {
                             Log.d(TAG, "Đăng ký thất bại. Code: " + response.code() + ", Message: " + response.message());
@@ -337,31 +343,22 @@ public class LoginActivityScreen2 extends BaseActivity {
 
     private void registerFireBaseDataRealTime (RegisterRequestDTO registerRequestDTO) {
         // Show progress dialog
-        progressDialog.show();
 
-       /* // Check if the user's mobile number already exists in the database
+        // Check if the user's mobile number already exists in the database
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                progressDialog.dismiss(); // Hide the progress dialog
-
                 if (snapshot.child("users").hasChild(registerRequestDTO.getPhone())) {
-                    // Display a message if mobile number already exists
                     Toast.makeText(LoginActivityScreen2.this, "Mobile already exists", Toast.LENGTH_SHORT).show();
                 } else {
-
-                    // If mobile number doesn't exist, proceed with registration
-                    Toast.makeText(LoginActivityScreen2.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                    // Save user details in the database
                     databaseReference.child("users").child(registerRequestDTO.getPhone()).child("email").setValue(registerRequestDTO.getEmail());
                     databaseReference.child("users").child(registerRequestDTO.getPhone()).child("name").setValue(registerRequestDTO.getUsername());
                     databaseReference.child("users").child(registerRequestDTO.getPhone()).child("password").setValue(registerRequestDTO.getPassword());
+                    databaseReference.child("users").child(registerRequestDTO.getPhone()).child("roleid").setValue(registerRequestDTO.getRoleId());
+                    databaseReference.child("users").child(registerRequestDTO.getPhone()).child("FCMToken").setValue(FCMToken);
                     // Save user's mobile number for future login
                     MemoryData.saveMobile(registerRequestDTO.getPhone(), LoginActivityScreen2.this);
 
-                    // Open the MainActivity and finish the Register activity
-                    startActivity(new Intent(LoginActivityScreen2.this, MainActivity.class));
-                    finish();
                 }
             }
 
@@ -372,9 +369,18 @@ public class LoginActivityScreen2 extends BaseActivity {
                 // Display a message for database error
                 Toast.makeText(LoginActivityScreen2.this, "Database error", Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
 
 
+    }
+
+    private void getFCMToken() {
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+             FCMToken = task.getResult();
+             Log.d("CheckTokenCurrent", FCMToken.toString());
+            } else FCMToken = "";
+        });
     }
 
     @Override
