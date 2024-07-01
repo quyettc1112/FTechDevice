@@ -26,6 +26,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.ftechdevice.API_Service.UserAPI_Service;
 import com.example.ftechdevice.Common.TokenManger.TokenManager;
 import com.example.ftechdevice.JWT.JWTDecoder;
@@ -57,19 +59,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String accessToken = TokenManager.getAccessToken(requireContext());
-        if(accessToken != null) {
-            try {
-                JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
-                email = decodedPayload.getString("email");
-                getUserByEmail(accessToken,email);
-            } catch (JSONException e) {
-                throw new RuntimeException(e);
-            }
-            Log.d("JWT", email);
-        }else{
-            Toast.makeText(requireContext(), "Token is null", Toast.LENGTH_SHORT).show();
-        }
+
         // TODO: Use the ViewModel
     }
 
@@ -77,14 +67,37 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
-
+        String accessToken = TokenManager.getAccessToken(requireContext());
+        if(accessToken != null) {
+            try {
+                JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
+                email = decodedPayload.getString("email");
+                getUserByEmail(accessToken,email);
+                binding.LoginButton.setVisibility(View.GONE);
+                binding.logout.setVisibility(View.VISIBLE);
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+            Log.d("JWT", email);
+        }else{
+            binding.logout.setVisibility(View.GONE);
+            binding.LoginButton.setVisibility(View.VISIBLE);
+        }
         binding.logout.setOnClickListener(v -> showLogoutDialog());
+
+        binding.LoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLoginDialog();
+            }
+        });
 
         intentToFaceBook();
         intentToMaps();
 
         return binding.getRoot();
     }
+
 
     private void getUserByEmail(String token, String email) {
         userApiService.getUserByEmail("Bearer " + token, email)
@@ -94,26 +107,38 @@ public class ProfileFragment extends Fragment {
                         if (response.isSuccessful()) {
                             UserResponseDTO userResponse = response.body();
                             if (userResponse != null && binding != null) {
-                                if(userResponse.getUsername() != null) {
-                                    binding.userName.setText(userResponse.getUsername());
+                                String username = userResponse.getUsername();
+                                String avatar = userResponse.getAvatar();
 
-                                }else{
+                                if (username != null) {
+                                    binding.userName.setText(username);
+                                } else {
                                     binding.userName.setText("No Names");
                                 }
-                            } else {
 
-                                Log.d("check null","empty");
+                                if (avatar != null) {
+                                    try {
+                                        Glide.with(binding.ivUserAvatar.getContext())
+                                                .load(avatar)
+                                                .apply(new RequestOptions().error(R.drawable.ic_avatar)) // placeholder là ảnh mặc định khi tải thất bại
+                                                .into(binding.ivUserAvatar);
+                                    } catch (Exception e) {
+                                        Log.e("Avatar Error", "Failed to set avatar URI", e);
+                                    }
+                                } else {
+                                    Log.d("Avatar Info", "Avatar URL is null");
+                                }
+                            } else {
+                                Log.d("check null", "userResponse or binding is null");
                             }
                         } else {
-
-                            Log.d("check fall","Failed to get user data");
+                            Log.d("check fall", "Failed to get user data");
                         }
                     }
 
                     @Override
                     public void onFailure(@NonNull Call<UserResponseDTO> call, @NonNull Throwable t) {
-
-                        Log.d("check fall",t.getMessage());
+                        Log.d("check fall", t.getMessage());
                     }
                 });
     }
@@ -172,6 +197,39 @@ public class ProfileFragment extends Fragment {
         dialog.show();
     }
 
+    private void showLoginDialog() {
+        BottomSheetDialog dialog = new BottomSheetDialog(requireContext());
+        View view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_login, null);
+
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                convertDpToPx(300)
+        );
+        view.setLayoutParams(layoutParams);
+
+        // Gắn view vào dialog
+        dialog.setContentView(view);
+
+        // Tìm các view con và thiết lập sự kiện
+        AppCompatButton buttonYes = view.findViewById(R.id.btn_logint_accept);
+        AppCompatButton buttonNo = view.findViewById(R.id.btn_login_cancle);
+
+        buttonYes.setOnClickListener(v -> {
+
+            Intent intent = new Intent(requireActivity(), LoginActivity.class);
+            requireActivity().startActivity(intent);
+            dialog.dismiss();
+            requireActivity().finish();
+        });
+
+        buttonNo.setOnClickListener(v -> {
+            // Đóng dialog khi nhấn nút No
+            dialog.dismiss();
+        });
+
+        // Hiển thị dialog
+        dialog.show();
+    }
     private int convertDpToPx(int dp) {
         float density = requireContext().getResources().getDisplayMetrics().density;
         return (int) (dp * density);

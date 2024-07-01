@@ -28,6 +28,7 @@ import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivityScreen2;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
+import com.example.ftechdevice.Until.MyProgressDialog;
 import com.example.ftechdevice.databinding.ActivityRegisterScreen3Binding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,6 +54,8 @@ public class RegisterActivity_Screen3 extends BaseActivity {
     FirebaseAuth mAuth;
     @Inject
     UserAPI_Repository userapiRepository;
+
+    private MyProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,6 +174,9 @@ public class RegisterActivity_Screen3 extends BaseActivity {
 
     private void doRegister(String email, String password) {
         binding.btnRegisterScreen3.setEnabled(false);
+        progressDialog = new MyProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -178,11 +184,12 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                         sendVerificationEmail();
                     } else {
                         binding.btnRegisterScreen3.setEnabled(true);
-                        //      Log.d(TAG, "Đăng ký thất bại");
+                        progressDialog.dismiss(); // Ẩn progress dialog khi gặp lỗ
                     }
                 })
                 .addOnFailureListener(e -> {
                     binding.btnRegisterScreen3.setEnabled(true);
+                    progressDialog.dismiss();
                     if (e instanceof FirebaseAuthUserCollisionException) {
                         Toast.makeText(this, "Email đã tồn tại", Toast.LENGTH_SHORT).show();
                     } else {
@@ -194,6 +201,7 @@ public class RegisterActivity_Screen3 extends BaseActivity {
     private void sendVerificationEmail() {
         if (mAuth.getCurrentUser() != null) {
             mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task -> {
+                progressDialog.dismiss(); //
                 if (task.isSuccessful()) {
 
                     Toast.makeText(this, "Email xác minh đã được gửi. Vui lòng xác minh email trước khi đăng nhập.", Toast.LENGTH_SHORT).show();

@@ -25,6 +25,7 @@ import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
 import com.example.ftechdevice.UI.ShareViewModel.UserShareViewModel;
+import com.example.ftechdevice.Until.MyProgressDialog;
 import com.example.ftechdevice.databinding.ActivityLoginScreen2Binding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -54,12 +55,16 @@ public class LoginActivityScreen2 extends BaseActivity {
     @Inject
     UserAPI_Repository userapiRepository;
 
+    private MyProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         binding = ActivityLoginScreen2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        progressDialog = new MyProgressDialog(this);
+        progressDialog.setCancelable(false);
 
         initViewModels();
         updateRegisterViewModel();
@@ -191,9 +196,10 @@ public class LoginActivityScreen2 extends BaseActivity {
     }
 
     private void doLogin(LoginRequestDTO loginRequestDTO) {
-
+        progressDialog.show();
         mAuth.signInWithEmailAndPassword(loginRequestDTO.getEmail(), loginRequestDTO.getPassword())
                 .addOnCompleteListener(this, task -> {
+                    progressDialog.dismiss(); // Ẩn progress dialog
                     if (task.isSuccessful()) {
                         handleSuccessfulFirebaseLogin(loginRequestDTO);
                     } else {
@@ -248,10 +254,12 @@ public class LoginActivityScreen2 extends BaseActivity {
     }
 
     private void loginUser(LoginRequestDTO loginRequestDTO) {
+        progressDialog.show();
         userapiRepository.loginUser(loginRequestDTO)
                 .enqueue(new Callback<LoginResponse>() {
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                        progressDialog.dismiss();
                         if (response.isSuccessful() && response.body() != null) {
                             handleSuccessfulLogin(response.body());
                         } else {
@@ -261,6 +269,7 @@ public class LoginActivityScreen2 extends BaseActivity {
 
                     @Override
                     public void onFailure(Call<LoginResponse> call, Throwable t) {
+                        progressDialog.dismiss();
                         Log.e(TAG, "Login failed: " + t.getMessage());
                         Toast.makeText(LoginActivityScreen2.this, "Lỗi kết nối", Toast.LENGTH_SHORT).show();
                     }
@@ -295,10 +304,12 @@ public class LoginActivityScreen2 extends BaseActivity {
     }
 
     private void registerUser(RegisterRequestDTO registerRequestDTO, Runnable onSuccessCallback) {
+        progressDialog.show();
         userapiRepository.registerUser(registerRequestDTO)
                 .enqueue(new Callback<RegisterResponseDTO>() {
                     @Override
                     public void onResponse(@NonNull Call<RegisterResponseDTO> call, @NonNull Response<RegisterResponseDTO> response) {
+                        progressDialog.dismiss();
                         if (response.isSuccessful()) {
                             Log.d(TAG, "Đăng ký thành công với server");
                             //  Toast.makeText(LoginActivityScreen2.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
@@ -314,6 +325,7 @@ public class LoginActivityScreen2 extends BaseActivity {
 
                     @Override
                     public void onFailure(@NonNull Call<RegisterResponseDTO> call, Throwable t) {
+                        progressDialog.dismiss();
                         Log.e(TAG, "Lỗi kết nối: " + t.getMessage());
                         // Toast.makeText(LoginActivityScreen2.this, "Lỗi kết nối khi đăng ký", Toast.LENGTH_SHORT).show();
                     }
