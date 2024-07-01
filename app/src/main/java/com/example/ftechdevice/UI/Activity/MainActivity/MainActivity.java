@@ -127,7 +127,6 @@ public class MainActivity extends BaseActivity {
             if (task.isSuccessful()) {
                 String token = task.getResult();
                 Log.d("CheckToken", token);
-
             }
         });
 
