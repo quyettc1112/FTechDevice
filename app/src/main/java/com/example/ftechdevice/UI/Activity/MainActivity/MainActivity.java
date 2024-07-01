@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.ftechdevice.AppConfig.BaseConfig.BaseActivity;
 import com.example.ftechdevice.AppConfig.CustomView.CustomBottomNav.NiceBottomBar;
 import com.example.ftechdevice.Common.CommonAdapter.FragmentAdapter;
+import com.example.ftechdevice.Common.TokenManger.TokenManager;
+import com.example.ftechdevice.JWT.JWTDecoder;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.ChatModule.ChatActivity.ChatActivity;
 import com.example.ftechdevice.UI.Fragment.CartFragment.CartFragment;
@@ -26,6 +29,9 @@ import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
 import com.example.ftechdevice.databinding.ActivityMainBinding;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -116,7 +122,17 @@ public class MainActivity extends BaseActivity {
         binding.fabChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ChatActivity.class));
+                String accessToken = TokenManager.getAccessToken(MainActivity.this);
+                if(accessToken != null) {
+                    try {
+                        startActivity(new Intent(MainActivity.this, ChatActivity.class));
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }else{
+                    Toast.makeText(MainActivity.this, "Bạn Cần Đăng Nhập Trước Khi Tiếp Tục", Toast.LENGTH_SHORT).show();
+                    binding.vp2Main.setCurrentItem(3, true);
+                }
             }
         });
 
