@@ -57,6 +57,7 @@ public class RegisterActivity_Screen3 extends BaseActivity {
 
     private MyProgressDialog progressDialog;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,6 +145,10 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                 },
                 year, month, day
         );
+
+        // Set the max date to today
+        datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
+
         datePickerDialog.show();
     }
 
