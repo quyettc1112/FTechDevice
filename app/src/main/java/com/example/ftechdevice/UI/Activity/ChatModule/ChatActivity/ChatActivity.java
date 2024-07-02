@@ -1,6 +1,7 @@
 package com.example.ftechdevice.UI.Activity.ChatModule.ChatActivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -44,7 +45,7 @@ public class ChatActivity extends AppCompatActivity {
 
         //final String mobileNumber = MemoryData.getMobile(this);
 
-        final String mobileNumber = "+84356970684";
+        final String mobileNumber = "+84356970686";
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl(getString(R.string.database_url));
 
         // Configure RecyclerView
@@ -91,6 +92,7 @@ public class ChatActivity extends AppCompatActivity {
                         }
                         // Load chat/messages in the list
                         loadData(chatKey, getUserFullName, mobile, lastMessage, unseenMessagesCount);
+
                     }
                 }
 

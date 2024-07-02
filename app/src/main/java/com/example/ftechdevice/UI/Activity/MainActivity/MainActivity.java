@@ -27,8 +27,8 @@ import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductFragment;
 import com.example.ftechdevice.UI.Fragment.ProfileFragment.ProfileFragment;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
 import com.example.ftechdevice.databinding.ActivityMainBinding;
+import com.google.firebase.installations.FirebaseInstallations;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -78,7 +78,7 @@ public class MainActivity extends BaseActivity {
         });
 
         floatButtonHandle();
-        getFCMToken();
+         getFCMToken();
     }
 
     private void setUpBottomNav() {
@@ -149,8 +149,17 @@ public class MainActivity extends BaseActivity {
             if (task.isSuccessful()) {
                 String token = task.getResult();
                 Log.d("CheckToken", token);
+                Log.d("CheckID", task.getResult());
             }
         });
+
+        FirebaseInstallations.getInstance().getId().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                String token = task.getResult();
+                Log.d("CheckID", token);
+            }
+        });
+
 
 
     }
