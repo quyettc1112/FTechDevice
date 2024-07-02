@@ -13,6 +13,7 @@ import com.example.ftechdevice.Model.ModelRespone.UserResponseDTO;
 import javax.inject.Inject;
 
 import dagger.hilt.android.scopes.ActivityScoped;
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 
 @ActivityScoped
@@ -45,6 +46,9 @@ public class UserAPI_Repository {
         return userapiService.getUserByEmail(token,email);
     }
 
+    public Call<String> uploadFile(String token, MultipartBody.Part file) {
+        return userapiService.uploadFile(token, file);
+    }
 
 
 }

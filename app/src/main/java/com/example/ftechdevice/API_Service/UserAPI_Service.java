@@ -11,11 +11,14 @@ import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
 import com.example.ftechdevice.Model.ModelRespone.TokenReponse;
 import com.example.ftechdevice.Model.ModelRespone.UserResponseDTO;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface UserAPI_Service {
@@ -34,4 +37,11 @@ public interface UserAPI_Service {
 
     @GET("/api/auth/user")
     Call<UserResponseDTO> getUserByEmail(@Header("Authorization") String token , @Query("email") String email);
+
+    @Multipart
+    @POST("/api/files")
+    Call<String> uploadFile( @Header("Authorization") String authorization, @Part MultipartBody.Part file
+    );
+
+
 }
