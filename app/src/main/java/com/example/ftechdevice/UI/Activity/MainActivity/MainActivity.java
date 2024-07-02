@@ -27,11 +27,8 @@ import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductFragment;
 import com.example.ftechdevice.UI.Fragment.ProfileFragment.ProfileFragment;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
 import com.example.ftechdevice.databinding.ActivityMainBinding;
-import com.google.firebase.installations.FirebaseInstallations;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -54,7 +51,12 @@ public class MainActivity extends BaseActivity {
 
         setUpFragmentWithViewPager();
         setUpBottomNav();
+
+
+        getFCMToken();
+
     }
+
 
     private void setUpFragmentWithViewPager() {
         ArrayList<Fragment> listFragment = new ArrayList<>();
@@ -78,7 +80,7 @@ public class MainActivity extends BaseActivity {
         });
 
         floatButtonHandle();
-         getFCMToken();
+
     }
 
     private void setUpBottomNav() {
@@ -150,17 +152,15 @@ public class MainActivity extends BaseActivity {
                 String token = task.getResult();
                 Log.d("CheckToken", token);
                 Log.d("CheckID", task.getResult());
-            }
+            } else  Log.d("CheckToken", "Bị null");
         });
+    }
 
-        FirebaseInstallations.getInstance().getId().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                String token = task.getResult();
-                Log.d("CheckID", token);
-            }
-        });
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
 
     }
+
+
 }

@@ -39,6 +39,13 @@ android {
         buildConfig = true
     }
 
+    configurations {
+        implementation.exclude module:'proto-google-common-protos'
+        implementation.exclude module:'protolite-well-known-types'
+        implementation.exclude module:'protobuf-lite'
+        implementation.exclude module:'protobuf-javalite'
+    }
+
 
     packagingOptions {
         exclude ("META-INF/DEPENDENCIES")
@@ -140,12 +147,21 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation("com.google.firebase:firebase-storage")
     implementation 'com.google.firebase:firebase-database'
-    // Firebase Cloud Messaging
-    implementation ('com.google.firebase:firebase-messaging:23.0.8') {
-        exclude group: 'com.google.firebase', module: 'firebase-common'
-        exclude group: 'com.google.firebase', module: 'firebase-iid'
-        exclude group: 'com.google.firebase', module: 'firebase-inappmessaging-display'
+
+
+    // Firebase In-App Messaging Display
+    implementation ('com.google.firebase:firebase-inappmessaging-display') {
+
     }
+
+    // Firebase Cloud Messaging
+    implementation ('com.google.firebase:firebase-messaging') {
+        // Exclude the duplicated dependency
+        exclude group: 'com.google.firebase', module: 'protolite-well-known-types'
+    }
+
+    // Other Firebase dependencies if needed
+    implementation 'com.google.firebase:firebase-analytics'
 
 
     // =================== Google Services ===========================
