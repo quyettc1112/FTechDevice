@@ -1,6 +1,7 @@
 package com.example.ftechdevice.UI.Activity.ChatModule.ChatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -9,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ftechdevice.Common.TokenManger.TokenManager;
+import com.example.ftechdevice.JWT.JWTDecoder;
 import com.example.ftechdevice.Model.ChatModuleModel.ChatList;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.ChatModule.Adapter.ChatAdapter;
@@ -21,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +50,7 @@ public class ChatActivity extends AppCompatActivity {
 
         //final String mobileNumber = MemoryData.getMobile(this);
 
-        final String mobileNumber = "+84356970686";
+        final String mobileNumber = getPhoneUserFromJWT();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl(getString(R.string.database_url));
 
         // Configure RecyclerView
@@ -206,6 +211,24 @@ public class ChatActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+
+    private String getPhoneUserFromJWT() {
+        String phone;
+        String accessToken = TokenManager.getAccessToken(ChatActivity.this);
+        if(accessToken != null) {
+            try {
+                JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
+                phone = decodedPayload.getString("phone");
+                return phone;
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        }else{
+            Toast.makeText(ChatActivity.this, "Phone is Null", Toast.LENGTH_SHORT).show();
+            return "";
+        }
     }
 
 }
