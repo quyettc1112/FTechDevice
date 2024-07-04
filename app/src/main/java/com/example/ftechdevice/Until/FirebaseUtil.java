@@ -37,4 +37,32 @@ public class FirebaseUtil {
             }
         });
     }
+
+    public interface FCMTokenListener {
+        void onTokenReceived(String token);
+        void onError(String error);
+    }
+
+    public void getFCMToken(String phoneNumber, FCMTokenListener listener) {
+        mDatabase.child(phoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    String token = dataSnapshot.child("FCMToken").getValue(String.class);
+                    if (token != null) {
+                        listener.onTokenReceived(token);
+                    } else {
+                        listener.onError("FCMToken not found for user.");
+                    }
+                } else {
+                    listener.onError("User not found.");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                listener.onError("Error: " + databaseError.getMessage());
+            }
+        });
+    }
 }

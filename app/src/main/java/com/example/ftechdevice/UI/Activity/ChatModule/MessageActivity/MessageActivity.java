@@ -1,6 +1,7 @@
 package com.example.ftechdevice.UI.Activity.ChatModule.MessageActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,6 +22,8 @@ import com.example.ftechdevice.Model.ChatModuleModel.ChatList;
 import com.example.ftechdevice.Model.ChatModuleModel.MessagesList;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.ChatModule.Adapter.MessagesAdapter;
+import com.example.ftechdevice.Until.FirebaseNotificationHelper;
+import com.example.ftechdevice.Until.FirebaseUtil;
 import com.example.ftechdevice.Until.MemoryData;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -52,6 +55,8 @@ public class MessageActivity extends AppCompatActivity {
 
     private ValueEventListener valueEventListener;
 
+    private FirebaseUtil firebaseUtil = new FirebaseUtil();
+    private String targetToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +80,21 @@ public class MessageActivity extends AppCompatActivity {
         final String getName = getIntent().getStringExtra("full_name");
         chatKey = getIntent().getStringExtra("chat_key");
         final String getMobile = getIntent().getStringExtra("mobile");
+
+
+        firebaseUtil.getFCMToken(getMobile, new FirebaseUtil.FCMTokenListener() {
+            @Override
+            public void onTokenReceived(String token) {
+                targetToken = token;
+            }
+
+            @Override
+            public void onError(String error) {
+                Log.d("CheckGetTargetToken", error);
+            }
+        });
+
+
 
         // get user's mobile number from memory
         userMobileNumber = MemoryData.getMobile(this);
@@ -161,6 +181,10 @@ public class MessageActivity extends AppCompatActivity {
 
                     // clear edit text
                     messageEditText.setText("");
+                    Log.d("CheckCountMessage", "1");
+
+                    FirebaseNotificationHelper firebaseNotificationHelper = new FirebaseNotificationHelper(MessageActivity.this);
+                    firebaseNotificationHelper.sendNotification(targetToken, getName, getTxtMessage);
                 }
             }
         });

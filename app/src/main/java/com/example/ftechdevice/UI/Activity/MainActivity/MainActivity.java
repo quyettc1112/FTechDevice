@@ -43,7 +43,6 @@ public class MainActivity extends BaseActivity {
     private ShareViewModel sharedViewModel;
     public ActivityMainBinding binding;
     private FragmentAdapter fragmentAdapter;
-    FirebaseUtil firebaseUtil = new FirebaseUtil();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,10 +57,6 @@ public class MainActivity extends BaseActivity {
 
 
         getFCMToken();
-
-        String TARGET_DEVICE_TOKEN = "e31qfituSyu9KtifhgT5QB:APA91bG4rvvghV_QiMnwPx5kOZHu8aVNGuZjWWJsxjwXnwb0os3qa-jfghsMvVh9YdU7_SbJKgh8ZzWwqRzL_NVrJPlbn4FLn8g5byaQnZ8TiOHLzj3b5nCddBW9XJFF0n_bl1uvcExx";
-        FirebaseNotificationHelper firebaseNotificationHelper = new FirebaseNotificationHelper(this);
-        firebaseNotificationHelper.sendNotification(TARGET_DEVICE_TOKEN, "Hello", "This is a test notification");
 
 
     }

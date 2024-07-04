@@ -70,6 +70,7 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 // Clear old messages from the list
+
                 userChatList.clear();
                 // Loop through available users in the database
                 for (DataSnapshot userData : snapshot.child("users").getChildren()) {
@@ -112,6 +113,7 @@ public class ChatActivity extends AppCompatActivity {
                 }
                 // Handle database error if any
             }
+
         });
     }
 
@@ -158,6 +160,7 @@ public class ChatActivity extends AppCompatActivity {
         }
 
         // Return the last message from the chat
+
         return lastMessage;
     }
 
@@ -191,6 +194,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         }
 
+
         return unseenMessagesCount; // Return the count of unseen messages
     }
 
@@ -200,6 +204,7 @@ public class ChatActivity extends AppCompatActivity {
             ChatList chatList = new ChatList(chatKey, fullName, mobile, lastMessage, unseenMessagesCount);
             userChatList.add(chatList);
             chatAdapter.updateMessages(userChatList);
+
         }
     }
 
