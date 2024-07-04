@@ -86,6 +86,7 @@ public class MessageActivity extends AppCompatActivity {
             @Override
             public void onTokenReceived(String token) {
                 targetToken = token;
+                Log.d("CheckGetTargetToken", token);
             }
 
             @Override
@@ -181,7 +182,6 @@ public class MessageActivity extends AppCompatActivity {
 
                     // clear edit text
                     messageEditText.setText("");
-                    Log.d("CheckCountMessage", "1");
 
                     FirebaseNotificationHelper firebaseNotificationHelper = new FirebaseNotificationHelper(MessageActivity.this);
                     firebaseNotificationHelper.sendNotification(targetToken, getName, getTxtMessage);
