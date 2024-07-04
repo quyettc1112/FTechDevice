@@ -82,19 +82,47 @@ public class ChatActivity extends AppCompatActivity {
                     if (mobile == null) {
                         continue;
                     }
-                    if (!mobile.equals(currentMobileLogin)) {
-                        final String getUserFullName = userData.child("name").getValue(String.class);
-                        String lastMessage = "";
-                        int unseenMessagesCount = 0;
-                        String chatKey = checkChatExistence(snapshot, currentMobileLogin, mobile);
-                        if (!chatKey.isEmpty()) {
-                            lastMessage = retrieveLastMessage(snapshot, chatKey);
-                            if (!lastMessage.isEmpty()) {
-                                unseenMessagesCount = countUnseenMessages(snapshot, chatKey, currentMobileLogin);
+                    firebaseUtil.getUserByPhoneNumber(currentMobileLogin, new FirebaseUtil.UserListener() {
+                        @Override
+                        public void onUserReceived(UserFireBaseModel user) {
+                            if (user.roleid == 1) {
+                                if (!mobile.equals(currentMobileLogin)) {
+                                    final String getUserFullName = userData.child("name").getValue(String.class);
+                                    String lastMessage = "";
+                                    int unseenMessagesCount = 0;
+                                    String chatKey = checkChatExistence(snapshot, currentMobileLogin,  mobile);
+                                    if (!chatKey.isEmpty()) {
+                                        lastMessage = retrieveLastMessage(snapshot, chatKey);
+                                        if (!lastMessage.isEmpty()) {
+                                            unseenMessagesCount = countUnseenMessages(snapshot, chatKey, currentMobileLogin);
+                                        }
+                                    }
+                                    loadData(chatKey, getUserFullName, mobile, lastMessage, unseenMessagesCount);
+                                }
+                            } else {
+                                String targetMobile = "+84356970686";
+                                if (!mobile.equals(currentMobileLogin) && mobile.equals(targetMobile)) {
+                                    final String getUserFullName = userData.child("name").getValue(String.class);
+                                    String lastMessage = "";
+                                    int unseenMessagesCount = 0;
+                                    String chatKey = checkChatExistence(snapshot, currentMobileLogin, mobile);
+                                    if (!chatKey.isEmpty()) {
+                                        lastMessage = retrieveLastMessage(snapshot, chatKey);
+                                        if (!lastMessage.isEmpty()) {
+                                            unseenMessagesCount = countUnseenMessages(snapshot, chatKey, currentMobileLogin);
+                                        }
+                                    }
+                                    loadData(chatKey, getUserFullName, mobile, lastMessage, unseenMessagesCount);
+                                }
                             }
                         }
-                        loadData(chatKey, getUserFullName, mobile, lastMessage, unseenMessagesCount);
-                    }
+                        @Override
+                        public void onError(String error) {
+
+                        }
+                    });
+
+
                 }
                 if (progressDialog.isShowing()) {
                     progressDialog.dismiss();
