@@ -31,6 +31,7 @@ public class FCMNotificationService extends FirebaseMessagingService {
         // Kiểm tra nếu message chứa data payload
         if (remoteMessage.getData().size() > 0) {
             makeNotification(remoteMessage.getData().get("message"));
+            Log.d("CheckMessageRespone", (remoteMessage.getData().toString()));
         }
         // Kiểm tra nếu message chứa notification payload
         if (remoteMessage.getNotification() != null) {

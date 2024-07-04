@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
@@ -19,16 +18,20 @@ import com.example.ftechdevice.AppConfig.CustomView.CustomBottomNav.NiceBottomBa
 import com.example.ftechdevice.Common.CommonAdapter.FragmentAdapter;
 import com.example.ftechdevice.Common.TokenManger.TokenManager;
 import com.example.ftechdevice.JWT.JWTDecoder;
-import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.ChatModule.ChatActivity.ChatActivity;
 import com.example.ftechdevice.UI.Fragment.CartFragment.CartFragment;
 import com.example.ftechdevice.UI.Fragment.HomeFragment.HomeFragment;
 import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductFragment;
 import com.example.ftechdevice.UI.Fragment.ProfileFragment.ProfileFragment;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
+import com.example.ftechdevice.Until.FirebaseNotificationHelper;
+import com.example.ftechdevice.Until.FirebaseUtil;
 import com.example.ftechdevice.databinding.ActivityMainBinding;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -40,6 +43,7 @@ public class MainActivity extends BaseActivity {
     private ShareViewModel sharedViewModel;
     public ActivityMainBinding binding;
     private FragmentAdapter fragmentAdapter;
+    FirebaseUtil firebaseUtil = new FirebaseUtil();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,9 @@ public class MainActivity extends BaseActivity {
 
         getFCMToken();
 
+        String TARGET_DEVICE_TOKEN = "e31qfituSyu9KtifhgT5QB:APA91bG4rvvghV_QiMnwPx5kOZHu8aVNGuZjWWJsxjwXnwb0os3qa-jfghsMvVh9YdU7_SbJKgh8ZzWwqRzL_NVrJPlbn4FLn8g5byaQnZ8TiOHLzj3b5nCddBW9XJFF0n_bl1uvcExx";
+        FirebaseNotificationHelper firebaseNotificationHelper = new FirebaseNotificationHelper(this);
+        firebaseNotificationHelper.sendNotification(TARGET_DEVICE_TOKEN, "Hello", "This is a test notification");
 
 
     }
@@ -149,20 +156,47 @@ public class MainActivity extends BaseActivity {
     }
 
     private void getFCMToken() {
-        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                String token = task.getResult();
-                Log.d("CheckToken", token);
-                Log.d("CheckID", task.getResult());
-            } else  Log.d("CheckToken", "Bị null");
-        });
+        String mobileNumber = getPhoneUserFromJWT();
+        if (!mobileNumber.isEmpty()) {
+            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    String token = task.getResult();
+                    FirebaseUtil firebaseUtil = new FirebaseUtil();
+                    firebaseUtil.updateFCMToken(mobileNumber, token);
+                    Log.d("CheckPhone", "update Thanh cong");
+                } else  Log.d("CheckToken", "Bị null");
+            });
+        } else Log.d("CheckPhone", "ChuaLogin");
+    }
+
+    private String getPhoneUserFromJWT() {
+        String phone;
+        String accessToken = TokenManager.getAccessToken(MainActivity.this);
+        if(accessToken != null) {
+            try {
+                JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
+                phone = decodedPayload.getString("phone");
+                return phone;
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        }else{
+            return "";
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getFCMToken();
+    }
+
+
 
 
 }
