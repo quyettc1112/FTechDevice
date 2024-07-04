@@ -245,7 +245,6 @@ public class ProfileFragment extends Fragment {
     private void showLoginDialog() {
         BottomSheetDialog dialog = new BottomSheetDialog(requireContext());
         View view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_login, null);
-
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 convertDpToPx(300)
@@ -279,6 +278,11 @@ public class ProfileFragment extends Fragment {
     private void showUpdateDialog() {
         BottomSheetDialog dialog = new BottomSheetDialog(requireContext());
         View view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_update_user, null);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                convertDpToPx(800)
+        );
+        view.setLayoutParams(layoutParams);
         dialog.setContentView(view);
 
         AppCompatButton buttonUpdate = view.findViewById(R.id.btn_update_accept);
