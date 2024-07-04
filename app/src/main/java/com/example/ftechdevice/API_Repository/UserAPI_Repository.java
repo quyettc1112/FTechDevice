@@ -5,6 +5,7 @@ import com.example.ftechdevice.Model.ModelRequestDTO.JWTObject;
 import com.example.ftechdevice.Model.ModelRequestDTO.LoginRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.RegisterRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
+import com.example.ftechdevice.Model.ModelRespone.FileUploadResponse;
 import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 import com.example.ftechdevice.Model.ModelRespone.MessageRespone;
 import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
@@ -13,6 +14,8 @@ import com.example.ftechdevice.Model.ModelRespone.UserResponseDTO;
 import javax.inject.Inject;
 
 import dagger.hilt.android.scopes.ActivityScoped;
+import okhttp3.MultipartBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 
 @ActivityScoped
@@ -45,6 +48,8 @@ public class UserAPI_Repository {
         return userapiService.getUserByEmail(token,email);
     }
 
-
+    public Call<ResponseBody> uploadFile(String token, MultipartBody.Part file) {
+        return userapiService.uploadFile(token, file);
+    }
 
 }
