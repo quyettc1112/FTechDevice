@@ -80,7 +80,7 @@ public class RegisterActivity_Screen3 extends BaseActivity {
 
                 registerViewModel.updateEmail(email);
                 registerViewModel.updatePassword(password);
-                registerViewModel.updateRoleId(1);
+                registerViewModel.updateRoleId(2);
                 registerViewModel.updatePhone(binding.edtRegisterPhone.getText().toString());
                 registerViewModel.updateUsername(binding.edtRegisterName.getText().toString());
 

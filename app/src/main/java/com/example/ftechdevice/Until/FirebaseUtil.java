@@ -1,5 +1,6 @@
 package com.example.ftechdevice.Until;
 
+import com.example.ftechdevice.Model.UserFireBaseModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -54,6 +55,31 @@ public class FirebaseUtil {
                     } else {
                         listener.onError("FCMToken not found for user.");
                     }
+                } else {
+                    listener.onError("User not found.");
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                listener.onError("Error: " + databaseError.getMessage());
+            }
+        });
+    }
+
+
+
+    public interface UserListener {
+        void onUserReceived(UserFireBaseModel user);
+        void onError(String error);
+    }
+
+    public void getUserByPhoneNumber(String phoneNumber, UserListener listener) {
+        mDatabase.child(phoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    UserFireBaseModel user = dataSnapshot.getValue(UserFireBaseModel.class);
+                    listener.onUserReceived(user);
                 } else {
                     listener.onError("User not found.");
                 }

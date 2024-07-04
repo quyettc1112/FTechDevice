@@ -135,7 +135,7 @@ public class LoginActivityScreen2 extends BaseActivity {
             Log.e(TAG, "Password is null or empty");
         }
 
-        registerViewModel.updateRoleId(1);
+        registerViewModel.updateRoleId(2);
 
         if (phone != null && !phone.isEmpty()) {
             registerViewModel.updatePhone(phone);

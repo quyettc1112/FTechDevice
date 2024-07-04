@@ -13,8 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ftechdevice.Common.TokenManger.TokenManager;
 import com.example.ftechdevice.JWT.JWTDecoder;
 import com.example.ftechdevice.Model.ChatModuleModel.ChatList;
+import com.example.ftechdevice.Model.UserFireBaseModel;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.ChatModule.Adapter.ChatAdapter;
+import com.example.ftechdevice.Until.FirebaseUtil;
 import com.example.ftechdevice.Until.MemoryData;
 import com.example.ftechdevice.Until.MyProgressDialog;
 import com.google.firebase.database.DataSnapshot;
@@ -39,6 +41,7 @@ public class ChatActivity extends AppCompatActivity {
     // User messages adapter
     private ChatAdapter chatAdapter;
 
+    private FirebaseUtil firebaseUtil = new FirebaseUtil();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +51,7 @@ public class ChatActivity extends AppCompatActivity {
 
         final RecyclerView messagesRecyclerView = findViewById(R.id.messagesRecyclerView);
 
-        //final String mobileNumber = MemoryData.getMobile(this);
-
-        final String mobileNumber = getPhoneUserFromJWT();
+        final String currentkeyFirebaseMobileLogin = getPhoneUserFromJWT();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl(getString(R.string.database_url));
 
         // Configure RecyclerView
@@ -66,42 +67,71 @@ public class ChatActivity extends AppCompatActivity {
         progressDialog.show();
 
         // Fetch user chats from Firebase Realtime Database
+        callGetUserList(databaseReference, currentkeyFirebaseMobileLogin, progressDialog);
+    }
+
+    private void callGetUserList(DatabaseReference databaseReference, String currentkeyFirebaseMobileLogin, MyProgressDialog progressDialog) {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 // Clear old messages from the list
-
                 userChatList.clear();
                 // Loop through available users in the database
                 for (DataSnapshot userData : snapshot.child("users").getChildren()) {
-                    // Get user's mobile number from firebase database
-                    final String mobile = userData.getKey();
-                    // check next user in the list if mobile is null
-                    if (mobile == null) {
+                    // Get user's keyFirebaseMobile number from firebase database
+                    final String keyFirebaseMobile = userData.getKey();
+                    // check next user in the list if keyFirebaseMobile is null
+                    if (keyFirebaseMobile == null) {
                         continue;
                     }
-                    // Don't fetch details of the logged-in user
-                    if (!mobile.equals(mobileNumber)) {
-                        // Retrieve user's full name
-                        final String getUserFullName = userData.child("name").getValue(String.class);
-                        // Other required variables
-                        String lastMessage = "";
-                        int unseenMessagesCount = 0;
-                        // Check if chat is available with the user
-                        String chatKey = checkChatExistence(snapshot, mobileNumber, mobile);
-                        if (!chatKey.isEmpty()) {
-                            // Getting last message in the chat
-                            lastMessage = retrieveLastMessage(snapshot, chatKey);
-                            if (!lastMessage.isEmpty()) {
-                                unseenMessagesCount = countUnseenMessages(snapshot, chatKey, mobileNumber);
-                            }
+                    firebaseUtil.getUserByPhoneNumber(currentkeyFirebaseMobileLogin, new FirebaseUtil.UserListener() {
+                        @Override
+                        public void onUserReceived(UserFireBaseModel user) {
+                           if (user.roleid == 2 ) {
+                               if (!keyFirebaseMobile.equals(currentkeyFirebaseMobileLogin)) {
+                                   // Retrieve user's full name
+                                   final Long getUserRoleid = userData.child("roleid").getValue(Long.class);
+                                   if (getUserRoleid == 1 ) {
+                                       final String getUserFullName = userData.child("name").getValue(String.class);
+                                       // Other required variables
+                                       String lastMessage = "";
+                                       int unseenMessagesCount = 0;
+                                       // Check if chat is available with the user
+                                       String chatKey = checkChatExistence(snapshot, currentkeyFirebaseMobileLogin, keyFirebaseMobile);
+                                       if (!chatKey.isEmpty()) {
+                                           lastMessage = retrieveLastMessage(snapshot, chatKey);
+                                           if (!lastMessage.isEmpty()) {
+                                               unseenMessagesCount = countUnseenMessages(snapshot, chatKey, currentkeyFirebaseMobileLogin);
+                                           }
+                                       }
+                                       loadData(chatKey, getUserFullName, keyFirebaseMobile, lastMessage, unseenMessagesCount);
+                                   }
+                               }
+                           } else {
+                               if (!keyFirebaseMobile.equals(currentkeyFirebaseMobileLogin)) {
+                                   // Retrieve user's full name
+                                       final String getUserFullName = userData.child("name").getValue(String.class);
+                                       // Other required variables
+                                       String lastMessage = "";
+                                       int unseenMessagesCount = 0;
+                                       // Check if chat is available with the user
+                                       String chatKey = checkChatExistence(snapshot, currentkeyFirebaseMobileLogin, keyFirebaseMobile);
+                                       if (!chatKey.isEmpty()) {
+                                           lastMessage = retrieveLastMessage(snapshot, chatKey);
+                                           if (!lastMessage.isEmpty()) {
+                                               unseenMessagesCount = countUnseenMessages(snapshot, chatKey, currentkeyFirebaseMobileLogin);
+                                           }
+                                       }
+                                       loadData(chatKey, getUserFullName, keyFirebaseMobile, lastMessage, unseenMessagesCount);
+                                   }
+                           }
                         }
-                        // Load chat/messages in the list
-                        loadData(chatKey, getUserFullName, mobile, lastMessage, unseenMessagesCount);
-
-                    }
+                        @Override
+                        public void onError(String error) {
+                            Log.e("CheckResponeFireBase", "Error: " + error);
+                        }
+                    });
                 }
-
                 if (progressDialog.isShowing()) {
                     progressDialog.dismiss();
                 }
@@ -111,23 +141,18 @@ public class ChatActivity extends AppCompatActivity {
                 if (progressDialog.isShowing()) {
                     progressDialog.dismiss();
                 }
-                // Handle database error if any
             }
-
         });
     }
 
-    // Check if a chat exists for users in the database
-    private String checkChatExistence(DataSnapshot snapshot, String mobileNumber, String getMobile) {
-        String chatKey = "";
 
-        // Check if the chat exists based on different possible chat keys
-        if (snapshot.child("chat").hasChild(mobileNumber + getMobile)) {
-            // Chat key for the first user's chat with the second user
-            chatKey = mobileNumber + getMobile;
-        } else if (snapshot.child("chat").hasChild(getMobile + mobileNumber)) {
-            // Chat key for the second user's chat with the first user
-            chatKey = getMobile + mobileNumber;
+    // Check if a chat exists for users in the database
+    private String checkChatExistence(DataSnapshot snapshot, String currentkeyFirebaseMobileLogin, String getkeyFirebaseMobile) {
+        String chatKey = "";
+        if (snapshot.child("chat").hasChild(currentkeyFirebaseMobileLogin + getkeyFirebaseMobile)) {
+            chatKey = currentkeyFirebaseMobileLogin + getkeyFirebaseMobile;
+        } else if (snapshot.child("chat").hasChild(getkeyFirebaseMobile + currentkeyFirebaseMobileLogin)) {
+            chatKey = getkeyFirebaseMobile + currentkeyFirebaseMobileLogin;
         }
 
         return chatKey; // Return the chat key if it exists, otherwise an empty string
@@ -145,13 +170,13 @@ public class ChatActivity extends AppCompatActivity {
             // Loop through messages in the chat
             for (DataSnapshot message : chatData.getChildren()) {
 
-                // Get the sender's mobile number
-                String userMobile = message.child("mobile").getValue(String.class);
+                // Get the sender's keyFirebaseMobile number
+                String userkeyFirebaseMobile = message.child("keyFirebaseMobile").getValue(String.class);
 
                 // Get the message content
                 String msg = message.child("msg").getValue(String.class);
 
-                if (userMobile != null && msg != null) {
+                if (userkeyFirebaseMobile != null && msg != null) {
 
                     // Update the last message with the current message
                     lastMessage = msg;
@@ -165,7 +190,7 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     // Count the number of unseen messages from the chat
-    private int countUnseenMessages(DataSnapshot snapshot, String chatKey, String mobileNumber) {
+    private int countUnseenMessages(DataSnapshot snapshot, String chatKey, String currentkeyFirebaseMobileLogin) {
 
         int unseenMessagesCount = 0;
 
@@ -178,13 +203,13 @@ public class ChatActivity extends AppCompatActivity {
         // Iterate through messages in the chat
         for (DataSnapshot message : chatData.getChildren()) {
             String msgTimestamp = message.getKey(); // Get the message timestamp
-            String userMobile = message.child("mobile").getValue(String.class); // Get the sender's mobile number
+            String userkeyFirebaseMobile = message.child("keyFirebaseMobile").getValue(String.class); // Get the sender's keyFirebaseMobile number
 
-            if (userMobile == null || msgTimestamp == null) {
+            if (userkeyFirebaseMobile == null || msgTimestamp == null) {
                 continue;
             }
 
-            if (userMobile.equals(mobileNumber)) {
+            if (userkeyFirebaseMobile.equals(currentkeyFirebaseMobileLogin)) {
                 continue;
             }
 
@@ -199,19 +224,19 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     // Load data into the message list
-    private void loadData(String chatKey, String fullName, String mobile, String lastMessage, int unseenMessagesCount) {
-        if (!mobileAlreadyExists(mobile)) {
-            ChatList chatList = new ChatList(chatKey, fullName, mobile, lastMessage, unseenMessagesCount);
+    private void loadData(String chatKey, String fullName, String keyFirebaseMobile, String lastMessage, int unseenMessagesCount) {
+        if (!keyFirebaseMobileAlreadyExists(keyFirebaseMobile)) {
+            ChatList chatList = new ChatList(chatKey, fullName, keyFirebaseMobile, lastMessage, unseenMessagesCount);
             userChatList.add(chatList);
             chatAdapter.updateMessages(userChatList);
 
         }
     }
 
-    // Check if mobile number already exists in the list
-    private boolean mobileAlreadyExists(String mobile) {
+    // Check if keyFirebaseMobile number already exists in the list
+    private boolean keyFirebaseMobileAlreadyExists(String keyFirebaseMobile) {
         for (ChatList message : userChatList) {
-            if (message.getMobile().equals(mobile)) {
+            if (message.getMobile().equals(keyFirebaseMobile)) {
                 return true;
             }
         }
