@@ -166,11 +166,13 @@ public class MainActivity extends BaseActivity {
 
     private String getPhoneUserFromJWT() {
         String phone;
+
         String accessToken = TokenManager.getAccessToken(MainActivity.this);
         if(accessToken != null) {
             try {
                 JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
                 phone = decodedPayload.getString("phone");
+
                 return phone;
             } catch (JSONException e) {
                 throw new RuntimeException(e);

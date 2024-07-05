@@ -277,16 +277,5 @@ public class Constants {
         );
     }
 
-    public static ArrayList<CartModel> getListCart() {
-        ToyModel toyModel = getListToys().get(0);
-        ToyModel toyModel2 = getListToys().get(1);
-        ToyModel toyModel3 = getListToys().get(2);
-        return new ArrayList<>(
-                Arrays.asList(
-                        CartModel.create(toyModel, 2),
-                        CartModel.create(toyModel2, 2),
-                        CartModel.create(toyModel3, 2)
-                )
-        );
-    }
+
 }

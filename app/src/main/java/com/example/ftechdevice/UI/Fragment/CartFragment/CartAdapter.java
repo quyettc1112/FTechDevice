@@ -9,9 +9,12 @@ import androidx.recyclerview.widget.DiffUtil;
 import com.example.ftechdevice.AppConfig.BaseConfig.BaseAdapter;
 import com.example.ftechdevice.AppConfig.BaseConfig.BaseItemViewHolderCF;
 import com.example.ftechdevice.Model.CartModel;
+import com.example.ftechdevice.Model.CartModule.CartResponse;
 import com.example.ftechdevice.Model.ToyModel;
+import com.example.ftechdevice.R;
 import com.example.ftechdevice.databinding.ItemToyCartBinding;
 import com.google.android.material.snackbar.Snackbar;
+import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -36,11 +39,27 @@ public class CartAdapter extends BaseAdapter<CartModel, CartAdapter.CartAdapterV
 
         @Override
         public void bind(CartModel item) {
-            binding.imItemCartImage.setImageResource(item.getToyModel().getToyImage());
-            binding.tvItemCartProductName.setText(item.getToyModel().getToyName());
-            binding.tvItemCartProductPrice.setText(formatPrice(item.getToyModel().getToyPrice()) + " VND");
-            binding.tvItemCartProductCategory.setText(item.getToyModel().getCategoryModel().getName());
+
+            CartResponse.Product product = item.getProduct();
+            if (product == null) {
+                return;
+            }
+
+            if (item.getProduct().getImageUrl().toString().isEmpty()) {
+                binding.imItemCartImage.setImageResource(R.color.background_profile);
+            } else {
+                Picasso.get()
+                        .load(item.getProduct().getImageUrl()) // Assuming item.img is the URL string
+                        .placeholder(R.color.background_profile) // Optional: Placeholder image while loading
+                        .error(R.color.background_profile) // Optional: Error image to display on load failure
+                        .into(binding.imItemCartImage);
+            }
+
+            binding.tvItemCartProductName.setText(product.getName());
+            binding.tvItemCartProductPrice.setText(formatPrice(product.getPrice()) + " VND");
+            binding.tvItemCartProductCategory.setText(product.getProductCategory().getName());
             binding.tvItemCartProductQuantity.setText(String.valueOf(item.getQuantity()));
+
 
             binding.imPlusQuantity.setOnClickListener(v -> {
                 if (onAddQuantityItemClickListener != null) {
@@ -63,24 +82,24 @@ public class CartAdapter extends BaseAdapter<CartModel, CartAdapter.CartAdapterV
         }
     }
 
-    public void addItem(ToyModel toyModel) {
+    public void addItem(CartResponse.Product product) {
         List<CartModel> currentList = getCurrentList();
         CartModel existingItem = currentList.stream()
-                .filter(item -> item.getToyModel().getId() == toyModel.getId())
+                .filter(item -> item.getProduct().getId() == product.getId())
                 .findFirst()
                 .orElse(null);
         if (existingItem != null) {
             existingItem.setQuantity(existingItem.getQuantity() + 1);
         } else {
-            currentList.add(CartModel.create(toyModel, 1));
+            currentList.add(CartModel.create(product, 1));
         }
         submitList(currentList);
     }
 
-    public void removeItem(ToyModel toyModel) {
+    public void removeItem(CartResponse.Product product) {
         List<CartModel> currentList = getCurrentList();
         CartModel existingItem = currentList.stream()
-                .filter(item -> item.getToyModel().getId() == toyModel.getId())
+                .filter(item -> item.getProduct().getId() == product.getId())
                 .findFirst()
                 .orElse(null);
         if (existingItem != null) {
@@ -98,7 +117,7 @@ public class CartAdapter extends BaseAdapter<CartModel, CartAdapter.CartAdapterV
     }
 
     public double getTotalItemsPrice() {
-        return getCurrentList().stream().mapToDouble(item -> item.getToyModel().getToyPrice() * item.getQuantity()).sum();
+        return getCurrentList().stream().mapToDouble(item -> item.getProduct().getPrice() * item.getQuantity()).sum();
     }
 
     public List<CartModel> getCurrentList() {

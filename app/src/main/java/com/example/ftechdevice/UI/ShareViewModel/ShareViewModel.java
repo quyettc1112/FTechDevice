@@ -40,7 +40,7 @@ public class ShareViewModel extends ViewModel {
 
         CartModel existingItem = null;
         for (CartModel item : currentList) {
-            if (item.getToyModel().getId() == cartModel.getToyModel().getId()) {
+            if (item.getProduct().getId() == cartModel.getProduct().getId()) {
                 existingItem = item;
                 break;
             }
