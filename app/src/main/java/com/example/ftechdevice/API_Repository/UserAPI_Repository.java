@@ -5,6 +5,7 @@ import com.example.ftechdevice.Model.ModelRequestDTO.JWTObject;
 import com.example.ftechdevice.Model.ModelRequestDTO.LoginRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.RegisterRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
+import com.example.ftechdevice.Model.ModelRequestDTO.UserRequestDTO;
 import com.example.ftechdevice.Model.ModelRespone.FileUploadResponse;
 import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 import com.example.ftechdevice.Model.ModelRespone.MessageRespone;
@@ -51,5 +52,9 @@ public class UserAPI_Repository {
     public Call<ResponseBody> uploadFile(String token, MultipartBody.Part file) {
         return userapiService.uploadFile(token, file);
     }
+    public Call<UserResponseDTO> updateUser(String token, String email, UserRequestDTO userRequestDTO) {
+        return userapiService.updateUser("Bearer " + token, email, userRequestDTO);
+    }
+
 
 }

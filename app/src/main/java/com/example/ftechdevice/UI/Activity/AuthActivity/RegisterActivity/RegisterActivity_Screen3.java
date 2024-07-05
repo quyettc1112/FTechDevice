@@ -232,7 +232,7 @@ public class RegisterActivity_Screen3 extends BaseActivity {
                     Intent intent = new Intent(this, LoginActivityScreen2.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
-                    finish();
+
                 } else {
                     binding.btnRegisterScreen3.setEnabled(true);
                     //  Toast.makeText(this, "Gửi email xác minh thất bại.", Toast.LENGTH_SHORT).show();

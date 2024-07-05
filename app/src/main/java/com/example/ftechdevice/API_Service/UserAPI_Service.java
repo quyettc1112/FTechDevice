@@ -5,6 +5,7 @@ import com.example.ftechdevice.Model.ModelRequestDTO.JWTObject;
 import com.example.ftechdevice.Model.ModelRequestDTO.LoginRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.RegisterRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
+import com.example.ftechdevice.Model.ModelRequestDTO.UserRequestDTO;
 import com.example.ftechdevice.Model.ModelRespone.FileUploadResponse;
 import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 import com.example.ftechdevice.Model.ModelRespone.MessageRespone;
@@ -44,5 +45,10 @@ public interface UserAPI_Service {
     @POST("/api/files")
     Call<ResponseBody> uploadFile(@Header("Authorization") String token, @Part MultipartBody.Part file);
 
-
+    @POST("/api/auth/user")
+    Call<UserResponseDTO> updateUser(
+            @Header("Authorization") String authorizationHeader,
+            @Query("email") String email,
+            @Body UserRequestDTO userUpdateDTO
+    );
 }

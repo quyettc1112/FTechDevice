@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -39,11 +41,14 @@ import com.example.ftechdevice.API_Service.UserAPI_Service;
 import com.example.ftechdevice.Common.IMG.RealPathUtil;
 import com.example.ftechdevice.Common.TokenManger.TokenManager;
 import com.example.ftechdevice.JWT.JWTDecoder;
+import com.example.ftechdevice.Model.ModelRequestDTO.UserRequestDTO;
 import com.example.ftechdevice.Model.ModelRespone.FileUploadResponse;
 import com.example.ftechdevice.Model.ModelRespone.UserResponseDTO;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivity;
 import com.example.ftechdevice.UI.Activity.MapActivity.MapsActivity;
+import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
+import com.example.ftechdevice.UI.ShareViewModel.UpdateViewModel;
 import com.example.ftechdevice.databinding.FragmentProfileBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
@@ -72,15 +77,20 @@ public class ProfileFragment extends Fragment {
     private String email = null;
     private Uri selectedImageUri;
 
+    String phone  = null;
+    String adress = null;
+    String userName=null;
     @Inject
     UserAPI_Service userApiService;
 
     private ImageView dialogImagePreview;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
+
         setupViews();
         return binding.getRoot();
     }
@@ -180,6 +190,10 @@ public class ProfileFragment extends Fragment {
                             if (userResponse != null) {
                                 String username = userResponse.getUsername();
                                 String avatar = userResponse.getAvatar();
+                                 phone  = userResponse.getPhone();
+                                 adress = userResponse.getAddress();
+                                 userName = userResponse.getFullName();
+
 
                                 binding.userName.setText(username != null ? username : "No Name");
 
@@ -280,7 +294,7 @@ public class ProfileFragment extends Fragment {
         View view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_update_user, null);
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
-                convertDpToPx(800)
+                convertDpToPx(500)
         );
         view.setLayoutParams(layoutParams);
         dialog.setContentView(view);
@@ -289,11 +303,20 @@ public class ProfileFragment extends Fragment {
         AppCompatButton buttonCancel = view.findViewById(R.id.btn_update_cancel);
         Button buttonSelectImage = view.findViewById(R.id.btn_select_image);
         dialogImagePreview = view.findViewById(R.id.ivUserAvatars);
+
+
+
+        // Hiển thị ảnh avatar hiện tại nếu có
+        Glide.with(requireContext())
+                .load(binding.ivUserAvatar.getDrawable())
+                .apply(new RequestOptions().error(R.drawable.ic_avatar))
+                .into(dialogImagePreview);
+
         buttonSelectImage.setOnClickListener(v -> checkPermissionsAndPickImage());
 
         buttonUpdate.setOnClickListener(v -> {
             if (selectedImageUri != null) {
-                uploadFile();
+                uploadFileAndUpdate();
             } else {
                 Toast.makeText(requireContext(), "Please select an image first", Toast.LENGTH_SHORT).show();
             }
@@ -305,7 +328,7 @@ public class ProfileFragment extends Fragment {
         dialog.show();
     }
 
-    private void uploadFile() {
+    private void uploadFileAndUpdate() {
         String accessToken = TokenManager.getAccessToken(requireContext());
         Log.d("ProfileFragment", "accessToken: " + accessToken);
         if (accessToken == null) {
@@ -327,15 +350,14 @@ public class ProfileFragment extends Fragment {
                     if (response.isSuccessful()) {
                         try {
                             String responseBody = response.body().string();
-                            Toast.makeText(requireContext(), "File uploaded successfully: " + responseBody, Toast.LENGTH_SHORT).show();
-                            Log.d("ProfileFragment", "Response: " + responseBody);
-                            getUserByEmail(accessToken, email);
+                            Log.d("ProfileFragment", "File uploaded successfully: " + responseBody);
+                            updateUser(responseBody);
                         } catch (IOException e) {
                             Log.e("ProfileFragment", "Error reading response body", e);
-                            Toast.makeText(requireContext(), "Failed to read response body", Toast.LENGTH_SHORT).show();
+
                         }
                     } else {
-                        Toast.makeText(requireContext(), "Failed to upload file", Toast.LENGTH_SHORT).show();
+
                         Log.e("ProfileFragment", "Upload File Error: " + response.code() + " " + response.errorBody());
                     }
                 }
@@ -350,6 +372,56 @@ public class ProfileFragment extends Fragment {
             e.printStackTrace();
             Toast.makeText(requireContext(), "Error reading file", Toast.LENGTH_SHORT).show();
         }
+    }
+    private void updateUser(String avatarUrl) {
+        String accessToken = TokenManager.getAccessToken(requireContext());
+        if (accessToken == null) {
+            Toast.makeText(requireContext(), "You need to be logged in to update user", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        UserRequestDTO userRequestDTO = new UserRequestDTO();
+
+        userRequestDTO.setAvatar(avatarUrl);
+        userRequestDTO.setFullName(userName);
+        userRequestDTO.setPhone(phone);
+        userRequestDTO.setAddress(adress);
+
+        userApiService.updateUser("Bearer " + accessToken, email, userRequestDTO)
+                .enqueue(new Callback<UserResponseDTO>() {
+                    @Override
+                    public void onResponse(@NonNull Call<UserResponseDTO> call, @NonNull Response<UserResponseDTO> response) {
+                        if (response.isSuccessful()) {
+                            UserResponseDTO updatedUser = response.body();
+                            if (updatedUser != null) {
+                                // Cập nhật giao diện với thông tin người dùng mới
+                                String newAvatar = updatedUser.getAvatar();
+
+
+
+                                if (newAvatar != null) {
+                                    try {
+                                        Glide.with(requireContext())
+                                                .load(newAvatar)
+                                                .apply(new RequestOptions().error(R.drawable.ic_avatar))
+                                                .into(binding.ivUserAvatar);
+                                    } catch (Exception e) {
+                                        Log.e("ProfileFragment", "Failed to set avatar", e);
+                                    }
+                                }
+                            } else {
+                                Log.d("ProfileFragment", "Updated user is null");
+                            }
+                        } else {
+                            Log.d("ProfileFragment", "Failed to update user: " + response.code());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<UserResponseDTO> call, @NonNull Throwable t) {
+                        Log.e("ProfileFragment", "Failed to update user", t);
+                    }
+                });
     }
     private int convertDpToPx(int dp) {
         float density = requireContext().getResources().getDisplayMetrics().density;
