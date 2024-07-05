@@ -152,9 +152,9 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
                 ActivityMainBinding mainBinding = activity.binding;
                 mainBinding.vp2Main.setCurrentItem(3, true);
             } else {
-                /*UserJWT userJWT = getUserFromJWT();
+                UserJWT userJWT = getUserFromJWT();
                 CartDTO cartDTO = new CartDTO(0, userJWT.getUserId(), p.getId(), 1);
-                callAddProductToCart(userJWT.getAccessToken(), cartDTO)*/;
+                callAddProductToCart(userJWT.getAccessToken(), cartDTO);
                 Toast.makeText(requireContext(), "Add To Cart", Toast.LENGTH_SHORT).show();
 
                 CartResponse.Product product = new CartResponse.Product(

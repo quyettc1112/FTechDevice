@@ -21,6 +21,10 @@ public class ShareViewModel extends ViewModel {
     public LiveData<List<CartModel>> getCartItems() {
         return _cartItems;
     }
+    public void updateCartItems(List<CartModel> newCartItems) {
+        _cartItems.setValue(newCartItems);
+    }
+
 
     @Inject
     public ShareViewModel() {
@@ -29,6 +33,8 @@ public class ShareViewModel extends ViewModel {
     public void setCategoryId(int id) {
         categoryId.setValue(id);
     }
+
+
 
 
 
@@ -82,7 +88,5 @@ public class ShareViewModel extends ViewModel {
     public LiveData<Integer> getCategoryId() {
         return categoryId;
     }
-    public void updateCartItems(List<CartModel> newCartItems) {
-        _cartItems.setValue(newCartItems);
-    }
+
 }
