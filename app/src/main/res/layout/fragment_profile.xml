@@ -46,21 +46,22 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/ic_user_default"
+                android:src="@drawable/ic_avatar"
                 android:translationZ="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.151"
-                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full" />
+                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
+                android:onClick="showUpdateDialog" />
 
             <TextView
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="John Doe"
+                android:text="No name"
                 android:textSize="45dp"
                 android:textStyle="bold"
                 android:translationZ="10dp"
@@ -69,9 +70,8 @@
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-                app:layout_constraintVertical_bias="0.029">
-
-            </TextView>
+                app:layout_constraintVertical_bias="0.029"
+                android:onClick="showUpdateDialog" />
 
 
             <LinearLayout

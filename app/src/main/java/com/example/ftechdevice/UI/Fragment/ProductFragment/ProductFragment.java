@@ -57,6 +57,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import org.json.JSONException;
@@ -74,14 +77,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 @AndroidEntryPoint
 public class ProductFragment extends Fragment implements CategoryOptionInteraction , CategoryOptionAdapter.CategoryOptionInteraction {
-
-
     private FragmentProductBinding binding;
     private CategoryOptionAdapter categoryAdapter;
     private ProductViewModel productListViewModel;
     private ShareViewModel sharedViewModel;
     private ProductListAdapterBase pproductListAdapter;
     private List<ProductModel> productList = new ArrayList<>();
+    private Integer maxRecords = 10;
+    private Integer categoryId = 0;
+    private Integer pageNo = 0;
     @Inject
     ProductAPI_Repository productAPIRepository;
 
@@ -114,8 +118,10 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         showFillterDialog();
         sharedViewModel.getCategoryId().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
-            public void onChanged(Integer categoryId) {
-                callProductAPI(categoryId);
+            public void onChanged(Integer categoryId_Input) {
+                maxRecords = 10;
+                categoryId = categoryId_Input;
+                callProductAPI();
             }
         });
         return binding.getRoot();
@@ -134,6 +140,24 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
     }
 
     private void setProductListAdapter() {
+        binding.rvToys.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                int lastCompletelyVisibleItem = layoutManager.findLastCompletelyVisibleItemPosition();
+                int totalItemCount = layoutManager.getItemCount();
+
+                if (lastCompletelyVisibleItem == totalItemCount - 1) {
+                    maxRecords += ((pageNo + 1) * maxRecords <= pproductListAdapter.getItemCount()) ? maxRecords : 0;
+
+                    Log.d("Page no and child count", pageNo.toString() + pproductListAdapter.getItemCount());
+                    callProductAPI();
+                }
+            }
+        });
+
         binding.rvToys.setLayoutManager(new GridLayoutManager(requireContext(), 2));
         binding.rvToys.setAdapter(pproductListAdapter);
 
@@ -173,35 +197,44 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         });
     }
 
-    private void callProductAPI(int categoryId) {
-        productAPIRepository.getProductList(0, 12, "", categoryId).enqueue(new Callback<ProductReponse>() {
-            @Override
-            public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    List<ProductModel> products = response.body().getContent();
-                    if (products != null) {
-                        productListViewModel.setProductList(products);
-                        pproductListAdapter.submitList(products);
-                        Log.d("Check value", "Products size: " + products.size());
-                    }
-                } else {
-                    Log.d("ProductFragment", "Response code: " + response.code());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ProductReponse> call, Throwable t) {
-                Log.d("ProductFragment", t.getMessage());
-            }
-        });
-    }
+//    private void callProductAPI(int categoryId) {
+//        productAPIRepository.getProductList(pageNo, maxRecords, "", categoryId).enqueue(new Callback<ProductReponse>() {
+//            @Override
+//            public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
+//                if (response.isSuccessful() && response.body() != null) {
+//                    List<ProductModel> products = response.body().getContent();
+//                    if (products != null) {
+//                        productListViewModel.setProductList(products);
+//                        pproductListAdapter.submitList(products);
+//                        Log.d("Check value", "Products size: " + products.size());
+//                    }
+//                } else {
+//                    Log.d("ProductFragment", "Response code: " + response.code());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ProductReponse> call, Throwable t) {
+//                Log.d("ProductFragment", t.getMessage());
+//            }
+//        });
+//    }
 
     private void callProductAPI() {
-        productAPIRepository.getProductList(0, 12, "", 0).enqueue(new Callback<ProductReponse>() {
+        Log.d(categoryId.toString(), "Category Id");
+        productAPIRepository.getProductList(pageNo, maxRecords, "", categoryId).enqueue(new Callback<ProductReponse>() {
             @Override
             public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    List<ProductModel> products = response.body().getContent();
+                    List<ProductModel> products = null;
+
+                    try {
+                        products = response.body().getContent();
+                    }
+                    catch (Exception e) {
+                        products = null;
+                    }
+
                     if (products != null) {
                         productListViewModel.setProductList(products);
                         pproductListAdapter.submitList(products);

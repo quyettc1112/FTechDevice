@@ -6,7 +6,6 @@ public class CartModel {
     private final int id;
     private final CartResponse.Product product;
     private int quantity;
-
     private static int idCounter = 0;
 
     private CartModel(int id, CartResponse.Product product, int quantity) {

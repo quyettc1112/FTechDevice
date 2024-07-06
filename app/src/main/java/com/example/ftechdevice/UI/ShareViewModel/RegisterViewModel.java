@@ -95,7 +95,7 @@ public class RegisterViewModel extends ViewModel {
 
     private String formatPhoneNumber(String phone) {
         if (phone.length() == 10 && phone.startsWith("0")) {
-            return "+84" + phone.substring(1);
+            return phone.substring(1);
         } else {
             return " ";
         }
