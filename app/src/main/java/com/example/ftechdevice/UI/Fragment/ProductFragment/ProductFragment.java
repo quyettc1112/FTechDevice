@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ftechdevice.API_Repository.CartAPI_Repository;
 import com.example.ftechdevice.API_Repository.ProductAPI_Repository;
 import com.example.ftechdevice.Common.CommonAdapter.CategoryOptionAdapter;
 import com.example.ftechdevice.Common.CommonAdapter.CategoryOptionInteraction;
@@ -21,12 +22,19 @@ import com.example.ftechdevice.Common.CommonAdapter.ProductListAdapter;
 import com.example.ftechdevice.Common.CommonAdapter.ProductListAdapterBase;
 import com.example.ftechdevice.Common.CommonAdapter.ToyListAdapterBase;
 import com.example.ftechdevice.Common.Constants.Constants;
+import com.example.ftechdevice.Common.TokenManger.TokenManager;
+import com.example.ftechdevice.JWT.JWTDecoder;
 import com.example.ftechdevice.Model.CartModel;
+import com.example.ftechdevice.Model.CartModule.CartDTO;
+import com.example.ftechdevice.Model.CartModule.CartResponse;
 import com.example.ftechdevice.Model.ModelRespone.ProductReponse;
 import com.example.ftechdevice.Model.ProductModel;
+import com.example.ftechdevice.Model.UserJWT;
 import com.example.ftechdevice.R;
+import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailActivity;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
+import com.example.ftechdevice.databinding.ActivityMainBinding;
 import com.example.ftechdevice.databinding.FragmentProductBinding;
 
 import android.content.Intent;
@@ -54,6 +62,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -68,17 +79,18 @@ import retrofit2.Response;
 public class ProductFragment extends Fragment implements CategoryOptionInteraction , CategoryOptionAdapter.CategoryOptionInteraction {
     private FragmentProductBinding binding;
     private CategoryOptionAdapter categoryAdapter;
-    private ToyListAdapterBase toyListAdapter;
     private ProductViewModel productListViewModel;
     private ShareViewModel sharedViewModel;
     private ProductListAdapterBase pproductListAdapter;
-    private ProductListAdapter productListAdapter;
     private List<ProductModel> productList = new ArrayList<>();
     private Integer maxRecords = 10;
     private Integer categoryId = 0;
     private Integer pageNo = 0;
     @Inject
     ProductAPI_Repository productAPIRepository;
+
+    @Inject
+    CartAPI_Repository cartAPIRepository;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -91,7 +103,6 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
 
         pproductListAdapter = new ProductListAdapterBase();
 
-        productListAdapter = new ProductListAdapter(productList);
 
         productListViewModel.setProductList(productList);
     }
@@ -155,6 +166,34 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
             Intent intent = new Intent(requireContext(), ProductDetailActivity.class);
             intent.putExtra("product_id", p.getId());
             requireContext().startActivity(intent);
+        });
+
+
+        pproductListAdapter.setOnItemCartClickListener(p -> {
+            if (getUserFromJWT() == null) {
+                Toast.makeText(requireContext(), "Bạn cần Đăng Nhập để tiếp tục", Toast.LENGTH_SHORT).show();
+                MainActivity activity = (MainActivity) getActivity();
+                ActivityMainBinding mainBinding = activity.binding;
+                mainBinding.vp2Main.setCurrentItem(3, true);
+            } else {
+                UserJWT userJWT = getUserFromJWT();
+                CartDTO cartDTO = new CartDTO(0, userJWT.getUserId(), p.getId(), 1);
+                callAddProductToCart(userJWT.getAccessToken(), cartDTO);
+                Toast.makeText(requireContext(), "Add To Cart", Toast.LENGTH_SHORT).show();
+
+                CartResponse.Product product = new CartResponse.Product(
+                        p.getId(),
+                        p.getName(),
+                        p.getDescription(),
+                        p.getPrice(),
+                        p.getQuantity(),
+                        p.getImageUrl(),
+                        p.getIsActive(),
+                        p.getProductCategory()
+                );
+                sharedViewModel.addItem(CartModel.create(product, 1));
+
+            }
         });
     }
 
@@ -400,4 +439,55 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         float density = requireContext().getResources().getDisplayMetrics().density;
         return (int) (dp * density);
     }
+
+    private void callAddProductToCart(String token, CartDTO cartDTO ) {
+        cartAPIRepository.addToCart("Bearer " + token, cartDTO).enqueue(new Callback<CartResponse>() {
+            @Override
+            public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(requireContext(), "Add Sản Phẩm Vào Giỏ Hàng Thành Công", Toast.LENGTH_SHORT).show();
+                } else {
+                    Log.d("CheckCartRespone", String.valueOf(response.body()));
+                    Log.d("CheckCartRespone", String.valueOf(response.code()));
+                    Log.d("CheckCartRespone", String.valueOf(response.message()));
+                    Log.d("CheckCartRespone", String.valueOf(response.errorBody()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CartResponse> call, Throwable t) {
+
+                Log.d("CheckCartRespone", String.valueOf(t.getMessage()));
+            }
+        });
+
+
+    }
+
+    private UserJWT getUserFromJWT() {
+        String accessToken = TokenManager.getAccessToken(requireContext());
+        if (accessToken != null) {
+            try {
+                JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
+
+                UserJWT user = new UserJWT();
+                user.setAccessToken(accessToken);
+                user.setSubject(decodedPayload.getString("sub"));
+                user.setEmail(decodedPayload.getString("email"));
+                user.setUserId(decodedPayload.getInt("userId"));
+                user.setRoleName(decodedPayload.getString("RoleName"));
+                user.setPhone(decodedPayload.getString("phone"));
+                user.setIssuedAt(decodedPayload.getLong("iat"));
+                user.setExpiration(decodedPayload.getLong("exp"));
+
+                return user;
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            return null;
+        }
+    }
+
+
 }

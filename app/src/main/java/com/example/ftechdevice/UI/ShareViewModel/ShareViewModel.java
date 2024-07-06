@@ -21,6 +21,10 @@ public class ShareViewModel extends ViewModel {
     public LiveData<List<CartModel>> getCartItems() {
         return _cartItems;
     }
+    public void updateCartItems(List<CartModel> newCartItems) {
+        _cartItems.setValue(newCartItems);
+    }
+
 
     @Inject
     public ShareViewModel() {
@@ -32,6 +36,8 @@ public class ShareViewModel extends ViewModel {
 
 
 
+
+
     public void addItem(CartModel cartModel) {
         List<CartModel> currentList = _cartItems.getValue();
         if (currentList == null) {
@@ -40,7 +46,7 @@ public class ShareViewModel extends ViewModel {
 
         CartModel existingItem = null;
         for (CartModel item : currentList) {
-            if (item.getToyModel().getId() == cartModel.getToyModel().getId()) {
+            if (item.getProduct().getId() == cartModel.getProduct().getId()) {
                 existingItem = item;
                 break;
             }
@@ -82,7 +88,5 @@ public class ShareViewModel extends ViewModel {
     public LiveData<Integer> getCategoryId() {
         return categoryId;
     }
-    public void updateCartItems(List<CartModel> newCartItems) {
-        _cartItems.setValue(newCartItems);
-    }
+
 }

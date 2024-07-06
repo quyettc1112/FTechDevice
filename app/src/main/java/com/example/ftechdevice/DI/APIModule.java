@@ -2,6 +2,7 @@ package com.example.ftechdevice.DI;
 
 import androidx.annotation.NonNull;
 
+import com.example.ftechdevice.API_Service.CartAPI_Service;
 import com.example.ftechdevice.API_Service.OrderAPI_Service;
 import com.example.ftechdevice.API_Service.ProductAPI_Service;
 import com.example.ftechdevice.API_Service.UserAPI_Service;
@@ -153,5 +154,18 @@ public class APIModule {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
                 .create(OrderAPI_Service.class);
+    }
+
+
+    @NonNull
+    @Provides
+    @Singleton
+    public static CartAPI_Service CartAPI(@Named("base") String baseUrl, Gson gson, OkHttpClient client) {
+        return new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build()
+                .create(CartAPI_Service.class);
     }
 }

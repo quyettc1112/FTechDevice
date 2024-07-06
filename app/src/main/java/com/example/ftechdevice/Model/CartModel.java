@@ -1,35 +1,33 @@
 package com.example.ftechdevice.Model;
 
+import com.example.ftechdevice.Model.CartModule.CartResponse;
+
 public class CartModel {
     private final int id;
-    private final ToyModel toyModel;
+    private final CartResponse.Product product;
     private int quantity;
     private static int idCounter = 0;
 
-    private CartModel(int id, ToyModel toyModel, int quantity) {
+    private CartModel(int id, CartResponse.Product product, int quantity) {
         this.id = id;
-        this.toyModel = toyModel;
+        this.product = product;
         this.quantity = quantity;
     }
 
 
-
-
-
-
+    public CartResponse.Product getProduct() {
+        return product;
+    }
 
     // test asdasdadsads
-    public static CartModel create(ToyModel toyModel, int quantity) {
-        return new CartModel(idCounter++, toyModel, quantity);
+    public static CartModel create(CartResponse.Product product, int quantity) {
+        return new CartModel(idCounter++, product, quantity);
     }
 
     public int getId() {
         return id;
     }
 
-    public ToyModel getToyModel() {
-        return toyModel;
-    }
 
     public int getQuantity() {
         return quantity;

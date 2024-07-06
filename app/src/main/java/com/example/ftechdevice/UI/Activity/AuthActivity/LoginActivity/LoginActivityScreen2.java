@@ -22,9 +22,11 @@ import com.example.ftechdevice.Model.ModelRequestDTO.RegisterRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
 import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
+import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
 import com.example.ftechdevice.UI.ShareViewModel.UserShareViewModel;
+import com.example.ftechdevice.Until.MemoryData;
 import com.example.ftechdevice.Until.MyProgressDialog;
 import com.example.ftechdevice.databinding.ActivityLoginScreen2Binding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,6 +36,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+
 import javax.inject.Inject;
 import dagger.hilt.android.AndroidEntryPoint;
 import retrofit2.Call;
@@ -55,17 +65,21 @@ public class LoginActivityScreen2 extends BaseActivity {
     @Inject
     UserAPI_Repository userapiRepository;
 
+    private DatabaseReference databaseReference;
     private MyProgressDialog progressDialog;
+    private String FCMToken;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         binding = ActivityLoginScreen2Binding.inflate(getLayoutInflater());
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl(getString(R.string.database_url));
         setContentView(binding.getRoot());
         progressDialog = new MyProgressDialog(this);
-        progressDialog.setCancelable(false);
 
+        getFCMToken();
         initViewModels();
         updateRegisterViewModel();
         checkExistingToken();
@@ -121,7 +135,7 @@ public class LoginActivityScreen2 extends BaseActivity {
             Log.e(TAG, "Password is null or empty");
         }
 
-        registerViewModel.updateRoleId(1);
+        registerViewModel.updateRoleId(2);
 
         if (phone != null && !phone.isEmpty()) {
             registerViewModel.updatePhone(phone);
@@ -196,10 +210,9 @@ public class LoginActivityScreen2 extends BaseActivity {
     }
 
     private void doLogin(LoginRequestDTO loginRequestDTO) {
-        progressDialog.show();
+
         mAuth.signInWithEmailAndPassword(loginRequestDTO.getEmail(), loginRequestDTO.getPassword())
                 .addOnCompleteListener(this, task -> {
-                    progressDialog.dismiss(); // Ẩn progress dialog
                     if (task.isSuccessful()) {
                         handleSuccessfulFirebaseLogin(loginRequestDTO);
                     } else {
@@ -254,12 +267,10 @@ public class LoginActivityScreen2 extends BaseActivity {
     }
 
     private void loginUser(LoginRequestDTO loginRequestDTO) {
-        progressDialog.show();
         userapiRepository.loginUser(loginRequestDTO)
                 .enqueue(new Callback<LoginResponse>() {
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                        progressDialog.dismiss();
                         if (response.isSuccessful() && response.body() != null) {
                             handleSuccessfulLogin(response.body());
                         } else {
@@ -269,7 +280,6 @@ public class LoginActivityScreen2 extends BaseActivity {
 
                     @Override
                     public void onFailure(Call<LoginResponse> call, Throwable t) {
-                        progressDialog.dismiss();
                         Log.e(TAG, "Login failed: " + t.getMessage());
                         Toast.makeText(LoginActivityScreen2.this, "Lỗi kết nối", Toast.LENGTH_SHORT).show();
                     }
@@ -304,18 +314,18 @@ public class LoginActivityScreen2 extends BaseActivity {
     }
 
     private void registerUser(RegisterRequestDTO registerRequestDTO, Runnable onSuccessCallback) {
-        progressDialog.show();
         userapiRepository.registerUser(registerRequestDTO)
                 .enqueue(new Callback<RegisterResponseDTO>() {
                     @Override
                     public void onResponse(@NonNull Call<RegisterResponseDTO> call, @NonNull Response<RegisterResponseDTO> response) {
-                        progressDialog.dismiss();
                         if (response.isSuccessful()) {
                             Log.d(TAG, "Đăng ký thành công với server");
                             //  Toast.makeText(LoginActivityScreen2.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                             ManagerUser.clearUserInfo(LoginActivityScreen2.this);
 
                             // Gọi callback sau khi đăng ký thành công
+                            registerFireBaseDataRealTime(registerRequestDTO);
+
                             onSuccessCallback.run();
                         } else {
                             Log.d(TAG, "Đăng ký thất bại. Code: " + response.code() + ", Message: " + response.message());
@@ -325,7 +335,6 @@ public class LoginActivityScreen2 extends BaseActivity {
 
                     @Override
                     public void onFailure(@NonNull Call<RegisterResponseDTO> call, Throwable t) {
-                        progressDialog.dismiss();
                         Log.e(TAG, "Lỗi kết nối: " + t.getMessage());
                         // Toast.makeText(LoginActivityScreen2.this, "Lỗi kết nối khi đăng ký", Toast.LENGTH_SHORT).show();
                     }
@@ -333,6 +342,47 @@ public class LoginActivityScreen2 extends BaseActivity {
     }
 
 
+    private void registerFireBaseDataRealTime (RegisterRequestDTO registerRequestDTO) {
+        // Show progress dialog
+
+        // Check if the user's mobile number already exists in the database
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child("users").hasChild(registerRequestDTO.getPhone())) {
+                    Toast.makeText(LoginActivityScreen2.this, "Mobile already exists", Toast.LENGTH_SHORT).show();
+                } else {
+                    databaseReference.child("users").child(registerRequestDTO.getPhone()).child("email").setValue(registerRequestDTO.getEmail());
+                    databaseReference.child("users").child(registerRequestDTO.getPhone()).child("name").setValue(registerRequestDTO.getUsername());
+                    databaseReference.child("users").child(registerRequestDTO.getPhone()).child("password").setValue(registerRequestDTO.getPassword());
+                    databaseReference.child("users").child(registerRequestDTO.getPhone()).child("roleid").setValue(registerRequestDTO.getRoleId());
+                    databaseReference.child("users").child(registerRequestDTO.getPhone()).child("FCMToken").setValue(FCMToken);
+                    // Save user's mobile number for future login
+                    MemoryData.saveMobile(registerRequestDTO.getPhone(), LoginActivityScreen2.this);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                progressDialog.dismiss();
+
+                // Display a message for database error
+                Toast.makeText(LoginActivityScreen2.this, "Database error", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
+    private void getFCMToken() {
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+             FCMToken = task.getResult();
+             Log.d("CheckTokenCurrent", FCMToken.toString());
+            } else FCMToken = "";
+        });
+    }
 
     @Override
     protected void onDestroy() {
