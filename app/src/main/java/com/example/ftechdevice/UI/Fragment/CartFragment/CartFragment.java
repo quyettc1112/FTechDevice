@@ -35,9 +35,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import java.text.DecimalFormat;
 import java.util.List;
 
-
 public class CartFragment extends Fragment {
-
     private FragmentCartBinding binding;
     private CartAdapter cartAdapter;
     private ShareViewModel sharedViewModel;
