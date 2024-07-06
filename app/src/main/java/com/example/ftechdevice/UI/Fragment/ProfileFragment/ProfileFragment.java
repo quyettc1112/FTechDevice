@@ -131,7 +131,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void checkPermissionsAndPickImage() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE){
             OpenGallery();
             return;
         }
