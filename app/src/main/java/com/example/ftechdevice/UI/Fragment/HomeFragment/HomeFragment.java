@@ -59,6 +59,7 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
     private CategoryOptionAdapter cateOptionAdapter;
     private ToyListAdapter toyListAdapter;
     private ProductListAdapter productListAdapter;
+    private Integer pageNo = 0, pageSize = 10;
     @Inject
     ProductAPI_Repository productAPIRepository;
     private List<ProductModel> productList = new ArrayList<ProductModel>();
@@ -113,6 +114,24 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
     }
 
     private void setRecycleProductList() {
+        binding.rvToys.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                int lastCompletelyVisibleItem = layoutManager.findLastCompletelyVisibleItemPosition();
+                int totalItemCount = layoutManager.getItemCount();
+
+                if (lastCompletelyVisibleItem == totalItemCount - 1) {
+                    pageSize += ((pageNo + 1) * pageSize <= productListAdapter.getItemCount()) ? pageSize : 0;
+
+                    Log.d("Scroll to end", "On Scroll");
+                    callProductAPI();
+                }
+            }
+        });
+
         binding.rvToys.setLayoutManager(new NonScrollableGridLayoutManager(requireContext(), 2));
         binding.rvToys.setAdapter(productListAdapter);
 
@@ -202,7 +221,7 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
     }
 
     private void callProductAPI(){
-        productAPIRepository.getProductList(0, 12, "", 0).enqueue(new Callback<ProductReponse>() {
+        productAPIRepository.getProductList(pageNo, pageSize, "", 0).enqueue(new Callback<ProductReponse>() {
             @Override
             public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
                 if (response.isSuccessful() && response.body() != null) {

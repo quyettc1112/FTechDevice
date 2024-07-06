@@ -4,7 +4,6 @@ public class CartModel {
     private final int id;
     private final ToyModel toyModel;
     private int quantity;
-
     private static int idCounter = 0;
 
     private CartModel(int id, ToyModel toyModel, int quantity) {
