@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.DiffUtil;
 
 import com.example.ftechdevice.AppConfig.BaseConfig.BaseAdapter;
 import com.example.ftechdevice.AppConfig.BaseConfig.BaseItemViewHolderCF;
-import com.example.ftechdevice.Model.CartModel;
 import com.example.ftechdevice.Model.CartModule.CartResponse;
-import com.example.ftechdevice.Model.ToyModel;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.databinding.ItemToyCartBinding;
 import com.squareup.picasso.Picasso;

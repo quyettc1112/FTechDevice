@@ -18,15 +18,12 @@ import com.example.ftechdevice.AppConfig.CustomView.CustomBottomNav.NiceBottomBa
 import com.example.ftechdevice.Common.CommonAdapter.FragmentAdapter;
 import com.example.ftechdevice.Common.TokenManger.TokenManager;
 import com.example.ftechdevice.JWT.JWTDecoder;
-import com.example.ftechdevice.Model.CartModel;
 import com.example.ftechdevice.UI.Activity.ChatModule.ChatActivity.ChatActivity;
 import com.example.ftechdevice.UI.Fragment.CartFragment.CartFragment;
 import com.example.ftechdevice.UI.Fragment.HomeFragment.HomeFragment;
 import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductFragment;
 import com.example.ftechdevice.UI.Fragment.ProfileFragment.ProfileFragment;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
-import com.example.ftechdevice.Until.CartParser;
-import com.example.ftechdevice.Until.FirebaseNotificationHelper;
 import com.example.ftechdevice.Until.FirebaseUtil;
 import com.example.ftechdevice.databinding.ActivityMainBinding;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -36,7 +33,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
 

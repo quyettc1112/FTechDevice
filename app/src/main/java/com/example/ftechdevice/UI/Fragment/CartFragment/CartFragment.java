@@ -4,8 +4,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -17,23 +15,15 @@ import com.example.ftechdevice.API_Repository.CartAPI_Repository;
 import com.example.ftechdevice.AppConfig.CustomView.CustomDialog.ErrorDialog;
 import com.example.ftechdevice.Common.TokenManger.TokenManager;
 import com.example.ftechdevice.JWT.JWTDecoder;
-import com.example.ftechdevice.Model.CartModel;
+import com.example.ftechdevice.Model.CartModule.CartModel;
 import com.example.ftechdevice.Model.CartModule.CartDTO;
 import com.example.ftechdevice.Model.CartModule.CartResponse;
 import com.example.ftechdevice.Model.UserJWT;
 import com.example.ftechdevice.R;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.Observer;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.ftechdevice.UI.Activity.PaymentActivity.PaymentActivity;
@@ -47,6 +37,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -81,7 +72,7 @@ public class CartFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentCartBinding.inflate(inflater, container, false);
         showPaymentDialog();
-        callGetCarts();
+        callGetAllCarts();
         binding.rlCart.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.rlCart.setAdapter(cartAdapter);
 
@@ -133,6 +124,7 @@ public class CartFragment extends Fragment {
                     Intent intent = new Intent(requireContext(), PaymentActivity.class);
                     intent.putExtra("amount", cartAdapter.getTotalItemsPrice() + 20000.0);
                     intent.putExtra("orderinfo", currentTime.toString());
+                    intent.putParcelableArrayListExtra("list_cart_model", new ArrayList<>(sharedViewModel.getCartItems().getValue()));
                     startActivity(intent);
                 }
             });
@@ -161,7 +153,7 @@ public class CartFragment extends Fragment {
         return formatter.format(price);
     }
 
-    private void callGetCarts() {
+    private void callGetAllCarts() {
        if (getUserFromJWT() != null) {
            UserJWT userJWT = getUserFromJWT();
            cartAPIRepository.getCarts("Bearer "+ userJWT.getAccessToken(), 0, 20,  "")
@@ -173,8 +165,9 @@ public class CartFragment extends Fragment {
                                String jsonResponse = gson.toJson(response.body());
                                List<CartModel> cartList = CartParser.parseCartResponse(jsonResponse);
                                sharedViewModel.updateCartItems(cartList);
-                                cartAdapter.submitList(cartList);
-                                observeViewModel();
+                               cartAdapter.submitList(cartList);
+                               observeViewModel();
+
                            } else  {
                                ErrorDialog e = new ErrorDialog(
                                        requireContext(),

@@ -2,18 +2,15 @@ package com.example.ftechdevice.UI.Fragment.CartFragment;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+
 import androidx.recyclerview.widget.DiffUtil;
 
 import com.example.ftechdevice.AppConfig.BaseConfig.BaseAdapter;
 import com.example.ftechdevice.AppConfig.BaseConfig.BaseItemViewHolderCF;
-import com.example.ftechdevice.Model.CartModel;
+import com.example.ftechdevice.Model.CartModule.CartModel;
 import com.example.ftechdevice.Model.CartModule.CartResponse;
-import com.example.ftechdevice.Model.ToyModel;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.databinding.ItemToyCartBinding;
-import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;

@@ -10,6 +10,8 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface CartAPI_Service {
@@ -26,6 +28,12 @@ public interface CartAPI_Service {
             @Query("pageIndex") int pageIndex,
             @Query("pageSize") int pageSize,
             @Query("search") String search
+    );
+
+    @PUT("api/cart/{id}")
+    Call<CartResponse> updateCart(
+            @Header("Authorization") String token,
+            @Path("id") int id
     );
 
 }

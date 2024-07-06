@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.ftechdevice.Model.CartModel;
+import com.example.ftechdevice.Model.CartModule.CartModel;
 
 import java.util.ArrayList;
 import java.util.List;
