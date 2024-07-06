@@ -148,11 +148,9 @@ public class CartFragment extends Fragment {
 
     private void checkShowUI() {
         if (cartAdapter.getCurrentList().size() > 0) {
-            Toast.makeText(requireContext(), "1", Toast.LENGTH_SHORT).show();
             binding.layoutEmptyCart.setVisibility(View.GONE);
             binding.layoutCart.setVisibility(View.VISIBLE);
         } else {
-            Toast.makeText(requireContext(), "2", Toast.LENGTH_SHORT).show();
             binding.layoutEmptyCart.setVisibility(View.VISIBLE);
             binding.layoutCart.setVisibility(View.GONE);
         }
@@ -248,9 +246,9 @@ public class CartFragment extends Fragment {
                }
            });
         }
-
-
     }
+
+
 
 
 }

@@ -1,5 +1,7 @@
 package com.example.ftechdevice.UI.Fragment.ProductFragment;
 
+import static android.app.Activity.RESULT_OK;
+
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.res.ColorStateList;
@@ -61,10 +63,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -91,6 +96,8 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
 
     @Inject
     CartAPI_Repository cartAPIRepository;
+
+    public static final int REQUEST_CODE_PRODUCT_DETAIL = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -139,6 +146,21 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_PRODUCT_DETAIL && resultCode == RESULT_OK) {
+            String cartItemsJson = data.getStringExtra("cart_items");
+            if (cartItemsJson != null) {
+                Type cartListType = new TypeToken<List<CartModel>>() {}.getType();
+                List<CartModel> cartItems = new Gson().fromJson(cartItemsJson, cartListType);
+                if (cartItems.size() != 0) {
+                    sharedViewModel.addItem(cartItems.get(0));
+                }
+            } else  Log.d("checkcartintedetha", cartItemsJson + "Null");
+        }
+    }
+
     private void setProductListAdapter() {
         binding.rvToys.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -165,9 +187,9 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         pproductListAdapter.setItemOnClickListener(p -> {
             Intent intent = new Intent(requireContext(), ProductDetailActivity.class);
             intent.putExtra("product_id", p.getId());
-            requireContext().startActivity(intent);
+            //requireContext().startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE_PRODUCT_DETAIL);
         });
-
 
         pproductListAdapter.setOnItemCartClickListener(p -> {
             if (getUserFromJWT() == null) {
@@ -179,8 +201,6 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
                 UserJWT userJWT = getUserFromJWT();
                 CartDTO cartDTO = new CartDTO(0, userJWT.getUserId(), p.getId(), 1);
                 callAddProductToCart(userJWT.getAccessToken(), cartDTO);
-                Toast.makeText(requireContext(), "Add To Cart", Toast.LENGTH_SHORT).show();
-
                 CartResponse.Product product = new CartResponse.Product(
                         p.getId(),
                         p.getName(),

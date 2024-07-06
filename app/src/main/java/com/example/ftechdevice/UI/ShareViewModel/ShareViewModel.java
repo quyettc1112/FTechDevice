@@ -89,4 +89,29 @@ public class ShareViewModel extends ViewModel {
         return categoryId;
     }
 
+    public void addItems(List<CartModel> cartModels) {
+        List<CartModel> currentList = _cartItems.getValue();
+        if (currentList == null) {
+            currentList = new ArrayList<>();
+        }
+
+        for (CartModel cartModel : cartModels) {
+            CartModel existingItem = null;
+            for (CartModel item : currentList) {
+                if (item.getProduct().getId() == cartModel.getProduct().getId()) {
+                    existingItem = item;
+                    break;
+                }
+            }
+
+            if (existingItem != null) {
+                existingItem.setQuantity(existingItem.getQuantity() + cartModel.getQuantity());
+            } else {
+                currentList.add(cartModel);
+            }
+        }
+
+        _cartItems.setValue(currentList);
+    }
+
 }
