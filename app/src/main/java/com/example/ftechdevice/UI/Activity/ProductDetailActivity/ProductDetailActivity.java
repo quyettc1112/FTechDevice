@@ -126,7 +126,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
                 // Tạo một Intent để trả về dữ liệu
                 Intent resultIntent = new Intent();
-                resultIntent.putExtra("cart_items", new Gson().toJson(cartItems.get(0))); // Convert list to JSON string
+                resultIntent.putExtra("cart_items", new Gson().toJson(cartItems)); // Convert list to JSON string
 
                 // Đặt kết quả và kết thúc Activity
                 setResult(RESULT_OK, resultIntent);

@@ -154,10 +154,12 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
             if (cartItemsJson != null) {
                 Type cartListType = new TypeToken<List<CartModel>>() {}.getType();
                 List<CartModel> cartItems = new Gson().fromJson(cartItemsJson, cartListType);
-                if (cartItems.size() != 0) {
-                    sharedViewModel.addItem(cartItems.get(0));
+                if (cartItems != null && !cartItems.isEmpty()) {
+                    sharedViewModel.addItems(cartItems);
                 }
-            } else  Log.d("checkcartintedetha", cartItemsJson + "Null");
+            } else {
+                Log.d("checkcartintedetha", cartItemsJson + " Null");
+            }
         }
     }
 
