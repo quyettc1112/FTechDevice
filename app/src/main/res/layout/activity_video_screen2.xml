@@ -7,7 +7,45 @@
     android:layout_height="match_parent"
     tools:context=".UI.Activity.VideoActivity.VideoActivity_Screen2">
 
+    <com.example.ftechdevice.AppConfig.CustomView.CustomToolBar.CustomToolbar
+        android:id="@+id/ct_toolbar_videoActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:title="Video"
+        app:textStart="Quay Lại"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </com.example.ftechdevice.AppConfig.CustomView.CustomToolBar.CustomToolbar>
 
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/wv_videoIframes"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_recycle_video"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ct_toolbar_videoActivity" />
 
+    <FrameLayout
+        android:id="@+id/fl_fullScrenContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Đây là nơi để YouTubePlayerView hiển thị trong chế độ toàn màn hình -->
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtubePlayerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
