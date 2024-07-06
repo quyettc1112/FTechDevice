@@ -201,9 +201,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="403e22a6-4de3-4046-b803-524983521fe2" name="Changes" comment="Update Meger">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/RegisterActivity_Screen3.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/AuthActivity/RegisterActivity/RegisterActivity_Screen3.java" afterDir="false" />
+    <list default="true" id="403e22a6-4de3-4046-b803-524983521fe2" name="Changes" comment="Update">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Common/IMG/RealPathUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -787,14 +786,6 @@
       <option name="presentableId" value="Default" />
       <updated>1718185351079</updated>
     </task>
-    <task id="LOCAL-00013" summary="Update Setup Project">
-      <option name="closed" value="true" />
-      <created>1718345390983</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1718345390983</updated>
-    </task>
     <task id="LOCAL-00014" summary="Update Setup Project">
       <option name="closed" value="true" />
       <created>1718345401059</created>
@@ -1179,7 +1170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719771679430</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Update">
+      <option name="closed" value="true" />
+      <created>1720241619315</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1720241619315</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -1223,6 +1222,7 @@
     <MESSAGE value="Update product UI" />
     <MESSAGE value="Update Setup" />
     <MESSAGE value="Update Meger" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update Meger" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
 </project>
