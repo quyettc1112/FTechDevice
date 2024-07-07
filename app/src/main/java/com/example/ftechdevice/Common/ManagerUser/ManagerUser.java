@@ -25,7 +25,11 @@ public class ManagerUser {
         editor.putInt(KEY_ROLE_ID, roleId);
         editor.apply();
     }
-
+    public static void clearUserInfo(Context context) {
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.clear();
+        editor.apply();
+    }
     public static String getEmail(Context context) {
         return getSharedPreferences(context).getString(KEY_EMAIL, null);
     }

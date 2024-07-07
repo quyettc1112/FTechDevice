@@ -16,13 +16,13 @@ public class TokenManager {
     public static void saveFirstStart(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(FIRST_START_APP, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(FIRST_START_APP, false);
+        editor.putBoolean(FIRST_START_APP_VALUE, false);
         editor.apply();
     }
 
     public static boolean isFirstStart(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(FIRST_START_APP, Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean(FIRST_START_APP, true);
+        return sharedPreferences.getBoolean(FIRST_START_APP_VALUE, true);
     }
 
     // Hàm để lưu accessToken

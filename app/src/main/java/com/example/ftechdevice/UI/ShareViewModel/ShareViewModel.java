@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.ftechdevice.Model.CartModel;
+import com.example.ftechdevice.Model.CartModule.CartModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +21,10 @@ public class ShareViewModel extends ViewModel {
     public LiveData<List<CartModel>> getCartItems() {
         return _cartItems;
     }
+    public void updateCartItems(List<CartModel> newCartItems) {
+        _cartItems.setValue(newCartItems);
+    }
+
 
     @Inject
     public ShareViewModel() {
@@ -32,6 +36,8 @@ public class ShareViewModel extends ViewModel {
 
 
 
+
+
     public void addItem(CartModel cartModel) {
         List<CartModel> currentList = _cartItems.getValue();
         if (currentList == null) {
@@ -40,7 +46,7 @@ public class ShareViewModel extends ViewModel {
 
         CartModel existingItem = null;
         for (CartModel item : currentList) {
-            if (item.getToyModel().getId() == cartModel.getToyModel().getId()) {
+            if (item.getProduct().getId() == cartModel.getProduct().getId()) {
                 existingItem = item;
                 break;
             }
@@ -82,7 +88,30 @@ public class ShareViewModel extends ViewModel {
     public LiveData<Integer> getCategoryId() {
         return categoryId;
     }
-    public void updateCartItems(List<CartModel> newCartItems) {
-        _cartItems.setValue(newCartItems);
+
+    public void addItems(List<CartModel> cartModels) {
+        List<CartModel> currentList = _cartItems.getValue();
+        if (currentList == null) {
+            currentList = new ArrayList<>();
+        }
+
+        for (CartModel cartModel : cartModels) {
+            CartModel existingItem = null;
+            for (CartModel item : currentList) {
+                if (item.getProduct().getId() == cartModel.getProduct().getId()) {
+                    existingItem = item;
+                    break;
+                }
+            }
+
+            if (existingItem != null) {
+                existingItem.setQuantity(existingItem.getQuantity() + cartModel.getQuantity());
+            } else {
+                currentList.add(cartModel);
+            }
+        }
+
+        _cartItems.setValue(currentList);
     }
+
 }

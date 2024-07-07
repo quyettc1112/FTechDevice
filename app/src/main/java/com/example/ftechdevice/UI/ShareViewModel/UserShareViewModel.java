@@ -8,19 +8,24 @@ import com.example.ftechdevice.Model.ModelRequestDTO.JWTObject;
 import com.example.ftechdevice.Model.ModelRequestDTO.LoginRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
 import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
+import com.example.ftechdevice.Model.ModelRespone.UserResponseDTO;
 
 public class UserShareViewModel extends ViewModel {
     private final MutableLiveData<UserCretidentialDTO> _userCredentials = new MutableLiveData<>();
     public LiveData<UserCretidentialDTO> getUserCredentials() {
         return _userCredentials;
     }
-///
+    private final MutableLiveData<UserResponseDTO> _userResponse = new MutableLiveData<>();
+
+    public LiveData<UserResponseDTO> getUserResponse() {
+        return _userResponse;
+    }
     private final MutableLiveData<LoginRequestDTO> _loginCredentials = new MutableLiveData<>();
 
     public LiveData<LoginRequestDTO> getloginCredentials() {
         return _loginCredentials;
     }
-///
+    ///
     private final MutableLiveData<JWTObject> _jwtToken = new MutableLiveData<>();
     public LiveData<JWTObject> getJwtToken() {
         return _jwtToken;
@@ -58,4 +63,5 @@ public class UserShareViewModel extends ViewModel {
     public void clearJWTToken() {
         _jwtToken.setValue(null);
     }
+
 }

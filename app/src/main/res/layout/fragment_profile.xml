@@ -46,21 +46,22 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/ic_user_default"
+                android:src="@drawable/ic_avatar"
                 android:translationZ="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.151"
-                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full" />
+                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full"
+                android:onClick="showUpdateDialog" />
 
             <TextView
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="John Doe"
+                android:text="No name"
                 android:textSize="45dp"
                 android:textStyle="bold"
                 android:translationZ="10dp"
@@ -69,9 +70,8 @@
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-                app:layout_constraintVertical_bias="0.029">
-
-            </TextView>
+                app:layout_constraintVertical_bias="0.029"
+                android:onClick="showUpdateDialog" />
 
 
             <LinearLayout
@@ -158,6 +158,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/ll_order_history"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_margin="16dp"
@@ -287,18 +288,44 @@
                     </LinearLayout>
 
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/logout"
-                        android:layout_width="200dp"
+                    <FrameLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_marginTop="16dp"
-                        android:layout_marginBottom="100dp"
-                        android:background="@drawable/ripple_effect"
-                        android:text="Đăng Xuất"
-                        android:textColor="@color/white"
-                        android:textStyle="bold"></androidx.appcompat.widget.AppCompatButton>
+                        android:layout_marginBottom="100dp">
 
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/logout"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ripple_effect"
+                                android:text="Đăng Xuất"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="16dp" />
+
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/Login_button"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/ripple_effect"
+                                android:text="đăng nhập"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:visibility="gone"/>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </FrameLayout>
 
                 </LinearLayout>
 

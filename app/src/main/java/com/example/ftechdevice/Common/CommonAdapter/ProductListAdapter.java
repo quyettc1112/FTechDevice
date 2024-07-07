@@ -51,6 +51,10 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         this.onItemClickListener = listener;
     }
 
+    public void setOnItemCartClickListener(OnItemCartClickListener onItemCartClickListener) {
+        this.onItemCartClickListener = onItemCartClickListener;
+    }
+
     @NonNull
     @Override
     public ProductListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

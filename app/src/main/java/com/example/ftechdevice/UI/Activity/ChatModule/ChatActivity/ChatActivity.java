@@ -1,6 +1,9 @@
 package com.example.ftechdevice.UI.Activity.ChatModule.ChatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -8,9 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ftechdevice.Common.TokenManger.TokenManager;
+import com.example.ftechdevice.JWT.JWTDecoder;
 import com.example.ftechdevice.Model.ChatModuleModel.ChatList;
+import com.example.ftechdevice.Model.UserFireBaseModel;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.ChatModule.Adapter.ChatAdapter;
+import com.example.ftechdevice.Until.FirebaseUtil;
 import com.example.ftechdevice.Until.MemoryData;
 import com.example.ftechdevice.Until.MyProgressDialog;
 import com.google.firebase.database.DataSnapshot;
@@ -20,38 +27,41 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
 
-
     // List to store user's messages
-    private final List<ChatList> userChatList = new ArrayList<>();
+    private final List<ChatList> userMessagesList = new ArrayList<>();
 
     // User messages adapter
-    private ChatAdapter chatAdapter;
-
+    private ChatAdapter messagesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_chat);
 
         final RecyclerView messagesRecyclerView = findViewById(R.id.messagesRecyclerView);
 
-        //final String mobileNumber = MemoryData.getMobile(this);
-        final String mobileNumber = "+84356970686";
+        // Get logged in user's mobile number from memory
+        final String mobileNumber = getPhoneUserFromJWT();
+        Log.d("CurrentMobile", mobileNumber);
+
+        // Obtain the reference to the Firebase database using the defined URL
+        // Reference to the Firebase database
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl(getString(R.string.database_url));
 
         // Configure RecyclerView
         messagesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Set adapter to RecyclerView
-        chatAdapter = new ChatAdapter(userChatList, ChatActivity.this);
-        messagesRecyclerView.setAdapter(chatAdapter);
+        messagesAdapter = new ChatAdapter(userMessagesList, ChatActivity.this);
+        messagesRecyclerView.setAdapter(messagesAdapter);
 
         // Show progress dialog while fetching chats from the database
         final MyProgressDialog progressDialog = new MyProgressDialog(this);
@@ -62,41 +72,58 @@ public class ChatActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 // Clear old messages from the list
-                userChatList.clear();
+                userMessagesList.clear();
+
                 // Loop through available users in the database
                 for (DataSnapshot userData : snapshot.child("users").getChildren()) {
+
                     // Get user's mobile number from firebase database
                     final String mobile = userData.getKey();
+
                     // check next user in the list if mobile is null
                     if (mobile == null) {
                         continue;
                     }
+                    String getLoginMobile = getPhoneUserFromJWT();
+
+
+
                     // Don't fetch details of the logged-in user
-                    if (!mobile.equals(mobileNumber)) {
-                        // Retrieve user's full name
-                        final String getUserFullName = userData.child("name").getValue(String.class);
-                        // Other required variables
-                        String lastMessage = "";
-                        int unseenMessagesCount = 0;
-                        // Check if chat is available with the user
-                        String chatKey = checkChatExistence(snapshot, mobileNumber, mobile);
-                        if (!chatKey.isEmpty()) {
-                            // Getting last message in the chat
-                            lastMessage = retrieveLastMessage(snapshot, chatKey);
-                            if (!lastMessage.isEmpty()) {
-                                unseenMessagesCount = countUnseenMessages(snapshot, chatKey, mobileNumber);
+                    if (getLoginMobile.equals("356970686") || !mobile.equals(mobileNumber) && mobile.equals("356970686")) {
+                        if (!mobile.equals(mobileNumber)) {
+                            // Retrieve user's full name
+                            final String getUserFullName = userData.child("name").getValue(String.class);
+
+                            // Other required variables
+                            String lastMessage = "";
+                            int unseenMessagesCount = 0;
+
+                            // Check if chat is available with the user
+                            String chatKey = checkChatExistence(snapshot, mobileNumber, mobile);
+
+                            if (!chatKey.isEmpty()) {
+                                // Getting last message in the chat
+                                lastMessage = retrieveLastMessage(snapshot, chatKey);
+
+                                if (!lastMessage.isEmpty()) {
+                                    unseenMessagesCount = countUnseenMessages(snapshot, chatKey, mobileNumber);
+                                }
                             }
+                            // Load chat/messages in the list
+                            loadData(chatKey, getUserFullName, mobile, lastMessage, unseenMessagesCount);
                         }
-                        // Load chat/messages in the list
-                        loadData(chatKey, getUserFullName, mobile, lastMessage, unseenMessagesCount);
                     }
+
+
                 }
 
                 if (progressDialog.isShowing()) {
                     progressDialog.dismiss();
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 if (progressDialog.isShowing()) {
@@ -123,6 +150,7 @@ public class ChatActivity extends AppCompatActivity {
         return chatKey; // Return the chat key if it exists, otherwise an empty string
     }
 
+    // Retrieve the last message from the chat
     @NotNull
     private String retrieveLastMessage(DataSnapshot snapshot, String chatKey) {
         String lastMessage = "";
@@ -189,20 +217,38 @@ public class ChatActivity extends AppCompatActivity {
     // Load data into the message list
     private void loadData(String chatKey, String fullName, String mobile, String lastMessage, int unseenMessagesCount) {
         if (!mobileAlreadyExists(mobile)) {
-            ChatList chatList = new ChatList(chatKey, fullName, mobile, lastMessage, unseenMessagesCount);
-            userChatList.add(chatList);
-            chatAdapter.updateMessages(userChatList);
+            ChatList messagesList = new ChatList(chatKey, fullName, mobile, lastMessage, unseenMessagesCount);
+            userMessagesList.add(messagesList);
+            messagesAdapter.updateMessages(userMessagesList);
         }
     }
 
     // Check if mobile number already exists in the list
     private boolean mobileAlreadyExists(String mobile) {
-        for (ChatList message : userChatList) {
+        for (ChatList message : userMessagesList) {
             if (message.getMobile().equals(mobile)) {
                 return true;
             }
         }
         return false;
+    }
+
+
+    private String getPhoneUserFromJWT() {
+        String phone;
+        String accessToken = TokenManager.getAccessToken(ChatActivity.this);
+        if(accessToken != null) {
+            try {
+                JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
+                phone = decodedPayload.getString("phone");
+                return phone;
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        }else{
+            Toast.makeText(ChatActivity.this, "Phone is Null", Toast.LENGTH_SHORT).show();
+            return "";
+        }
     }
 
 }

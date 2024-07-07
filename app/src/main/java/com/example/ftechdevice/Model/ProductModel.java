@@ -1,5 +1,10 @@
 package com.example.ftechdevice.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class ProductModel implements Serializable{
@@ -90,7 +95,7 @@ public class ProductModel implements Serializable{
         this.productCategory = productCategory;
     }
 
-    public static class ProductCategory implements Serializable {
+    public static class ProductCategory implements Parcelable {
         private int id;
         private String name;
         private Boolean isActive;
@@ -100,6 +105,25 @@ public class ProductModel implements Serializable{
             this.name = name;
             this.isActive = isActive;
         }
+
+        protected ProductCategory(Parcel in) {
+            id = in.readInt();
+            name = in.readString();
+            byte tmpIsActive = in.readByte();
+            isActive = tmpIsActive == 0 ? null : tmpIsActive == 1;
+        }
+
+        public static final Creator<ProductCategory> CREATOR = new Creator<ProductCategory>() {
+            @Override
+            public ProductCategory createFromParcel(Parcel in) {
+                return new ProductCategory(in);
+            }
+
+            @Override
+            public ProductCategory[] newArray(int size) {
+                return new ProductCategory[size];
+            }
+        };
 
         public int getId() {
             return id;
@@ -123,6 +147,18 @@ public class ProductModel implements Serializable{
 
         public void setIsActive(Boolean isActive) {
             this.isActive = isActive;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(@NonNull Parcel dest, int flags) {
+            dest.writeInt(id);
+            dest.writeString(name);
+            dest.writeByte((byte) (isActive == null ? 0 : isActive ? 1 : 2));
         }
     }
 }

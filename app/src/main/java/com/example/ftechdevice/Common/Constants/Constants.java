@@ -2,12 +2,10 @@ package com.example.ftechdevice.Common.Constants;
 
 import com.example.ftechdevice.Common.CommonAdapter.CategoryOptionAdapter;
 import com.example.ftechdevice.Common.CommonAdapter.VideoMainAdapter;
-import com.example.ftechdevice.Model.CartModel;
 import com.example.ftechdevice.Model.ToyModel;
 import com.example.ftechdevice.Model.VideoModel;
 import com.example.ftechdevice.R;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -277,16 +275,5 @@ public class Constants {
         );
     }
 
-    public static ArrayList<CartModel> getListCart() {
-        ToyModel toyModel = getListToys().get(0);
-        ToyModel toyModel2 = getListToys().get(1);
-        ToyModel toyModel3 = getListToys().get(2);
-        return new ArrayList<>(
-                Arrays.asList(
-                        CartModel.create(toyModel, 2),
-                        CartModel.create(toyModel2, 2),
-                        CartModel.create(toyModel3, 2)
-                )
-        );
-    }
+
 }
