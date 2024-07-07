@@ -59,7 +59,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="fitXY"
-                            android:src="@drawable/ic_image_toy_01" />
+                            android:src="@drawable/ic_cart_white" />
                     </androidx.cardview.widget.CardView>
 
                     <ImageView
@@ -109,7 +109,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="199.000 VND"
+                        android:text=""
                         android:textColor="@color/redPrimary"
                         android:textSize="30dp"
                         android:textStyle="bold"
@@ -156,7 +156,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Take Long Railroad"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="20dp"
                         android:textStyle="bold"
@@ -179,7 +179,7 @@
                         android:id="@+id/tv_product_category"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Phát triển kỹ năng vận động và tính độc lập"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="15dp"
                         app:layout_constraintStart_toStartOf="parent"
@@ -200,7 +200,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
-                        android:text="Khám phá bộ đồ chơi mới với bé yêu BỘ XẾP HÌNH NAM CHÂM 72 CHI TIẾT Với Bộ Xếp Hình Nam Châm, bé sẽ học được gì? - Phát triển tư duy sáng tạo thông qua việc tạo ra nhiều hình khối đa dạng, từ các hình dạng que đến hình tròn. - Tăng cường khả năng quan sát và phát triển khả năng tưởng tượng không gian thông"
                         android:textColor="@color/black"
                         android:textSize="15dp"
                         app:layout_constraintEnd_toEndOf="parent"

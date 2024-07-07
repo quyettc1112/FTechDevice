@@ -23,6 +23,7 @@ import com.example.ftechdevice.Model.ProductModel;
 import com.example.ftechdevice.Model.UserJWT;
 import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivity;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
+import com.example.ftechdevice.Until.MyProgressDialog;
 import com.example.ftechdevice.databinding.ActivityProducDetailBinding;
 import com.google.gson.Gson;
 
@@ -52,11 +53,15 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     private ShareViewModel shareViewModel;
 
+
+    private MyProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityProducDetailBinding.inflate(getLayoutInflater());
         shareViewModel = new ViewModelProvider(this).get(ShareViewModel.class);
+        progressDialog = new MyProgressDialog(this);
         setContentView(binding.getRoot());
         getProductModelByIDFromAPI();
         backToPreviousActivity();
@@ -66,10 +71,12 @@ public class ProductDetailActivity extends AppCompatActivity {
     private void getProductModelByIDFromAPI() {
         int id = getIntent().getIntExtra("product_id", 0);
         Log.d("ID", String.valueOf(id));
+        progressDialog.show();
         productAPIRepository.getProductById(id).enqueue(new Callback<ProductReponse>() {
             @Override
             public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
+                    progressDialog.dismiss();
                     ProductReponse productResponse = response.body();
                     Log.d("ProductDetailActivity", "Full Product Response: " + productResponse.toString());
                     productModel = mapProductToProductModel(productResponse);
