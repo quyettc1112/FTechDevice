@@ -87,7 +87,21 @@ public class CartFragment extends Fragment {
         });
 
         cartAdapter.setOnRemoveQuantityItemClickListener(item -> {
-            sharedViewModel.removeItem(item);
+            //sharedViewModel.removeItem(item);
+            CartDTO cartDTO = new CartDTO(item.getId(),item.getUser().getId(), item.getProduct().getId(), item.getQuantity());
+            if (cartDTO.getQuantity() > 1 && cartDTO.getQuantity() != 0) {
+                cartDTO.setQuantity(cartDTO.getQuantity() - 1);
+                callMinusQuantity(cartDTO.getId(), cartDTO, item);
+            } else {
+                callDeleteCart(item.getId(), item);
+            }
+
+
+
+            Log.d("checkCartID info", String.valueOf(item.getId()));
+            Log.d("checkCartID info", String.valueOf(item.getUser().getId()));
+            Log.d("checkCartID info", String.valueOf(item.getProduct()));
+            Log.d("checkCartID info", String.valueOf(item.getQuantity()));
             checkShowUI();
             return null;
         });
@@ -183,6 +197,9 @@ public class CartFragment extends Fragment {
                    });
 
        }
+
+
+
     }
     private UserJWT getUserFromJWT() {
         String accessToken = TokenManager.getAccessToken(requireContext());
@@ -221,6 +238,7 @@ public class CartFragment extends Fragment {
                public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
                    if (response.isSuccessful()) {
                        cartAdapter.addItem(product);
+                       Log.d("callAddMoreQuantity", "Add More Successfull");
                    } else {
                        ErrorDialog e = new ErrorDialog(
                                requireContext(),
@@ -238,6 +256,64 @@ public class CartFragment extends Fragment {
                    e.show();
                }
            });
+        }
+    }
+
+    private void callMinusQuantity(int id, CartDTO cartDTO, CartModel item) {
+        UserJWT userJWT = getUserFromJWT();
+        if (cartDTO != null && userJWT.getAccessToken() != null) {
+            cartAPIRepository.putCart("Bearer "+ userJWT.getAccessToken(), id, cartDTO)
+                    .enqueue(new Callback<CartResponse>() {
+                        @Override
+                        public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
+                            if (response.isSuccessful()) {
+                                Log.d("Minus Quantity Success", "Minus Quantity Success");
+                                sharedViewModel.removeItem(item);
+                            } else {
+                                ErrorDialog er = new ErrorDialog(
+                                        requireContext(),
+                                        String.valueOf(response.code()) + String.valueOf(response.message()) + String.valueOf(response.errorBody())
+                                );
+                                er.show();
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<CartResponse> call, Throwable t) {
+                            ErrorDialog er = new ErrorDialog(
+                                    requireContext(),
+                                    String.valueOf(t.getMessage())
+                            );
+                            er.show();
+                        }
+                    });
+        }
+
+
+    }
+
+    private void callDeleteCart(int id, CartModel item) {
+        UserJWT userJWT = getUserFromJWT();
+        if (userJWT != null) {
+            cartAPIRepository.deleteCartById("Bearer " + userJWT.getAccessToken(), id)
+                    .enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            if (response.isSuccessful()) {
+                                Log.d("callDeleteCart", "Delete Cart Successful");
+                                sharedViewModel.removeItem(item);
+                            } else {
+                                ErrorDialog er = new ErrorDialog(
+                                        requireContext(),
+                                        String.valueOf(response.code())
+                                );
+                                er.show();
+                            }
+                        }
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable t) {
+
+                        }
+                    });
         }
     }
 

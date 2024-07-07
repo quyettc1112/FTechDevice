@@ -7,6 +7,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -31,7 +32,14 @@ public interface CartAPI_Service {
     );
 
     @PUT("api/cart/{id}")
-    Call<CartResponse> updateCart(
+    Call<CartResponse> updateCartById(
+            @Header("Authorization") String token,
+            @Path("id") int id,
+            @Body CartDTO cartDTO
+    );
+
+    @DELETE("api/cart/{id}")
+    Call<Void> deleteCartById(
             @Header("Authorization") String token,
             @Path("id") int id
     );

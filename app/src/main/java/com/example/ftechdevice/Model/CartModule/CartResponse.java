@@ -63,6 +63,27 @@ public class CartResponse {
         @SerializedName("id")
         private int id;
 
+        @Override
+        public String toString() {
+            return "User{" +
+                    "id=" + id +
+                    ", role=" + role +
+                    ", username='" + username + '\'' +
+                    ", email='" + email + '\'' +
+                    ", password='" + password + '\'' +
+                    ", fullName='" + fullName + '\'' +
+                    ", phone='" + phone + '\'' +
+                    ", address='" + address + '\'' +
+                    ", isActive=" + isActive +
+                    ", avatar='" + avatar + '\'' +
+                    ", enabled=" + enabled +
+                    ", authorities=" + authorities +
+                    ", accountNonExpired=" + accountNonExpired +
+                    ", accountNonLocked=" + accountNonLocked +
+                    ", credentialsNonExpired=" + credentialsNonExpired +
+                    '}';
+        }
+
         protected User(Parcel in) {
             id = in.readInt();
             username = in.readString();
