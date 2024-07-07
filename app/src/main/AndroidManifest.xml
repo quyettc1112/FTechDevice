@@ -10,8 +10,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:name=".AppConfig.Application.FTechDevice"
@@ -25,25 +25,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FTechDevice"
         tools:targetApi="31">
+        <activity
+            android:name=".UI.Activity.PaymentActivity.BillingActivity"
+            android:exported="false" />
 
-        <service android:name=".API_Service.FCMNotificationService" android:exported="false">
+        <service
+            android:name=".API_Service.FCMNotificationService"
+            android:exported="false">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-
-
         <activity
             android:name=".UI.Activity.ChatModule.MessageActivity.MessageActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".UI.Activity.ChatModule.ChatActivity.ChatActivity"
-            android:exported="true" >
-
-
-        </activity>
+            android:exported="true"></activity>
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -92,18 +92,15 @@
             android:exported="true" />
         <activity
             android:name=".UI.Activity.StartActivity.StartActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".UI.Activity.SplashActivity.SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".UI.Activity.VideoActivity.VideoActivity_Screen2"
