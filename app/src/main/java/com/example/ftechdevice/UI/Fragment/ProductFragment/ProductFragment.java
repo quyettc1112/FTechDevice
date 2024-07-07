@@ -158,29 +158,6 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         });
     }
 
-//    private void callProductAPI(int categoryId) {
-//        productAPIRepository.getProductList(pageNo, maxRecords, "", categoryId).enqueue(new Callback<ProductReponse>() {
-//            @Override
-//            public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
-//                if (response.isSuccessful() && response.body() != null) {
-//                    List<ProductModel> products = response.body().getContent();
-//                    if (products != null) {
-//                        productListViewModel.setProductList(products);
-//                        pproductListAdapter.submitList(products);
-//                        Log.d("Check value", "Products size: " + products.size());
-//                    }
-//                } else {
-//                    Log.d("ProductFragment", "Response code: " + response.code());
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ProductReponse> call, Throwable t) {
-//                Log.d("ProductFragment", t.getMessage());
-//            }
-//        });
-//    }
-
     private void callProductAPI() {
         Log.d(categoryId.toString(), "Category Id");
         productAPIRepository.getProductList(pageNo, maxRecords, "", categoryId).enqueue(new Callback<ProductReponse>() {
@@ -243,6 +220,12 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         });
     }
 
+    private void clearFilter() {
+        categoryId = 0;
+        pageNo = 0;
+        maxRecords = 10;
+    }
+
     private void showFillterDialog() {
         binding.imFillter.setOnClickListener(v -> {
             View dialogView = getLayoutInflater().inflate(R.layout.dialog_fillter_toys, null);
@@ -255,6 +238,14 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
 
             // Turn Off Dialog
             dialogView.findViewById(R.id.im_dissmissDialog).setOnClickListener(view -> dialog.dismiss());
+
+            dialogView.findViewById(R.id.btn_clearFilter).setOnClickListener(view -> {
+                clearFilter();
+
+                callProductAPI();
+
+                dialog.dismiss();
+            });
 
             // Initialize category options
             de.hdodenhof.circleimageview.CircleImageView llLaptop = dialogView.findViewById(R.id.llLaptopp);
@@ -348,7 +339,8 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
     }
 
     private void callFilterProductAPI(int categoryId, int minPrice, int maxPrice) {
-        productAPIRepository.getFilterProductList(categoryId, minPrice, maxPrice).enqueue(new Callback<ProductReponse>() {
+        this.categoryId = categoryId;
+        productAPIRepository.getFilterProductList(this.categoryId, minPrice, maxPrice).enqueue(new Callback<ProductReponse>() {
             @Override
             public void onResponse(Call<ProductReponse> call, Response<ProductReponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
