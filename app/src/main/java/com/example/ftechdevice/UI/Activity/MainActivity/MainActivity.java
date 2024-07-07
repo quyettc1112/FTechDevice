@@ -25,6 +25,7 @@ import com.example.ftechdevice.UI.Fragment.ProductFragment.ProductFragment;
 import com.example.ftechdevice.UI.Fragment.ProfileFragment.ProfileFragment;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
 import com.example.ftechdevice.Until.FirebaseUtil;
+import com.example.ftechdevice.Until.MemoryData;
 import com.example.ftechdevice.databinding.ActivityMainBinding;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -174,7 +175,7 @@ public class MainActivity extends BaseActivity {
             try {
                 JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
                 phone = decodedPayload.getString("phone");
-
+                MemoryData.saveMobile(phone, MainActivity.this);
                 return phone;
             } catch (JSONException e) {
                 throw new RuntimeException(e);

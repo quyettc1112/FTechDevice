@@ -5,6 +5,11 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_chat.xml">
+        <config>
+          <theme>@style/Theme.FTechDevice</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
         <config>
           <theme>@style/Theme.FTechDevice</theme>
@@ -16,6 +21,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+        <config>
+          <theme>@style/Theme.FTechDevice</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_message.xml">
         <config>
           <theme>@style/Theme.FTechDevice</theme>
         </config>
@@ -121,28 +131,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="403e22a6-4de3-4046-b803-524983521fe2" name="Changes" comment="Fix Logic Add To cart">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
+    <list default="true" id="403e22a6-4de3-4046-b803-524983521fe2" name="Changes" comment="Update cart Model to Payment Activity">
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/API_Service/CartAPI_Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/API_Service/CartAPI_Service.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Common/Constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Common/Constants/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Model/CartModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Model/CartModule/CartModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Model/CartModule/CartResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Model/CartModule/CartResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Model/ProductModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Model/ProductModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/ChatModule/ChatActivity/ChatActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/ChatModule/ChatActivity/ChatActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/ChatModule/MessageActivity/MessageActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/ChatModule/MessageActivity/MessageActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/MainActivity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/MainActivity/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/PaymentActivity/PaymentActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/PaymentActivity/PaymentActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/ProductDetailActivity/ProductDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/ProductDetailActivity/ProductDetailActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/CartFragment/CartAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/CartFragment/CartAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/CartFragment/CartAdapter_FTech.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/CartFragment/CartAdapter_FTech.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/CartFragment/CartFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/CartFragment/CartFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/ShareViewModel/ShareViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/ShareViewModel/ShareViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Until/CartParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Until/CartParser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +266,7 @@
     "git-widget-placeholder": "fix__bugs__quyetTC",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/PRM/GitProject/FTechDevice",
+    "last_opened_file_path": "C:/Users/wwwtr/OneDrive/Desktop/Android Project/Android Project",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "AndroidSdkUpdater"
   },
@@ -732,14 +729,6 @@
       <option name="presentableId" value="Default" />
       <updated>1718185351079</updated>
     </task>
-    <task id="LOCAL-00015" summary="Update Setup Project">
-      <option name="closed" value="true" />
-      <created>1718345413464</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1718345413464</updated>
-    </task>
     <task id="LOCAL-00016" summary="Update Setup Project">
       <option name="closed" value="true" />
       <created>1718345423758</created>
@@ -1124,7 +1113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720271785436</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Update cart Model to Payment Activity">
+      <option name="closed" value="true" />
+      <created>1720276989252</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1720276989252</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -1171,6 +1168,7 @@
     <MESSAGE value="Upadte Version Code" />
     <MESSAGE value="Update logic add to cart" />
     <MESSAGE value="Fix Logic Add To cart" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix Logic Add To cart" />
+    <MESSAGE value="Update cart Model to Payment Activity" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update cart Model to Payment Activity" />
   </component>
 </project>
