@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,12 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ftechdevice.API_Repository.OrderAPI_Repository;
 import com.example.ftechdevice.Common.CommonAdapter.OrderAdapter;
 import com.example.ftechdevice.Model.ModelRespone.OrderResponse;
-import com.example.ftechdevice.Model.ModelRespone.UserResponseDTO;
 import com.example.ftechdevice.Model.OrderModel;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.ShareViewModel.UserShareViewModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -38,7 +35,6 @@ public class OrderListActivity extends AppCompatActivity {
     private ImageView ivBack;
     @Inject
     OrderAPI_Repository orderAPIRepository;
-    private UserShareViewModel userShareViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,32 +52,26 @@ public class OrderListActivity extends AppCompatActivity {
             }
         });
 
-        userShareViewModel = new ViewModelProvider(this).get(UserShareViewModel.class);
-        observeViewModel();
+        String token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzMTMydHJpbmciLCJlbWFpbCI6ImFkbWluM0BnbWFpbC5jb20iLCJ1c2VySWQiOjEsIlJvbGVOYW1lIjoiQURNSU4iLCJwaG9uZSI6InN0cmluZyIsImlhdCI6MTcyMDI2NTUyMywiZXhwIjoxNzIwMzUxOTIzfQ.0BIj_wPtzFvCUl4O5t4WrIILs4CLcvg4ijAOwvIzfNk";
+        Log.d("OrderListActivity", "Token: " + token);
+        callOrderAPI(token);
     }
-        private void observeViewModel() {
-            userShareViewModel.getUserResponse().observe(this, new Observer<UserResponseDTO>() {
-                @Override
-                public void onChanged(UserResponseDTO userResponseDTO) {
-                    if (userResponseDTO != null) {
-                        int userId = userResponseDTO.getId();
-                        callOrderAPI(userId);
-                    } else {
-                    }
-                }
-            });
-        }
 
-    private void callOrderAPI(int userId) {
-        orderAPIRepository.getAllOrder(userId).enqueue(new Callback<OrderResponse>() {
+    private void callOrderAPI(String token) {
+        Log.d("OrderListActivity", "Calling API with token: " + token);
+        orderAPIRepository.getAllOrder("Bearer " + token,0,10).enqueue(new Callback<List<OrderModel>>() {
             @Override
-            public void onResponse(Call<OrderResponse> call, Response<OrderResponse> response) {
+            public void onResponse(Call<List<OrderModel>> call, Response<List<OrderModel>> response) {
+                Log.d("OrderListActivity", "API call response received");
                 if (response.isSuccessful() && response.body() != null) {
-                    List<OrderModel> orders = response.body().getContent();
+                    List<OrderModel> orders = response.body();
                     if (orders != null) {
+                        Log.d("OrderListActivity", "Orders size: " + orders.size());
                         orderList = orders;
-                        orderAdapter = new OrderAdapter(orderList);
+                        orderAdapter = new OrderAdapter(OrderListActivity.this, orderList);
                         rvOrderList.setAdapter(orderAdapter);
+                    } else {
+                        Log.d("OrderListActivity", "No orders found");
                     }
                 } else {
                     Log.d("OrderListActivity", "Response code: " + response.code());
@@ -89,7 +79,7 @@ public class OrderListActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<OrderResponse> call, Throwable t) {
+            public void onFailure(Call<List<OrderModel>> call, Throwable t) {
                 Log.d("OrderListActivity", t.getMessage());
             }
         });

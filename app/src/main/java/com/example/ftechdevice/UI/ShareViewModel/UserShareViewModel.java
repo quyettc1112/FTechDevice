@@ -25,7 +25,7 @@ public class UserShareViewModel extends ViewModel {
     public LiveData<LoginRequestDTO> getloginCredentials() {
         return _loginCredentials;
     }
-///
+    ///
     private final MutableLiveData<JWTObject> _jwtToken = new MutableLiveData<>();
     public LiveData<JWTObject> getJwtToken() {
         return _jwtToken;
