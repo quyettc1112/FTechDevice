@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ftechdevice.Model.OrderModel;
 import com.example.ftechdevice.R;
-import com.example.ftechdevice.UI.Activity.OrderDetailActivity;
+import com.example.ftechdevice.UI.Activity.OrderDetailActivity.OrderDetailActivity;
 
 import java.util.List;
 

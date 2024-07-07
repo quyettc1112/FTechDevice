@@ -88,7 +88,7 @@
             android:name=".UI.Activity.AuthActivity.LoginActivity.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".UI.Activity.OrderDetailActivity"
+            android:name=".UI.Activity.OrderDetailActivity.OrderDetailActivity"
             android:exported="true" />
         <activity
             android:name=".UI.Activity.OrderListActivity.OrderListActivity"

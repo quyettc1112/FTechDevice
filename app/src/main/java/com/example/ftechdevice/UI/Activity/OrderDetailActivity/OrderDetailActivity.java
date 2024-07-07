@@ -1,4 +1,4 @@
-package com.example.ftechdevice.UI.Activity;
+package com.example.ftechdevice.UI.Activity.OrderDetailActivity;
 
 import android.os.Bundle;
 import android.util.Log;

@@ -12,10 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ftechdevice.API_Repository.OrderAPI_Repository;
 import com.example.ftechdevice.Common.CommonAdapter.OrderAdapter;
+import com.example.ftechdevice.Common.TokenManger.TokenManager;
+import com.example.ftechdevice.JWT.JWTDecoder;
 import com.example.ftechdevice.Model.ModelRespone.OrderResponse;
 import com.example.ftechdevice.Model.OrderModel;
+import com.example.ftechdevice.Model.UserJWT;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.ShareViewModel.UserShareViewModel;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -52,9 +58,12 @@ public class OrderListActivity extends AppCompatActivity {
             }
         });
 
-        String token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzMTMydHJpbmciLCJlbWFpbCI6ImFkbWluM0BnbWFpbC5jb20iLCJ1c2VySWQiOjEsIlJvbGVOYW1lIjoiQURNSU4iLCJwaG9uZSI6InN0cmluZyIsImlhdCI6MTcyMDI2NTUyMywiZXhwIjoxNzIwMzUxOTIzfQ.0BIj_wPtzFvCUl4O5t4WrIILs4CLcvg4ijAOwvIzfNk";
-        Log.d("OrderListActivity", "Token: " + token);
-        callOrderAPI(token);
+        if (getUserFromJWT() != null) {
+            String token = getUserFromJWT().getAccessToken();
+            Log.d("OrderListActivity", "Token: " + token);
+            callOrderAPI(token);
+        }
+
     }
 
     private void callOrderAPI(String token) {
@@ -83,5 +92,31 @@ public class OrderListActivity extends AppCompatActivity {
                 Log.d("OrderListActivity", t.getMessage());
             }
         });
+    }
+
+
+    private UserJWT getUserFromJWT() {
+        String accessToken = TokenManager.getAccessToken(OrderListActivity.this);
+        if (accessToken != null) {
+            try {
+                JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
+
+                UserJWT user = new UserJWT();
+                user.setAccessToken(accessToken);
+                user.setSubject(decodedPayload.getString("sub"));
+                user.setEmail(decodedPayload.getString("email"));
+                user.setUserId(decodedPayload.getInt("userId"));
+                user.setRoleName(decodedPayload.getString("RoleName"));
+                user.setPhone(decodedPayload.getString("phone"));
+                user.setIssuedAt(decodedPayload.getLong("iat"));
+                user.setExpiration(decodedPayload.getLong("exp"));
+
+                return user;
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            return null;
+        }
     }
 }

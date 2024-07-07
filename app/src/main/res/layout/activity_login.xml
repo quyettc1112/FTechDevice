@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/app_font_bold"
-            android:text="AURORA TOY-STORE"
+            android:text="F-TECH DEVICE"
             android:textAlignment="center"
             android:textColor="@color/primaryColor"
             android:textSize="25dp"
