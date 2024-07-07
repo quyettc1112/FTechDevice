@@ -15,7 +15,7 @@
         android:gravity="center_horizontal">
 
         <TextView
-            android:id="@+id/tvTime"
+            android:id="@+id/nowTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="09:00"
@@ -28,7 +28,7 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/img_1" />
+            android:src="@drawable/paymentsuccess" />
 
         <TextView
             android:id="@+id/tvPaymentStatus"
@@ -204,13 +204,6 @@
             android:src="@drawable/ic_home"
             android:contentDescription="Home" />
 
-        <ImageView
-            android:id="@+id/ivTransfer"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:src="@drawable/ic_transfer"
-            android:contentDescription="Transfer" />
 
         <ImageView
             android:id="@+id/ivProfile"

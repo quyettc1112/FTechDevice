@@ -45,6 +45,9 @@ public class PaymentActivity extends AppCompatActivity {
     private static final org.apache.commons.logging.Log log = LogFactory.getLog(PaymentActivity.class);
     @Inject
     VNPay_Repository vnPayRepository;
+    double amount ;
+    String orderInfo;
+    ArrayList<CartModel> listCartModel;
 
     private WebView webView;
     @Override
@@ -57,8 +60,9 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         webView = findViewById(R.id.webView);
-
-        vnPayRepository.submitOrder(29000, "test payment").enqueue(new Callback<UrlResponseDTO>() {
+        //int amoutInt = Integer.parseInt(String.valueOf(amount));
+        int amountInt = (int)Math.round(amount);
+        vnPayRepository.submitOrder(amountInt, orderInfo).enqueue(new Callback<UrlResponseDTO>() {
             @Override
             public void onResponse(Call<UrlResponseDTO> call, Response<UrlResponseDTO> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -83,9 +87,9 @@ public class PaymentActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         // Lấy các giá trị từ intent
-        double amount = intent.getDoubleExtra("amount", 0.0);
-        String orderInfo = intent.getStringExtra("orderinfo");
-        ArrayList<CartModel> listCartModel = intent.getParcelableArrayListExtra("list_cart_model");
+        amount = intent.getDoubleExtra("amount", 0.0);
+        orderInfo = intent.getStringExtra("orderinfo");
+        listCartModel = intent.getParcelableArrayListExtra("list_cart_model");
 
         // In ra dữ liệu
         Log.d("PaymentActivity", String.format("Amount: %.2f", amount));
@@ -97,7 +101,6 @@ public class PaymentActivity extends AppCompatActivity {
                 Log.d("PaymentActivity", "Product name: " + item.getProduct().getName());
                 Log.d("PaymentActivity", "Product Price: " + item.getProduct().getPrice());
                 Log.d("PaymentActivity", "Quantity : " + item.getQuantity());
-                Log.d("PaymentActivity", "User ID : " + item.getUser().getId());
                 Log.d("PaymentActivity", "---------------- ");
             }
         } else {
@@ -202,16 +205,15 @@ public class PaymentActivity extends AppCompatActivity {
                     String orderId = vnPayResponse.getOrderId();
                     String totalPrice = vnPayResponse.getTotalPrice();
                     String paymentTime = vnPayResponse.getPaymentTime();
-
-
-                    if (status != null && status.equals("1")) { // Giả sử "00" là mã thành công
-                        showToast("Thanh toán thành công! Mã giao dịch: " + transactionId + "\nMã đơn hàng: " + orderId + "\nSố tiền: " + totalPrice + "\nThời gian: " + paymentTime);
-                        finish();
-                        startActivity(new Intent(PaymentActivity.this, MainActivity.class));
-
-                    } else {
-                        showToast("Thanh toán thất bại hoặc bị hủy");
-                    }
+                    Intent intent = new Intent(PaymentActivity.this,BillingActivity.class);
+                    intent.putExtra("amount", amount);
+                    intent.putExtra("status",status);
+                    intent.putExtra("transactionId",transactionId);
+                    intent.putExtra("orderId",orderId);
+                    intent.putExtra("totalPrice",totalPrice);
+                    intent.putExtra("paymentTime",paymentTime);
+                    intent.putParcelableArrayListExtra("list_cart_model",listCartModel);
+                    startActivity(intent);
                 } else {
                     showToast("Có lỗi xảy ra khi nhận kết quả thanh toán");
                 }
