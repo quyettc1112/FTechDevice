@@ -6,20 +6,23 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ftechdevice.API_Repository.OrderAPI_Repository;
 import com.example.ftechdevice.Common.CommonAdapter.OrderAdapter;
+import com.example.ftechdevice.Common.TokenManger.TokenManager;
+import com.example.ftechdevice.JWT.JWTDecoder;
 import com.example.ftechdevice.Model.ModelRespone.OrderResponse;
-import com.example.ftechdevice.Model.ModelRespone.UserResponseDTO;
 import com.example.ftechdevice.Model.OrderModel;
+import com.example.ftechdevice.Model.UserJWT;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.ShareViewModel.UserShareViewModel;
 
-import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -38,7 +41,6 @@ public class OrderListActivity extends AppCompatActivity {
     private ImageView ivBack;
     @Inject
     OrderAPI_Repository orderAPIRepository;
-    private UserShareViewModel userShareViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,32 +58,29 @@ public class OrderListActivity extends AppCompatActivity {
             }
         });
 
-        userShareViewModel = new ViewModelProvider(this).get(UserShareViewModel.class);
-        observeViewModel();
-    }
-        private void observeViewModel() {
-            userShareViewModel.getUserResponse().observe(this, new Observer<UserResponseDTO>() {
-                @Override
-                public void onChanged(UserResponseDTO userResponseDTO) {
-                    if (userResponseDTO != null) {
-                        int userId = userResponseDTO.getId();
-                        callOrderAPI(userId);
-                    } else {
-                    }
-                }
-            });
+        if (getUserFromJWT() != null) {
+            String token = getUserFromJWT().getAccessToken();
+            Log.d("OrderListActivity", "Token: " + token);
+            callOrderAPI(token);
         }
 
-    private void callOrderAPI(int userId) {
-        orderAPIRepository.getAllOrder(userId).enqueue(new Callback<OrderResponse>() {
+    }
+
+    private void callOrderAPI(String token) {
+        Log.d("OrderListActivity", "Calling API with token: " + token);
+        orderAPIRepository.getAllOrder("Bearer " + token,0,10).enqueue(new Callback<List<OrderModel>>() {
             @Override
-            public void onResponse(Call<OrderResponse> call, Response<OrderResponse> response) {
+            public void onResponse(Call<List<OrderModel>> call, Response<List<OrderModel>> response) {
+                Log.d("OrderListActivity", "API call response received");
                 if (response.isSuccessful() && response.body() != null) {
-                    List<OrderModel> orders = response.body().getContent();
+                    List<OrderModel> orders = response.body();
                     if (orders != null) {
+                        Log.d("OrderListActivity", "Orders size: " + orders.size());
                         orderList = orders;
-                        orderAdapter = new OrderAdapter(orderList);
+                        orderAdapter = new OrderAdapter(OrderListActivity.this, orderList);
                         rvOrderList.setAdapter(orderAdapter);
+                    } else {
+                        Log.d("OrderListActivity", "No orders found");
                     }
                 } else {
                     Log.d("OrderListActivity", "Response code: " + response.code());
@@ -89,9 +88,35 @@ public class OrderListActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<OrderResponse> call, Throwable t) {
+            public void onFailure(Call<List<OrderModel>> call, Throwable t) {
                 Log.d("OrderListActivity", t.getMessage());
             }
         });
+    }
+
+
+    private UserJWT getUserFromJWT() {
+        String accessToken = TokenManager.getAccessToken(OrderListActivity.this);
+        if (accessToken != null) {
+            try {
+                JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
+
+                UserJWT user = new UserJWT();
+                user.setAccessToken(accessToken);
+                user.setSubject(decodedPayload.getString("sub"));
+                user.setEmail(decodedPayload.getString("email"));
+                user.setUserId(decodedPayload.getInt("userId"));
+                user.setRoleName(decodedPayload.getString("RoleName"));
+                user.setPhone(decodedPayload.getString("phone"));
+                user.setIssuedAt(decodedPayload.getLong("iat"));
+                user.setExpiration(decodedPayload.getLong("exp"));
+
+                return user;
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            return null;
+        }
     }
 }

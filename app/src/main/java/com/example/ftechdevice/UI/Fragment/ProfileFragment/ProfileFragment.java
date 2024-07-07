@@ -38,19 +38,25 @@ import androidx.lifecycle.ViewModelProvider;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.ftechdevice.API_Service.UserAPI_Service;
+import com.example.ftechdevice.AppConfig.CustomView.CustomDialog.NotifyDialog;
 import com.example.ftechdevice.Common.IMG.RealPathUtil;
 import com.example.ftechdevice.Common.TokenManger.TokenManager;
 import com.example.ftechdevice.JWT.JWTDecoder;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserRequestDTO;
 import com.example.ftechdevice.Model.ModelRespone.FileUploadResponse;
 import com.example.ftechdevice.Model.ModelRespone.UserResponseDTO;
+import com.example.ftechdevice.Model.UserJWT;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivity;
 import com.example.ftechdevice.UI.Activity.MapActivity.MapsActivity;
+import com.example.ftechdevice.UI.Activity.OrderListActivity.OrderListActivity;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
 import com.example.ftechdevice.UI.ShareViewModel.UpdateViewModel;
 import com.example.ftechdevice.databinding.FragmentProfileBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -92,6 +98,7 @@ public class ProfileFragment extends Fragment {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
 
         setupViews();
+        intentToOrder();
         return binding.getRoot();
     }
 
@@ -447,5 +454,50 @@ public class ProfileFragment extends Fragment {
 
     private void intentToMaps() {
         startActivity(new Intent(requireContext(), MapsActivity.class));
+    }
+
+    private void intentToOrder() {
+        if (getUserFromJWT() != null) {
+            binding.llOrderHistory.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(requireContext(), OrderListActivity.class));
+                }
+            });
+
+        } else {
+            NotifyDialog ntf = new NotifyDialog(
+                    requireContext(),
+                    "Bạn cần đăng nhập trước khi tiếp tục",
+                    "Quay Lại"
+            );
+            ntf.show();
+        }
+
+    }
+
+    private UserJWT getUserFromJWT() {
+        String accessToken = TokenManager.getAccessToken(requireContext());
+        if (accessToken != null) {
+            try {
+                JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
+
+                UserJWT user = new UserJWT();
+                user.setAccessToken(accessToken);
+                user.setSubject(decodedPayload.getString("sub"));
+                user.setEmail(decodedPayload.getString("email"));
+                user.setUserId(decodedPayload.getInt("userId"));
+                user.setRoleName(decodedPayload.getString("RoleName"));
+                user.setPhone(decodedPayload.getString("phone"));
+                user.setIssuedAt(decodedPayload.getLong("iat"));
+                user.setExpiration(decodedPayload.getLong("exp"));
+
+                return user;
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            return null;
+        }
     }
 }
