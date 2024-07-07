@@ -179,23 +179,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                     startActivity(new Intent(ProductDetailActivity.this, LoginActivity.class));
                 } else {
                     UserJWT userJWT = getUserFromJWT();
-                    Log.d("checkProductDetail", String.valueOf(productModel.getId()));
-                    Log.d("checkProductDetail", String.valueOf(productModel.getName()));
-                    Log.d("checkProductDetail", String.valueOf(productModel.getImageUrl()));
                     CartDTO cartDTO = new CartDTO(0, userJWT.getUserId(), productModel.getId(), 1);
-                    callAddProductToCart(userJWT.getAccessToken(), cartDTO);
-                    CartResponse.Product product = new CartResponse.Product(
-                            productModel.getId(),
-                            productModel.getName(),
-                            productModel.getDescription(),
-                            productModel.getPrice(),
-                            productModel.getQuantity(),
-                            productModel.getImageUrl(),
-                            productModel.getIsActive(),
-                            productModel.getProductCategory()
-                    );
-
-                    shareViewModel.addItem(CartModel.create(product, 1));
+                    callAddProductToCart(userJWT.getAccessToken(), cartDTO, productModel);
                 }
             }
         });
@@ -227,15 +212,33 @@ public class ProductDetailActivity extends AppCompatActivity {
         }
     }
 
-    private void callAddProductToCart(String token, CartDTO cartDTO ) {
+    private void callAddProductToCart(String token, CartDTO cartDTO, ProductModel p ) {
+        progressDialog.show();
         cartAPIRepository.addToCart("Bearer " + token, cartDTO).enqueue(new Callback<CartResponse>() {
             @Override
             public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
                 if (response.isSuccessful()) {
+                    progressDialog.dismiss();
                     Toast.makeText(ProductDetailActivity.this, "Add Sản Phẩm Vào Giỏ Hàng Thành Công", Toast.LENGTH_SHORT).show();
+                    Log.d("CheckCartRespone",String.valueOf(response.body().getId()));
+                    CartResponse.Product product = new CartResponse.Product(
+                            p.getId(),
+                            p.getName(),
+                            p.getDescription(),
+                            p.getPrice(),
+                            p.getQuantity(),
+                            p.getImageUrl(),
+                            p.getIsActive(),
+                            p.getProductCategory()
+                    );
+                    shareViewModel.addItem(CartModel.create(response.body().getId(),product, 1));
+
+
+
                 } else {
                     Log.d("CheckCartRespone", String.valueOf(response.body()));
                     Log.d("CheckCartRespone", String.valueOf(response.code()));
+                    Log.d("CheckCartRespone", String.valueOf(response.message()));
                     Log.d("CheckCartRespone", String.valueOf(response.errorBody()));
                 }
             }
@@ -246,6 +249,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                 Log.d("CheckCartRespone", String.valueOf(t.getMessage()));
             }
         });
+
+
     }
 
 }

@@ -16,6 +16,7 @@ public class CartModel implements Parcelable {
         this.quantity = quantity;
     }
 
+
     protected CartModel(Parcel in) {
         id = in.readInt();
         product = in.readParcelable(CartResponse.Product.class.getClassLoader());
@@ -56,6 +57,12 @@ public class CartModel implements Parcelable {
     public static CartModel create(CartResponse.Product product, int quantity) {
         return new CartModel(idCounter++, product, quantity);
     }
+
+    public static CartModel create(int id, CartResponse.Product product, int quantity) {
+        return new CartModel(id, product, quantity);
+    }
+
+
 
     public int getId() {
         return id;

@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.ftechdevice.API_Repository.CartAPI_Repository;
 import com.example.ftechdevice.API_Repository.ProductAPI_Repository;
 import com.example.ftechdevice.API_Repository.UserAPI_Repository;
 import com.example.ftechdevice.Common.CommonAdapter.CategoryOptionAdapter;
@@ -28,9 +29,15 @@ import com.example.ftechdevice.Common.CommonAdapter.ProductListAdapter;
 import com.example.ftechdevice.Common.CommonAdapter.ToyListAdapter;
 import com.example.ftechdevice.Common.CommonAdapter.VideoMainAdapter;
 import com.example.ftechdevice.Common.Constants.Constants;
+import com.example.ftechdevice.Common.TokenManger.TokenManager;
+import com.example.ftechdevice.JWT.JWTDecoder;
+import com.example.ftechdevice.Model.CartModule.CartDTO;
+import com.example.ftechdevice.Model.CartModule.CartModel;
+import com.example.ftechdevice.Model.CartModule.CartResponse;
 import com.example.ftechdevice.Model.ModelRespone.ProductReponse;
 import com.example.ftechdevice.Model.ProductModel;
 import com.example.ftechdevice.Model.ToyModel;
+import com.example.ftechdevice.Model.UserJWT;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.ChatModule.ChatActivity.ChatActivity;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
@@ -38,9 +45,13 @@ import com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailAc
 import com.example.ftechdevice.UI.Activity.VideoActivity.VideoActivity;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
 import com.example.ftechdevice.Until.BottomMarginItemDecoration;
+import com.example.ftechdevice.Until.MyProgressDialog;
 import com.example.ftechdevice.Until.NonScrollableGridLayoutManager;
 import com.example.ftechdevice.databinding.ActivityMainBinding;
 import com.example.ftechdevice.databinding.FragmentHomeBinding;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +73,15 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
     private Integer pageNo = 0, pageSize = 10;
     @Inject
     ProductAPI_Repository productAPIRepository;
+
+    @Inject
+    CartAPI_Repository cartAPIRepository;
+
+    private ShareViewModel shareViewModel;
+
     private List<ProductModel> productList = new ArrayList<ProductModel>();
+
+    private MyProgressDialog myProgressDialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,6 +93,8 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         toyListAdapter.setOnItemCartClickListener(cartModel -> {
             Toast.makeText(requireContext(), cartModel.getToyName(), Toast.LENGTH_SHORT).show();
         });
+        shareViewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
+        myProgressDialog = new MyProgressDialog(requireContext());
     }
 
     @Nullable
@@ -96,6 +117,48 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
 
         return binding.getRoot();
     }
+
+    private void callAddProductToCart(String token, CartDTO cartDTO, ProductModel p ) {
+        myProgressDialog.show();
+        cartAPIRepository.addToCart("Bearer " + token, cartDTO).enqueue(new Callback<CartResponse>() {
+            @Override
+            public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
+                if (response.isSuccessful()) {
+                    myProgressDialog.dismiss();
+                    Toast.makeText(requireContext(), "Add Sản Phẩm Vào Giỏ Hàng Thành Công", Toast.LENGTH_SHORT).show();
+                    Log.d("CheckCartRespone",String.valueOf(response.body().getId()));
+                    CartResponse.Product product = new CartResponse.Product(
+                            p.getId(),
+                            p.getName(),
+                            p.getDescription(),
+                            p.getPrice(),
+                            p.getQuantity(),
+                            p.getImageUrl(),
+                            p.getIsActive(),
+                            p.getProductCategory()
+                    );
+                    shareViewModel.addItem(CartModel.create(response.body().getId(),product, 1));
+
+
+
+                } else {
+                    Log.d("CheckCartRespone", String.valueOf(response.body()));
+                    Log.d("CheckCartRespone", String.valueOf(response.code()));
+                    Log.d("CheckCartRespone", String.valueOf(response.message()));
+                    Log.d("CheckCartRespone", String.valueOf(response.errorBody()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CartResponse> call, Throwable t) {
+
+                Log.d("CheckCartRespone", String.valueOf(t.getMessage()));
+            }
+        });
+
+
+    }
+
     private void setupCategoryClickListeners(ActivityMainBinding mainBinding) {
         binding.llLaptop.setOnClickListener(v -> handleCategoryClick(mainBinding, 1));
         binding.llDienthoai.setOnClickListener(v -> handleCategoryClick(mainBinding, 2));
@@ -154,6 +217,49 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
                 requireContext().startActivity(intent);
             }
         });
+
+        productListAdapter.setOnItemCartClickListener(new ProductListAdapter.OnItemCartClickListener() {
+            @Override
+            public void onItemCartClick(ProductModel product) {
+                if (getUserFromJWT() == null) {
+                    Toast.makeText(requireContext(), "Bạn cần Đăng Nhập để tiếp tục", Toast.LENGTH_SHORT).show();
+                    MainActivity activity = (MainActivity) getActivity();
+                    ActivityMainBinding mainBinding = activity.binding;
+                    mainBinding.vp2Main.setCurrentItem(3, true);
+                } else {
+                    UserJWT userJWT = getUserFromJWT();
+                    CartDTO cartDTO = new CartDTO(0, userJWT.getUserId(), product.getId(), 1);
+                    callAddProductToCart(userJWT.getAccessToken(), cartDTO, product);
+                }
+            }
+        });
+
+
+    }
+
+    private UserJWT getUserFromJWT() {
+        String accessToken = TokenManager.getAccessToken(requireContext());
+        if (accessToken != null) {
+            try {
+                JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
+
+                UserJWT user = new UserJWT();
+                user.setAccessToken(accessToken);
+                user.setSubject(decodedPayload.getString("sub"));
+                user.setEmail(decodedPayload.getString("email"));
+                user.setUserId(decodedPayload.getInt("userId"));
+                user.setRoleName(decodedPayload.getString("RoleName"));
+                user.setPhone(decodedPayload.getString("phone"));
+                user.setIssuedAt(decodedPayload.getLong("iat"));
+                user.setExpiration(decodedPayload.getLong("exp"));
+
+                return user;
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            return null;
+        }
     }
 
     private void setUpVideoMainRecycleView() {

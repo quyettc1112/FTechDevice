@@ -34,6 +34,7 @@ import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailActivity;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
+import com.example.ftechdevice.Until.MyProgressDialog;
 import com.example.ftechdevice.databinding.ActivityMainBinding;
 import com.example.ftechdevice.databinding.FragmentProductBinding;
 
@@ -85,6 +86,8 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
     @Inject
     CartAPI_Repository cartAPIRepository;
 
+    private MyProgressDialog myProgressDialogl;
+
     public static final int REQUEST_CODE_PRODUCT_DETAIL = 1;
 
     @Override
@@ -105,6 +108,7 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentProductBinding.inflate(inflater, container, false);
+        myProgressDialogl = new MyProgressDialog(requireContext());
         setCateRecycleView();
         setProductListAdapter();
         callProductAPI();
@@ -190,18 +194,8 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
             } else {
                 UserJWT userJWT = getUserFromJWT();
                 CartDTO cartDTO = new CartDTO(0, userJWT.getUserId(), p.getId(), 1);
-                callAddProductToCart(userJWT.getAccessToken(), cartDTO);
-                CartResponse.Product product = new CartResponse.Product(
-                        p.getId(),
-                        p.getName(),
-                        p.getDescription(),
-                        p.getPrice(),
-                        p.getQuantity(),
-                        p.getImageUrl(),
-                        p.getIsActive(),
-                        p.getProductCategory()
-                );
-                sharedViewModel.addItem(CartModel.create(product, 1));
+                callAddProductToCart(userJWT.getAccessToken(), cartDTO, p);
+
 
             }
         });
@@ -450,12 +444,29 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         return (int) (dp * density);
     }
 
-    private void callAddProductToCart(String token, CartDTO cartDTO ) {
+    private void callAddProductToCart(String token, CartDTO cartDTO, ProductModel p ) {
+        myProgressDialogl.show();
         cartAPIRepository.addToCart("Bearer " + token, cartDTO).enqueue(new Callback<CartResponse>() {
             @Override
             public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
                 if (response.isSuccessful()) {
+                    myProgressDialogl.dismiss();
                     Toast.makeText(requireContext(), "Add Sản Phẩm Vào Giỏ Hàng Thành Công", Toast.LENGTH_SHORT).show();
+                    Log.d("CheckCartRespone",String.valueOf(response.body().getId()));
+                    CartResponse.Product product = new CartResponse.Product(
+                            p.getId(),
+                            p.getName(),
+                            p.getDescription(),
+                            p.getPrice(),
+                            p.getQuantity(),
+                            p.getImageUrl(),
+                            p.getIsActive(),
+                            p.getProductCategory()
+                    );
+                    sharedViewModel.addItem(CartModel.create(response.body().getId(),product, 1));
+
+
+
                 } else {
                     Log.d("CheckCartRespone", String.valueOf(response.body()));
                     Log.d("CheckCartRespone", String.valueOf(response.code()));

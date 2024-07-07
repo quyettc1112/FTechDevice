@@ -110,7 +110,17 @@
           <theme>@style/Theme.FTechDevice</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_recycler_view.xml">
+        <config>
+          <theme>@style/Theme.FTechDevice</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_toy_cart.xml">
+        <config>
+          <theme>@style/Theme.FTechDevice</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/recycle_item_toy_list.xml">
         <config>
           <theme>@style/Theme.FTechDevice</theme>
         </config>
@@ -131,7 +141,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="403e22a6-4de3-4046-b803-524983521fe2" name="Changes" comment="Done Cart">
+    <list default="true" id="403e22a6-4de3-4046-b803-524983521fe2" name="Changes" comment="Update Chat Logic">
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/fileHashes.bin" afterDir="false" />
@@ -139,7 +149,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.7/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/ChatModule/ChatActivity/ChatActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/ChatModule/ChatActivity/ChatActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Common/CommonAdapter/ProductListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Common/CommonAdapter/ProductListAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Model/CartModule/CartModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/Model/CartModule/CartModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/ProductDetailActivity/ProductDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Activity/ProductDetailActivity/ProductDetailActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/CartFragment/CartFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/CartFragment/CartFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/HomeFragment/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/HomeFragment/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ftechdevice/UI/Fragment/ProductFragment/ProductFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/recycle_item_toy_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recycle_item_toy_list.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +165,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=SOW8N7OBWSRGIN4T)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=99211FFBA007RD)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -729,14 +745,6 @@
       <option name="presentableId" value="Default" />
       <updated>1718185351079</updated>
     </task>
-    <task id="LOCAL-00019" summary="Update UI">
-      <option name="closed" value="true" />
-      <created>1718556111068</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1718556111068</updated>
-    </task>
     <task id="LOCAL-00020" summary="Update UI">
       <option name="closed" value="true" />
       <created>1718556121513</created>
@@ -1121,7 +1129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720335216676</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Update Chat Logic">
+      <option name="closed" value="true" />
+      <created>1720340513265</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1720340513265</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -1171,6 +1187,7 @@
     <MESSAGE value="Update cart Model to Payment Activity" />
     <MESSAGE value="Fix Phone Mobile ChatActivity" />
     <MESSAGE value="Done Cart" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done Cart" />
+    <MESSAGE value="Update Chat Logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Chat Logic" />
   </component>
 </project>

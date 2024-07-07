@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.ftechdevice.UI.Activity.PaymentActivity.PaymentActivity;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
 import com.example.ftechdevice.Until.CartParser;
+import com.example.ftechdevice.Until.MyProgressDialog;
 import com.example.ftechdevice.databinding.FragmentCartBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.gson.Gson;
@@ -60,6 +61,8 @@ public class CartFragment extends Fragment {
     @Inject
     CartAPI_Repository cartAPIRepository;
 
+    private MyProgressDialog progressDialog;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +76,7 @@ public class CartFragment extends Fragment {
         binding = FragmentCartBinding.inflate(inflater, container, false);
         showPaymentDialog();
         callGetAllCarts();
+        progressDialog = new MyProgressDialog(requireContext());
         binding.rlCart.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.rlCart.setAdapter(cartAdapter);
 
@@ -88,19 +92,20 @@ public class CartFragment extends Fragment {
 
         cartAdapter.setOnRemoveQuantityItemClickListener(item -> {
             //sharedViewModel.removeItem(item);
-            CartDTO cartDTO = new CartDTO(item.getId(),item.getUser().getId(), item.getProduct().getId(), item.getQuantity());
-            if (cartDTO.getQuantity() > 1 && cartDTO.getQuantity() != 0) {
-                cartDTO.setQuantity(cartDTO.getQuantity() - 1);
-                callMinusQuantity(cartDTO.getId(), cartDTO, item);
-            } else {
-                callDeleteCart(item.getId(), item);
+            UserJWT userJWT  = getUserFromJWT();
+            if (userJWT != null) {
+                CartDTO cartDTO = new CartDTO(item.getId(),userJWT.getUserId(), item.getProduct().getId(), item.getQuantity());
+                if (cartDTO.getQuantity() > 1 && cartDTO.getQuantity() != 0) {
+                    cartDTO.setQuantity(cartDTO.getQuantity() - 1);
+                    callMinusQuantity(cartDTO.getId(), cartDTO, item);
+                } else {
+                    callDeleteCart(item.getId(), item);
+                }
+
             }
 
-
-
             Log.d("checkCartID info", String.valueOf(item.getId()));
-            Log.d("checkCartID info", String.valueOf(item.getUser().getId()));
-            Log.d("checkCartID info", String.valueOf(item.getProduct()));
+        //    Log.d("checkCartID info", String.valueOf(item.getProduct()));
             Log.d("checkCartID info", String.valueOf(item.getQuantity()));
             checkShowUI();
             return null;
@@ -115,6 +120,7 @@ public class CartFragment extends Fragment {
     }
 
     private void showPaymentDialog() {
+        callGetAllCarts();
         binding.btnPayment.setOnClickListener(v -> {
             BottomSheetDialog dialog = new BottomSheetDialog(requireContext());
             View view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_proceed_to_payment, null);
@@ -132,6 +138,8 @@ public class CartFragment extends Fragment {
             view.findViewById(R.id.btn_payment).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+
                     Calendar calendar = Calendar.getInstance();
                     Date currentTime = calendar.getTime();
 
@@ -170,18 +178,21 @@ public class CartFragment extends Fragment {
     private void callGetAllCarts() {
        if (getUserFromJWT() != null) {
            UserJWT userJWT = getUserFromJWT();
+
            cartAPIRepository.getCarts("Bearer "+ userJWT.getAccessToken(), 0, 20,  "")
                    .enqueue(new Callback<List<CartResponse>>() {
+
                        @Override
                        public void onResponse(Call<List<CartResponse>> call, Response<List<CartResponse>> response) {
+                           progressDialog.show();
                            if (response.isSuccessful()) {
+                               progressDialog.dismiss();
                                Gson gson = new Gson();
                                String jsonResponse = gson.toJson(response.body());
                                List<CartModel> cartList = CartParser.parseCartResponse(jsonResponse);
                                sharedViewModel.updateCartItems(cartList);
                                cartAdapter.submitList(cartList);
                                observeViewModel();
-
                            } else  {
                                ErrorDialog e = new ErrorDialog(
                                        requireContext(),
@@ -231,12 +242,14 @@ public class CartFragment extends Fragment {
 
     private void callAddMoreQuantity (CartResponse.Product product) {
         UserJWT userJWT = getUserFromJWT();
+        progressDialog.show();
         CartDTO cartDTO = new CartDTO(0, userJWT.getUserId(),product.getId(), 1);
         if (product != null && cartDTO!= null) {
            cartAPIRepository.addToCart("Bearer " + userJWT.getAccessToken(), cartDTO).enqueue(new Callback<CartResponse>() {
                @Override
                public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
                    if (response.isSuccessful()) {
+                       progressDialog.dismiss();
                        cartAdapter.addItem(product);
                        Log.d("callAddMoreQuantity", "Add More Successfull");
                    } else {
@@ -293,6 +306,7 @@ public class CartFragment extends Fragment {
 
     private void callDeleteCart(int id, CartModel item) {
         UserJWT userJWT = getUserFromJWT();
+        progressDialog.show();
         if (userJWT != null) {
             cartAPIRepository.deleteCartById("Bearer " + userJWT.getAccessToken(), id)
                     .enqueue(new Callback<Void>() {
@@ -300,6 +314,7 @@ public class CartFragment extends Fragment {
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             if (response.isSuccessful()) {
                                 Log.d("callDeleteCart", "Delete Cart Successful");
+                                progressDialog.dismiss();
                                 sharedViewModel.removeItem(item);
                             } else {
                                 ErrorDialog er = new ErrorDialog(
@@ -311,7 +326,6 @@ public class CartFragment extends Fragment {
                         }
                         @Override
                         public void onFailure(Call<Void> call, Throwable t) {
-
                         }
                     });
         }
