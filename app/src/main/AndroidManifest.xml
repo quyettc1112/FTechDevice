@@ -77,7 +77,8 @@
             android:exported="false" />
         <activity
             android:name=".UI.Activity.AuthActivity.RegisterActivity.RegisterActivity_Screen2"
-            android:exported="false" />
+            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+            android:exported="true" />
         <activity
             android:name=".UI.Activity.AuthActivity.RegisterActivity.RegisterActivity"
             android:exported="false" />
