@@ -1,5 +1,7 @@
 package com.example.ftechdevice.UI.Fragment.ProductFragment;
 
+import static android.app.Activity.RESULT_OK;
+
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.res.ColorStateList;
@@ -8,7 +10,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import android.widget.LinearLayout;
+
 import android.widget.TextView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,13 +20,11 @@ import com.example.ftechdevice.API_Repository.CartAPI_Repository;
 import com.example.ftechdevice.API_Repository.ProductAPI_Repository;
 import com.example.ftechdevice.Common.CommonAdapter.CategoryOptionAdapter;
 import com.example.ftechdevice.Common.CommonAdapter.CategoryOptionInteraction;
-import com.example.ftechdevice.Common.CommonAdapter.ProductListAdapter;
 import com.example.ftechdevice.Common.CommonAdapter.ProductListAdapterBase;
-import com.example.ftechdevice.Common.CommonAdapter.ToyListAdapterBase;
 import com.example.ftechdevice.Common.Constants.Constants;
 import com.example.ftechdevice.Common.TokenManger.TokenManager;
 import com.example.ftechdevice.JWT.JWTDecoder;
-import com.example.ftechdevice.Model.CartModel;
+import com.example.ftechdevice.Model.CartModule.CartModel;
 import com.example.ftechdevice.Model.CartModule.CartDTO;
 import com.example.ftechdevice.Model.CartModule.CartResponse;
 import com.example.ftechdevice.Model.ModelRespone.ProductReponse;
@@ -34,37 +34,31 @@ import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.Activity.ProductDetailActivity.ProductDetailActivity;
 import com.example.ftechdevice.UI.ShareViewModel.ShareViewModel;
+import com.example.ftechdevice.Until.MyProgressDialog;
 import com.example.ftechdevice.databinding.ActivityMainBinding;
 import com.example.ftechdevice.databinding.FragmentProductBinding;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.core.content.ContextCompat;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -92,6 +86,10 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
     @Inject
     CartAPI_Repository cartAPIRepository;
 
+    private MyProgressDialog myProgressDialogl;
+
+    public static final int REQUEST_CODE_PRODUCT_DETAIL = 1;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,6 +108,7 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentProductBinding.inflate(inflater, container, false);
+        myProgressDialogl = new MyProgressDialog(requireContext());
         setCateRecycleView();
         setProductListAdapter();
         callProductAPI();
@@ -139,6 +138,23 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_PRODUCT_DETAIL && resultCode == RESULT_OK) {
+            String cartItemsJson = data.getStringExtra("cart_items");
+            if (cartItemsJson != null) {
+                Type cartListType = new TypeToken<List<CartModel>>() {}.getType();
+                List<CartModel> cartItems = new Gson().fromJson(cartItemsJson, cartListType);
+                if (cartItems != null && !cartItems.isEmpty()) {
+                    sharedViewModel.addItems(cartItems);
+                }
+            } else {
+                Log.d("checkcartintedetha", cartItemsJson + " Null");
+            }
+        }
+    }
+
     private void setProductListAdapter() {
         binding.rvToys.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -165,9 +181,9 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         pproductListAdapter.setItemOnClickListener(p -> {
             Intent intent = new Intent(requireContext(), ProductDetailActivity.class);
             intent.putExtra("product_id", p.getId());
-            requireContext().startActivity(intent);
+            //requireContext().startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE_PRODUCT_DETAIL);
         });
-
 
         pproductListAdapter.setOnItemCartClickListener(p -> {
             if (getUserFromJWT() == null) {
@@ -178,20 +194,8 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
             } else {
                 UserJWT userJWT = getUserFromJWT();
                 CartDTO cartDTO = new CartDTO(0, userJWT.getUserId(), p.getId(), 1);
-                callAddProductToCart(userJWT.getAccessToken(), cartDTO);
-                Toast.makeText(requireContext(), "Add To Cart", Toast.LENGTH_SHORT).show();
+                callAddProductToCart(userJWT.getAccessToken(), cartDTO, p);
 
-                CartResponse.Product product = new CartResponse.Product(
-                        p.getId(),
-                        p.getName(),
-                        p.getDescription(),
-                        p.getPrice(),
-                        p.getQuantity(),
-                        p.getImageUrl(),
-                        p.getIsActive(),
-                        p.getProductCategory()
-                );
-                sharedViewModel.addItem(CartModel.create(product, 1));
 
             }
         });
@@ -440,12 +444,29 @@ public class ProductFragment extends Fragment implements CategoryOptionInteracti
         return (int) (dp * density);
     }
 
-    private void callAddProductToCart(String token, CartDTO cartDTO ) {
+    private void callAddProductToCart(String token, CartDTO cartDTO, ProductModel p ) {
+        myProgressDialogl.show();
         cartAPIRepository.addToCart("Bearer " + token, cartDTO).enqueue(new Callback<CartResponse>() {
             @Override
             public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
                 if (response.isSuccessful()) {
+                    myProgressDialogl.dismiss();
                     Toast.makeText(requireContext(), "Add Sản Phẩm Vào Giỏ Hàng Thành Công", Toast.LENGTH_SHORT).show();
+                    Log.d("CheckCartRespone",String.valueOf(response.body().getId()));
+                    CartResponse.Product product = new CartResponse.Product(
+                            p.getId(),
+                            p.getName(),
+                            p.getDescription(),
+                            p.getPrice(),
+                            p.getQuantity(),
+                            p.getImageUrl(),
+                            p.getIsActive(),
+                            p.getProductCategory()
+                    );
+                    sharedViewModel.addItem(CartModel.create(response.body().getId(),product, 1));
+
+
+
                 } else {
                     Log.d("CheckCartRespone", String.valueOf(response.body()));
                     Log.d("CheckCartRespone", String.valueOf(response.code()));

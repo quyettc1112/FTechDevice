@@ -18,10 +18,13 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ftechdevice.Common.TokenManger.TokenManager;
+import com.example.ftechdevice.JWT.JWTDecoder;
 import com.example.ftechdevice.Model.ChatModuleModel.ChatList;
 import com.example.ftechdevice.Model.ChatModuleModel.MessagesList;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.ChatModule.Adapter.MessagesAdapter;
+import com.example.ftechdevice.UI.Activity.ChatModule.ChatActivity.ChatActivity;
 import com.example.ftechdevice.Until.FirebaseNotificationHelper;
 import com.example.ftechdevice.Until.FirebaseUtil;
 import com.example.ftechdevice.Until.MemoryData;
@@ -30,6 +33,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -99,7 +105,8 @@ public class MessageActivity extends AppCompatActivity {
 
         // get user's mobile number from memory
         userMobileNumber = MemoryData.getMobile(this);
-
+        Log.d("CheckPhoneMemory", userMobileNumber);
+        Log.d("CheckPhoneMemory-jwt", getPhoneUserFromJWT());
         // generate chat key if empty
         if (chatKey.isEmpty()) {
             chatKey = userMobileNumber + getMobile;
@@ -211,6 +218,23 @@ public class MessageActivity extends AppCompatActivity {
         Timestamp ts = new Timestamp(timestamps);
         Date date = new Date(ts.getTime());
         return new SimpleDateFormat(format, Locale.getDefault()).format(date);
+    }
+
+    private String getPhoneUserFromJWT() {
+        String phone;
+        String accessToken = TokenManager.getAccessToken(MessageActivity.this);
+        if(accessToken != null) {
+            try {
+                JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
+                phone = decodedPayload.getString("phone");
+                return phone;
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        }else{
+            Toast.makeText(MessageActivity.this, "Phone is Null", Toast.LENGTH_SHORT).show();
+            return "";
+        }
     }
 
 }

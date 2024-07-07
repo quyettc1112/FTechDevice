@@ -2,12 +2,10 @@ package com.example.ftechdevice.Common.Constants;
 
 import com.example.ftechdevice.Common.CommonAdapter.CategoryOptionAdapter;
 import com.example.ftechdevice.Common.CommonAdapter.VideoMainAdapter;
-import com.example.ftechdevice.Model.CartModel;
 import com.example.ftechdevice.Model.ToyModel;
 import com.example.ftechdevice.Model.VideoModel;
 import com.example.ftechdevice.R;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

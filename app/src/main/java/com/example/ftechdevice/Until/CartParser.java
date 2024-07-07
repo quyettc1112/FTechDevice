@@ -1,6 +1,6 @@
 package com.example.ftechdevice.Until;
 
-import com.example.ftechdevice.Model.CartModel;
+import com.example.ftechdevice.Model.CartModule.CartModel;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

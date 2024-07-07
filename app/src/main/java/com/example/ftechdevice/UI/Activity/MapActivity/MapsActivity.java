@@ -119,12 +119,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         if (isLocationPermissionGranted()) {
             showCurrentLocation();
-
-
             findPlace();
-
-
-
 
         } else {
             requestLocationPermission();

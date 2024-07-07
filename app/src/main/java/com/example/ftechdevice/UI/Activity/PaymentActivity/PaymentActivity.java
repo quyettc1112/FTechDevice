@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.ftechdevice.API_Repository.VNPay_Repository;
+import com.example.ftechdevice.Model.CartModule.CartModel;
 import com.example.ftechdevice.Model.ModelRespone.UrlResponseDTO;
 import com.example.ftechdevice.Model.ModelRespone.VNPayResponse;
 import com.example.ftechdevice.Model.PaymentResponse;
@@ -27,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Inject;
@@ -51,6 +53,9 @@ public class PaymentActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_payment);
 
+        getIntentExtraValue();
+
+
         webView = findViewById(R.id.webView);
 
         vnPayRepository.submitOrder(29000, "test payment").enqueue(new Callback<UrlResponseDTO>() {
@@ -72,6 +77,35 @@ public class PaymentActivity extends AppCompatActivity {
 
         });
     }
+
+    private void getIntentExtraValue() {
+        // Lấy intent
+        Intent intent = getIntent();
+
+        // Lấy các giá trị từ intent
+        double amount = intent.getDoubleExtra("amount", 0.0);
+        String orderInfo = intent.getStringExtra("orderinfo");
+        ArrayList<CartModel> listCartModel = intent.getParcelableArrayListExtra("list_cart_model");
+
+        // In ra dữ liệu
+        Log.d("PaymentActivity", String.format("Amount: %.2f", amount));
+        Log.d("PaymentActivity", "Order Info: " + orderInfo);
+        if (listCartModel != null) {
+            for (CartModel item : listCartModel) {
+                Log.d("PaymentActivity", "Cart ID: " + item.getId());
+                Log.d("PaymentActivity", "Product ID: " + item.getProduct().getId());
+                Log.d("PaymentActivity", "Product name: " + item.getProduct().getName());
+                Log.d("PaymentActivity", "Product Price: " + item.getProduct().getPrice());
+                Log.d("PaymentActivity", "Quantity : " + item.getQuantity());
+                Log.d("PaymentActivity", "User ID : " + item.getUser().getId());
+                Log.d("PaymentActivity", "---------------- ");
+            }
+        } else {
+            Log.d("PaymentActivity", "Cart Item list is null");
+        }
+
+    }
+
     private void loadUrlIntoWebView(String url) {
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);

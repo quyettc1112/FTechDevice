@@ -1,7 +1,6 @@
 package com.example.ftechdevice.API_Repository;
 
 import com.example.ftechdevice.API_Service.CartAPI_Service;
-import com.example.ftechdevice.API_Service.OrderAPI_Service;
 import com.example.ftechdevice.Model.CartModule.CartDTO;
 import com.example.ftechdevice.Model.CartModule.CartResponse;
 
@@ -26,6 +25,13 @@ public class CartAPI_Repository{
     }
     public Call<List<CartResponse>> getCarts(String token, int pageNo, int pageSize, String search) {
         return cartAPIService.getCarts(token,pageNo, pageSize, search);
+    }
+    public Call<CartResponse> putCart(String token, int id, CartDTO cartDTO) {
+        return cartAPIService.updateCartById(token, id, cartDTO);
+    }
+
+    public Call<Void> deleteCartById(String token, int id) {
+        return  cartAPIService.deleteCartById(token,id);
     }
 
 
