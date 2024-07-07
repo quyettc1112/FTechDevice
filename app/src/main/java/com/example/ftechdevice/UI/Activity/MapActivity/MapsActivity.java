@@ -74,7 +74,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mapsViewModels = new ViewModelProvider(this).get(MapsViewModels.class);
 
-        Places.initialize(getApplicationContext(), "AIzaSyCpmrOW6NygOmu6Sz2_k2LIH_n963Q8nKc");
+        Places.initialize(getApplicationContext(), "AIzaSyCqPC6aLVWsBuxbjS1XpSmrMc2OdJQjH5Q");
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
