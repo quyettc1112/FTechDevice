@@ -72,14 +72,14 @@
         android:id="@+id/chattingRecyclerView"
         android:layout_width="match_parent"
         android:layout_marginTop="80dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="135dp"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/bottomBar"
         app:layout_constraintTop_toBottomOf="@+id/topBar" />
 
     <LinearLayout
         android:id="@+id/bottomBar"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="60dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_width="match_parent"

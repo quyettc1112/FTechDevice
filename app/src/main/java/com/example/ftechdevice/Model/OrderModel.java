@@ -1,18 +1,21 @@
 package com.example.ftechdevice.Model;
 
-public class OrderModel {
+import java.io.Serializable;
+import java.util.List;
+
+public class OrderModel implements Serializable {
     private int id;
     private int status;
     private String title;
     private String description;
-    private int userId;
+    private List<OrderDetailModel> orderDetailList;
 
-    public OrderModel(int id, int status, String title, String description, int userId) {
+    public OrderModel(int id, int status, String title, String description, List<OrderDetailModel> orderDetailList) {
         this.id = id;
         this.status = status;
         this.title = title;
         this.description = description;
-        this.userId = userId;
+        this.orderDetailList = orderDetailList;
     }
 
     public int getId() {
@@ -31,8 +34,7 @@ public class OrderModel {
         return description;
     }
 
-    public int getUserId() {
-        return userId;
+    public List<OrderDetailModel> getOrderDetailList() {
+        return orderDetailList;
     }
 }
-
