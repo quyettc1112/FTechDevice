@@ -86,32 +86,37 @@ public class ChatActivity extends AppCompatActivity {
                     if (mobile == null) {
                         continue;
                     }
+                    String getLoginMobile = getPhoneUserFromJWT();
+
+
 
                     // Don't fetch details of the logged-in user
-                    if (!mobile.equals(mobileNumber)) {
+                    if (getLoginMobile.equals("356970686") || !mobile.equals(mobileNumber) && mobile.equals("356970686")) {
+                        if (!mobile.equals(mobileNumber)) {
+                            // Retrieve user's full name
+                            final String getUserFullName = userData.child("name").getValue(String.class);
 
-                        // Retrieve user's full name
-                        final String getUserFullName = userData.child("name").getValue(String.class);
+                            // Other required variables
+                            String lastMessage = "";
+                            int unseenMessagesCount = 0;
 
-                        // Other required variables
-                        String lastMessage = "";
-                        int unseenMessagesCount = 0;
+                            // Check if chat is available with the user
+                            String chatKey = checkChatExistence(snapshot, mobileNumber, mobile);
 
-                        // Check if chat is available with the user
-                        String chatKey = checkChatExistence(snapshot, mobileNumber, mobile);
+                            if (!chatKey.isEmpty()) {
+                                // Getting last message in the chat
+                                lastMessage = retrieveLastMessage(snapshot, chatKey);
 
-                        if (!chatKey.isEmpty()) {
-
-                            // Getting last message in the chat
-                            lastMessage = retrieveLastMessage(snapshot, chatKey);
-
-                            if (!lastMessage.isEmpty()) {
-                                unseenMessagesCount = countUnseenMessages(snapshot, chatKey, mobileNumber);
+                                if (!lastMessage.isEmpty()) {
+                                    unseenMessagesCount = countUnseenMessages(snapshot, chatKey, mobileNumber);
+                                }
                             }
+                            // Load chat/messages in the list
+                            loadData(chatKey, getUserFullName, mobile, lastMessage, unseenMessagesCount);
                         }
-                        // Load chat/messages in the list
-                        loadData(chatKey, getUserFullName, mobile, lastMessage, unseenMessagesCount);
                     }
+
+
                 }
 
                 if (progressDialog.isShowing()) {
