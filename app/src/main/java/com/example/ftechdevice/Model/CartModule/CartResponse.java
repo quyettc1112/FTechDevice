@@ -1,5 +1,10 @@
 package com.example.ftechdevice.Model.CartModule;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import com.example.ftechdevice.Model.ProductModel;
 import com.google.gson.annotations.SerializedName;
 
@@ -54,9 +59,58 @@ public class CartResponse {
         this.quantity = quantity;
     }
 
-    public static class User {
+    public static class User implements Parcelable{
         @SerializedName("id")
         private int id;
+
+        @Override
+        public String toString() {
+            return "User{" +
+                    "id=" + id +
+                    ", role=" + role +
+                    ", username='" + username + '\'' +
+                    ", email='" + email + '\'' +
+                    ", password='" + password + '\'' +
+                    ", fullName='" + fullName + '\'' +
+                    ", phone='" + phone + '\'' +
+                    ", address='" + address + '\'' +
+                    ", isActive=" + isActive +
+                    ", avatar='" + avatar + '\'' +
+                    ", enabled=" + enabled +
+                    ", authorities=" + authorities +
+                    ", accountNonExpired=" + accountNonExpired +
+                    ", accountNonLocked=" + accountNonLocked +
+                    ", credentialsNonExpired=" + credentialsNonExpired +
+                    '}';
+        }
+
+        protected User(Parcel in) {
+            id = in.readInt();
+            username = in.readString();
+            email = in.readString();
+            password = in.readString();
+            fullName = in.readString();
+            phone = in.readString();
+            address = in.readString();
+            isActive = in.readByte() != 0;
+            avatar = in.readString();
+            enabled = in.readByte() != 0;
+            accountNonExpired = in.readByte() != 0;
+            accountNonLocked = in.readByte() != 0;
+            credentialsNonExpired = in.readByte() != 0;
+        }
+
+        public static final Creator<User> CREATOR = new Creator<User>() {
+            @Override
+            public User createFromParcel(Parcel in) {
+                return new User(in);
+            }
+
+            @Override
+            public User[] newArray(int size) {
+                return new User[size];
+            }
+        };
 
         public int getId() {
             return id;
@@ -220,6 +274,28 @@ public class CartResponse {
         @SerializedName("credentialsNonExpired")
         private boolean credentialsNonExpired;
 
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(@NonNull Parcel dest, int flags) {
+            dest.writeInt(id);
+            dest.writeString(username);
+            dest.writeString(email);
+            dest.writeString(password);
+            dest.writeString(fullName);
+            dest.writeString(phone);
+            dest.writeString(address);
+            dest.writeByte((byte) (isActive ? 1 : 0));
+            dest.writeString(avatar);
+            dest.writeByte((byte) (enabled ? 1 : 0));
+            dest.writeByte((byte) (accountNonExpired ? 1 : 0));
+            dest.writeByte((byte) (accountNonLocked ? 1 : 0));
+            dest.writeByte((byte) (credentialsNonExpired ? 1 : 0));
+        }
+
         // Getters and Setters
         // ...
     }
@@ -278,7 +354,7 @@ public class CartResponse {
         // ...
     }
 
-    public static class Product {
+    public static class Product  implements Parcelable {
 
         public Product(int id, String name, String description, double price, int quantity, String imageUrl, boolean isActive, ProductModel.ProductCategory productCategory) {
             this.id = id;
@@ -315,7 +391,57 @@ public class CartResponse {
         @SerializedName("productCategory")
         private ProductModel.ProductCategory productCategory;
 
+        protected Product(Parcel in) {
+            id = in.readInt();
+            name = in.readString();
+            description = in.readString();
+            price = in.readDouble();
+            quantity = in.readInt();
+            imageUrl = in.readString();
+            isActive = in.readByte() != 0;
+            productCategory = in.readParcelable(ProductModel.ProductCategory.class.getClassLoader());
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeInt(id);
+            dest.writeString(name);
+            dest.writeString(description);
+            dest.writeDouble(price);
+            dest.writeInt(quantity);
+            dest.writeString(imageUrl);
+            dest.writeByte((byte) (isActive ? 1 : 0));
+            dest.writeParcelable(productCategory, flags);
+        }
+
+
+        public static final Creator<Product> CREATOR = new Creator<Product>() {
+            @Override
+            public Product createFromParcel(Parcel in) {
+                return new Product(in);
+            }
+
+            @Override
+            public Product[] newArray(int size) {
+                return new Product[size];
+            }
+        };
+
         // Getters and Setters
+
+        @Override
+        public String toString() {
+            return "Product{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    ", description='" + description + '\'' +
+                    ", price=" + price +
+                    ", quantity=" + quantity +
+                    ", imageUrl='" + imageUrl + '\'' +
+                    ", isActive=" + isActive +
+                    ", productCategory=" + productCategory +
+                    '}';
+        }
 
         public int getId() {
             return id;
@@ -380,6 +506,13 @@ public class CartResponse {
         public void setProductCategory(ProductModel.ProductCategory productCategory) {
             this.productCategory = productCategory;
         }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+
 
 // ...
     }

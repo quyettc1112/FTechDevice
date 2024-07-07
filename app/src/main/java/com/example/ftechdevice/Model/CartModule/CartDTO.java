@@ -1,9 +1,19 @@
 package com.example.ftechdevice.Model.CartModule;
 
+import com.google.gson.annotations.SerializedName;
+
 public class CartDTO {
+
+    @SerializedName("id")
     private int id;
+
+    @SerializedName("userId")
     private int userId;
+
+    @SerializedName("productId")
     private int productId;
+
+    @SerializedName("quantity")
     private int quantity;
 
     public CartDTO(int id, int userId, int productId, int quantity) {
