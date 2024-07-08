@@ -29,4 +29,8 @@ public class OrderAPI_Repository {
     public Call<OrderModel> getOrderDetails(String token,int orderId) {
         return orderAPIService.getOrderDetails(token, orderId);
     }
+    public Call<OrderResponse> createOrder(String authToken,OrderModel order) {
+        return orderAPIService.createOrder(authToken,order);
+    }
 }
+
