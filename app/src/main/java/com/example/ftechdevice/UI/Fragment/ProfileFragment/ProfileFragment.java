@@ -229,6 +229,9 @@ public class ProfileFragment extends Fragment {
                 });
     }
 
+
+
+
     private void showLogoutDialog() {
         BottomSheetDialog dialog = new BottomSheetDialog(requireContext());
         View view = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_bottom_sheet_logout_ui, null);

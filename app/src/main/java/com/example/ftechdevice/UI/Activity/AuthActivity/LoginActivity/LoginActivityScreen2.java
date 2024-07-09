@@ -22,6 +22,7 @@ import com.example.ftechdevice.Model.ModelRequestDTO.RegisterRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserCretidentialDTO;
 import com.example.ftechdevice.Model.ModelRespone.LoginResponse;
 import com.example.ftechdevice.Model.ModelRespone.RegisterResponseDTO;
+import com.example.ftechdevice.Model.ModelRespone.UserResponseDTO;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
@@ -56,6 +57,7 @@ public class LoginActivityScreen2 extends BaseActivity {
     private static final String TAG = "LoginActivityScreen2";
     private static final int MIN_PASSWORD_LENGTH = 6;
 
+    String phone = null;
     private ActivityLoginScreen2Binding binding;
     private UserShareViewModel userShareViewModel;
     private RegisterViewModel registerViewModel;
@@ -78,7 +80,7 @@ public class LoginActivityScreen2 extends BaseActivity {
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl(getString(R.string.database_url));
         setContentView(binding.getRoot());
         progressDialog = new MyProgressDialog(this);
-
+       // getUserByPhone(phone);
         getFCMToken();
         initViewModels();
         updateRegisterViewModel();
@@ -87,20 +89,52 @@ public class LoginActivityScreen2 extends BaseActivity {
         observeViewModel();
 
     }
-    private void attemptAutoLogin() {
-        String email = ManagerUser.getEmail(this);
-        String password = ManagerUser.getPassword(this);
+    private void getUserByPhone(String phone, String password) {
 
-        if (!email.isEmpty() && !password.isEmpty()) {
-            binding.edtEmail.setText(email);
-            binding.edtPassword.setText(password);
+        userapiRepository.getUserByPhone(phone).enqueue(new Callback<UserResponseDTO>() {
+            @Override
+            public void onResponse(Call<UserResponseDTO> call, Response<UserResponseDTO> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    UserResponseDTO userResponse = response.body();
+                    String email = userResponse.getEmail();
+                    if (validateInput(email, password)) {
+                        userShareViewModel.updateLoginCretidential(new LoginRequestDTO(email, password));
+                        doLogin(userShareViewModel.getloginCretidentail());
+                    }
+                } else {
+                    Log.d(TAG, "Failed to get user by phone. Code: " + response.code() + ", Message: " + response.message());
+                    Toast.makeText(LoginActivityScreen2.this, "Không thể lấy thông tin người dùng bằng số điện thoại", Toast.LENGTH_SHORT).show();
+                }
+            }
 
-            LoginRequestDTO loginRequestDTO = new LoginRequestDTO(email, password);
-            doLogin(loginRequestDTO);
-        }else {
-            return;
-        }
+            @Override
+            public void onFailure(Call<UserResponseDTO> call, Throwable t) {
+                Log.e(TAG, "API call failed: " + t.getMessage());
+                Toast.makeText(LoginActivityScreen2.this, "sai số điện thoại", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+//    private void getUserByPhone(String phone) {
+//        userapiRepository.getUserByPhone(phone).enqueue(new Callback<UserResponseDTO>() {
+//            @Override
+//            public void onResponse(Call<UserResponseDTO> call, Response<UserResponseDTO> response) {
+//                if (response.isSuccessful() && response.body() != null) {
+//                    UserResponseDTO userResponse = response.body();
+//                    // Xử lý kết quả thành công tại đây
+//                    Log.d(TAG, "User information: " + userResponse.getEmail());
+//                } else {
+//                    Log.d(TAG, "Failed to get user by phone. Code: " + response.code() + ", Message: " + response.message());
+//                    // Xử lý kết quả thất bại tại đây
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<UserResponseDTO> call, Throwable t) {
+//                Log.e(TAG, "API call failed: " + t.getMessage());
+//                // Xử lý lỗi kết nối tại đây
+//            }
+//        });
+//    }
 
     private void initViewModels() {
         registerViewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
@@ -155,8 +189,10 @@ public class LoginActivityScreen2 extends BaseActivity {
         if (TokenManager.isTokenValid(this)) {
             Log.d(TAG, "Valid token found: " + TokenManager.getAccessToken(this));
             startActivity(new Intent(this, MainActivity.class));
+            TokenManager.clearAccessToken(this);
             finish();
         }
+
     }
 
     private void setupUI() {
@@ -175,10 +211,13 @@ public class LoginActivityScreen2 extends BaseActivity {
 
     private void setupLoginButton() {
         binding.btnLogin.setOnClickListener(v -> {
-            String email = binding.edtEmail.getText().toString();
+            String input = binding.edtEmail.getText().toString();
             String password = binding.edtPassword.getText().toString();
-            if (validateInput(email, password)) {
-                userShareViewModel.updateLoginCretidential(new LoginRequestDTO(email, password));
+
+            if (Patterns.PHONE.matcher(input).matches()) {
+                getUserByPhone(input, password);
+            } else if (validateInput(input, password)) {
+                userShareViewModel.updateLoginCretidential(new LoginRequestDTO(input, password));
                 doLogin(userShareViewModel.getloginCretidentail());
             }
         });
@@ -210,9 +249,10 @@ public class LoginActivityScreen2 extends BaseActivity {
     }
 
     private void doLogin(LoginRequestDTO loginRequestDTO) {
-
+        progressDialog.show();
         mAuth.signInWithEmailAndPassword(loginRequestDTO.getEmail(), loginRequestDTO.getPassword())
                 .addOnCompleteListener(this, task -> {
+                    progressDialog.dismiss();
                     if (task.isSuccessful()) {
                         handleSuccessfulFirebaseLogin(loginRequestDTO);
                     } else {
@@ -267,11 +307,14 @@ public class LoginActivityScreen2 extends BaseActivity {
     }
 
     private void loginUser(LoginRequestDTO loginRequestDTO) {
+        progressDialog.show();
         userapiRepository.loginUser(loginRequestDTO)
                 .enqueue(new Callback<LoginResponse>() {
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                        progressDialog.dismiss();
                         if (response.isSuccessful() && response.body() != null) {
+
                             handleSuccessfulLogin(response.body());
                         } else {
                             handleFailedLogin(response);
@@ -280,8 +323,9 @@ public class LoginActivityScreen2 extends BaseActivity {
 
                     @Override
                     public void onFailure(Call<LoginResponse> call, Throwable t) {
+                        progressDialog.dismiss();
                         Log.e(TAG, "Login failed: " + t.getMessage());
-                        Toast.makeText(LoginActivityScreen2.this, "Lỗi kết nối", Toast.LENGTH_SHORT).show();
+
                     }
                 });
     }
@@ -314,11 +358,13 @@ public class LoginActivityScreen2 extends BaseActivity {
     }
 
     private void registerUser(RegisterRequestDTO registerRequestDTO, Runnable onSuccessCallback) {
+        progressDialog.show();
         userapiRepository.registerUser(registerRequestDTO)
                 .enqueue(new Callback<RegisterResponseDTO>() {
                     @Override
                     public void onResponse(@NonNull Call<RegisterResponseDTO> call, @NonNull Response<RegisterResponseDTO> response) {
                         if (response.isSuccessful()) {
+                            progressDialog.dismiss();
                             Log.d(TAG, "Đăng ký thành công với server");
                             //  Toast.makeText(LoginActivityScreen2.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                             ManagerUser.clearUserInfo(LoginActivityScreen2.this);
@@ -335,6 +381,7 @@ public class LoginActivityScreen2 extends BaseActivity {
 
                     @Override
                     public void onFailure(@NonNull Call<RegisterResponseDTO> call, Throwable t) {
+                        progressDialog.dismiss();
                         Log.e(TAG, "Lỗi kết nối: " + t.getMessage());
                         // Toast.makeText(LoginActivityScreen2.this, "Lỗi kết nối khi đăng ký", Toast.LENGTH_SHORT).show();
                     }
@@ -365,7 +412,6 @@ public class LoginActivityScreen2 extends BaseActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                progressDialog.dismiss();
 
                 // Display a message for database error
                 Toast.makeText(LoginActivityScreen2.this, "Database error", Toast.LENGTH_SHORT).show();
