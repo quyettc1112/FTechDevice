@@ -11,14 +11,29 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.ftechdevice.API_Repository.CartAPI_Repository;
+import com.example.ftechdevice.Common.TokenManger.TokenManager;
+import com.example.ftechdevice.JWT.JWTDecoder;
 import com.example.ftechdevice.Model.CartModule.CartModel;
+import com.example.ftechdevice.Model.UserJWT;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.OrderListActivity.OrderListActivity;
 import com.example.ftechdevice.databinding.ActivityBillingBinding;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+@AndroidEntryPoint
 public class BillingActivity extends AppCompatActivity {
     String orderInfo;
     ArrayList<CartModel> listCartModel;
@@ -30,6 +45,9 @@ public class BillingActivity extends AppCompatActivity {
     String status;
 
     private ActivityBillingBinding billingBinding;
+
+    @Inject
+    CartAPI_Repository cartAPIRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +77,35 @@ public class BillingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (Integer.parseInt(status.trim()) == 1){
                     //clear cart call api
+                    if (getUserFromJWT() != null) {
+                        callDeleteAllCartByUserId(getUserFromJWT().getUserId());
+                    }
+
                     //call api post new order
+
                 }
                 Intent intent = new Intent(BillingActivity.this, OrderListActivity.class);
                 startActivity(intent);
             }
         });
+
+    }
+
+    private void callDeleteAllCartByUserId(int userId) {
+        cartAPIRepository.deleteAllCartByUserId("Bearer "+getUserFromJWT().getAccessToken(), userId)
+                .enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.isSuccessful()) {
+                            Log.d("callDeleteAllCartByUserId", "Delete All Cart Successful");
+                        } else  Log.d("callDeleteAllCartByUserId", String.valueOf(response.code()));
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Log.d("callDeleteAllCartByUserId", t.getMessage());
+                    }
+                });
 
     }
     private void getIntentExtraValue() {
@@ -95,5 +136,30 @@ public class BillingActivity extends AppCompatActivity {
             Log.d("PaymentActivity", "Cart Item list is null");
         }
 
+    }
+
+    private UserJWT getUserFromJWT() {
+        String accessToken = TokenManager.getAccessToken(BillingActivity.this);
+        if (accessToken != null) {
+            try {
+                JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
+
+                UserJWT user = new UserJWT();
+                user.setAccessToken(accessToken);
+                user.setSubject(decodedPayload.getString("sub"));
+                user.setEmail(decodedPayload.getString("email"));
+                user.setUserId(decodedPayload.getInt("userId"));
+                user.setRoleName(decodedPayload.getString("RoleName"));
+                user.setPhone(decodedPayload.getString("phone"));
+                user.setIssuedAt(decodedPayload.getLong("iat"));
+                user.setExpiration(decodedPayload.getLong("exp"));
+
+                return user;
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            return null;
+        }
     }
 }

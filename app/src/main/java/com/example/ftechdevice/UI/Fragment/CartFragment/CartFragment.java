@@ -193,6 +193,7 @@ public class CartFragment extends Fragment {
                                sharedViewModel.updateCartItems(cartList);
                                cartAdapter.submitList(cartList);
                                observeViewModel();
+                               checkShowUI();
                            } else  {
                                ErrorDialog e = new ErrorDialog(
                                        requireContext(),
@@ -206,7 +207,6 @@ public class CartFragment extends Fragment {
                            Log.d("checkCartRespone",String.valueOf(t.getMessage()));
                        }
                    });
-
        }
 
 
@@ -238,6 +238,7 @@ public class CartFragment extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d("CheckOnResume", "ok");
+        callGetAllCarts();
     }
 
     private void callAddMoreQuantity (CartResponse.Product product) {
