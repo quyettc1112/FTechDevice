@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.ftechdevice.API_Service.OrderAPI_Service;
 import com.example.ftechdevice.Model.ModelRespone.OrderResponse;
 import com.example.ftechdevice.Model.OrderModel;
+import com.example.ftechdevice.Model.PostOrder;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class OrderAPI_Repository {
     public Call<OrderModel> getOrderDetails(String token,int orderId) {
         return orderAPIService.getOrderDetails(token, orderId);
     }
-    public Call<OrderResponse> createOrder(String authToken,OrderModel order) {
+    public Call<OrderResponse> createOrder(String authToken, PostOrder order) {
         return orderAPIService.createOrder(authToken,order);
     }
 }

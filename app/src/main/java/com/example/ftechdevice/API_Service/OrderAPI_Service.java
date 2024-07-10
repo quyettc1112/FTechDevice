@@ -2,6 +2,7 @@ package com.example.ftechdevice.API_Service;
 
 import com.example.ftechdevice.Model.ModelRespone.OrderResponse;
 import com.example.ftechdevice.Model.OrderModel;
+import com.example.ftechdevice.Model.PostOrder;
 
 import java.util.List;
 
@@ -28,5 +29,5 @@ public interface OrderAPI_Service {
     @POST("/api/orders")
     Call<OrderResponse> createOrder(
             @Header("Authorization") String authToken,
-            @Body OrderModel order);
+            @Body PostOrder order);
 }

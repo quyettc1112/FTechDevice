@@ -14,7 +14,7 @@ import com.example.ftechdevice.JWT.JWTDecoder;
 import com.example.ftechdevice.Model.CartModule.CartModel;
 import com.example.ftechdevice.Model.ModelRespone.OrderResponse;
 import com.example.ftechdevice.Model.OrderDetailModel;
-import com.example.ftechdevice.Model.OrderModel;
+import com.example.ftechdevice.Model.PostOrder;
 import com.example.ftechdevice.Model.ProductModel;
 import com.example.ftechdevice.Model.UserJWT;
 import com.example.ftechdevice.R;
@@ -36,6 +36,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 @AndroidEntryPoint
 public class BillingActivity extends AppCompatActivity {
     String orderInfo;
@@ -86,26 +87,18 @@ public class BillingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        callPostOrder();
-
     }
+
     private void postNewOrder() {
+        Log.d("BillingActivity", "Inside postNewOrder()");
         List<OrderDetailModel> orderDetails = new ArrayList<>();
         for (CartModel cart : listCartModel) {
             Log.d("BillingActivity", "Processing cart item: " + cart.getProduct().getName());
-            ProductModel product = new ProductModel(
-                    cart.getProduct().getId(),
-                    cart.getProduct().getName(),
-                    cart.getProduct().getDescription(),
-                    1000,
-                    cart.getProduct().getQuantity(),
-                    cart.getProduct().getImageUrl(),
-                    cart.getProduct().isActive(),
-                    cart.getProduct().getProductCategory()
-            );
+
+            ProductModel product = new ProductModel();
+            product.setId(cart.getProduct().getId());
+
             OrderDetailModel orderDetail = new OrderDetailModel(
-                    0, // Auto-generated ID
                     cart.getQuantity(),
                     String.valueOf(cart.getProduct().getPrice()),
                     product,
@@ -124,15 +117,14 @@ public class BillingActivity extends AppCompatActivity {
         int userId = userJWT.getUserId();
         String token = userJWT.getAccessToken();
 
-        OrderModel order = new OrderModel(
-                0, // Auto-generated ID
-                "Order Titleve eNhan ",
+        PostOrder order = new PostOrder(
+                "Order Title",
                 "Order Description",
                 userId,
                 1,
                 orderDetails
         );
-        Log.d("BillingActivity", "OrderModel created: " + order.toString());
+        Log.d("BillingActivity", "PostOrder created: " + order.toString());
 
         Gson gson = new Gson();
         String orderJson = gson.toJson(order);
@@ -154,6 +146,7 @@ public class BillingActivity extends AppCompatActivity {
                         }
                     }
                 }
+
                 @Override
                 public void onFailure(Call<OrderResponse> call, Throwable t) {
                     Log.d("BillingActivity", "Error order: " + t.getMessage());
@@ -163,61 +156,6 @@ public class BillingActivity extends AppCompatActivity {
             Log.d("BillingActivity", "Token is null or empty");
         }
     }
-
-
-    private void callPostOrder() {
-
-        OrderDetailModel orderdetail = new OrderDetailModel(
-                0,
-                11,
-                "1000",
-                new ProductModel(
-                        17,
-                        "zcx",
-                        "zxc",
-                        1000,
-                        1,
-                        "zxc",
-                        2
-                ),
-                1
-        );
-
-        ArrayList<OrderDetailModel> m = new ArrayList<>();
-        m.add(orderdetail);
-
-        OrderModel order = new OrderModel(
-                 0,
-                "Test Order",
-                "Desceripafgg",
-                100,
-                1,
-                m
-        );
-
-        orderAPIRepository.createOrder("Bearer "+ getUserFromJWT().getAccessToken(), order)
-                .enqueue(new Callback<OrderResponse>() {
-                    @Override
-                    public void onResponse(Call<OrderResponse> call, Response<OrderResponse> response) {
-                        if(response.isSuccessful()) {
-                            Log.d("callPostOrder", "Thành Công");
-
-
-                        } else  {
-                            Log.d("callPostOrder", String.valueOf(response.code()));
-                            Log.d("callPostOrder", String.valueOf(response.message()));
-
-
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<OrderResponse> call, Throwable t) {
-
-                    }
-                });
-    }
-
 
     private UserJWT getUserFromJWT() {
         String accessToken = TokenManager.getAccessToken(BillingActivity.this);

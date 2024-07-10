@@ -112,8 +112,12 @@ public class OrderDetailActivity extends AppCompatActivity {
                     tvOrderStatus.setText(order.getStatus() == 1 ? "Hoàn thành" : "Chưa hoàn thành");
 
                     orderDetailList = order.getOrderDetailList();
-                    orderDetailAdapter = new OrderDetailAdapter(OrderDetailActivity.this, orderDetailList);
-                    rvOrderDetails.setAdapter(orderDetailAdapter);
+                    if (orderDetailList != null && !orderDetailList.isEmpty()) {
+                        orderDetailAdapter = new OrderDetailAdapter(OrderDetailActivity.this, orderDetailList);
+                        rvOrderDetails.setAdapter(orderDetailAdapter);
+                    } else {
+                        Log.d("OrderDetailActivity", "No order details found");
+                    }
                 } else {
                     Log.d("OrderDetailActivity", "Response code: " + response.code());
                 }
@@ -124,5 +128,6 @@ public class OrderDetailActivity extends AppCompatActivity {
                 Log.d("OrderDetailActivity", t.getMessage());
             }
         });
+
     }
 }

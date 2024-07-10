@@ -67,7 +67,10 @@ public class ProductModel implements Serializable{
 
     public ProductModel() {
     }
-
+    
+    public ProductModel(int id) {
+        this.id = id;
+    }
     public int getId() {
         return id;
     }

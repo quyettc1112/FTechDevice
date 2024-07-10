@@ -1,10 +1,12 @@
 package com.example.ftechdevice.UI.Activity.OrderListActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-
+import java.util.Collections;
+import java.util.Comparator;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +20,7 @@ import com.example.ftechdevice.Model.ModelRespone.OrderResponse;
 import com.example.ftechdevice.Model.OrderModel;
 import com.example.ftechdevice.Model.UserJWT;
 import com.example.ftechdevice.R;
+import com.example.ftechdevice.UI.Activity.MainActivity.MainActivity;
 import com.example.ftechdevice.UI.ShareViewModel.UserShareViewModel;
 
 import org.json.JSONException;
@@ -54,6 +57,9 @@ public class OrderListActivity extends AppCompatActivity {
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(OrderListActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
                 finish();
             }
         });
@@ -75,12 +81,16 @@ public class OrderListActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     List<OrderModel> orders = response.body();
                     if (orders != null) {
-                        Log.d("OrderListActivity", "Orders size: " + orders.size());
-                        orderList = orders;
+                        Collections.sort(orders, new Comparator<OrderModel>() {
+                            @Override
+                            public int compare(OrderModel o1, OrderModel o2) {
+                                return o2.getId() - o1.getId();
+                            }
+                        });
+                            orderList = orders;
                         orderAdapter = new OrderAdapter(OrderListActivity.this, orderList);
                         rvOrderList.setAdapter(orderAdapter);
                     } else {
-                        Log.d("OrderListActivity", "No orders found");
                     }
                 } else {
                     Log.d("OrderListActivity", "Response code: " + response.code());
