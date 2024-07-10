@@ -151,24 +151,6 @@ public class BillingActivity extends AppCompatActivity {
         String orderJson = gson.toJson(order);
         Log.d("BillingActivity", "Order JSON: " + orderJson);
 
-    }
-
-    private void callDeleteAllCartByUserId(int userId) {
-        cartAPIRepository.deleteAllCartByUserId("Bearer "+getUserFromJWT().getAccessToken(), userId)
-                .enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        if (response.isSuccessful()) {
-                            Log.d("callDeleteAllCartByUserId", "Delete All Cart Successful");
-                        } else  Log.d("callDeleteAllCartByUserId", String.valueOf(response.code()));
-                    }
-
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Log.d("callDeleteAllCartByUserId", t.getMessage());
-                    }
-                });
-
         if (token != null && !token.isEmpty()) {
             orderAPIRepository.createOrder("Bearer " + token, order).enqueue(new Callback<OrderResponse>() {
                 @Override
@@ -194,6 +176,24 @@ public class BillingActivity extends AppCompatActivity {
         } else {
             Log.d("BillingActivity", "Token is null or empty");
         }
+    }
+
+    private void callDeleteAllCartByUserId(int userId) {
+        cartAPIRepository.deleteAllCartByUserId("Bearer "+getUserFromJWT().getAccessToken(), userId)
+                .enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.isSuccessful()) {
+                            Log.d("callDeleteAllCartByUserId", "Delete All Cart Successful");
+                        } else  Log.d("callDeleteAllCartByUserId", String.valueOf(response.code()));
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Log.d("callDeleteAllCartByUserId", t.getMessage());
+                    }
+                });
+
     }
 
     private UserJWT getUserFromJWT() {
