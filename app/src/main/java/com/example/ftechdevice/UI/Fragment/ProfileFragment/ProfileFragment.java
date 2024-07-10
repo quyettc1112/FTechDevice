@@ -119,8 +119,24 @@ public class ProfileFragment extends Fragment {
             binding.LoginButton.setVisibility(View.VISIBLE);
         }
 
-        binding.ivUserAvatar.setOnClickListener(v -> showUpdateDialog());
-        binding.userName.setOnClickListener(v -> showUpdateDialog());
+        // Chỉ gọi showUpdateDialog() khi người dùng đã đăng nhập
+        binding.ivUserAvatar.setOnClickListener(v -> {
+            if (accessToken != null) {
+                showUpdateDialog();
+            } else {
+                Toast.makeText(requireContext(), "Bạn cần đăng nhập trước khi tiếp tục", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Chỉ gọi showUpdateDialog() khi người dùng đã đăng nhập
+        binding.userName.setOnClickListener(v -> {
+            if (accessToken != null) {
+                showUpdateDialog();
+            } else {
+                Toast.makeText(requireContext(), "Bạn cần đăng nhập trước khi tiếp tục", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         binding.logout.setOnClickListener(v -> showLogoutDialog());
         binding.LoginButton.setOnClickListener(v -> showLoginDialog());
         binding.laIntentToFacebook.setOnClickListener(v -> intentToFacebook());

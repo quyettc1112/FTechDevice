@@ -252,7 +252,7 @@ public class LoginActivityScreen2 extends BaseActivity {
         progressDialog.show();
         mAuth.signInWithEmailAndPassword(loginRequestDTO.getEmail(), loginRequestDTO.getPassword())
                 .addOnCompleteListener(this, task -> {
-                    progressDialog.dismiss();
+
                     if (task.isSuccessful()) {
                         handleSuccessfulFirebaseLogin(loginRequestDTO);
                     } else {
@@ -307,12 +307,12 @@ public class LoginActivityScreen2 extends BaseActivity {
     }
 
     private void loginUser(LoginRequestDTO loginRequestDTO) {
-        progressDialog.show();
+        progressDialog.dismiss();
         userapiRepository.loginUser(loginRequestDTO)
                 .enqueue(new Callback<LoginResponse>() {
                     @Override
                     public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                        progressDialog.dismiss();
+
                         if (response.isSuccessful() && response.body() != null) {
 
                             handleSuccessfulLogin(response.body());
@@ -358,13 +358,13 @@ public class LoginActivityScreen2 extends BaseActivity {
     }
 
     private void registerUser(RegisterRequestDTO registerRequestDTO, Runnable onSuccessCallback) {
-        progressDialog.show();
+
         userapiRepository.registerUser(registerRequestDTO)
                 .enqueue(new Callback<RegisterResponseDTO>() {
                     @Override
                     public void onResponse(@NonNull Call<RegisterResponseDTO> call, @NonNull Response<RegisterResponseDTO> response) {
                         if (response.isSuccessful()) {
-                            progressDialog.dismiss();
+
                             Log.d(TAG, "Đăng ký thành công với server");
                             //  Toast.makeText(LoginActivityScreen2.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                             ManagerUser.clearUserInfo(LoginActivityScreen2.this);
@@ -381,7 +381,7 @@ public class LoginActivityScreen2 extends BaseActivity {
 
                     @Override
                     public void onFailure(@NonNull Call<RegisterResponseDTO> call, Throwable t) {
-                        progressDialog.dismiss();
+
                         Log.e(TAG, "Lỗi kết nối: " + t.getMessage());
                         // Toast.makeText(LoginActivityScreen2.this, "Lỗi kết nối khi đăng ký", Toast.LENGTH_SHORT).show();
                     }
@@ -397,7 +397,7 @@ public class LoginActivityScreen2 extends BaseActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.child("users").hasChild(registerRequestDTO.getPhone())) {
-                    Toast.makeText(LoginActivityScreen2.this, "Mobile already exists", Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(LoginActivityScreen2.this, "Mobile already exists", Toast.LENGTH_SHORT).show();
                 } else {
                     databaseReference.child("users").child(registerRequestDTO.getPhone()).child("email").setValue(registerRequestDTO.getEmail());
                     databaseReference.child("users").child(registerRequestDTO.getPhone()).child("name").setValue(registerRequestDTO.getUsername());
