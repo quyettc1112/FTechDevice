@@ -31,7 +31,11 @@ public class CartAPI_Repository{
     }
 
     public Call<Void> deleteCartById(String token, int id) {
-        return  cartAPIService.deleteCartById(token,id);
+        return cartAPIService.deleteCartById(token,id);
+    }
+
+    public Call<Void> deleteAllCartByUserId (String token, int userId) {
+        return cartAPIService.deleteAllCartByUserId(token, userId);
     }
 
 

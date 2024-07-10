@@ -7,11 +7,18 @@ import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
+import com.example.ftechdevice.API_Repository.CartAPI_Repository;
+import com.example.ftechdevice.Common.TokenManger.TokenManager;
+import com.example.ftechdevice.JWT.JWTDecoder;
 import com.example.ftechdevice.API_Repository.OrderAPI_Repository;
 import com.example.ftechdevice.Common.TokenManger.TokenManager;
 import com.example.ftechdevice.JWT.JWTDecoder;
 import com.example.ftechdevice.Model.CartModule.CartModel;
+import com.example.ftechdevice.Model.UserJWT;
 import com.example.ftechdevice.Model.ModelRespone.OrderResponse;
 import com.example.ftechdevice.Model.OrderDetailModel;
 import com.example.ftechdevice.Model.PostOrder;
@@ -25,10 +32,15 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import javax.inject.Inject;
 
@@ -47,7 +59,11 @@ public class BillingActivity extends AppCompatActivity {
     int totalPrice;
     String paymentTime;
     String status;
+
     private ActivityBillingBinding billingBinding;
+
+    @Inject
+    CartAPI_Repository cartAPIRepository;
 
     @Inject
     OrderAPI_Repository orderAPIRepository;
@@ -80,8 +96,13 @@ public class BillingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (Integer.parseInt(status.trim()) == 1){
                     //clear cart call api
+                    if (getUserFromJWT() != null) {
+                        callDeleteAllCartByUserId(getUserFromJWT().getUserId());
+                    }
+
                     //call api post new order
                     postNewOrder();
+
                 }
                 Intent intent = new Intent(BillingActivity.this, OrderListActivity.class);
                 startActivity(intent);
@@ -157,6 +178,24 @@ public class BillingActivity extends AppCompatActivity {
         }
     }
 
+    private void callDeleteAllCartByUserId(int userId) {
+        cartAPIRepository.deleteAllCartByUserId("Bearer "+getUserFromJWT().getAccessToken(), userId)
+                .enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.isSuccessful()) {
+                            Log.d("callDeleteAllCartByUserId", "Delete All Cart Successful");
+                        } else  Log.d("callDeleteAllCartByUserId", String.valueOf(response.code()));
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Log.d("callDeleteAllCartByUserId", t.getMessage());
+                    }
+                });
+
+    }
+
     private UserJWT getUserFromJWT() {
         String accessToken = TokenManager.getAccessToken(BillingActivity.this);
         if (accessToken != null) {
@@ -211,4 +250,6 @@ public class BillingActivity extends AppCompatActivity {
         }
 
     }
+
+
 }
