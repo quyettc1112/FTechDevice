@@ -45,7 +45,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
 
     @Override
     public int getItemCount() {
-        return orderDetailList.size();
+        return orderDetailList != null ? orderDetailList.size() : 0;
     }
 
     public static class OrderDetailViewHolder extends RecyclerView.ViewHolder {

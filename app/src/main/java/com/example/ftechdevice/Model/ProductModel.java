@@ -5,17 +5,34 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class ProductModel implements Serializable{
+
+    @SerializedName("id")
     private int id;
+    @SerializedName("name")
     private String name;
+    @SerializedName("description")
     private String description;
+
+    @SerializedName("price")
     private int price;
+    @SerializedName("quantity")
     private int quantity;
+
+    @SerializedName("imageUrl")
     private String imageUrl;
+
+    @SerializedName("isActive")
     private Boolean isActive;
+    @SerializedName("productCategory")
     private ProductCategory productCategory;
+
+    @SerializedName("categoryId")
+    private int categoryId;
 
     public ProductModel(int id, String name, String description, int price, int quantity, String imageUrl, Boolean isActive, ProductCategory productCategory) {
         this.id = id;
@@ -28,9 +45,32 @@ public class ProductModel implements Serializable{
         this.productCategory = productCategory;
     }
 
-    public ProductModel() {
+    public ProductModel(int id, String name, String description, int price, int quantity, String imageUrl, ProductCategory productCategory) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+        this.imageUrl = imageUrl;
+        this.productCategory = productCategory;
     }
 
+    public ProductModel(int id, String name, String description, int price, int quantity, String imageUrl, int categoryId) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+        this.imageUrl = imageUrl;
+        this.categoryId = categoryId;
+    }
+
+    public ProductModel() {
+    }
+    
+    public ProductModel(int id) {
+        this.id = id;
+    }
     public int getId() {
         return id;
     }

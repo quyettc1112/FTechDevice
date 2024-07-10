@@ -5,6 +5,20 @@
     android:background="@drawable/background_toy_fillter"
     android:layout_height="670dp">
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_clearFilter"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="104dp"
+        android:background="@drawable/background_apply_fillter"
+        android:text="Hủy bộ lọc"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/i_blue"
+        android:textSize="23dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout14" />
+
     <TextView
         android:layout_margin="20dp"
         android:id="@+id/textView7"
@@ -255,15 +269,15 @@
         android:id="@+id/btn_saveFillter"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="150dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
         android:background="@drawable/background_apply_fillter"
         android:text="Lưu "
         android:textColor="@color/white"
         android:textSize="23dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout14"/>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout14" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
