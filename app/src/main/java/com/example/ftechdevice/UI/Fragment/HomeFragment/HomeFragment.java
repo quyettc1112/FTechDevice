@@ -353,7 +353,9 @@ public class HomeFragment extends Fragment implements CategoryOptionInteraction,
         binding.imNotify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(requireContext(), ChatActivity.class));
+                if (getUserFromJWT() != null) {
+                    startActivity(new Intent(requireContext(), ChatActivity.class));
+                }
             }
         });
 
