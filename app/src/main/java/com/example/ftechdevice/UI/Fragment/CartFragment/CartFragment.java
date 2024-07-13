@@ -75,7 +75,9 @@ public class CartFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentCartBinding.inflate(inflater, container, false);
         showPaymentDialog();
+        checkShowUI();
         callGetAllCarts();
+        //checkShowUI();
         progressDialog = new MyProgressDialog(requireContext());
         binding.rlCart.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.rlCart.setAdapter(cartAdapter);
@@ -193,6 +195,7 @@ public class CartFragment extends Fragment {
                                sharedViewModel.updateCartItems(cartList);
                                cartAdapter.submitList(cartList);
                                observeViewModel();
+                               checkShowUI();
                            } else  {
                                ErrorDialog e = new ErrorDialog(
                                        requireContext(),
@@ -206,7 +209,6 @@ public class CartFragment extends Fragment {
                            Log.d("checkCartRespone",String.valueOf(t.getMessage()));
                        }
                    });
-
        }
 
 
@@ -238,6 +240,7 @@ public class CartFragment extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d("CheckOnResume", "ok");
+
     }
 
     private void callAddMoreQuantity (CartResponse.Product product) {

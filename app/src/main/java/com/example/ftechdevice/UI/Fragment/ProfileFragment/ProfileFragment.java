@@ -487,8 +487,10 @@ public class ProfileFragment extends Fragment {
         } else {
             NotifyDialog ntf = new NotifyDialog(
                     requireContext(),
-                    "Bạn cần đăng nhập trước khi tiếp tục",
-                    "Quay Lại"
+                    "Thông báo: Người dùng cần đăng nhập để có trải nghiệm tốt nhất",
+                    "Bạn cần đăng nhập để sử dụng một số tính năng của ứng dụng.\n" +
+                            "Vào biểu tượng có tên \"Người dùng\" và tiến hành đăng nhập",
+                    "Tiếp tục"
             );
             ntf.show();
         }

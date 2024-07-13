@@ -44,4 +44,10 @@ public interface CartAPI_Service {
             @Path("id") int id
     );
 
+
+    @DELETE("api/cart/user/{userId}")
+    Call<Void> deleteAllCartByUserId(
+            @Header("Authorization") String token,
+            @Path("userId") int id
+    );
 }

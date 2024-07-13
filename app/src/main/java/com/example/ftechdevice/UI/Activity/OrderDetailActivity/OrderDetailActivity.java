@@ -12,9 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ftechdevice.API_Repository.OrderAPI_Repository;
 import com.example.ftechdevice.Common.CommonAdapter.OrderDetailAdapter;
+import com.example.ftechdevice.Common.TokenManger.TokenManager;
+import com.example.ftechdevice.JWT.JWTDecoder;
 import com.example.ftechdevice.Model.OrderDetailModel;
 import com.example.ftechdevice.Model.OrderModel;
+import com.example.ftechdevice.Model.UserJWT;
 import com.example.ftechdevice.R;
+import com.example.ftechdevice.UI.Activity.OrderListActivity.OrderListActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -54,8 +61,10 @@ public class OrderDetailActivity extends AppCompatActivity {
         orderId = getIntent().getIntExtra("orderId", -1);
 
         if (orderId != -1) {
-            String token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzMTMydHJpbmciLCJlbWFpbCI6ImFkbWluM0BnbWFpbC5jb20iLCJ1c2VySWQiOjEsIlJvbGVOYW1lIjoiQURNSU4iLCJwaG9uZSI6InN0cmluZyIsImlhdCI6MTcyMDI2NTUyMywiZXhwIjoxNzIwMzUxOTIzfQ.0BIj_wPtzFvCUl4O5t4WrIILs4CLcvg4ijAOwvIzfNk";
-            getOrderDetails(token, orderId);
+            if (getUserFromJWT() != null) {
+                String token = getUserFromJWT().getAccessToken();
+                getOrderDetails(token, orderId);
+            }
         }
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +73,32 @@ public class OrderDetailActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    private UserJWT getUserFromJWT() {
+        String accessToken = TokenManager.getAccessToken(OrderDetailActivity.this);
+        if (accessToken != null) {
+            try {
+                JSONObject decodedPayload = JWTDecoder.decodeJWT(accessToken);
+
+                UserJWT user = new UserJWT();
+                user.setAccessToken(accessToken);
+                user.setSubject(decodedPayload.getString("sub"));
+                user.setEmail(decodedPayload.getString("email"));
+                user.setUserId(decodedPayload.getInt("userId"));
+                user.setRoleName(decodedPayload.getString("RoleName"));
+                user.setPhone(decodedPayload.getString("phone"));
+                user.setIssuedAt(decodedPayload.getLong("iat"));
+                user.setExpiration(decodedPayload.getLong("exp"));
+
+                return user;
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            return null;
+        }
     }
 
     private void getOrderDetails(String token, int orderId) {
@@ -77,8 +112,12 @@ public class OrderDetailActivity extends AppCompatActivity {
                     tvOrderStatus.setText(order.getStatus() == 1 ? "Hoàn thành" : "Chưa hoàn thành");
 
                     orderDetailList = order.getOrderDetailList();
-                    orderDetailAdapter = new OrderDetailAdapter(OrderDetailActivity.this, orderDetailList);
-                    rvOrderDetails.setAdapter(orderDetailAdapter);
+                    if (orderDetailList != null && !orderDetailList.isEmpty()) {
+                        orderDetailAdapter = new OrderDetailAdapter(OrderDetailActivity.this, orderDetailList);
+                        rvOrderDetails.setAdapter(orderDetailAdapter);
+                    } else {
+                        Log.d("OrderDetailActivity", "No order details found");
+                    }
                 } else {
                     Log.d("OrderDetailActivity", "Response code: " + response.code());
                 }
@@ -89,5 +128,6 @@ public class OrderDetailActivity extends AppCompatActivity {
                 Log.d("OrderDetailActivity", t.getMessage());
             }
         });
+
     }
 }

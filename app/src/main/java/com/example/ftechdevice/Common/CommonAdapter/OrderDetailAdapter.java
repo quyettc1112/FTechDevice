@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.example.ftechdevice.Model.OrderDetailModel;
 import com.example.ftechdevice.R;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.OrderDetailViewHolder> {
@@ -36,22 +37,21 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
     public void onBindViewHolder(@NonNull OrderDetailViewHolder holder, int position) {
         OrderDetailModel orderDetail = orderDetailList.get(position);
         holder.tvProductName.setText(orderDetail.getProduct().getName());
-        holder.tvProductDescription.setText(orderDetail.getProduct().getDescription());
         holder.tvProductQuantity.setText("Số lượng: " + orderDetail.getQuantity());
-        holder.tvProductPrice.setText("Giá: " + orderDetail.getPrice() + " VND");
+        int money = Integer.parseInt(orderDetail.getPrice());
+        holder.tvProductPrice.setText("Giá: " + formatPrice(money) + " VND");
 
         Glide.with(context).load(orderDetail.getProduct().getImageUrl()).into(holder.ivProductImage);
     }
 
     @Override
     public int getItemCount() {
-        return orderDetailList.size();
+        return orderDetailList != null ? orderDetailList.size() : 0;
     }
 
     public static class OrderDetailViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvProductName;
-        TextView tvProductDescription;
         TextView tvProductQuantity;
         TextView tvProductPrice;
         ImageView ivProductImage;
@@ -59,10 +59,13 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
         public OrderDetailViewHolder(@NonNull View itemView) {
             super(itemView);
             tvProductName = itemView.findViewById(R.id.tv_product_name);
-            tvProductDescription = itemView.findViewById(R.id.tv_product_description);
             tvProductQuantity = itemView.findViewById(R.id.tv_product_quantity);
             tvProductPrice = itemView.findViewById(R.id.tv_product_price);
             ivProductImage = itemView.findViewById(R.id.iv_product_image);
         }
+    }
+    private String formatPrice(int price) {
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        return formatter.format(price);
     }
 }
