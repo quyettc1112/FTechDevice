@@ -21,7 +21,7 @@
         android:layout_height="230dp">
         <ImageView
             android:id="@+id/im_video"
-            android:src="@drawable/ic_material_thumbnail_3"
+            android:src="@drawable/ic_cart_white"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
           >
