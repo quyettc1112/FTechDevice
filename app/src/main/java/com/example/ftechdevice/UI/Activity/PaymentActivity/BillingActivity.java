@@ -36,7 +36,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,15 +115,17 @@ public class BillingActivity extends AppCompatActivity {
     private void postNewOrder() {
         Log.d("BillingActivity", "Inside postNewOrder()");
         List<OrderDetailModel> orderDetails = new ArrayList<>();
+        DecimalFormat decimalFormat = new DecimalFormat("#");
+
         for (CartModel cart : listCartModel) {
             Log.d("BillingActivity", "Processing cart item: " + cart.getProduct().getName());
 
             ProductModel product = new ProductModel();
             product.setId(cart.getProduct().getId());
-
+            String formattedPrice = decimalFormat.format(cart.getProduct().getPrice());
             OrderDetailModel orderDetail = new OrderDetailModel(
                     cart.getQuantity(),
-                    String.valueOf(cart.getProduct().getPrice()),
+                    formattedPrice,
                     product,
                     1
             );
@@ -137,10 +141,15 @@ public class BillingActivity extends AppCompatActivity {
 
         int userId = userJWT.getUserId();
         String token = userJWT.getAccessToken();
+        String username = userJWT.getSubject().trim();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String currentDate = LocalDateTime.now().format(formatter);
+        String title = "Đơn hàng của " + username + " ngày " + currentDate;
+        String description = "Bạn có " + orderDetails.size() + " sản phẩm";
 
         PostOrder order = new PostOrder(
-                "Order Title",
-                "Order Description",
+                title,
+                description,
                 userId,
                 1,
                 orderDetails
