@@ -1,11 +1,15 @@
 package com.example.ftechdevice.UI.Fragment.CartFragment;
 
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +27,7 @@ import com.example.ftechdevice.R;
 
 import android.content.Intent;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -57,6 +62,10 @@ public class CartFragment extends Fragment {
     private CartAdapter cartAdapter;
     private ShareViewModel sharedViewModel;
 
+    private BiometricPrompt biometricPrompt;
+    private BiometricPrompt.PromptInfo promptInfo;
+    private  BiometricManager biometricManage;
+
 
     @Inject
     CartAPI_Repository cartAPIRepository;
@@ -69,6 +78,7 @@ public class CartFragment extends Fragment {
 
         cartAdapter = new CartAdapter();
         sharedViewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
+        biometricManage = BiometricManager.from(requireContext());
     }
 
     @Override
@@ -78,6 +88,7 @@ public class CartFragment extends Fragment {
         checkShowUI();
         callGetAllCarts();
         //checkShowUI();
+        checkBiometricAvailability();
         progressDialog = new MyProgressDialog(requireContext());
         binding.rlCart.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.rlCart.setAdapter(cartAdapter);
@@ -130,7 +141,6 @@ public class CartFragment extends Fragment {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     convertDpToPx(430)
             ));
-
             TextView tong_tien_hang = view.findViewById(R.id.tv_tong_tien_hang);
             tong_tien_hang.setText(formatPrice(cartAdapter.getTotalItemsPrice()) + " VND");
 
@@ -140,16 +150,7 @@ public class CartFragment extends Fragment {
             view.findViewById(R.id.btn_payment).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-
-                    Calendar calendar = Calendar.getInstance();
-                    Date currentTime = calendar.getTime();
-
-                    Intent intent = new Intent(requireContext(), PaymentActivity.class);
-                    intent.putExtra("amount", cartAdapter.getTotalItemsPrice() + 20000.0);
-                    intent.putExtra("orderinfo", currentTime.toString());
-                    intent.putParcelableArrayListExtra("list_cart_model", new ArrayList<>(sharedViewModel.getCartItems().getValue()));
-                    startActivity(intent);
+                    authenticateUser();
                 }
             });
             dialog.setContentView(view);
@@ -332,6 +333,95 @@ public class CartFragment extends Fragment {
                         }
                     });
         }
+    }
+
+    private void checkBiometricAvailability() {
+        BiometricManager biometricManager = BiometricManager.from(requireContext());
+        switch (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG | BiometricManager.Authenticators.DEVICE_CREDENTIAL | BiometricManager.Authenticators.BIOMETRIC_WEAK)) {
+            case BiometricManager.BIOMETRIC_SUCCESS:
+                // Device can authenticate with biometrics
+                // Initialize biometric authentication
+                initializeBiometricAuthentication();
+                break;
+
+            case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+                // No biometric features available on this device
+                // Show an appropriate message to the user
+                Toast.makeText(requireContext(), "Biometric authentication is not available on this device.", Toast.LENGTH_SHORT).show();
+                break;
+
+            case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
+                // Biometric features are currently unavailable
+                // Show an appropriate message to the user
+                Toast.makeText(requireContext(), "Biometric features are currently unavailable. Please try again later.", Toast.LENGTH_SHORT).show();
+                break;
+
+            case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+                // The user hasn't associated any biometric credentials with their account
+                // Show a message directing the user to set up biometric credentials
+                Toast.makeText(requireContext(), "No biometric credentials found. Please set up biometrics in your device settings.", Toast.LENGTH_SHORT).show();
+                // Optionally, direct the user to the biometric settings
+                Intent enrollIntent = new Intent(Settings.ACTION_BIOMETRIC_ENROLL);
+                enrollIntent.putExtra(Settings.EXTRA_BIOMETRIC_AUTHENTICATORS_ALLOWED,
+                        BiometricManager.Authenticators.BIOMETRIC_STRONG | BiometricManager.Authenticators.DEVICE_CREDENTIAL);
+                startActivity(enrollIntent);
+                break;
+
+            default:
+                // Handle any other potential errors
+                Toast.makeText(requireContext(), "Biometric authentication is not supported.", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+    private void initializeBiometricAuthentication() {
+        biometricPrompt = new BiometricPrompt(this, ContextCompat.getMainExecutor(requireContext()), new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+                // Handle the error
+                Toast.makeText(requireContext(), "Authentication error: " + errString, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                onBiometricAuthenticationSuccess();
+                Toast.makeText(requireContext(), "Authentication succeeded!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+                // Handle the failure
+                Toast.makeText(requireContext(), "Authentication failed. Please try again.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Biometric demo")
+                .setSubtitle("Authenticate using biometrics")
+                .setNegativeButtonText("Cancel")
+                .build();
+    }
+
+    private void authenticateUser() {
+        if (biometricPrompt != null && promptInfo != null) {
+            biometricPrompt.authenticate(promptInfo);
+        } else {
+            Toast.makeText(requireContext(), "Biometric authentication is not properly initialized.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void onBiometricAuthenticationSuccess() {
+        Calendar calendar = Calendar.getInstance();
+        Date currentTime = calendar.getTime();
+
+        Intent intent = new Intent(requireContext(), PaymentActivity.class);
+        intent.putExtra("amount", cartAdapter.getTotalItemsPrice() + 20000.0);
+        intent.putExtra("orderinfo", currentTime.toString());
+        intent.putParcelableArrayListExtra("list_cart_model", new ArrayList<>(sharedViewModel.getCartItems().getValue()));
+        startActivity(intent);
     }
 
 
