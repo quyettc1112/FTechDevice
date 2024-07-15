@@ -57,6 +57,8 @@ public class OrderListActivity extends AppCompatActivity {
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent it = new Intent(OrderListActivity.this, MainActivity.class);
+                startActivity(it);
                 finish();
             }
         });
@@ -125,5 +127,13 @@ public class OrderListActivity extends AppCompatActivity {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent it = new Intent(OrderListActivity.this, MainActivity.class);
+        startActivity(it);
+        finish();
     }
 }

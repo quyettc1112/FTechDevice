@@ -397,7 +397,7 @@ public class CartFragment extends Fragment {
         });
 
         promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                .setTitle("Biometric demo")
+                .setTitle("Biometric Authentication")
                 .setSubtitle("Authenticate using biometrics")
                 .setNegativeButtonText("Cancel")
                 .build();

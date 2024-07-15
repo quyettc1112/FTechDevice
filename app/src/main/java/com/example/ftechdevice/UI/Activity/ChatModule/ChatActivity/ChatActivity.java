@@ -95,6 +95,7 @@ public class ChatActivity extends AppCompatActivity {
                         if (!mobile.equals(mobileNumber)) {
                             // Retrieve user's full name
                             final String getUserFullName = userData.child("name").getValue(String.class);
+                            final String getImageUrl = userData.child("image").getValue(String.class);
 
                             // Other required variables
                             String lastMessage = "";
@@ -112,7 +113,7 @@ public class ChatActivity extends AppCompatActivity {
                                 }
                             }
                             // Load chat/messages in the list
-                            loadData(chatKey, getUserFullName, mobile, lastMessage, unseenMessagesCount);
+                            loadData(chatKey, getUserFullName, mobile, lastMessage, unseenMessagesCount, getImageUrl);
                         }
                     }
 
@@ -215,9 +216,9 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     // Load data into the message list
-    private void loadData(String chatKey, String fullName, String mobile, String lastMessage, int unseenMessagesCount) {
+    private void loadData(String chatKey, String fullName, String mobile, String lastMessage, int unseenMessagesCount, String imageUrl) {
         if (!mobileAlreadyExists(mobile)) {
-            ChatList messagesList = new ChatList(chatKey, fullName, mobile, lastMessage, unseenMessagesCount);
+            ChatList messagesList = new ChatList(chatKey, fullName, mobile, lastMessage,imageUrl, unseenMessagesCount);
             userMessagesList.add(messagesList);
             messagesAdapter.updateMessages(userMessagesList);
         }
@@ -251,4 +252,9 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

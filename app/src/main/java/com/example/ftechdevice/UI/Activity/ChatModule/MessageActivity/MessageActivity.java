@@ -18,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.ftechdevice.Common.TokenManger.TokenManager;
 import com.example.ftechdevice.JWT.JWTDecoder;
 import com.example.ftechdevice.Model.ChatModuleModel.ChatList;
@@ -45,6 +46,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MessageActivity extends AppCompatActivity {
 
     // array list to store chat data
@@ -58,6 +61,7 @@ public class MessageActivity extends AppCompatActivity {
     private RecyclerView chattingRecyclerView;
     private MessagesAdapter chatAdapter;
     private boolean loadingFirstTime = true;
+    private CircleImageView profileImage;
 
     private ValueEventListener valueEventListener;
 
@@ -86,6 +90,15 @@ public class MessageActivity extends AppCompatActivity {
         final String getName = getIntent().getStringExtra("full_name");
         chatKey = getIntent().getStringExtra("chat_key");
         final String getMobile = getIntent().getStringExtra("mobile");
+        final String getImageUrl = getIntent().getStringExtra("image");
+
+        profileImage = findViewById(R.id.profilePic);
+
+        Glide.with(this)
+                .load(getImageUrl)
+                .placeholder(R.drawable.user_icon) // A default placeholder if image is not available
+                .error(R.drawable.user_icon) // An error image if loading fails
+                .into(profileImage);
 
 
         firebaseUtil.getFCMToken(getMobile, new FirebaseUtil.FCMTokenListener() {

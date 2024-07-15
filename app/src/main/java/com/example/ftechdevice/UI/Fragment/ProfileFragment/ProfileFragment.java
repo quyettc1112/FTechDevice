@@ -42,18 +42,26 @@ import com.example.ftechdevice.AppConfig.CustomView.CustomDialog.NotifyDialog;
 import com.example.ftechdevice.Common.IMG.RealPathUtil;
 import com.example.ftechdevice.Common.TokenManger.TokenManager;
 import com.example.ftechdevice.JWT.JWTDecoder;
+import com.example.ftechdevice.Model.ModelRequestDTO.RegisterRequestDTO;
 import com.example.ftechdevice.Model.ModelRequestDTO.UserRequestDTO;
 import com.example.ftechdevice.Model.ModelRespone.FileUploadResponse;
 import com.example.ftechdevice.Model.ModelRespone.UserResponseDTO;
 import com.example.ftechdevice.Model.UserJWT;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivity;
+import com.example.ftechdevice.UI.Activity.AuthActivity.LoginActivity.LoginActivityScreen2;
 import com.example.ftechdevice.UI.Activity.MapActivity.MapsActivity;
 import com.example.ftechdevice.UI.Activity.OrderListActivity.OrderListActivity;
 import com.example.ftechdevice.UI.ShareViewModel.RegisterViewModel;
 import com.example.ftechdevice.UI.ShareViewModel.UpdateViewModel;
+import com.example.ftechdevice.Until.MemoryData;
 import com.example.ftechdevice.databinding.FragmentProfileBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -90,6 +98,7 @@ public class ProfileFragment extends Fragment {
     UserAPI_Service userApiService;
 
     private ImageView dialogImagePreview;
+    private DatabaseReference databaseReference;
 
 
     @Nullable
@@ -97,6 +106,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
 
+        databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl(getString(R.string.database_url));
         setupViews();
         intentToOrder();
         return binding.getRoot();
@@ -423,14 +433,13 @@ public class ProfileFragment extends Fragment {
                                 // Cập nhật giao diện với thông tin người dùng mới
                                 String newAvatar = updatedUser.getAvatar();
 
-
-
                                 if (newAvatar != null) {
                                     try {
                                         Glide.with(requireContext())
                                                 .load(newAvatar)
                                                 .apply(new RequestOptions().error(R.drawable.ic_avatar))
                                                 .into(binding.ivUserAvatar);
+                                        registerFireBaseDataRealTime(newAvatar, getUserFromJWT().getPhone());
                                     } catch (Exception e) {
                                         Log.e("ProfileFragment", "Failed to set avatar", e);
                                     }
@@ -520,5 +529,30 @@ public class ProfileFragment extends Fragment {
         } else {
             return null;
         }
+    }
+
+
+    private void registerFireBaseDataRealTime (String  imageUrl, String phone) {
+        // Show progress dialog
+
+        // Check if the user's mobile number already exists in the database
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child("users").hasChild(phone)) {
+                    // Update the user's email
+                    databaseReference.child("users").child(phone).child("image").setValue(imageUrl);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+                // Display a message for database error
+                Toast.makeText(requireContext(), "Database error", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 }
