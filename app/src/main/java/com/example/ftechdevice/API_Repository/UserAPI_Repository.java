@@ -55,6 +55,8 @@ public class UserAPI_Repository {
     public Call<UserResponseDTO> updateUser(String token, String email, UserRequestDTO userRequestDTO) {
         return userapiService.updateUser("Bearer " + token, email, userRequestDTO);
     }
-
+    public Call<UserResponseDTO> getUserByPhone(String phone) {
+        return userapiService.getUserByPhone(phone);
+    }
 
 }

@@ -51,4 +51,7 @@ public interface UserAPI_Service {
             @Query("email") String email,
             @Body UserRequestDTO userUpdateDTO
     );
+    @GET("/api/auth/user/phone")
+    Call<UserResponseDTO> getUserByPhone(@Query("phone") String phone);
+
 }
