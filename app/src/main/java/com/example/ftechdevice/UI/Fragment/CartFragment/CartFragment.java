@@ -64,7 +64,6 @@ public class CartFragment extends Fragment {
 
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
-    private  BiometricManager biometricManage;
 
 
     @Inject
@@ -78,7 +77,6 @@ public class CartFragment extends Fragment {
 
         cartAdapter = new CartAdapter();
         sharedViewModel = new ViewModelProvider(requireActivity()).get(ShareViewModel.class);
-        biometricManage = BiometricManager.from(requireContext());
     }
 
     @Override
