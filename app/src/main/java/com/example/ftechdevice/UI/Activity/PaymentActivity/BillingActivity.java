@@ -108,6 +108,7 @@ public class BillingActivity extends AppCompatActivity {
                 }
                 Intent intent = new Intent(BillingActivity.this, OrderListActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
