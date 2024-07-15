@@ -81,14 +81,15 @@ public class BillingActivity extends AppCompatActivity {
             billingBinding.ivStatus.setImageResource(R.drawable.paymentsuccess);
         }else billingBinding.ivStatus.setImageResource(R.drawable.paymentfail);
         int amountInt = (int)Math.round(amount);
-        billingBinding.tvAmountValue.setText(String.valueOf(amountInt + " VND"));
+        billingBinding.tvAmountValue.setText(formatPrice(amountInt) + " VND");
         billingBinding.tvTransferFee.setText("20.000 VND");
         billingBinding.tvTransferId.setText(String.valueOf(transactionId));
         billingBinding.tvYouTransfer.setText(String.valueOf(totalPrice));
         billingBinding.tvStatus.setText(String.valueOf(status));
         billingBinding.tvDate.setText(String.valueOf(LocalDateTime.now()));
         billingBinding.tvTimeDetail.setText(String.valueOf(paymentTime));
-        billingBinding.tvTotalAmount.setText(String.valueOf(amountInt) + " VND");
+
+        billingBinding.tvTotalAmount.setText(formatPrice(amountInt) + " VND");
         billingBinding.tvYouTransfer.setText("Thanh toan gio hang");
         //vao day de intent qua order
 
@@ -259,6 +260,11 @@ public class BillingActivity extends AppCompatActivity {
             Log.d("PaymentActivity", "Cart Item list is null");
         }
 
+    }
+
+    private String formatPrice(double price) {
+        DecimalFormat formatter = new DecimalFormat("#,###");
+        return formatter.format(price);
     }
 
 
