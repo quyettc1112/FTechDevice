@@ -406,7 +406,6 @@ public class LoginActivityScreen2 extends BaseActivity {
                     databaseReference.child("users").child(registerRequestDTO.getPhone()).child("FCMToken").setValue(FCMToken);
                     // Save user's mobile number for future login
                     MemoryData.saveMobile(registerRequestDTO.getPhone(), LoginActivityScreen2.this);
-
                 }
             }
 

@@ -83,6 +83,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
                 intent.putExtra("mobile", list2.getMobile());
                 intent.putExtra("full_name", list2.getFullName());
                 intent.putExtra("chat_key", list2.getChatKey());
+                intent.putExtra("image", list2.getIamgeUrl());
 
                 // launch Chat activity
                 context.startActivity(intent);
