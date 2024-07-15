@@ -13,11 +13,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.ftechdevice.Model.ChatModuleModel.ChatList;
 import com.example.ftechdevice.R;
 import com.example.ftechdevice.UI.Activity.ChatModule.MessageActivity.MessageActivity;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
 
@@ -54,6 +57,14 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
             holder.lastMessage.setTextColor(context.getResources().getColor(R.color.theme_color_80));
         }
 
+        Glide.with(context)
+                .load(list2.getIamgeUrl())
+                .placeholder(R.drawable.user_icon) // A default placeholder if image is not available
+                .error(R.drawable.user_icon) // An error image if loading fails
+                .into(holder.profileImage);
+
+
+
         holder.rootLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +76,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
 
                 // create intent to open Chat activity
                 Intent intent = new Intent(context, MessageActivity.class);
-
 
                 // Test
 
@@ -97,6 +107,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
         final private TextView lastMessage;
         final private TextView unseenMessages;
         final private LinearLayout rootLayout;
+        final private CircleImageView profileImage;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -105,6 +116,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
             lastMessage = itemView.findViewById(R.id.lastMessage);
             unseenMessages = itemView.findViewById(R.id.unseenMessages);
             rootLayout = itemView.findViewById(R.id.rootLayout);
+            profileImage = itemView.findViewById(R.id.profilePic);
         }
     }
 }
